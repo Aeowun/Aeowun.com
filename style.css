@@ -224,3 +224,15 @@ footer { padding: 6rem 0; border-top: 1px solid var(--border); }
   .media-grid { grid-template-columns: 1fr; }
   .media-card.large { grid-column: auto; }
 }
+
+@media (max-width: 768px) {
+  header { height: 70px; }
+  .header-inner { gap: 1rem; }
+  .brand-name { font-size: 1.1rem; }
+  .brand-tag { display: none; }
+  .domain-nav { gap: 1rem; }
+  .nav-item { font-size: 0.6rem; letter-spacing: 0.1em; }
+  .hero { padding-top: 140px; margin-bottom: 6rem; }
+  h1 { font-size: 2.8rem; }
+  .hero-description { font-size: 1.1rem; }
+}
