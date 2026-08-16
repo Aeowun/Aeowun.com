@@ -53,6 +53,8 @@ header {
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--border);
+  background: rgba(6, 6, 10, 0.8); /* Semi-opaque background */
+  backdrop-filter: blur(20px);      /* Blur effect for depth */
 }
 .header-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 
