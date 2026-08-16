@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEOWUN // Systems Engineering & Architecture</title>
+    <meta name="description" content="Professional portfolio showcasing AEOWUN Engineering Systems, LANGO Simulators, and Interactive Systemic Simulations.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="domain-aeowun">
+    <div class="bg-field"></div>
+    <canvas id="ambient-canvas"></canvas>
+
+    <header class="glass">
+        <div class="header-inner container">
+            <a href="#" class="brand" onclick="switchDomain('aeowun')">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="assets/logo.png" alt="AEOWUN Logo" style="height: 40px; width: auto;">
+                    <div>
+                        <div class="brand-name">AEOWUN</div>
+                        <div class="brand-tag">ENGINEERING & ARCHITECTURE</div>
+                    </div>
+                </div>
+            </a>
+            <nav class="domain-nav">
+                <button class="nav-item active" data-domain="aeowun" onclick="switchDomain('aeowun')">AEOWUN</button>
+                <button class="nav-item" data-domain="lango" onclick="switchDomain('lango')">LANGO</button>
+                <button class="nav-item" data-domain="media" onclick="switchDomain('media')">MEDIA</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- AEOWUN DOMAIN -->
+        <section id="aeowun" class="domain-surface active">
+            <div class="hero container">
+                <div class="status-badge">DOMAIN: ENGINEERING SYSTEMS</div>
+                <h1>AEOWUN ENGINE. <br> COGNITIVE MESH AUTHORITY.</h1>
+                <p class="hero-description">
+                    A sovereign engineering runtime driven by a <strong>Concurrent Causal Blackboard</strong>
+                    that enforces thread-safe co-observation and automated contradiction detection.
+                </p>
+                <div class="metrics-row" style="justify-content: center; margin-top: 4rem;">
+                    <div class="metric-item">
+                        <div class="metric-value">CCB</div>
+                        <div class="metric-label">Causal Authority</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">Steel</div>
+                        <div class="metric-label">Fault Localization</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">DNA</div>
+                        <div class="metric-label">Architectural Mapping</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container section-depth">
+                <!-- 01 // ARCHITECTURE -->
+                <div class="tech-row">
+                    <div class="tech-content">
+                        <h2>01 // ARCHITECTURE</h2>
+                        <h3>Consistent View Principle</h3>
+                        <p>
+                            AEOWUN enforces a strict <strong>Causal Provenance</strong> model. Every action
+                            is anchored to a verified User Intent and Decision ID, ensuring that no execution
+                            occurs silently or anonymously. The coordinated mesh of agents operates under a
+                            shared state authority.
+                        </p>
+                        <div class="evidence-link mono">[Source: app/core/host_runtime.py]</div>
+                    </div>
+                </div>
+
+                <!-- 02 // OBSERVABILITY (Has Screenshot: hud.png) -->
+                <div class="tech-row">
+                    <div class="tech-visual glass-card">
+                        <img src="assets/aeowun/hud.png" alt="Execution Log" class="evidence-img">
+                        <div class="caption">Live Execution Log — Real-time event tracking and model inference requests.</div>
+                    </div>
+                    <div class="tech-content">
+                        <h2>02 // OBSERVABILITY</h2>
+                        <h3>Host Runtime Execution</h3>
+                        <p>
+                            Comprehensive tracking of every runtime event. The system logs task acceptance,
+                            workspace activation, and specific tool calls like <code>list_files</code>,
+                            providing a transparent view into the cognitive decision-making process.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 03 // SYSTEM HEALTH -->
+                <div class="tech-row">
+                    <div class="tech-content">
+                        <h2>03 // SYSTEM HEALTH</h2>
+                        <h3>Runtime Integrity</h3>
+                        <p>
+                            Continuous monitoring of the runtime synchronization state. The system tracks
+                            active model tiers (e.g., nemotron-nano), context token usage, and hardware
+                            lanes to ensure optimal performance and resource availability.
+                        </p>
+                        <div class="metrics-row small">
+                            <div class="metric-item">
+                                <div class="metric-value">psutil</div>
+                                <div class="metric-label">Resource Monitor</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 04 // ISOLATION (Has Screenshot: health.png - ShadowFS) -->
+                <div class="tech-row">
+                    <div class="tech-visual glass-card">
+                        <img src="assets/aeowun/health.png" alt="ShadowFS Commit Logic" class="evidence-img">
+                        <div class="caption">ShadowFS Logic — Enforcing the Verification-Authorized Commit invariant.</div>
+                    </div>
+                    <div class="tech-content">
+                        <h2>04 // ISOLATION</h2>
+                        <h3>ShadowFS Workspace Substrate</h3>
+                        <p>
+                            To maintain workspace integrity during autonomous operations, mutations are
+                            staged in task-isolated memory buffers. As seen in the commit logic, physical
+                            disk writes are strictly gated by a <strong>Verification-Authorized Commit</strong> invariant.
+                        </p>
+                        <div class="evidence-link mono">[Source: app/core/shadow_fs.py]</div>
+                    </div>
+                </div>
+
+                <!-- 05 // VERIFICATION -->
+                <div class="tech-row">
+                    <div class="tech-content">
+                        <h2>05 // VERIFICATION</h2>
+                        <h3>Steel Thread & DNA Analysis</h3>
+                        <p>
+                            Deterministic fault localization that resolves tracebacks against a
+                            complex Knowledge Graph. The system sequences project patterns to maintain
+                            persistent cognitive alignment with the codebase's unique structure.
+                        </p>
+                        <div class="evidence-link mono">[Source: app/core/steel_thread_analyzer.py]</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LANGO DOMAIN -->
+        <section id="lango" class="domain-surface">
+            <div class="hero container">
+                <div class="status-badge">DOMAIN: LEARNING SYSTEMS</div>
+                <h1>LANGO SIMULATOR. <br> MULTI-DIMENSIONAL VALIDATION.</h1>
+                <p class="hero-description">
+                    A programming simulator that evaluates code across <strong>Behavioral, Structural, and Conceptual</strong>
+                    dimensions using a proprietary Semantic IR engine.
+                </p>
+            </div>
+
+            <div class="container section-depth">
+                <!-- 01 // PROGRESSION (Has Screenshot: map.png) -->
+                <div class="tech-row">
+                    <div class="tech-visual glass-card">
+                        <img src="assets/lango/map.png" alt="Mission Map" class="evidence-img">
+                        <div class="caption">Mission Map — Hierarchical curriculum and progression tracking.</div>
+                    </div>
+                    <div class="tech-content">
+                        <h2>01 // PROGRESSION</h2>
+                        <h3>Hierarchical Mission Map</h3>
+                        <p>
+                            A dynamic visual blueprint of the learning journey. Lessons are organized into
+                            functional categories (Foundations, Basics, Logic), with a progression system
+                            that unlocks new missions as underlying concepts are mastered.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 02 // SIMULATION -->
+                <div class="tech-row">
+                    <div class="tech-content">
+                        <h2>02 // SIMULATION</h2>
+                        <h3>Active Workspace</h3>
+                        <p>
+                            A specialized engineering environment where learners write code and predict
+                            execution outcomes. The system provides immediate feedback on
+                            <strong>Behavior</strong> (Output) and <strong>Structure</strong> (Clean Code)
+                            using formal validation contracts.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 03 // PEDAGOGY (Has Screenshot: simulator.png) -->
+                <div class="tech-row">
+                    <div class="tech-visual glass-card">
+                        <img src="assets/lango/simulator.png" alt="Workspace" class="evidence-img">
+                        <div class="caption">Engineering Workspace — Real-time execution, Monaco editors, and feedback loops.</div>
+                    </div>
+                    <div class="tech-content">
+                        <h2>03 // PEDAGOGY</h2>
+                        <h3>Transition Protocols</h3>
+                        <p>
+                            The <strong>Transition Protocol</strong> architecture builds language bridges.
+                            By mapping target syntax onto a developer's <strong>Existing Mental Model</strong>,
+                            LANGO reduces cognitive load and focuses on the systemic deltas between
+                            established paradigms (e.g., C# → Python).
+                        </p>
+                        <div class="evidence-link mono">[Source: Engines/validator.py]</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEDIA DOMAIN -->
+        <section id="media" class="domain-surface">
+            <div class="hero container">
+                <div class="status-badge">DOMAIN: CREATIVE ARCHIVE</div>
+                <h1>SYSTEMIC SIMULATIONS. <br> INTERACTIVE WORLDS.</h1>
+                <p class="hero-description">
+                    An archive of digital experiences, city simulations, and alchemical environments
+                    built with systemic depth and atmospheric precision.
+                </p>
+            </div>
+
+            <div class="container">
+                <div class="media-grid">
+                    <div class="media-card glass-card large">
+                        <div class="media-info">
+                            <h3>Tiny City</h3>
+                            <p>Large-scale city management and urban simulation. Focus on systemic growth and UI density.</p>
+                            <div class="tag-list">
+                                <span class="tag">Simulation</span>
+                                <span class="tag">UI/UX</span>
+                                <span class="tag">World Building</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media-card glass-card">
+                        <div class="media-info">
+                            <h3>The Apothecary</h3>
+                            <p>Atmospheric systemic roleplay and crafting logic.</p>
+                        </div>
+                    </div>
+                    <div class="media-card glass-card">
+                        <div class="media-info">
+                            <h3>Blackline</h3>
+                            <p>Interactive world-building and cinematic exploration.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="archive-list glass-card" style="margin-top: 4rem;">
+                    <h3 style="font-size: 0.8rem; opacity: 0.5; margin-bottom: 2rem;">LEGACY & EXPERIMENTAL ARCHIVE</h3>
+                    <div class="archive-grid">
+                        <div class="archive-item">
+                            <span>Build-A-Base Tycoon</span>
+                            <small>Resource Orchestration</small>
+                        </div>
+                        <div class="archive-item">
+                            <span>QuestModule</span>
+                            <small>Logic Framework</small>
+                        </div>
+                        <div class="archive-item">
+                            <span>Mega Lava Escape</span>
+                            <small>Survival Mechanics</small>
+                        </div>
+                        <div class="archive-item">
+                            <span>Cozy Garden</span>
+                            <small>Atmospheric World</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="mono" style="font-size: 0.7rem; opacity: 0.3;">
+                    © 2026 AEOWUN. ALL RIGHTS RESERVED. // ENGINEERING & ARCHITECTURE ARCHIVE
+                </div>
+                <div class="footer-links">
+                    <a href="#">Technical Audit</a>
+                    <a href="#">System Privacy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
