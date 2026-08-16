@@ -7,6 +7,7 @@
     // 1. Domain Configuration
     const DOMAINS = {
         aeowun: { color: "#22e0c4", name: "ENGINEERING SYSTEMS" },
+        axeis: { color: "#539bf5", name: "RESEARCH SYSTEMS" },
         lango: { color: "#e8b75c", name: "LEARNING SYSTEMS" },
         media: { color: "#3aa0ff", name: "CREATIVE ARCHIVE" }
     };

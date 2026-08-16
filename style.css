@@ -7,6 +7,7 @@
   --void: #06060a;
   --void-elevated: #0d0d14;
   --signal-aeowun: #22e0c4; /* Substrate Teal */
+  --signal-axeis: #539bf5;  /* Research Blue */
   --signal-lango: #e8b75c;   /* Knowledge Amber */
   --signal-media: #3aa0ff;   /* Creative Blue */
 
@@ -22,6 +23,7 @@
 }
 
 body.domain-aeowun { --signal-active: var(--signal-aeowun); }
+body.domain-axeis { --signal-active: var(--signal-axeis); }
 body.domain-lango { --signal-active: var(--signal-lango); }
 body.domain-media { --signal-active: var(--signal-media); }
 
