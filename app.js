@@ -6,8 +6,9 @@
 (function() {
     // 1. Domain Configuration
     const DOMAINS = {
-        aeowun: { color: "#22e0c4", name: "ENGINEERING SYSTEMS" },
-        axeis: { color: "#539bf5", name: "RESEARCH SYSTEMS" },
+        aeowun: { color: "#22e0c4", name: "THE CORE ENGINE" },
+        axeis: { color: "#539bf5", name: "RESEARCH & INTEL" },
+        aegis: { color: "#ff4757", name: "NETWORK DEFENSE" },
         lango: { color: "#e8b75c", name: "LEARNING SYSTEMS" },
         media: { color: "#3aa0ff", name: "CREATIVE ARCHIVE" }
     };

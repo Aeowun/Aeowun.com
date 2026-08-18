@@ -9,6 +9,7 @@
   --signal-aeowun: #22e0c4; /* Substrate Teal */
   --signal-axeis: #539bf5;  /* Research Blue */
   --signal-lango: #e8b75c;   /* Knowledge Amber */
+  --signal-aegis: #ff4757;   /* Defense Red */
   --signal-media: #3aa0ff;   /* Creative Blue */
 
   --signal-active: var(--signal-aeowun);
@@ -24,6 +25,7 @@
 
 body.domain-aeowun { --signal-active: var(--signal-aeowun); }
 body.domain-axeis { --signal-active: var(--signal-axeis); }
+body.domain-aegis { --signal-active: var(--signal-aegis); }
 body.domain-lango { --signal-active: var(--signal-lango); }
 body.domain-media { --signal-active: var(--signal-media); }
 
