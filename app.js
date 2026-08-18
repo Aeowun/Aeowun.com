@@ -1,129 +1,211 @@
-/**
- * AEOWUN / NEXICODE Portfolio Logic
- * Domain-Centric Navigation & Ambient Substrate
- */
+/* =========================================================
+   AEOWUN ENGINEERING ARCHIVE
+   Domain Navigation
+========================================================= */
 
-(function() {
-    // 1. Domain Configuration
-    const DOMAINS = {
-        aeowun: { color: "#22e0c4", name: "THE CORE ENGINE" },
-        axeis: { color: "#539bf5", name: "RESEARCH & INTEL" },
-        aegis: { color: "#ff4757", name: "NETWORK DEFENSE" },
-        lango: { color: "#e8b75c", name: "LEARNING SYSTEMS" },
-        media: { color: "#3aa0ff", name: "CREATIVE ARCHIVE" }
-    };
+function switchDomain(domain) {
 
-    let activeDomain = 'aeowun';
+    const sections = document.querySelectorAll(".domain-surface");
+    const navItems = document.querySelectorAll(".nav-item[data-domain]");
 
-    // 2. Ambient Background
-    const initAmbient = () => {
-        const canvas = document.getElementById("ambient-canvas");
-        if (!canvas) return;
-        const ctx = canvas.getContext("2d");
-        let phase = 0;
-
-        const resize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        };
-
-        window.addEventListener("resize", resize);
-        resize();
-
-        const draw = () => {
-            const w = canvas.width;
-            const h = canvas.height;
-            ctx.clearRect(0, 0, w, h);
-
-            const sColor = DOMAINS[activeDomain].color;
-
-            const strands = [
-                { color: sColor, yFrac: 0.65, ampFrac: 0.05, freq: 1.2, offset: 2.1, alpha: 0.15 },
-                { color: "#ffffff", yFrac: 0.35, ampFrac: 0.04, freq: 1.5, offset: 0.6, alpha: 0.05 },
-                { color: sColor, yFrac: 0.50, ampFrac: 0.03, freq: 0.8, offset: 1.2, alpha: 0.08 }
-            ];
-
-            strands.forEach((s) => {
-                const baseY = h * s.yFrac;
-                const amp = h * s.ampFrac;
-
-                ctx.beginPath();
-                for (let i = 0; i <= 60; i++) {
-                    const x = w * (i / 60);
-                    const y = baseY + amp * Math.sin((i / 60) * Math.PI * s.freq * 2 + phase + s.offset);
-                    if (i === 0) ctx.moveTo(x, y);
-                    else ctx.lineTo(x, y);
-                }
-
-                ctx.strokeStyle = s.color;
-                ctx.globalAlpha = s.alpha;
-                ctx.lineWidth = 1.5;
-                ctx.stroke();
-            });
-        };
-
-        const loop = () => {
-            phase += 0.008;
-            draw();
-            requestAnimationFrame(loop);
-        };
-
-        loop();
-    };
-
-    // 3. Domain Switching
-    window.switchDomain = (domainId) => {
-        if (!DOMAINS[domainId]) return;
-
-        // Update body class for CSS variables
-        document.body.className = `domain-${domainId}`;
-
-        // Update nav items
-        document.querySelectorAll('.nav-item').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.domain === domainId);
-        });
-
-        // Update active surface
-        const oldSurface = document.querySelector('.domain-surface.active');
-        const newSurface = document.getElementById(domainId);
-
-        if (oldSurface && oldSurface !== newSurface) {
-            oldSurface.classList.remove('active');
-            setTimeout(() => {
-                newSurface.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 300);
-        }
-
-        activeDomain = domainId;
-    };
-
-    // 4. Reveal Animations
-    const initReveals = () => {
-        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.tech-row, .media-card, .metric-item, .archive-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
-            observer.observe(el);
-        });
-
-        const style = document.createElement('style');
-        style.innerHTML = `.revealed { opacity: 1 !important; transform: translateY(0) !important; }`;
-        document.head.appendChild(style);
-    };
-
-    document.addEventListener("DOMContentLoaded", () => {
-        initAmbient();
-        initReveals();
-        console.log("AEOWUN Domain Controller Initialized.");
+    sections.forEach(section => {
+        section.classList.toggle(
+            "active",
+            section.id === domain
+        );
     });
-})();
+
+    navItems.forEach(item => {
+        item.classList.toggle(
+            "active",
+            item.dataset.domain === domain
+        );
+    });
+
+    document.body.className = `domain-${domain}`;
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================================================
+   INITIAL STATE
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const defaultDomain = "systems";
+
+    switchDomainImmediate(defaultDomain);
+
+    initializeAmbientField();
+});
+
+
+function switchDomainImmediate(domain) {
+
+    const sections = document.querySelectorAll(".domain-surface");
+    const navItems = document.querySelectorAll(".nav-item[data-domain]");
+
+    sections.forEach(section => {
+        section.classList.toggle(
+            "active",
+            section.id === domain
+        );
+    });
+
+    navItems.forEach(item => {
+        item.classList.toggle(
+            "active",
+            item.dataset.domain === domain
+        );
+    });
+
+    document.body.className = `domain-${domain}`;
+}
+
+
+/* =========================================================
+   AMBIENT FIELD
+   Extremely restrained background motion.
+========================================================= */
+
+function initializeAmbientField() {
+
+    const canvas = document.getElementById("ambient-canvas");
+
+    if (!canvas) {
+        return;
+    }
+
+    const context = canvas.getContext("2d");
+
+    if (!context) {
+        return;
+    }
+
+    let width = 0;
+    let height = 0;
+
+    const particles = [];
+
+    function resizeCanvas() {
+
+        const ratio = window.devicePixelRatio || 1;
+
+        width = window.innerWidth;
+        height = window.innerHeight;
+
+        canvas.width = width * ratio;
+        canvas.height = height * ratio;
+
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+
+        context.setTransform(
+            ratio,
+            0,
+            0,
+            ratio,
+            0,
+            0
+        );
+    }
+
+
+    function createParticles() {
+
+        particles.length = 0;
+
+        const count = Math.min(
+            35,
+            Math.floor(window.innerWidth / 45)
+        );
+
+        for (let i = 0; i < count; i++) {
+
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+
+                radius: Math.random() * 0.8 + 0.2,
+
+                velocityX:
+                    (Math.random() - 0.5) * 0.08,
+
+                velocityY:
+                    (Math.random() - 0.5) * 0.08,
+
+                opacity:
+                    Math.random() * 0.15 + 0.03
+            });
+        }
+    }
+
+
+    function render() {
+
+        context.clearRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+        particles.forEach(particle => {
+
+            particle.x += particle.velocityX;
+            particle.y += particle.velocityY;
+
+            if (particle.x < 0) {
+                particle.x = width;
+            }
+
+            if (particle.x > width) {
+                particle.x = 0;
+            }
+
+            if (particle.y < 0) {
+                particle.y = height;
+            }
+
+            if (particle.y > height) {
+                particle.y = 0;
+            }
+
+            context.beginPath();
+
+            context.arc(
+                particle.x,
+                particle.y,
+                particle.radius,
+                0,
+                Math.PI * 2
+            );
+
+            context.fillStyle =
+                `rgba(210, 215, 220, ${particle.opacity})`;
+
+            context.fill();
+        });
+
+        requestAnimationFrame(render);
+    }
+
+
+    resizeCanvas();
+    createParticles();
+    render();
+
+
+    window.addEventListener("resize", () => {
+
+        resizeCanvas();
+        createParticles();
+
+    });
+
+}

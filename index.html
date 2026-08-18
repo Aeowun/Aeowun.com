@@ -3,390 +3,662 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AEOWUN // Systems Engineering & Architecture</title>
-    <meta name="description" content="Professional portfolio showcasing AEOWUN Engineering Systems, LANGO Simulators, and Interactive Systemic Simulations.">
+    <title>Independent Systems Builder // Software Engineering</title>
+    <meta name="description" content="Portfolio of an independent software engineer focused on AI tooling, development environments, and systems software. Built on evidence and real-world implementation.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="domain-aeowun">
-    <div class="bg-field"></div>
-    <canvas id="ambient-canvas"></canvas>
 
-    <header class="glass">
-        <div class="header-inner container">
-            <a href="#" class="brand" onclick="switchDomain('aeowun')">
-                <div style="display: flex; align-items: center; gap: 15px;">
-                    <img src="assets/logo.png" alt="AEOWUN Logo" style="height: 40px; width: auto;">
+<div class="bg-field"></div>
+<canvas id="ambient-canvas"></canvas>
+
+<!-- HEADER — PRESERVED -->
+<header class="glass">
+    <div class="header-inner container">
+        <a href="#" class="brand" onclick="switchDomain('systems')">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <img src="assets/logo.png" alt="AEOWUN Logo" style="height: 40px; width: auto;">
+                <div>
+                    <div class="brand-name">ZACHARY JOUBERT</div>
+                    <div class="brand-tag">ENGINEERING ARCHIVE</div>
+                </div>
+            </div>
+        </a>
+
+        <nav class="domain-nav">
+            <button class="nav-item active" data-domain="systems" onclick="switchDomain('systems')">SYSTEMS</button>
+            <button class="nav-item" data-domain="engineering" onclick="switchDomain('engineering')">ENGINEERING</button>
+            <button class="nav-item" data-domain="about" onclick="switchDomain('about')">ABOUT</button>
+            <a href="assets/Zachary Joubert.pdf" class="nav-item" target="_blank" style="text-decoration: none;">RESUME</a>
+        </nav>
+    </div>
+</header>
+
+
+<main>
+
+    <!-- =========================================================
+         SYSTEMS
+    ========================================================== -->
+    <section id="systems" class="domain-surface active">
+
+        <!-- AEOWUN HERO -->
+        <section class="aeowun-hero container">
+
+            <div class="eyebrow">
+                <span class="eyebrow-line"></span>
+                PRIMARY SYSTEM
+            </div>
+
+            <div class="hero-status">
+                <span class="status-dot"></span>
+                ACTIVE DEVELOPMENT
+            </div>
+
+            <h1>AEOWUN</h1>
+
+            <p class="aeowun-lead">
+                An autonomous software engineering runtime built to
+                <strong>understand, operate, and verify software projects</strong>
+                rather than simply generate code.
+            </p>
+
+            <div class="hero-actions">
+                <button
+                        class="primary-action"
+                        onclick="document.getElementById('aeowun-system').scrollIntoView({behavior:'smooth'})">
+                    EXPLORE SYSTEM
+                </button>
+
+                <button
+                        class="secondary-action"
+                        onclick="switchDomain('engineering')">
+                    ENGINEERING EVIDENCE
+                </button>
+            </div>
+
+        </section>
+
+
+        <!-- AEOWUN IDENTITY -->
+        <section class="container aeowun-system" id="aeowun-system">
+
+            <div class="section-marker">
+                <span>01</span>
+                THE SYSTEM
+            </div>
+
+            <div class="aeowun-introduction">
+
+                <div class="aeowun-copy">
+
+                    <div class="system-label">
+                        AUTONOMOUS SOFTWARE ENGINEERING RUNTIME
+                    </div>
+
+                    <h2>
+                        Not an IDE.
+                        <span>A runtime.</span>
+                    </h2>
+
+                    <p class="large-copy">
+                        Most AI development tools begin with a conversation and
+                        attempt to produce a useful answer.
+                    </p>
+
+                    <p>
+                        AEOWUN begins with the <strong>project itself</strong>.
+                        It maintains workspace state, coordinates tools,
+                        manages execution, evaluates results, and records
+                        evidence of what actually happened.
+                    </p>
+
+                    <p>
+                        The language model is not the system.
+                        It is one source of cognition inside the system.
+                    </p>
+
+                    <div class="system-principles">
+
+                        <div>
+                            <span>01</span>
+                            <strong>PROJECT STATE</strong>
+                            <p>Persistent awareness of the workspace and its current condition.</p>
+                        </div>
+
+                        <div>
+                            <span>02</span>
+                            <strong>TOOL CONTROL</strong>
+                            <p>The runtime owns actions instead of blindly following model output.</p>
+                        </div>
+
+                        <div>
+                            <span>03</span>
+                            <strong>VERIFICATION</strong>
+                            <p>Execution results are checked against physical and logical evidence.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="aeowun-identity-panel">
+
+                    <div class="identity-header">
+                        <span>AEOWUN</span>
+                        <span>RUNTIME ARCHITECTURE</span>
+                    </div>
+
+                    <div class="identity-statement">
+                        <span class="identity-big">STATE</span>
+                        <span class="identity-arrow">→</span>
+                        <span class="identity-big">ACTION</span>
+                        <span class="identity-arrow">→</span>
+                        <span class="identity-big">VERIFY</span>
+                    </div>
+
+                    <div class="identity-description">
+                        Persistent project state<br>
+                        Runtime-controlled execution<br>
+                        Evidence-backed outcomes
+                    </div>
+
+                    <div class="identity-footer">
+                        <span>LOCAL AI</span>
+                        <span>+</span>
+                        <span>SOFTWARE RUNTIME</span>
+                        <span>+</span>
+                        <span>VERIFICATION</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ARCHITECTURE -->
+            <div class="architecture-section">
+
+                <div class="architecture-heading">
                     <div>
-                        <div class="brand-name">NEXICODE</div>
-                        <div class="brand-tag">ENGINEERING ARCHIVE</div>
+                        <span class="system-label">SYSTEM FLOW</span>
+                        <h3>How AEOWUN operates</h3>
                     </div>
+
+                    <p>
+                        The model participates in the loop.
+                        The runtime owns the loop.
+                    </p>
                 </div>
-            </a>
-            <nav class="domain-nav">
-                <button class="nav-item active" data-domain="aeowun" onclick="switchDomain('aeowun')">AEOWUN</button>
-                <button class="nav-item" data-domain="axeis" onclick="switchDomain('axeis')">AXEIS</button>
-                <button class="nav-item" data-domain="aegis" onclick="switchDomain('aegis')">AEGIS</button>
-                <button class="nav-item" data-domain="lango" onclick="switchDomain('lango')">LANGO</button>
-                <button class="nav-item" data-domain="media" onclick="switchDomain('media')">MEDIA</button>
-            </nav>
+
+
+                <div class="architecture-flow">
+
+                    <div class="architecture-node entry-node">
+                        <span class="node-index">01</span>
+                        <strong>TASK</strong>
+                        <small>Intent enters the runtime.</small>
+                    </div>
+
+                    <div class="architecture-connector"></div>
+
+                    <div class="architecture-node">
+                        <span class="node-index">02</span>
+                        <strong>HOST RUNTIME</strong>
+                        <small>Workspace and execution state.</small>
+                    </div>
+
+                    <div class="architecture-connector"></div>
+
+                    <div class="architecture-node">
+                        <span class="node-index">03</span>
+                        <strong>COGNITION</strong>
+                        <small>Reasoning provider evaluates state.</small>
+                    </div>
+
+                    <div class="architecture-connector"></div>
+
+                    <div class="architecture-node">
+                        <span class="node-index">04</span>
+                        <strong>ACTION</strong>
+                        <small>Tools perform controlled mutations.</small>
+                    </div>
+
+                    <div class="architecture-connector"></div>
+
+                    <div class="architecture-node">
+                        <span class="node-index">05</span>
+                        <strong>VERIFY</strong>
+                        <small>Results are independently evaluated.</small>
+                    </div>
+
+                    <div class="architecture-connector"></div>
+
+                    <div class="architecture-node evidence-node">
+                        <span class="node-index">06</span>
+                        <strong>EVIDENCE</strong>
+                        <small>Observed state becomes project history.</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TECHNOLOGY -->
+            <div class="technology-strip">
+
+                <div>
+                    <span>RUNTIME</span>
+                    <strong>Python</strong>
+                </div>
+
+                <div>
+                    <span>PERSISTENCE</span>
+                    <strong>SQLite</strong>
+                </div>
+
+                <div>
+                    <span>ANALYSIS</span>
+                    <strong>Tree-sitter AST</strong>
+                </div>
+
+                <div>
+                    <span>EXECUTION</span>
+                    <strong>Isolated Workspace</strong>
+                </div>
+
+                <div>
+                    <span>COGNITION</span>
+                    <strong>Local AI</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECONDARY SYSTEMS -->
+        <section class="container secondary-systems">
+
+            <div class="section-marker">
+                <span>02</span>
+                OTHER SYSTEMS
+            </div>
+
+            <div class="secondary-heading">
+                <h2>Other things I've built.</h2>
+                <p>
+                    These projects are part of the broader body of experimentation
+                    that led to AEOWUN.
+                </p>
+            </div>
+
+
+            <div class="project-list">
+
+                <article class="project-row">
+
+                    <div class="project-number">01</div>
+
+                    <div class="project-main">
+                        <div class="project-title">
+                            <h3>LANG0</h3>
+                            <span class="project-status">FUNCTIONAL</span>
+                        </div>
+
+                        <p>
+                            A programming environment designed to transfer
+                            existing programming knowledge into a new language
+                            instead of forcing a learner through material they
+                            already understand.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>PROGRAMMING EDUCATION</span>
+                            <span>SIMULATION</span>
+                            <span>ADAPTIVE LEARNING</span>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <article class="project-row">
+
+                    <div class="project-number">02</div>
+
+                    <div class="project-main">
+                        <div class="project-title">
+                            <h3>AEGIS</h3>
+                            <span class="project-status">ACTIVE MONITORING</span>
+                        </div>
+
+                        <p>
+                            A network monitoring and containment system
+                            experimenting with flow-based anomaly detection
+                            and automated device isolation.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>NETWORKING</span>
+                            <span>MONITORING</span>
+                            <span>CONTAINMENT</span>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <article class="project-row">
+
+                    <div class="project-number">03</div>
+
+                    <div class="project-main">
+                        <div class="project-title">
+                            <h3>THE APOTHECARY</h3>
+                            <span class="project-status">EXPERIMENTAL</span>
+                        </div>
+
+                        <p>
+                            An interactive simulation exploring alchemical
+                            systems, systemic roleplay, and interconnected
+                            world-building mechanics.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>SIMULATION</span>
+                            <span>SYSTEM DESIGN</span>
+                            <span>WORLD BUILDING</span>
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </section>
+
+
+    <!-- =========================================================
+         ENGINEERING
+    ========================================================== -->
+    <section id="engineering" class="domain-surface">
+
+        <section class="engineering-hero container">
+
+            <div class="section-marker">
+                <span>03</span>
+                ENGINEERING
+            </div>
+
+            <h2>Evidence over claims.</h2>
+
+            <p>
+                AEOWUN's architecture exists because software systems fail
+                in specific, observable ways. These are some of the mechanisms
+                built in response.
+            </p>
+
+        </section>
+
+
+        <section class="container evidence-grid">
+
+            <article class="evidence-card">
+
+                <span class="evidence-index">01</span>
+
+                <div class="evidence-title">
+                    <span>AUTHORITY MODEL</span>
+                    <h3>Causal State Authority</h3>
+                </div>
+
+                <p>
+                    Project evidence cannot be arbitrarily overwritten by
+                    whichever component happens to be running. Authority
+                    boundaries determine which actors can commit authoritative
+                    execution state.
+                </p>
+
+                <pre><code># ccb.py
+
+if key.startswith(("truth:", "execution:")):
+    if role not in [
+        ROLE_SYSTEM,
+        ROLE_TRUTH_WITNESS
+    ]:
+        raise ValueError(
+            "AUTHORITY_VIOLATION"
+        )</code></pre>
+
+            </article>
+
+
+            <article class="evidence-card">
+
+                <span class="evidence-index">02</span>
+
+                <div class="evidence-title">
+                    <span>PHYSICAL COMMITMENT</span>
+                    <h3>Verified Mutation</h3>
+                </div>
+
+                <p>
+                    Model output is not treated as proof that an operation
+                    succeeded. Filesystem state is observed before and after
+                    mutation so the runtime can establish what physically changed.
+                </p>
+
+                <pre><code># shadow_fs.py
+
+def get_hash(self):
+    hasher = hashlib.sha256()
+
+    for key in sorted(self.buffer):
+        hasher.update(
+            data["content"].encode()
+        )
+
+    return hasher.hexdigest()</code></pre>
+
+            </article>
+
+        </section>
+
+
+        <section class="container incident-section">
+
+            <div class="section-marker">
+                <span>04</span>
+                FAILURE HISTORY
+            </div>
+
+            <div class="incident-list">
+
+                <article>
+                    <div class="incident-heading">
+                        <span>RECURSIVE REASONING LOOP</span>
+                        <small>DETECTION / CONTAINMENT</small>
+                    </div>
+
+                    <p>
+                        The system repeatedly executed failed steps for an
+                        extended period. A validation watchdog was introduced
+                        to detect repetitive failure and force termination
+                        instead of allowing an uncontrolled reasoning loop.
+                    </p>
+                </article>
+
+
+                <article>
+                    <div class="incident-heading">
+                        <span>DETERMINISTIC OFF-LOADING</span>
+                        <small>LLM / SOFTWARE BOUNDARY</small>
+                    </div>
+
+                    <p>
+                        Small models repeatedly failed deterministic tasks
+                        such as JSON manipulation and symbol lookup. Those
+                        responsibilities were moved into deterministic software
+                        logic and Tree-sitter analysis.
+                    </p>
+                </article>
+
+
+                <article>
+                    <div class="incident-heading">
+                        <span>CLOSED-LOOP VERIFICATION</span>
+                        <small>AEGIS / CONTINUOUS MONITORING</small>
+                    </div>
+
+                    <p>
+                        Network containment required continuous verification
+                        rather than a one-time decision. Flow deltas are
+                        compared against active containment state to detect
+                        potential breaches.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+    </section>
+
+
+    <!-- =========================================================
+         ABOUT
+    ========================================================== -->
+    <section id="about" class="domain-surface">
+
+        <section class="about-hero container">
+
+            <div class="section-marker">
+                <span>05</span>
+                THE BIO
+            </div>
+
+            <h2>Zachary Joubert</h2>
+
+            <p>
+                Independent software developer building systems from practical
+                problems rather than following a conventional software
+                engineering path.
+            </p>
+
+        </section>
+
+
+        <section class="container about-grid">
+
+            <div class="about-column">
+
+                <span class="system-label">PATH</span>
+
+                <div class="timeline">
+
+                    <div class="timeline-item">
+                        <span>01</span>
+                        <div>
+                            <strong>Independent Systems Builder</strong>
+                            <small>Software Architecture & AI Tooling // Present</small>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span>02</span>
+                        <div>
+                            <strong>Diesel Mechanic Apprentice</strong>
+                            <small>Valley Bus</small>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span>03</span>
+                        <div>
+                            <strong>Insulation Technician</strong>
+                            <small>Sioux City Insulation // 2023–2024</small>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span>04</span>
+                        <div>
+                            <strong>Robotics / Maintenance</strong>
+                            <small>Scoular Company</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-column">
+
+                <span class="system-label">PHILOSOPHY</span>
+
+                <p class="large-copy">
+                    I learned by building things, breaking them,
+                    figuring out why they broke, and building them again.
+                </p>
+
+                <p>
+                    I don't have a traditional computer-science background.
+                    Most of the software here started with a problem I wanted
+                    a tool to solve and existing software didn't handle the
+                    way I wanted.
+                </p>
+
+                <p>
+                    I don't have the conventional paper trail.
+                    <strong>I have the software.</strong>
+                </p>
+
+                <a
+                        href="assets/Zachary Joubert.pdf"
+                        class="resume-button"
+                        target="_blank">
+                    VIEW RESUME.PDF
+                </a>
+
+            </div>
+
+        </section>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="mono footer-copy">
+                © 2026 Zachary Joubert. This is a GitHub Portfolio. //
+                ENGINEERING & ARCHITECTURE ARCHIVE
+            </div>
+
+            <div class="footer-links">
+                <a href="#">Technical Audit</a>
+                <a href="#">System Privacy</a>
+            </div>
+
         </div>
-    </header>
 
-    <main>
-        <!-- AEOWUN DOMAIN -->
-        <section id="aeowun" class="domain-surface active">
-            <div class="hero container">
-                <div class="status-badge">THE BRAIN BEHIND THE BUILDS</div>
-                <h1>AEOWUN ENGINE. <br> THE CORE AUTHORITY.</h1>
-                <p class="hero-description">
-                    I built Aeowun to handle the heavy lifting. It's a custom engine that keeps track of every decision, 
-                    making sure nothing breaks when things get complex. It's not just code; it's the authority that 
-                    makes sure everything actually works together.
-                </p>
-                <div class="metrics-row" style="justify-content: center; margin-top: 4rem;">
-                    <div class="metric-item">
-                        <div class="metric-value">CORE</div>
-                        <div class="metric-label">Causal Engine</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-value">STEEL</div>
-                        <div class="metric-label">Bug Hunting</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-value">MAP</div>
-                        <div class="metric-label">Architecture</div>
-                    </div>
-                </div>
-            </div>
+    </div>
 
-            <div class="container section-depth">
-                <!-- 01 // HOW IT THINKS -->
-                <div class="tech-row">
-                    <div class="tech-content">
-                        <h2>01 // HOW IT THINKS</h2>
-                        <h3>No Silent Failures</h3>
-                        <p>
-                            Aeowun doesn't just run scripts; it follows a trail. Every single action is tied to a specific 
-                            reason and a user decision. If something changes, I can trace it all the way back to the 
-                            exact moment it happened.
-                        </p>
-                        <div class="evidence-link mono">[Source: app/core/host_runtime.py]</div>
-                    </div>
-                </div>
+</footer>
 
-                <!-- 02 // SEEING EVERYTHING -->
-                <div class="tech-row">
-                    <div class="tech-visual glass-card">
-                        <img src="assets/aeowun/hud.png" alt="Execution Log" class="evidence-img">
-                        <div class="caption">Live Feed — Watching every decision the engine makes in real-time.</div>
-                    </div>
-                    <div class="tech-content">
-                        <h2>02 // SEEING EVERYTHING</h2>
-                        <h3>Total Observability</h3>
-                        <p>
-                            I need to know what's happening under the hood. The system tracks every event—from 
-                            activating a workspace to calling a tool—so I'm never left guessing what the AI is up to.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- 03 // SAFETY FIRST -->
-                <div class="tech-row">
-                    <div class="tech-visual glass-card">
-                        <img src="assets/aeowun/health.png" alt="ShadowFS Logic" class="evidence-img">
-                        <div class="caption">ShadowFS — A safe playground where nothing hits the disk until it's verified.</div>
-                    </div>
-                    <div class="tech-content">
-                        <h2>03 // SAFETY FIRST</h2>
-                        <h3>ShadowFS Workspace</h3>
-                        <p>
-                            I don't like my files getting corrupted by rogue code. ShadowFS creates a task-isolated 
-                            playground where changes are staged in memory first. Nothing touches my hard drive 
-                            unless the system proves it's safe.
-                        </p>
-                        <div class="evidence-link mono">[Source: app/core/shadow_fs.py]</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<script src="app.js"></script>
 
-        <!-- AXEIS DOMAIN -->
-        <section id="axeis" class="domain-surface">
-            <div class="hero container">
-                <div class="status-badge">DEEP RESEARCH & EVIDENCE</div>
-                <h1>AXEIS RUNTIME. <br> THE INTEL PARTNER.</h1>
-                <p class="hero-description">
-                    AXEIS is where I do the deep dives. Instead of just asking an AI for answers, 
-                    Axeis forces it to prove them. It's got this "Kill Phase" where it tries to 
-                    rip its own theories apart. If it survives that, you know it's solid.
-                </p>
-                <div class="metrics-row" style="justify-content: center; margin-top: 4rem;">
-                    <div class="metric-item">
-                        <div class="metric-value">AAM</div>
-                        <div class="metric-label">The Decider</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-value">KILL</div>
-                        <div class="metric-label">Stress Test</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-value">LINK</div>
-                        <div class="metric-label">Evidence Chain</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container section-depth">
-                <!-- 01 // WHO'S IN CHARGE -->
-                <div class="tech-row">
-                    <div class="tech-content">
-                        <h2>01 // WHO'S IN CHARGE</h2>
-                        <h3>The Decider (AAM)</h3>
-                        <p>
-                            AXEIS follows one rule: "The AI proposes, but Axeis decides." The system 
-                            manages every single state change, so no agent can just mark its own 
-                            homework as finished.
-                        </p>
-                        <div class="evidence-link mono">[Source: app/core/aam.py]</div>
-                    </div>
-                </div>
-
-                <!-- 02 // STRESS TESTING -->
-                <div class="tech-row">
-                    <div class="tech-visual glass-card">
-                        <div class="placeholder-img" style="height: 300px; background: #16191e; display: flex; align-items: center; justify-content: center; color: #539bf5; font-family: var(--font-mono);">
-                            [ KILL PHASE ACTIVE ]
-                        </div>
-                        <div class="caption">Kill Engine — If a theory can't survive the attack, it's not worth keeping.</div>
-                    </div>
-                    <div class="tech-content">
-                        <h2>02 // STRESS TESTING</h2>
-                        <h3>Mandatory Kill Phase</h3>
-                        <p>
-                            Most AI assistants just tell you what you want to hear. Axeis does the opposite—it 
-                            actively tries to destroy its own ideas. It looks for contradictions and better 
-                            explanations to make sure the final result is bulletproof.
-                        </p>
-                        <div class="evidence-link mono">[Source: app/engines/kill_engine.py]</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AEGIS DOMAIN -->
-        <section id="aegis" class="domain-surface">
-            <div class="hero container">
-                <div class="status-badge">PERSONAL NETWORK DEFENSE</div>
-                <h1>AEGIS MONITOR. <br> THE SOVEREIGN WATCHMAN.</h1>
-                <p class="hero-description">
-                    Tired of generic security software, I built Aegis. It watches every single device on my network, 
-                    sniffs out weird behavior, and has a "deception" mode to trap anyone trying to poke around. 
-                    It's my personal digital bodyguard.
-                </p>
-                <div class="metrics-row" style="justify-content: center; margin-top: 4rem;">
-                    <div class="metric-item">
-                        <div class="metric-value">TRAP</div>
-                        <div class="metric-label">Deception Substrate</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-value">5353</div>
-                        <div class="metric-label">mDNS Discovery</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-value">KILL</div>
-                        <div class="metric-label">Active Quarantine</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container section-depth">
-                <!-- 01 // DECEPTION -->
-                <div class="tech-row">
-                    <div class="tech-content">
-                        <h2>01 // DECEPTION</h2>
-                        <h3>The Deception Substrate</h3>
-                        <p>
-                            Aegis doesn't just block—it baits. I built a honeypot system that projects fake vulnerable 
-                            services onto the network. If anything touches them, the system immediately locks them 
-                            in a digital void.
-                        </p>
-                        <div class="evidence-link mono">[Source: Core/deception.py]</div>
-                    </div>
-                </div>
-
-                <!-- 02 // IDENTITY -->
-                <div class="tech-row">
-                    <div class="tech-visual glass-card">
-                        <img src="assets/aeowun/architecture.png" alt="Identity Mapping" class="evidence-img">
-                        <div class="caption">Identity Bridge — Resolving raw MAC addresses into human-readable device roles.</div>
-                    </div>
-                    <div class="tech-content">
-                        <h2>02 // IDENTITY</h2>
-                        <h3>Identity Bridge</h3>
-                        <p>
-                            Most scanners just give you a list of MAC addresses. Aegis sniffs mDNS packets to resolve 
-                            identities—knowing the difference between a "Kitchen Smart Speaker" and an "Unknown Laptop."
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- LANGO DOMAIN -->
-        <section id="lango" class="domain-surface">
-            <div class="hero container">
-                <div class="status-badge">CODE LEARNING SIMULATOR</div>
-                <h1>LANGO. <br> THE LANGUAGE BRIDGE.</h1>
-                <p class="hero-description">
-                    I wanted a better way to learn new languages, so I built Lango. It's a simulator that 
-                    doesn't just check if your code runs—it checks how you're thinking. It bridges the 
-                    gap between the languages you know and the ones you're trying to master.
-                </p>
-                <div class="metrics-row" style="justify-content: center; margin-top: 4rem;">
-                    <div class="metric-item">
-                        <div class="metric-value">MAP</div>
-                        <div class="metric-label">Curriculum Map</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-value">SIM</div>
-                        <div class="metric-label">Active Simulator</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-value">BRIDGE</div>
-                        <div class="metric-label">Mental Models</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container section-depth">
-                <!-- 01 // THE JOURNEY -->
-                <div class="tech-row">
-                    <div class="tech-visual glass-card">
-                        <img src="assets/lango/map.png" alt="Mission Map" class="evidence-img">
-                        <div class="caption">The Roadmap — A visual guide to mastering systemic engineering.</div>
-                    </div>
-                    <div class="tech-content">
-                        <h2>01 // THE JOURNEY</h2>
-                        <h3>Interactive Mission Map</h3>
-                        <p>
-                            I organized the curriculum into functional missions. Instead of boring textbooks, 
-                            you follow a map that unlocks new concepts as you prove you understand the basics.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 02 // REAL-TIME FEEDBACK -->
-                <div class="tech-row">
-                    <div class="tech-visual glass-card">
-                        <img src="assets/lango/simulator.png" alt="Workspace" class="evidence-img">
-                        <div class="caption">The Lab — Where code is written, tested, and validated.</div>
-                    </div>
-                    <div class="tech-content">
-                        <h2>02 // REAL-TIME FEEDBACK</h2>
-                        <h3>Active Workspace</h3>
-                        <p>
-                            This is where the actual work happens. The simulator gives immediate feedback on 
-                            not just the output, but the structure of the code itself, ensuring you're 
-                            learning clean habits from day one.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- MEDIA DOMAIN -->
-        <section id="media" class="domain-surface">
-            <div class="hero container">
-                <div class="status-badge">CREATIVE ARCHIVE</div>
-                <h1>INTERACTIVE WORLDS. <br> SYSTEMIC STORIES.</h1>
-                <p class="hero-description">
-                    When I'm not building engines, I'm building worlds. This is an archive of the simulations, 
-                    experiments, and digital environments I've created over the years.
-                </p>
-            </div>
-
-            <div class="container">
-                <div class="media-grid">
-                    <div class="media-card glass-card large">
-                        <div class="media-info">
-                            <h3>Tiny City</h3>
-                            <p>A massive city management sim where I focused on UI density and systemic growth. It's about managing chaos.</p>
-                            <div class="tag-list">
-                                <span class="tag">Simulation</span>
-                                <span class="tag">Systemic Design</span>
-                                <span class="tag">UI/UX</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="media-card glass-card">
-                        <div class="media-info">
-                            <h3>The Apothecary</h3>
-                            <p>An atmospheric crafting sim focused on alchemical logic and systemic roleplay.</p>
-                        </div>
-                    </div>
-                    <div class="media-card glass-card">
-                        <div class="media-info">
-                            <h3>Blackline</h3>
-                            <p>Interactive world-building and cinematic exploration. A project about atmosphere and precision.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="archive-list glass-card" style="margin-top: 4rem;">
-                    <h3 style="font-size: 0.8rem; opacity: 0.5; margin-bottom: 2rem;">LEGACY & EXPERIMENTAL ARCHIVE</h3>
-                    <div class="archive-grid">
-                        <div class="archive-item">
-                            <span>Aeowun CommandCenter</span>
-                            <small>UI Control Substrate</small>
-                        </div>
-                        <div class="archive-item">
-                            <span>Alpha Pilot</span>
-                            <small>Autonomous Research</small>
-                        </div>
-                        <div class="archive-item">
-                            <span>Build-A-Base Tycoon</span>
-                            <small>Resource Logic</small>
-                        </div>
-                        <div class="archive-item">
-                            <span>QuestModule</span>
-                            <small>Logic Framework</small>
-                        </div>
-                        <div class="archive-item">
-                            <span>Mega Lava Escape</span>
-                            <small>Survival Mechanics</small>
-                        </div>
-                        <div class="archive-item">
-                            <span>Cozy Garden</span>
-                            <small>Atmospheric World</small>
-                        </div>
-                        <div class="archive-item">
-                            <span>User Research Engine</span>
-                            <small>Cognitive Analysis</small>
-                        </div>
-                        <div class="archive-item">
-                            <span>Desktop Research</span>
-                            <small>Data Aggregator</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-inner">
-                <div class="mono" style="font-size: 0.7rem; opacity: 0.3;">
-                    © 2026 AEOWUN. ALL RIGHTS RESERVED. // ENGINEERING & ARCHITECTURE ARCHIVE
-                </div>
-                <div class="footer-links">
-                    <a href="#">Technical Audit</a>
-                    <a href="#">System Privacy</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="app.js"></script>
 </body>
 </html>
