@@ -97,6 +97,59 @@ a {
 }
 
 
+/* SYSTEMS HUB PANEL */
+.systems-hub-panel {
+    background: var(--void-elevated);
+    border: 1px solid var(--border);
+    padding: 24px;
+    margin-top: 16px;
+}
+
+.systems-hub-panel p {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+}
+
+.hub-item {
+    margin-bottom: 16px;
+    border-left: 2px solid var(--border-light);
+    padding-left: 16px;
+}
+
+.hub-item strong {
+    display: block;
+    font-size: 13px;
+    color: var(--text-bright);
+    letter-spacing: 0.1em;
+}
+
+.hub-item p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.hub-link {
+    display: block;
+    margin-top: 24px;
+    padding: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    color: var(--text-bright);
+    text-align: center;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    transition: all 0.2s ease;
+}
+
+.hub-link:hover {
+    background: var(--border);
+    border-color: var(--text-dim);
+}
+
+
 /* =========================================================
    HEADER
 ========================================================= */
