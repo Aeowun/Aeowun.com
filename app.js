@@ -18,6 +18,12 @@ function initializeSceneController() {
     const scenes = document.querySelectorAll('.scene');
     if (scenes.length === 0) return;
 
+    // Disable scene controller on mobile
+    if (window.innerWidth <= 900) {
+        scenes.forEach(s => s.classList.add('active'));
+        return;
+    }
+
     let currentSceneIndex = 0;
     let isTransitioning = false;
     const transitionDuration = 1200; // Controlled premium speed
@@ -88,6 +94,9 @@ function initializeSceneController() {
  * Luminous Wave System (Independent Ambient Animation)
  */
 function initializeEnvironment() {
+    // Disable on mobile to prevent freezing
+    if (window.innerWidth <= 900) return;
+
     const waveContainer = document.getElementById('wave-field-svg');
     if (!waveContainer) return;
 
@@ -129,6 +138,9 @@ function initializeEnvironment() {
  * AMBIENT FIELD
  */
 function initializeAmbientField() {
+    // Disable on mobile to prevent freezing
+    if (window.innerWidth <= 900) return;
+
     const canvas = document.getElementById("ambient-canvas");
     if (!canvas) return;
     const ctx = canvas.getContext("2d");

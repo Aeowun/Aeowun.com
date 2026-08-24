@@ -308,3 +308,111 @@ body:not(.home-page) .aeowun-footer { position: relative; margin-top: 100px; bor
 
 .text-center { text-align: center; }
 .justify-center { justify-content: center; }
+
+/* =========================================================
+   MOBILE ADAPTATION
+========================================================= */
+
+@media (max-width: 900px) {
+    body.home-page {
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 30px;
+    }
+
+    .aeowun-header {
+        height: 80px;
+    }
+
+    .header-inner {
+        padding: 0 30px;
+    }
+
+    .product-nav {
+        gap: 15px;
+    }
+
+    #scene-stage {
+        height: auto !important;
+        display: block !important;
+    }
+
+    .scene {
+        position: relative !important;
+        height: auto !important;
+        min-height: 80vh;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        padding: 120px 0 60px !important;
+        display: block !important;
+    }
+
+    .split-layout {
+        display: block !important;
+        grid-template-columns: none;
+        gap: 0;
+        padding: 0 30px 40px;
+    }
+
+    .scene-text {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .product-title {
+        font-size: 3rem;
+    }
+
+    .hero-lead {
+        font-size: 1rem;
+    }
+
+    .aeopin-ui {
+        max-width: 100%;
+        transform: scale(0.9);
+        margin-bottom: 40px;
+    }
+
+    .editorial-statement {
+        font-size: 1.4rem;
+        padding: 0 20px;
+    }
+
+    /* Disable heavy environmental effects on mobile to prevent freezing */
+    #wave-field, #technical-grid, #ambient-canvas {
+        display: none !important;
+    }
+
+    #void-bg {
+        background: #010102;
+    }
+
+    .aeowun-footer {
+        position: relative !important;
+        margin-top: 60px;
+        background: var(--void-elevated);
+        border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+    }
+
+    /* Disable the capture demo typography on mobile */
+    .env-typography {
+        display: none !important;
+    }
+
+    .capture-file-object {
+        font-size: 0.8rem;
+        padding: 16px 32px;
+    }
+}
