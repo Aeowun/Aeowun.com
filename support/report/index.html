@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEOWUN // REPORT A BUG</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .report-hero {
+            padding-top: 180px;
+            padding-bottom: 60px;
+        }
+        .report-content {
+            max-width: 800px;
+            margin-top: 60px;
+        }
+        .report-card {
+            background: var(--void-elevated);
+            border: 1px solid var(--border-bright);
+            padding: 40px;
+            border-radius: 4px;
+            margin-bottom: 40px;
+        }
+        .warning-box {
+            border: 1px solid rgba(255, 200, 0, 0.2);
+            background: rgba(255, 200, 0, 0.05);
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            font-size: 0.85rem;
+            color: #ffd700;
+        }
+        .template-block {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            padding: 20px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            white-space: pre-wrap;
+            color: var(--text);
+        }
+    </style>
+</head>
+<body class="aeowun-environment">
+    <div id="void-bg"></div>
+    <div id="technical-grid"></div>
+    <div id="wave-field">
+        <svg id="wave-field-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <defs>
+                <filter id="ribbon-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="15" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+                <linearGradient id="grad-v" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(124, 34, 228, 0)" />
+                    <stop offset="50%" stop-color="rgba(124, 34, 228, 0.7)" />
+                    <stop offset="100%" stop-color="rgba(124, 34, 228, 0)" />
+                </linearGradient>
+                <linearGradient id="grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(0, 210, 241, 0)" />
+                    <stop offset="50%" stop-color="rgba(0, 210, 241, 0.5)" />
+                    <stop offset="100%" stop-color="rgba(0, 210, 241, 0)" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <canvas id="ambient-canvas"></canvas>
+
+    <header class="aeowun-header">
+        <div class="header-inner container">
+            <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
+            <nav class="product-nav">
+                <a href="/aeopin" class="nav-item mono">AEOPIN</a>
+                <a href="/download" class="nav-item download-link mono">DOWNLOAD</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="report-hero">
+            <div class="brand-label mono">SUPPORT / REPORT</div>
+            <h1 class="product-title mono">REPORT A BUG</h1>
+            <p class="hero-lead">Found something that doesn't work?</p>
+        </section>
+
+        <div class="report-content">
+            <div class="warning-box mono">
+                [ IMPORTANT ] DO NOT POST PASSWORDS, PRIVATE FILES, PERSONAL DATA, AUTHENTICATION TOKENS, OR CONFIDENTIAL INFORMATION.
+            </div>
+
+            <div class="report-card">
+                <h2 class="mono" style="color: var(--text-bright); margin-bottom: 20px; font-size: 0.9rem;">GITHUB ISSUE TRACKER</h2>
+                <p style="font-size: 0.9rem; margin-bottom: 24px;">We use GitHub to track bugs and feature requests. This is the fastest way to get your issue seen by the development team.</p>
+
+                <a href="https://github.com/Aeowun/Aeopin_Support/issues/new" target="_blank" class="primary-button mono">OPEN GITHUB ISSUE</a>
+
+                <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 30px;">Preferred report template:</p>
+                <div class="template-block">What happened?
+
+What did you expect to happen?
+
+Steps to reproduce:
+1.
+2.
+3.
+
+AEOPIN version:
+Windows version:
+Additional information:</div>
+            </div>
+
+            <div class="report-card">
+                <h2 class="mono" style="color: var(--text-bright); margin-bottom: 20px; font-size: 0.9rem;">FEATURE REQUESTS</h2>
+                <p style="font-size: 0.9rem; margin-bottom: 24px;">Have an idea for how to make AEOPIN better?</p>
+
+                <a href="https://github.com/Aeowun/Aeopin_Support/issues/new" target="_blank" class="secondary-button mono">SUBMIT REQUEST</a>
+
+                <div class="template-block" style="margin-top: 20px;">What would you like AEOPIN to do?
+
+Why would it be useful?
+
+What would you expect the behavior to be?</div>
+            </div>
+
+            <div style="margin-top: 40px; padding-bottom: 100px;">
+                <a href="/support" class="mono" style="color: var(--text-dim); text-decoration: none; font-size: 0.65rem;">← BACK TO SUPPORT HUB</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="aeowun-footer">
+        <div class="container footer-inner">
+            <div class="mono footer-copy">© 2026 AEOWUN.</div>
+            <div class="footer-links">
+                <a href="/support" class="mono">SUPPORT</a>
+                <a href="/privacy" class="mono">PRIVACY</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../app.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEOWUN // SUPPORT</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .support-hero {
+            padding-top: 180px;
+            padding-bottom: 100px;
+            border-bottom: 1px solid var(--border);
+        }
+        .support-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 80px;
+        }
+        .support-section-title {
+            color: var(--text-bright);
+            margin-bottom: 30px;
+            font-size: 0.8rem;
+            border-bottom: 1px solid var(--border-bright);
+            padding-bottom: 10px;
+        }
+        .faq-item {
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: rgba(255,255,255,0.02);
+        }
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-bright);
+            transition: background 0.2s ease;
+        }
+        .faq-question:hover {
+            background: rgba(255,255,255,0.04);
+        }
+        .faq-answer {
+            padding: 0 20px 20px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            display: none;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        .faq-toggle {
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
+            color: var(--accent-cyan);
+        }
+        .topic-link {
+            display: block;
+            padding: 12px 0;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--border);
+            transition: color 0.2s ease;
+        }
+        .topic-link:hover {
+            color: var(--accent-cyan);
+        }
+    </style>
+</head>
+<body class="aeowun-environment">
+    <div id="void-bg"></div>
+    <div id="technical-grid"></div>
+    <div id="wave-field">
+        <svg id="wave-field-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <defs>
+                <filter id="ribbon-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="15" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+                <linearGradient id="grad-v" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(124, 34, 228, 0)" />
+                    <stop offset="50%" stop-color="rgba(124, 34, 228, 0.7)" />
+                    <stop offset="100%" stop-color="rgba(124, 34, 228, 0)" />
+                </linearGradient>
+                <linearGradient id="grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(0, 210, 241, 0)" />
+                    <stop offset="50%" stop-color="rgba(0, 210, 241, 0.5)" />
+                    <stop offset="100%" stop-color="rgba(0, 210, 241, 0)" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <canvas id="ambient-canvas"></canvas>
+
+    <header class="aeowun-header">
+        <div class="header-inner container">
+            <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
+            <nav class="product-nav">
+                <a href="/aeopin" class="nav-item mono">AEOPIN</a>
+                <a href="/download" class="nav-item download-link mono">DOWNLOAD</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="support-hero">
+            <div class="brand-label mono">SUPPORT</div>
+            <h1 class="product-title mono">SUPPORT</h1>
+            <p class="hero-lead">Need help with AEOPIN?</p>
+
+            <div class="hero-actions" style="margin-top: 40px;">
+                <a href="/support/report" class="primary-button mono">REPORT A BUG</a>
+            </div>
+        </section>
+
+        <div class="support-grid">
+            <div class="support-column">
+                <h2 class="support-section-title mono">CONTACT</h2>
+                <p style="font-size: 0.85rem; margin-bottom: 20px;">For direct inquiries or partnership requests:</p>
+                <a href="mailto:Aeowun.AI@gmail.com" class="mono" style="color: var(--accent-cyan); text-decoration: none; font-size: 0.8rem;">Aeowun.AI@gmail.com</a>
+            </div>
+
+            <div class="support-column">
+                <h2 class="support-section-title mono">FAQ</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question mono">What is AEOPIN? <span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">
+                        AEOPIN is a professional Windows capture appliance designed for one simple idea: Capture immediately, find later. It takes physical possession of your originals and preserves them in a secure local vault.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question mono">Is AEOPIN free? <span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">
+                        AEOPIN is free for Windows. It is currently in active development.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question mono">Does AEOPIN require an account? <span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">
+                        No. AEOPIN is 100% local-first. Everything stays on your computer. No cloud, no tracking, no accounts required.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question mono">Where is data stored? <span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">
+                        Your authoritative data is kept locally in <code class="mono" style="font-size: 0.7rem;">Documents/AEOPIN</code>.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question mono">Is my data sent anywhere? <span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">
+                        No. AEOPIN operates entirely on your local machine. Files are never transmitted to external servers.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question mono">Does it show ads? <span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">
+                        AEOPIN itself contains no advertisements.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question mono">Supported Windows versions? <span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">
+                        AEOPIN is built for Windows 10 and Windows 11.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question mono">How do I report a problem? <span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">
+                        Please use the <a href="/support/report" style="color: var(--accent-cyan);">Report a Bug</a> page to submit an issue via our GitHub repository.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="aeowun-footer">
+        <div class="container footer-inner">
+            <div class="mono footer-copy">© 2026 AEOWUN.</div>
+            <div class="footer-links">
+                <a href="/support" class="mono">SUPPORT</a>
+                <a href="/privacy" class="mono">PRIVACY</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                q.parentElement.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

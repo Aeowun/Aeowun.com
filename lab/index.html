@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Independent Systems Builder // Software Engineering</title>
+    <meta name="description" content="Portfolio of an independent software engineer focused on AI tooling, development environments, and systems software. Built on evidence and real-world implementation.">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="domain-aeowun">
+
+<div class="bg-field"></div>
+<canvas id="ambient-canvas"></canvas>
+
+<!-- HEADER — PRESERVED -->
+<header class="glass">
+    <div class="header-inner container">
+        <a href="#" class="brand" onclick="switchDomain('systems')">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <img src="../assets/logo.png" alt="AEOWUN Logo" style="height: 40px; width: auto;">
+                <div>
+                    <div class="brand-name">ZACHARY JOUBERT</div>
+                    <div class="brand-tag">ENGINEERING ARCHIVE</div>
+                </div>
+            </div>
+        </a>
+
+        <nav class="domain-nav">
+            <button class="nav-item active" data-domain="systems" onclick="switchDomain('systems')">SYSTEMS</button>
+            <button class="nav-item" data-domain="engineering" onclick="switchDomain('engineering')">ENGINEERING</button>
+            <button class="nav-item" data-domain="about" onclick="switchDomain('about')">ABOUT</button>
+            <a href="../assets/Zachary Joubert.pdf" class="nav-item" target="_blank" style="text-decoration: none;">RESUME</a>
+        </nav>
+    </div>
+</header>
+
+
+<main>
+
+    <!-- =========================================================
+         SYSTEMS
+    ========================================================== -->
+    <section id="systems" class="domain-surface active">
+
+        <!-- AEOWUN HERO -->
+        <section class="aeowun-hero container">
+
+            <div class="eyebrow">
+                <span class="eyebrow-line"></span>
+                PRIMARY SYSTEM
+            </div>
+
+            <div class="hero-status">
+                <span class="status-dot"></span>
+                ACTIVE DEVELOPMENT
+            </div>
+
+            <h1>AEOWUN</h1>
+
+            <p class="aeowun-lead">
+                An autonomous software engineering runtime built to
+                <strong>understand, operate, and verify software projects</strong>
+                rather than simply generate code.
+            </p>
+
+            <div class="hero-actions">
+                <a href="https://github.com/joubertzack-web/NETWORK" target="_blank" class="primary-action" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+                    VIEW THE NETWORK
+                </a>
+
+                <button
+                        class="secondary-action"
+                        onclick="document.getElementById('aeowun-system').scrollIntoView({behavior:'smooth'})">
+                    EXPLORE SYSTEM
+                </button>
+            </div>
+
+        </section>
+
+
+        <!-- AEOWUN IDENTITY -->
+        <section class="container aeowun-system" id="aeowun-system">
+
+            <div class="section-marker">
+                <span>01</span>
+                THE SYSTEM
+            </div>
+
+            <div class="aeowun-introduction">
+
+                <div class="aeowun-copy">
+
+                    <div class="system-label">
+                        AUTONOMOUS SOFTWARE ENGINEERING RUNTIME
+                    </div>
+
+                    <h2>
+                        Not an IDE.
+                        <span>A runtime.</span>
+                    </h2>
+
+                    <p class="large-copy">
+                        Most AI development tools begin with a conversation and
+                        attempt to produce a useful answer.
+                    </p>
+
+                    <p>
+                        AEOWUN begins with the <strong>project itself</strong>.
+                        It maintains workspace state, coordinates tools,
+                        manages execution, evaluates results, and records
+                        evidence of what actually happened.
+                    </p>
+
+                    <p>
+                        The language model is not the system.
+                        It is one source of cognition inside the system.
+                    </p>
+
+                    <div class="system-principles">
+
+                        <div>
+                            <span>01</span>
+                            <strong>PROJECT STATE</strong>
+                            <p>Persistent awareness of the workspace and its current condition.</p>
+                        </div>
+
+                        <div>
+                            <span>02</span>
+                            <strong>TOOL CONTROL</strong>
+                            <p>The runtime owns actions instead of blindly following model output.</p>
+                        </div>
+
+                        <div>
+                            <span>03</span>
+                            <strong>VERIFICATION</strong>
+                            <p>Execution results are checked against physical and logical evidence.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="aeowun-identity-panel">
+
+                    <div class="identity-header">
+                        <span>AEOWUN</span>
+                        <span>RUNTIME ARCHITECTURE</span>
+                    </div>
+
+                    <div class="identity-statement">
+                        <span class="identity-big">STATE</span>
+                        <span class="identity-arrow">→</span>
+                        <span class="identity-big">ACTION</span>
+                        <span class="identity-arrow">→</span>
+                        <span class="identity-big">VERIFY</span>
+                    </div>
+
+                    <div class="identity-description">
+                        Persistent project state<br>
+                        Runtime-controlled execution<br>
+                        Evidence-backed outcomes
+                    </div>
+
+                    <div class="identity-footer">
+                        <span>LOCAL AI</span>
+                        <span>+</span>
+                        <span>SOFTWARE RUNTIME</span>
+                        <span>+</span>
+                        <span>VERIFICATION</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ARCHITECTURE -->
+            <div class="architecture-section">
+
+                <div class="architecture-heading">
+                    <div>
+                        <span class="system-label">SYSTEM FLOW</span>
+                        <h3>How AEOWUN operates</h3>
+                    </div>
+
+                    <p>
+                        The model participates in the loop.
+                        The runtime owns the loop.
+                    </p>
+                </div>
+
+
+                <div class="architecture-flow">
+
+                    <div class="architecture-node entry-node">
+                        <span class="node-index">01</span>
+                        <strong>TASK</strong>
+                        <small>Intent enters the runtime.</small>
+                    </div>
+
+                    <div class="architecture-connector"></div>
+
+                    <div class="architecture-node">
+                        <span class="node-index">02</span>
+                        <strong>HOST RUNTIME</strong>
+                        <small>Workspace and execution state.</small>
+                    </div>
+
+                    <div class="architecture-connector"></div>
+
+                    <div class="architecture-node">
+                        <span class="node-index">03</span>
+                        <strong>COGNITION</strong>
+                        <small>Reasoning provider evaluates state.</small>
+                    </div>
+
+                    <div class="architecture-connector"></div>
+
+                    <div class="architecture-node">
+                        <span class="node-index">04</span>
+                        <strong>ACTION</strong>
+                        <small>Tools perform controlled mutations.</small>
+                    </div>
+
+                    <div class="architecture-connector"></div>
+
+                    <div class="architecture-node">
+                        <span class="node-index">05</span>
+                        <strong>VERIFY</strong>
+                        <small>Results are independently evaluated.</small>
+                    </div>
+
+                    <div class="architecture-connector"></div>
+
+                    <div class="architecture-node evidence-node">
+                        <span class="node-index">06</span>
+                        <strong>EVIDENCE</strong>
+                        <small>Observed state becomes project history.</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TECHNOLOGY -->
+            <div class="technology-strip">
+
+                <div>
+                    <span>RUNTIME</span>
+                    <strong>Python</strong>
+                </div>
+
+                <div>
+                    <span>PERSISTENCE</span>
+                    <strong>SQLite</strong>
+                </div>
+
+                <div>
+                    <span>ANALYSIS</span>
+                    <strong>Tree-sitter AST</strong>
+                </div>
+
+                <div>
+                    <span>EXECUTION</span>
+                    <strong>Isolated Workspace</strong>
+                </div>
+
+                <div>
+                    <span>COGNITION</span>
+                    <strong>Local AI</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECONDARY SYSTEMS -->
+        <section class="container secondary-systems">
+
+            <div class="section-marker">
+                <span>02</span>
+                OTHER SYSTEMS
+            </div>
+
+            <div class="secondary-heading">
+                <h2>Other things I've built.</h2>
+                <p>
+                    These projects are part of the broader body of experimentation
+                    that led to AEOWUN.
+                </p>
+            </div>
+
+
+            <div class="project-list">
+
+                <article class="project-row">
+
+                    <div class="project-number">01</div>
+
+                    <div class="project-main">
+                        <div class="project-title">
+                            <h3>LANG0</h3>
+                            <a href="https://github.com/joubertzack-web/NETWORK" target="_blank" class="project-status" style="text-decoration: none;">VIEW ON NETWORK</a>
+                        </div>
+
+                        <p>
+                            A programming environment designed to transfer
+                            existing programming knowledge into a new language
+                            instead of forcing a learner through material they
+                            already understand.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>PROGRAMMING EDUCATION</span>
+                            <span>SIMULATION</span>
+                            <span>ADAPTIVE LEARNING</span>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <article class="project-row">
+
+                    <div class="project-number">02</div>
+
+                    <div class="project-main">
+                        <div class="project-title">
+                            <h3>AEGIS</h3>
+                            <a href="https://github.com/joubertzack-web/NETWORK" target="_blank" class="project-status" style="text-decoration: none;">VIEW ON NETWORK</a>
+                        </div>
+
+                        <p>
+                            A network monitoring and containment system
+                            experimenting with flow-based anomaly detection
+                            and automated device isolation.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>NETWORKING</span>
+                            <span>MONITORING</span>
+                            <span>CONTAINMENT</span>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <article class="project-row">
+
+                    <div class="project-number">03</div>
+
+                    <div class="project-main">
+                        <div class="project-title">
+                            <h3>THE APOTHECARY</h3>
+                            <span class="project-status">EXPERIMENTAL</span>
+                        </div>
+
+                        <p>
+                            An interactive simulation exploring alchemical
+                            systems, systemic roleplay, and interconnected
+                            world-building mechanics.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>SIMULATION</span>
+                            <span>SYSTEM DESIGN</span>
+                            <span>WORLD BUILDING</span>
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </section>
+
+
+    <!-- =========================================================
+         ENGINEERING
+    ========================================================== -->
+    <section id="engineering" class="domain-surface">
+
+        <section class="engineering-hero container">
+
+            <div class="section-marker">
+                <span>03</span>
+                ENGINEERING
+            </div>
+
+            <h2>Evidence over claims.</h2>
+
+            <p>
+                AEOWUN's architecture exists because software systems fail
+                in specific, observable ways. These are some of the mechanisms
+                built in response.
+            </p>
+
+        </section>
+
+
+        <section class="container evidence-grid">
+
+            <article class="evidence-card">
+
+                <span class="evidence-index">01</span>
+
+                <div class="evidence-title">
+                    <span>AUTHORITY MODEL</span>
+                    <h3>Causal State Authority</h3>
+                </div>
+
+                <p>
+                    Project evidence cannot be arbitrarily overwritten by
+                    whichever component happens to be running. Authority
+                    boundaries determine which actors can commit verified
+                    execution state.
+                </p>
+
+                <pre><code># ccb.py
+
+if key.startswith(("truth:", "execution:")):
+    if role not in [
+        ROLE_SYSTEM,
+        ROLE_TRUTH_WITNESS
+    ]:
+        raise ValueError(
+            "AUTHORITY_VIOLATION"
+        )</code></pre>
+
+            </article>
+
+
+            <article class="evidence-card">
+
+                <span class="evidence-index">02</span>
+
+                <div class="evidence-title">
+                    <span>PHYSICAL COMMITMENT</span>
+                    <h3>Verified Mutation</h3>
+                </div>
+
+                <p>
+                    Model output is not treated as proof that an operation
+                    succeeded. Filesystem state is observed before and after
+                    mutation so the runtime can establish what physically changed.
+                </p>
+
+                <pre><code># shadow_fs.py
+
+def get_hash(self):
+    hasher = hashlib.sha256()
+
+    for key in sorted(self.buffer):
+        hasher.update(
+            data["content"].encode()
+        )
+
+    return hasher.hexdigest()</code></pre>
+
+            </article>
+
+        </section>
+
+
+        <section class="container incident-section">
+
+            <div class="section-marker">
+                <span>04</span>
+                FAILURE HISTORY
+            </div>
+
+            <div class="incident-list">
+
+                <article>
+                    <div class="incident-heading">
+                        <span>RECURSIVE REASONING LOOP</span>
+                        <small>DETECTION / CONTAINMENT</small>
+                    </div>
+
+                    <p>
+                        The system repeatedly executed failed steps for an
+                        extended period. A validation watchdog was introduced
+                        to detect repetitive failure and force termination
+                        instead of allowing an uncontrolled reasoning loop.
+                    </p>
+                </article>
+
+
+                <article>
+                    <div class="incident-heading">
+                        <span>DETERMINISTIC OFF-LOADING</span>
+                        <small>LLM / SOFTWARE BOUNDARY</small>
+                    </div>
+
+                    <p>
+                        Small models repeatedly failed deterministic tasks
+                        such as JSON manipulation and symbol lookup. Those
+                        responsibilities were moved into deterministic software
+                        logic and Tree-sitter analysis.
+                    </p>
+                </article>
+
+
+                <article>
+                    <div class="incident-heading">
+                        <span>CLOSED-LOOP VERIFICATION</span>
+                        <small>AEGIS / CONTINUOUS MONITORING</small>
+                    </div>
+
+                    <p>
+                        Network containment required continuous verification
+                        rather than a one-time decision. Flow deltas are
+                        compared against active containment state to detect
+                        potential breaches.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+    </section>
+
+
+    <!-- =========================================================
+         ABOUT
+    ========================================================== -->
+    <section id="about" class="domain-surface">
+
+        <section class="about-hero container">
+
+            <div class="section-marker">
+                <span>05</span>
+                THE BIO
+            </div>
+
+            <h2>Zachary Joubert</h2>
+
+            <p>
+                Independent software developer building systems from practical
+                problems rather than following a conventional software
+                engineering path.
+            </p>
+
+        </section>
+
+
+        <section class="container about-grid">
+
+            <div class="about-column">
+
+                <span class="system-label">ACTIVE NETWORK</span>
+
+                <div class="systems-hub-panel">
+                    <p>My primary projects are managed through a central engineering index that maintains the architecture and evidence for the entire ecosystem.</p>
+
+                    <div class="hub-item">
+                        <strong>AEOWUN</strong>
+                        <p>Autonomous Engineering Runtime</p>
+                    </div>
+
+                    <div class="hub-item">
+                        <strong>LANGO</strong>
+                        <p>Language Transition Simulator</p>
+                    </div>
+
+                    <div class="hub-item">
+                        <strong>AEGIS</strong>
+                        <p>Network Observatory & Defense</p>
+                    </div>
+
+                    <a href="https://github.com/joubertzack-web/NETWORK" target="_blank" class="hub-link">
+                        ACCESS THE NETWORK HUB →
+                    </a>
+                </div>
+
+                <div style="height: 40px;"></div>
+
+                <span class="system-label">PATH</span>
+
+                <div class="timeline">
+
+                    <div class="timeline-item">
+                        <span>01</span>
+                        <div>
+                            <strong>Independent Systems Builder</strong>
+                            <small>Software Architecture & AI Tooling // Present</small>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span>02</span>
+                        <div>
+                            <strong>Diesel Mechanic Apprentice</strong>
+                            <small>Valley Bus</small>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span>03</span>
+                        <div>
+                            <strong>Insulation Technician</strong>
+                            <small>Sioux City Insulation // 2023–2024</small>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span>04</span>
+                        <div>
+                            <strong>Robotics / Maintenance</strong>
+                            <small>Scoular Company</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-column">
+
+                <span class="system-label">PHILOSOPHY</span>
+
+                <p class="large-copy">
+                    I learned by building things, breaking them,
+                    figuring out why they broke, and building them again.
+                </p>
+
+                <p>
+                    I don't have a traditional computer-science background.
+                    Most of the software here started with a problem I wanted
+                    a tool to solve and existing software didn't handle the
+                    way I wanted.
+                </p>
+
+                <p>
+                    I don't have the conventional paper trail.
+                    <strong>I have the software.</strong>
+                </p>
+
+                <a
+                        href="../assets/Zachary Joubert.pdf"
+                        class="resume-button"
+                        target="_blank">
+                    VIEW RESUME.PDF
+                </a>
+
+            </div>
+
+        </section>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="mono footer-copy">
+                © 2026 Zachary Joubert. This is a GitHub Portfolio. //
+                ENGINEERING & ARCHITECTURE ARCHIVE
+            </div>
+
+            <div class="footer-links">
+                <a href="#">Technical Audit</a>
+                <a href="#">System Privacy</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script src="../app.js"></script>
+
+</body>
+</html>

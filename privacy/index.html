@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEOWUN // PRIVACY</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .privacy-hero {
+            padding-top: 180px;
+            padding-bottom: 60px;
+        }
+        .privacy-content {
+            max-width: 900px;
+            line-height: 1.8;
+            color: var(--text);
+            margin-top: 60px;
+            padding-bottom: 120px;
+        }
+        section {
+            margin-bottom: 60px;
+        }
+        h3 {
+            color: var(--text-bright);
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-bright);
+            padding-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body class="aeowun-environment">
+    <div id="void-bg"></div>
+    <div id="technical-grid"></div>
+    <div id="wave-field">
+        <svg id="wave-field-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <defs>
+                <filter id="ribbon-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="15" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+                <linearGradient id="grad-v" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(124, 34, 228, 0)" />
+                    <stop offset="50%" stop-color="rgba(124, 34, 228, 0.7)" />
+                    <stop offset="100%" stop-color="rgba(124, 34, 228, 0)" />
+                </linearGradient>
+                <linearGradient id="grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(0, 210, 241, 0)" />
+                    <stop offset="50%" stop-color="rgba(0, 210, 241, 0.5)" />
+                    <stop offset="100%" stop-color="rgba(0, 210, 241, 0)" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <canvas id="ambient-canvas"></canvas>
+
+    <header class="aeowun-header">
+        <div class="header-inner container">
+            <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
+            <nav class="product-nav">
+                <a href="/aeopin" class="nav-item mono">AEOPIN</a>
+                <a href="/download" class="nav-item download-link mono">DOWNLOAD</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="privacy-hero">
+            <div class="brand-label mono">LEGAL</div>
+            <h1 class="product-title mono">PRIVACY POLICY</h1>
+            <p class="hero-lead">Effective Date: August 24, 2026</p>
+        </section>
+
+        <div class="privacy-content">
+            <p style="margin-bottom: 40px;">AEOWUN ("AEOWUN," "we," "us," or "our") develops and distributes AEOPIN, a Windows desktop application. This Privacy Policy explains how AEOPIN handles information when you use the application.</p>
+
+            <section>
+                <h3 class="mono">1. Information AEOPIN Handles</h3>
+                <p>AEOPIN is designed to operate on your Windows computer and to work with files and information that you choose to provide to it. Depending on how you use AEOPIN, the application may access information such as:</p>
+                <ul>
+                    <li>Files and folders that you explicitly make available to AEOPIN.</li>
+                    <li>File names, paths, file types, timestamps, and other filesystem metadata.</li>
+                    <li>Content that AEOPIN indexes or processes for search and organization.</li>
+                    <li>Information you enter directly into AEOPIN, such as search queries.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="mono">2. Local Processing</h3>
+                <p>AEOPIN is designed as a local Windows application. Information processed by AEOPIN is stored and processed on your computer. AEOPIN does not transmit your personal files or captured data to external servers.</p>
+            </section>
+
+            <section>
+                <h3 class="mono">3. No Account Required</h3>
+                <p>AEOPIN does not require you to create an AEOWUN account to use the application. We do not require you to provide your name, email address, telephone number, or other account information merely to use AEOPIN.</p>
+            </section>
+
+            <section>
+                <h3 class="mono">4. Advertising</h3>
+                <p>AEOPIN does not display advertisements within the application.</p>
+            </section>
+
+            <section>
+                <h3 class="mono">5. Analytics and Tracking</h3>
+                <p>AEOWUN does not collect analytics, telemetry, or tracking information from AEOPIN in its current release. If this changes, this policy will be updated accordingly.</p>
+            </section>
+
+            <section>
+                <h3 class="mono">6. Contact</h3>
+                <p>Questions about AEOPIN privacy may be submitted through the AEOWUN support page: <a href="/support" style="color: var(--accent-cyan); text-decoration: none;">aeowun.com/support</a></p>
+                <p style="margin-top: 20px;">AEOWUN<br>United States</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="aeowun-footer">
+        <div class="container footer-inner">
+            <div class="mono footer-copy">© 2026 AEOWUN.</div>
+            <div class="footer-links">
+                <a href="/support" class="mono">SUPPORT</a>
+                <a href="/privacy" class="mono">PRIVACY</a>
+            </div>
+        </div>
+    </footer>
+    <script src="../app.js"></script>
+</body>
+</html>
