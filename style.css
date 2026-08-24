@@ -91,10 +91,58 @@ body:not(.home-page) {
 .header-inner { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 60px; }
 .brand-name { font-size: 0.75rem; color: var(--text-bright); font-weight: 500; text-shadow: 0 0 10px rgba(255,255,255,0.2); }
 .product-nav { display: flex; gap: 30px; align-items: center; }
-.nav-item { text-decoration: none; font-size: 0.6rem; color: var(--text-dim); transition: color 0.3s ease; }
-.nav-item:hover { color: var(--text-bright); }
+.nav-item { text-decoration: none; font-size: 0.6rem; color: var(--text-dim); transition: color 0.3s ease; position: relative; }
+.nav-item:hover:not(.disabled) { color: var(--text-bright); }
+.nav-item.disabled { cursor: default; color: var(--text-dim); opacity: 0.5; }
+
 .download-link { color: var(--text-bright); border: 1px solid var(--border-bright); padding: 8px 20px; border-radius: 2px; background: rgba(255,255,255,0.03); transition: all 0.3s ease; }
-.download-link:hover { background: rgba(255,255,255,0.08); border-color: var(--text-bright); box-shadow: 0 0 30px var(--glow-violet); }
+.download-link:hover:not(.disabled) { background: rgba(255,255,255,0.08); border-color: var(--text-bright); box-shadow: 0 0 30px var(--glow-violet); }
+
+.disabled {
+    pointer-events: none;
+    position: relative;
+}
+
+.disabled::after {
+    content: attr(data-status);
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.5rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: var(--font-mono);
+}
+
+.product-nav .nav-item.disabled:hover::after,
+.hero-actions .primary-button.disabled:hover::after {
+    opacity: 1;
+}
+
+.primary-button.disabled, .secondary-button.disabled {
+    background: rgba(255,255,255,0.02) !important;
+    border-color: var(--border) !important;
+    color: var(--text-dim) !important;
+    box-shadow: none !important;
+    transform: none !important;
+    cursor: default;
+}
+
+.status-badge {
+    font-size: 0.5rem;
+    padding: 2px 6px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-dim);
+    margin-left: 8px;
+    vertical-align: middle;
+}
 
 /* =========================================================
    SCENE STAGE
