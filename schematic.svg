@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600">
+
+<defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
+        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <style>
+        .terminal-text { font-family: 'Fira Code', monospace; font-size: 13px; fill: #C9D1D9; }
+        .node-name { font-family: 'Fira Code', monospace; font-size: 16px; font-weight: bold; fill: #58A6FF; }
+        .node-tag { font-family: 'Fira Code', monospace; font-size: 11px; fill: #D29922; }
+        .flow-line { stroke: #58A6FF; stroke-width: 1.5; fill: none; opacity: 0.3; stroke-dasharray: 5,5; }
+        .packet { fill: #FFFFFF; }
+        .header { font-family: 'Fira Code', monospace; font-size: 12px; fill: #C9D1D9; opacity: 0.5; }
+    </style>
+</defs>
+<rect width="100%" height="100%" fill="#0D1117" />
+<g id="causal-belts">
+  <path d="M 200 150 Q 350.0 265.0 500 280" class="flow-line" />
+
+  <circle r="3" class="packet" filter="url(#glow)">
+    <animateMotion dur="4s" repeatCount="indefinite" path="M 200 150 Q 350.0 265.0 500 280" />
+  </circle>
+  <path d="M 200 410 Q 350.0 395.0 500 280" class="flow-line" />
+
+  <circle r="3" class="packet" filter="url(#glow)">
+    <animateMotion dur="4s" repeatCount="indefinite" path="M 200 410 Q 350.0 395.0 500 280" />
+  </circle>
+  <path d="M 800 150 Q 650.0 265.0 500 280" class="flow-line" />
+
+  <circle r="3" class="packet" filter="url(#glow)">
+    <animateMotion dur="4s" repeatCount="indefinite" path="M 800 150 Q 650.0 265.0 500 280" />
+  </circle>
+  <path d="M 800 410 Q 650.0 395.0 500 280" class="flow-line" />
+
+  <circle r="3" class="packet" filter="url(#glow)">
+    <animateMotion dur="4s" repeatCount="indefinite" path="M 800 410 Q 650.0 395.0 500 280" />
+  </circle>
+</g>
+<g id="system-nodes">
+
+  <g transform="translate(500, 280)">
+    <rect x="-70" y="-30" width="140" height="60" rx="4" stroke="#30363D" fill="#0D1117" stroke-width="2" />
+    <text y="-5" text-anchor="middle" class="node-name">AEOWUN</text>
+    <text y="15" text-anchor="middle" class="node-tag">[BRAIN]</text>
+  </g>
+
+  <g transform="translate(200, 150)">
+    <rect x="-70" y="-30" width="140" height="60" rx="4" stroke="#30363D" fill="#0D1117" stroke-width="2" />
+    <text y="-5" text-anchor="middle" class="node-name">DROP</text>
+    <text y="15" text-anchor="middle" class="node-tag">[VAULT]</text>
+  </g>
+
+  <g transform="translate(200, 410)">
+    <rect x="-70" y="-30" width="140" height="60" rx="4" stroke="#30363D" fill="#0D1117" stroke-width="2" />
+    <text y="-5" text-anchor="middle" class="node-name">AXEIS</text>
+    <text y="15" text-anchor="middle" class="node-tag">[AUDIT]</text>
+  </g>
+
+  <g transform="translate(800, 150)">
+    <rect x="-70" y="-30" width="140" height="60" rx="4" stroke="#30363D" fill="#0D1117" stroke-width="2" />
+    <text y="-5" text-anchor="middle" class="node-name">LANGO</text>
+    <text y="15" text-anchor="middle" class="node-tag">[SIM]</text>
+  </g>
+
+  <g transform="translate(800, 410)">
+    <rect x="-70" y="-30" width="140" height="60" rx="4" stroke="#30363D" fill="#0D1117" stroke-width="2" />
+    <text y="-5" text-anchor="middle" class="node-name">FRIDGE</text>
+    <text y="15" text-anchor="middle" class="node-tag">[MOBILE]</text>
+  </g>
+</g>
+
+<g transform="translate(20, 40)">
+    <text class="header">NEXICODE_OS v2.0.8 // SESSION_START: 2026-08-25 01:43:18</text>
+    <text y="20" class="terminal-text">>> INITIALIZING_CAUSAL_MESH...</text>
+    <text y="40" class="terminal-text">>> ALL_SYSTEMS_VERIFIED: [TRUE]</text>
+</g>
+<g transform="translate(750, 40)">
+    <text class="header">SYSTEM_STATS</text>
+    <text y="20" class="terminal-text">UPTIME: 100.0%</text>
+    <text y="40" class="terminal-text">INTEGRITY: HIGH</text>
+</g>
+</svg>
