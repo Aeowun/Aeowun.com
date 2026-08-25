@@ -19,9 +19,9 @@
         .ide-preview-visual {
             position: relative;
             border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 4px;
+            border-radius: 8px;
             background: #000;
-            box-shadow: 0 80px 160px rgba(0,0,0,0.9), 0 0 40px rgba(138, 43, 226, 0.1);
+            box-shadow: 0 80px 160px rgba(0,0,0,0.9), 0 0 60px rgba(138, 43, 226, 0.1);
             overflow: hidden;
             margin-bottom: 80px;
         }
@@ -31,17 +31,17 @@
             opacity: 1;
         }
         .ide-status-bar {
-            background: rgba(20, 20, 30, 0.9);
+            background: #0a0a0f;
             border-top: 1px solid var(--accent-violet);
-            padding: 16px 28px;
+            padding: 20px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-family: var(--font-mono);
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             letter-spacing: 0.25em;
             color: var(--accent-violet);
-            font-weight: bold;
+            font-weight: 800;
         }
         .ide-info-grid {
             display: grid;
@@ -49,20 +49,21 @@
             gap: 80px;
         }
         .info-card {
-            background: rgba(255,255,255,0.01);
+            background: rgba(255,255,255,0.02);
             border: 1px solid var(--border);
             padding: 40px;
-            border-radius: 2px;
+            border-radius: 4px;
         }
         .info-card h3 {
-            font-size: 0.85rem;
-            color: var(--text-bright);
+            font-size: 0.9rem;
+            color: #fff;
             margin-bottom: 20px;
             letter-spacing: 0.2em;
+            font-weight: 700;
         }
         .info-card p {
-            font-size: 0.95rem;
-            color: var(--text-dim);
+            font-size: 1rem;
+            color: var(--text);
             line-height: 1.8;
         }
         .fallback-action {
@@ -73,8 +74,8 @@
         }
         @media (max-width: 900px) {
             .ide-info-grid { grid-template-columns: 1fr; gap: 40px; }
-            .ide-content-stage { padding-top: 120px; }
-            .ide-preview-visual { border-radius: 0; border-left: 0; border-right: 0; }
+            .ide-content-stage { padding-top: 120px; padding-inline: 30px; }
+            .ide-preview-visual { border-radius: 4px; }
         }
     </style>
 </head>
@@ -117,10 +118,10 @@
     <main class="container">
         <div class="ide-content-stage">
             <div class="ide-hero-header">
-                <div class="brand-label mono">AEOWUN RUNTIME</div>
+                <div class="brand-label mono" style="color: var(--accent-violet);">FUTURE PRODUCT</div>
                 <h1 class="product-title mono">AEOWUN IDE</h1>
-                <p class="hero-lead">COMING SOON</p>
-                <p style="color: var(--text-dim); max-width: 650px; margin-inline: auto; font-size: 1rem; line-height: 1.7;">
+                <p class="hero-lead" style="color: #fff; font-weight: 700;">COMING SOON</p>
+                <p style="color: var(--text); max-width: 700px; margin-inline: auto; font-size: 1.1rem; line-height: 1.7;">
                     A professional development environment built around your projects, your tools, and your workflow.
                 </p>
             </div>
@@ -145,7 +146,7 @@
             </div>
 
             <div class="fallback-action">
-                <div class="mono" style="font-size: 0.65rem; color: var(--text-dim); margin-bottom: 24px; letter-spacing: 0.2em;">AEOPIN IS AVAILABLE NOW</div>
+                <div class="mono" style="font-size: 0.7rem; color: var(--text-dim); margin-bottom: 24px; letter-spacing: 0.25em;">AEOPIN IS AVAILABLE NOW</div>
                 <a href="/" class="secondary-button mono">GO TO AEOPIN</a>
             </div>
         </div>
