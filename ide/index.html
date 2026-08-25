@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEOWUN // AEOWUN IDE</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* DEDICATED IDE PAGE STYLING */
+        .ide-content-stage {
+            padding-top: 180px;
+            padding-bottom: 120px;
+            max-width: 1100px;
+            margin-inline: auto;
+        }
+        .ide-hero-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        .ide-preview-visual {
+            position: relative;
+            border: 1px solid var(--border-bright);
+            border-radius: 4px;
+            background: var(--void-elevated);
+            box-shadow: 0 80px 160px rgba(0,0,0,0.9);
+            overflow: hidden;
+            margin-bottom: 80px;
+        }
+        .ide-preview-visual img {
+            width: 100%;
+            display: block;
+            opacity: 0.9;
+        }
+        .ide-status-bar {
+            background: rgba(138, 43, 226, 0.1);
+            border-top: 1px solid var(--accent-violet);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            color: var(--accent-violet);
+        }
+        .ide-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+        .info-card {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 2px;
+        }
+        .info-card h3 {
+            font-size: 0.8rem;
+            color: var(--text-bright);
+            margin-bottom: 20px;
+            letter-spacing: 0.2em;
+        }
+        .info-card p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.8;
+        }
+        .fallback-action {
+            margin-top: 100px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            padding-top: 60px;
+        }
+        @media (max-width: 900px) {
+            .ide-info-grid { grid-template-columns: 1fr; gap: 40px; }
+            .ide-content-stage { padding-top: 120px; }
+        }
+    </style>
+</head>
+<body class="aeowun-environment">
+    <div id="void-bg"></div>
+    <div id="technical-grid"></div>
+    <div id="wave-field">
+        <svg id="wave-field-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <defs>
+                <filter id="ribbon-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="15" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+                <linearGradient id="grad-v" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(124, 34, 228, 0)" />
+                    <stop offset="50%" stop-color="rgba(124, 34, 228, 0.7)" />
+                    <stop offset="100%" stop-color="rgba(124, 34, 228, 0)" />
+                </linearGradient>
+                <linearGradient id="grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(0, 210, 241, 0)" />
+                    <stop offset="50%" stop-color="rgba(0, 210, 241, 0.5)" />
+                    <stop offset="100%" stop-color="rgba(0, 210, 241, 0)" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <canvas id="ambient-canvas"></canvas>
+
+    <header class="aeowun-header">
+        <div class="header-inner container">
+            <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
+            <nav class="product-nav">
+                <a href="/" class="nav-item mono">AEOPIN</a>
+                <a href="/ide/" class="nav-item mono active">AEOWUN IDE</a>
+                <a href="/download/" class="nav-item download-link mono">DOWNLOAD</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="ide-content-stage">
+            <div class="ide-hero-header">
+                <div class="brand-label mono">AEOWUN RUNTIME</div>
+                <h1 class="product-title mono">AEOWUN IDE</h1>
+                <p class="hero-lead">COMING SOON</p>
+                <p style="color: var(--text-dim); max-width: 600px; margin-inline: auto; font-size: 0.95rem; line-height: 1.6;">
+                    A serious development environment built around your projects, your tools, and your workflow.
+                </p>
+            </div>
+
+            <div class="ide-preview-visual">
+                <img src="../assets/ide-preview-1.png" alt="AEOWUN IDE Interface Preview">
+                <div class="ide-status-bar">
+                    <span>SYSTEM STATUS: IN DEVELOPMENT</span>
+                    <span>V2.0.7-PREVIEW</span>
+                </div>
+            </div>
+
+            <div class="ide-info-grid">
+                <div class="info-card">
+                    <h3 class="mono">REAL PROJECT CONTEXT</h3>
+                    <p>AEOWUN IDE is centered around actual software engineering. It maintains physical awareness of your codebase, allowing for autonomous reasoning and verified implementation within a stable project runtime.</p>
+                </div>
+                <div class="info-card">
+                    <h3 class="mono">TECHNICAL ECOSYSTEM</h3>
+                    <p>Designed as the next major step in the AEOWUN product family, inheriting the local-first principles and professional reliability established by the AEOPIN capture appliance.</p>
+                </div>
+            </div>
+
+            <div class="fallback-action">
+                <div class="mono" style="font-size: 0.6rem; color: var(--text-dim); margin-bottom: 24px;">AEOPIN IS AVAILABLE NOW</div>
+                <a href="/" class="secondary-button mono">GO TO AEOPIN</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="aeowun-footer">
+        <div class="container footer-inner">
+            <div class="mono footer-copy">© 2026 AEOWUN.</div>
+            <div class="footer-links">
+                <a href="/support/" class="mono">SUPPORT</a>
+                <a href="/privacy/" class="mono">PRIVACY</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../app.js"></script>
+</body>
+</html>
