@@ -1,0 +1,283 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1500" viewBox="0 0 1000 1500">
+
+<defs>
+  <filter id="phosphor" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="1.1" result="blur" />
+    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+  </filter>
+  <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#9A6FC1" stop-opacity="0.5" />
+    <stop offset="100%" stop-color="#9A6FC1" stop-opacity="0" />
+  </linearGradient>
+  <style>
+    .mono { font-family: 'Fira Code', 'Courier New', monospace; }
+    .h1 { font-size: 40px; fill: #E4E0EC; font-weight: bold; letter-spacing: 2px; }
+    .h2 { font-size: 13px; fill: #776B9E; letter-spacing: 2px; }
+    .label { font-size: 10px; fill: #776B9E; letter-spacing: 1px; }
+    .code { font-size: 11px; fill: #00FF66; }
+    .lineno { font-size: 10px; fill: #776B9E; }
+    .body { font-size: 11px; fill: #E4E0EC; }
+    .scanline { fill: url(#scanlinePattern); opacity: 0.05; pointer-events: none; }
+  </style>
+  <pattern id="scanlinePattern" width="100%" height="4" patternUnits="userSpaceOnUse">
+    <rect width="100%" height="1" fill="#FFFFFF" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="#030305" />
+<g><line x1="0" y1="0" x2="0" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="40" y1="0" x2="40" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="80" y1="0" x2="80" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="120" y1="0" x2="120" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="160" y1="0" x2="160" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="200" y1="0" x2="200" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="240" y1="0" x2="240" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="280" y1="0" x2="280" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="320" y1="0" x2="320" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="360" y1="0" x2="360" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="400" y1="0" x2="400" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="440" y1="0" x2="440" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="480" y1="0" x2="480" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="520" y1="0" x2="520" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="560" y1="0" x2="560" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="600" y1="0" x2="600" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="640" y1="0" x2="640" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="680" y1="0" x2="680" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="720" y1="0" x2="720" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="760" y1="0" x2="760" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="800" y1="0" x2="800" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="840" y1="0" x2="840" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="880" y1="0" x2="880" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="920" y1="0" x2="920" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="960" y1="0" x2="960" y2="1500" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="0" x2="1000" y2="0" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="40" x2="1000" y2="40" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="80" x2="1000" y2="80" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="120" x2="1000" y2="120" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="160" x2="1000" y2="160" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="200" x2="1000" y2="200" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="240" x2="1000" y2="240" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="280" x2="1000" y2="280" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="320" x2="1000" y2="320" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="360" x2="1000" y2="360" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="400" x2="1000" y2="400" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="440" x2="1000" y2="440" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="480" x2="1000" y2="480" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="520" x2="1000" y2="520" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="560" x2="1000" y2="560" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="600" x2="1000" y2="600" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="640" x2="1000" y2="640" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="680" x2="1000" y2="680" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="720" x2="1000" y2="720" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="760" x2="1000" y2="760" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="800" x2="1000" y2="800" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="840" x2="1000" y2="840" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="880" x2="1000" y2="880" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="920" x2="1000" y2="920" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="960" x2="1000" y2="960" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="1000" x2="1000" y2="1000" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="1040" x2="1000" y2="1040" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="1080" x2="1000" y2="1080" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="1120" x2="1000" y2="1120" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="1160" x2="1000" y2="1160" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="1200" x2="1000" y2="1200" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="1240" x2="1000" y2="1240" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="1280" x2="1000" y2="1280" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="1320" x2="1000" y2="1320" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="1360" x2="1000" y2="1360" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="1400" x2="1000" y2="1400" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="1440" x2="1000" y2="1440" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+<line x1="0" y1="1480" x2="1000" y2="1480" stroke="#2A2A35" stroke-width="0.4" opacity="0.25" />
+</g>
+
+<g transform="translate(40,50)">
+  <text class="mono label" style="fill:#00FF66;">// SOURCE_AUDIT :: NEXICODE</text>
+  <text y="42" class="mono h1" filter="url(#phosphor)">AEOWUN V2</text>
+  <text y="66" class="mono h2">SELF-SUPERVISING SOFTWARE-ENGINEERING SYSTEM</text>
+  <text y="100" class="mono body" style="fill:#9A6FC1; font-size:12px;">
+    Not an LLM bolted onto a program -- V2 (shell) + CodeGraph (deterministic structure)
+  </text>
+  <text y="118" class="mono body" style="fill:#9A6FC1; font-size:12px;">
+    + Zero/HSAM (probabilistic reasoning) converging into one semantic machine.
+  </text>
+  <line x1="0" y1="140" x2="920" y2="140" stroke="#2A2A35" stroke-width="1" />
+</g>
+<g transform="translate(40,190)">
+  <text class="mono label">ARCHITECTURE // THREE LAYERS CONVERGING</text>
+  <g transform="translate(0.0,20)">
+    <rect width="286.6666666666667" height="150" fill="rgba(154,111,193,0.04)" stroke="#9A6FC1" stroke-width="1" rx="4" />
+    <text x="14" y="26" class="mono body" style="font-size:13px; font-weight:bold; fill:#9A6FC1;">V2</text>
+    <text x="14" y="42" class="mono label" style="font-size:8px;">OPERATIONAL SHELL</text>
+    <text x="14" y="70" class="mono body" style="font-size:9.5px; opacity:0.8;">Rust kernel + webview. Owns</text>
+    <text x="14" y="85" class="mono body" style="font-size:9.5px; opacity:0.8;">the process, the window,</text>
+    <text x="14" y="100" class="mono body" style="font-size:9.5px; opacity:0.8;">the UI.</text>
+  </g>
+  <path d="M 286.6666666666667 95 L 316.6666666666667 95" stroke="#9A6FC1" stroke-width="1.5" opacity="0.7" />
+  <path d="M 308.6666666666667 89 L 316.6666666666667 95 L 308.6666666666667 101" stroke="#9A6FC1" stroke-width="1.5" fill="none" opacity="0.7" />
+  <g transform="translate(316.6666666666667,20)">
+    <rect width="286.6666666666667" height="150" fill="rgba(154,111,193,0.04)" stroke="#9A6FC1" stroke-width="1" rx="4" />
+    <text x="14" y="26" class="mono body" style="font-size:13px; font-weight:bold; fill:#9A6FC1;">CODEGRAPH</text>
+    <text x="14" y="42" class="mono label" style="font-size:8px;">DETERMINISTIC STRUCTURE</text>
+    <text x="14" y="70" class="mono body" style="font-size:9.5px; opacity:0.8;">Affinity Engine: structural</text>
+    <text x="14" y="85" class="mono body" style="font-size:9.5px; opacity:0.8;">+ lexical (TF-IDF) +</text>
+    <text x="14" y="100" class="mono body" style="font-size:9.5px; opacity:0.8;">organizational evidence,</text>
+    <text x="14" y="115" class="mono body" style="font-size:9.5px; opacity:0.8;">Leiden/CPM clustering.</text>
+  </g>
+  <path d="M 603.3333333333334 95 L 633.3333333333334 95" stroke="#9A6FC1" stroke-width="1.5" opacity="0.7" />
+  <path d="M 625.3333333333334 89 L 633.3333333333334 95 L 625.3333333333334 101" stroke="#9A6FC1" stroke-width="1.5" fill="none" opacity="0.7" />
+  <g transform="translate(633.3333333333334,20)">
+    <rect width="286.6666666666667" height="150" fill="rgba(154,111,193,0.04)" stroke="#9A6FC1" stroke-width="1" rx="4" />
+    <text x="14" y="26" class="mono body" style="font-size:13px; font-weight:bold; fill:#9A6FC1;">ZERO / HSAM</text>
+    <text x="14" y="42" class="mono label" style="font-size:8px;">PROBABILISTIC REASONING</text>
+    <text x="14" y="70" class="mono body" style="font-size:9.5px; opacity:0.8;">Intent, reasoning,</text>
+    <text x="14" y="85" class="mono body" style="font-size:9.5px; opacity:0.8;">interaction -- absorbing</text>
+    <text x="14" y="100" class="mono body" style="font-size:9.5px; opacity:0.8;">hand-written orchestration</text>
+    <text x="14" y="115" class="mono body" style="font-size:9.5px; opacity:0.8;">over time.</text>
+  </g>
+  <rect x="0" y="190" width="920" height="1" fill="#2A2A35" opacity="0.3" />
+</g>
+<g transform="translate(40,470)">
+  <text class="mono label">EXHIBITS // PULLED DIRECTLY FROM kernel/main.rs</text>
+<g transform="translate(0,20)">
+  <rect width="445" height="199" fill="#08060B" stroke="#2A2A35" stroke-width="1" rx="4" />
+  <rect width="445" height="24" fill="#2A2A35" opacity="0.35" rx="4 4 0 0" />
+  <circle cx="12" cy="12" r="4" fill="#FF5F56" opacity="0.7" /><circle cx="28" cy="12" r="4" fill="#FFBD2E" opacity="0.7" /><circle cx="44" cy="12" r="4" fill="#27C93F" opacity="0.7" />
+  <text x="60" y="16" class="mono label">kernel/main.rs -- window theming</text>
+  <text x="12" y="44" class="mono lineno">69</text>
+  <text x="46" y="44" class="mono code">fn apply_dwm_attributes(hwnd: HWND) {</text>
+  <text x="12" y="61" class="mono lineno">72</text>
+  <text x="46" y="61" class="mono code">    DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, ...);</text>
+  <text x="12" y="78" class="mono lineno">77</text>
+  <text x="46" y="78" class="mono code">    let border_color = 0x00c16f9a; // #9a6fc1</text>
+  <text x="12" y="95" class="mono lineno">78</text>
+  <text x="46" y="95" class="mono code">    DwmSetWindowAttribute(hwnd, DWMWA_BORDER_COLOR, &amp;border_color ...);</text>
+  <text x="12" y="112" class="mono lineno">79</text>
+  <text x="46" y="112" class="mono code">    let corner_pref = DWMWCP_ROUND.0;</text>
+  <text x="12" y="129" class="mono lineno">80</text>
+  <text x="46" y="129" class="mono code">    DwmSetWindowAttribute(hwnd, DWMWA_WINDOW_CORNER_PREFERENCE, ...);</text>
+  <text x="12" y="146" class="mono lineno">81</text>
+  <text x="46" y="146" class="mono code">}</text>
+  <text x="12" y="183" class="mono body" style="font-size:9px; opacity:0.55; font-style:italic;">// the OS-native window border is set to the brand purple</text>
+  <text x="12" y="196" class="mono body" style="font-size:9px; opacity:0.55; font-style:italic;">// via a raw Win32 DWM call -- not a CSS accent color, the</text>
+  <text x="12" y="209" class="mono body" style="font-size:9px; opacity:0.55; font-style:italic;">// actual chrome.</text>
+</g>
+<g transform="translate(475,20)">
+  <rect width="445" height="216" fill="#08060B" stroke="#2A2A35" stroke-width="1" rx="4" />
+  <rect width="445" height="24" fill="#2A2A35" opacity="0.35" rx="4 4 0 0" />
+  <circle cx="12" cy="12" r="4" fill="#FF5F56" opacity="0.7" /><circle cx="28" cy="12" r="4" fill="#FFBD2E" opacity="0.7" /><circle cx="44" cy="12" r="4" fill="#27C93F" opacity="0.7" />
+  <text x="60" y="16" class="mono label">kernel/main.rs -- worker bridge (Rust to Python)</text>
+  <text x="12" y="44" class="mono lineno">92</text>
+  <text x="46" y="44" class="mono code">let mut child = Command::new(&amp;python_exe)</text>
+  <text x="12" y="61" class="mono lineno">94</text>
+  <text x="46" y="61" class="mono code">    .current_dir(&amp;project_root)</text>
+  <text x="12" y="78" class="mono lineno">95</text>
+  <text x="46" y="78" class="mono code">    .stdin(Stdio::piped())</text>
+  <text x="12" y="95" class="mono lineno">96</text>
+  <text x="46" y="95" class="mono code">    .stdout(Stdio::piped())</text>
+  <text x="12" y="112" class="mono lineno">110</text>
+  <text x="46" y="112" class="mono code">let mut reader = BufReader::new(stdout).lines();</text>
+  <text x="12" y="129" class="mono lineno">116</text>
+  <text x="46" y="129" class="mono code">    if msg["type"] == "KernelRequest" {</text>
+  <text x="12" y="146" class="mono lineno">121</text>
+  <text x="46" y="146" class="mono code">        let result = match action {</text>
+  <text x="12" y="163" class="mono lineno">122</text>
+  <text x="46" y="163" class="mono code">            "read_file" =&gt; sv.workspace().read_file(path).await,</text>
+  <text x="12" y="200" class="mono body" style="font-size:9px; opacity:0.55; font-style:italic;">// the async Rust kernel owns the process and the UI;</text>
+  <text x="12" y="213" class="mono body" style="font-size:9px; opacity:0.55; font-style:italic;">// Python is a subordinate worker it spawns, pipes JSON to</text>
+  <text x="12" y="226" class="mono body" style="font-size:9px; opacity:0.55; font-style:italic;">// over stdin/stdout, and supervises.</text>
+</g>
+</g>
+<g transform="translate(40,770)">
+  <text class="mono label">RELEASE HISTORY // 14 TRACKED VERSIONS, 2026-01-11 -&gt; 2026-08-23</text>
+  <line x1="70" y1="20" x2="70" y2="482" stroke="#2A2A35" stroke-width="1.5" />
+  <circle cx="70" cy="26" r="4" fill="#00FF66" />
+  <text x="0" y="30" class="mono label" style="font-size:9px;">2026-08-23</text>
+  <text x="90" y="30" class="mono body" style="font-size:10.5px; font-weight:bold; fill:#00FF66;">V2.0.8.0</text>
+  <text x="185" y="30" class="mono body" style="font-size:9.5px; opacity:0.75;">Quality &amp; scalability audit -- 100% PEP 484 coverage, pytest harness, 5,000...</text>
+  <circle cx="70" cy="60" r="4" fill="#00FF66" />
+  <text x="0" y="64" class="mono label" style="font-size:9px;">2026-08-21</text>
+  <text x="90" y="64" class="mono body" style="font-size:10.5px; font-weight:bold; fill:#00FF66;">V2.0.7.4</text>
+  <text x="185" y="64" class="mono body" style="font-size:9.5px; opacity:0.75;">Documentation repair -- normalized Work Order history</text>
+  <circle cx="70" cy="94" r="4" fill="#00FF66" />
+  <text x="0" y="98" class="mono label" style="font-size:9px;">2026-08-21</text>
+  <text x="90" y="98" class="mono body" style="font-size:10.5px; font-weight:bold; fill:#00FF66;">V2.0.7.3</text>
+  <text x="185" y="98" class="mono body" style="font-size:9.5px; opacity:0.75;">Win11 DWM integration -- themed title bar, persisted window state</text>
+  <circle cx="70" cy="128" r="4" fill="#00FF66" />
+  <text x="0" y="132" class="mono label" style="font-size:9px;">2026-08-21</text>
+  <text x="90" y="132" class="mono body" style="font-size:10.5px; font-weight:bold; fill:#00FF66;">V2.0.7.1</text>
+  <text x="185" y="132" class="mono body" style="font-size:9.5px; opacity:0.75;">Console/CLI output rewritten for direct engineering style</text>
+  <circle cx="70" cy="162" r="4" fill="#00FF66" />
+  <text x="0" y="166" class="mono label" style="font-size:9px;">2026-08-21</text>
+  <text x="90" y="166" class="mono body" style="font-size:10.5px; font-weight:bold; fill:#00FF66;">V2.0.7.0</text>
+  <text x="185" y="166" class="mono body" style="font-size:9.5px; opacity:0.75;">launch.bat + run_aeowun.py established as the authoritative entry point</text>
+  <circle cx="70" cy="196" r="4" fill="#9A6FC1" />
+  <text x="0" y="200" class="mono label" style="font-size:9px;">2026-08-21</text>
+  <text x="90" y="200" class="mono body" style="font-size:10.5px; font-weight:bold; fill:#9A6FC1;">V2.0.6.X</text>
+  <text x="185" y="200" class="mono body" style="font-size:9.5px; opacity:0.75;">REBUILD -- deterministic program-understanding subsystem, Leiden/CPM cluste...</text>
+  <circle cx="70" cy="230" r="4" fill="#00FF66" />
+  <text x="0" y="234" class="mono label" style="font-size:9px;">2026-08-21</text>
+  <text x="90" y="234" class="mono body" style="font-size:10.5px; font-weight:bold; fill:#00FF66;">V2.0.6.2</text>
+  <text x="185" y="234" class="mono body" style="font-size:9.5px; opacity:0.75;">Structural project index (superseded same day by 006.X)</text>
+  <circle cx="70" cy="264" r="4" fill="#00FF66" />
+  <text x="0" y="268" class="mono label" style="font-size:9px;">2026-04-15</text>
+  <text x="90" y="268" class="mono body" style="font-size:10.5px; font-weight:bold; fill:#00FF66;">V2.0.5.0</text>
+  <text x="185" y="268" class="mono body" style="font-size:9.5px; opacity:0.75;">Integrated terminal via xterm.js bridge</text>
+  <circle cx="70" cy="298" r="4" fill="#00FF66" />
+  <text x="0" y="302" class="mono label" style="font-size:9px;">2026-02-10</text>
+  <text x="90" y="302" class="mono body" style="font-size:10.5px; font-weight:bold; fill:#00FF66;">V2.0.4.0</text>
+  <text x="185" y="302" class="mono body" style="font-size:9.5px; opacity:0.75;">Global regex search, command registry</text>
+  <circle cx="70" cy="332" r="4" fill="#00FF66" />
+  <text x="0" y="336" class="mono label" style="font-size:9px;">2026-01-20</text>
+  <text x="90" y="336" class="mono body" style="font-size:10.5px; font-weight:bold; fill:#00FF66;">V2.0.3.5</text>
+  <text x="185" y="336" class="mono body" style="font-size:9.5px; opacity:0.75;">Fixed persistent-storage failure -- state now survives restarts</text>
+  <circle cx="70" cy="366" r="4" fill="#00FF66" />
+  <text x="0" y="370" class="mono label" style="font-size:9px;">2026-01-15</text>
+  <text x="90" y="370" class="mono body" style="font-size:10.5px; font-weight:bold; fill:#00FF66;">V2.0.2.0</text>
+  <text x="185" y="370" class="mono body" style="font-size:9.5px; opacity:0.75;">Monaco Editor replaces plain textareas</text>
+  <circle cx="70" cy="400" r="4" fill="#00FF66" />
+  <text x="0" y="404" class="mono label" style="font-size:9px;">2026-01-15</text>
+  <text x="90" y="404" class="mono body" style="font-size:10.5px; font-weight:bold; fill:#00FF66;">V2.0.1.0</text>
+  <text x="185" y="404" class="mono body" style="font-size:9.5px; opacity:0.75;">Filesystem bridge + multi-level project explorer</text>
+  <circle cx="70" cy="434" r="4" fill="#00FF66" />
+  <text x="0" y="438" class="mono label" style="font-size:9px;">2026-01-12</text>
+  <text x="90" y="438" class="mono body" style="font-size:10.5px; font-weight:bold; fill:#00FF66;">V2.0.0.1</text>
+  <text x="185" y="438" class="mono body" style="font-size:9.5px; opacity:0.75;">3-panel IDE shell, atmospheric UI</text>
+  <circle cx="70" cy="468" r="4" fill="#FFD000" />
+  <text x="0" y="472" class="mono label" style="font-size:9px;">2026-01-11</text>
+  <text x="90" y="472" class="mono body" style="font-size:10.5px; font-weight:bold; fill:#FFD000;">V2.0.0.0</text>
+  <text x="185" y="472" class="mono body" style="font-size:9.5px; opacity:0.75;">GENESIS -- rebuilt from a single-pane chat UI, seeded by the CS50 Rubber Du...</text>
+</g>
+<g transform="translate(40,1322)">
+  <text class="mono label">RUST KERNEL MODULES</text>
+  <rect x="0" y="14" width="68.0" height="20" fill="rgba(0,255,102,0.08)" stroke="#00FF66" stroke-width="1" rx="3" />
+  <text x="8" y="28" class="mono code" style="font-size:10px;">protocol</text>
+  <rect x="76.0" y="14" width="74.5" height="20" fill="rgba(0,255,102,0.08)" stroke="#00FF66" stroke-width="1" rx="3" />
+  <text x="84.0" y="28" class="mono code" style="font-size:10px;">workspace</text>
+  <rect x="158.5" y="14" width="61.5" height="20" fill="rgba(0,255,102,0.08)" stroke="#00FF66" stroke-width="1" rx="3" />
+  <text x="166.5" y="28" class="mono code" style="font-size:10px;">watcher</text>
+  <rect x="228.0" y="14" width="81.0" height="20" fill="rgba(0,255,102,0.08)" stroke="#00FF66" stroke-width="1" rx="3" />
+  <text x="236.0" y="28" class="mono code" style="font-size:10px;">supervisor</text>
+  <rect x="317.0" y="14" width="48.5" height="20" fill="rgba(0,255,102,0.08)" stroke="#00FF66" stroke-width="1" rx="3" />
+  <text x="325.0" y="28" class="mono code" style="font-size:10px;">error</text>
+  <rect x="373.5" y="14" width="35.5" height="20" fill="rgba(0,255,102,0.08)" stroke="#00FF66" stroke-width="1" rx="3" />
+  <text x="381.5" y="28" class="mono code" style="font-size:10px;">pty</text>
+  <rect x="417.0" y="14" width="68.0" height="20" fill="rgba(0,255,102,0.08)" stroke="#00FF66" stroke-width="1" rx="3" />
+  <text x="425.0" y="28" class="mono code" style="font-size:10px;">terminal</text>
+  <text y="58" class="mono label">CRATES</text>
+  <rect x="0" y="66" width="48.5" height="20" fill="rgba(154,111,193,0.08)" stroke="#9A6FC1" stroke-width="1" rx="3" />
+  <text x="8" y="80" class="mono body" style="font-size:10px; fill:#9A6FC1;">tokio</text>
+  <rect x="56.5" y="66" width="35.5" height="20" fill="rgba(154,111,193,0.08)" stroke="#9A6FC1" stroke-width="1" rx="3" />
+  <text x="64.5" y="80" class="mono body" style="font-size:10px; fill:#9A6FC1;">wry</text>
+  <rect x="100.0" y="66" width="35.5" height="20" fill="rgba(154,111,193,0.08)" stroke="#9A6FC1" stroke-width="1" rx="3" />
+  <text x="108.0" y="80" class="mono body" style="font-size:10px; fill:#9A6FC1;">tao</text>
+  <rect x="143.5" y="66" width="81.0" height="20" fill="rgba(154,111,193,0.08)" stroke="#9A6FC1" stroke-width="1" rx="3" />
+  <text x="151.5" y="80" class="mono body" style="font-size:10px; fill:#9A6FC1;">windows-rs</text>
+  <rect x="232.5" y="66" width="81.0" height="20" fill="rgba(154,111,193,0.08)" stroke="#9A6FC1" stroke-width="1" rx="3" />
+  <text x="240.5" y="80" class="mono body" style="font-size:10px; fill:#9A6FC1;">serde_json</text>
+  <rect x="321.5" y="66" width="42.0" height="20" fill="rgba(154,111,193,0.08)" stroke="#9A6FC1" stroke-width="1" rx="3" />
+  <text x="329.5" y="80" class="mono body" style="font-size:10px; fill:#9A6FC1;">uuid</text>
+  <rect x="371.5" y="66" width="35.5" height="20" fill="rgba(154,111,193,0.08)" stroke="#9A6FC1" stroke-width="1" rx="3" />
+  <text x="379.5" y="80" class="mono body" style="font-size:10px; fill:#9A6FC1;">rfd</text>
+</g>
+<rect width="100%" height="100%" class="scanline" />
+<text x="40" y="1480" class="mono label">NEXICODE // AUTH: Z_JOUBERT // SOURCE: main.rs + CHANGELOG.md // SESSION: 2026-08-25 07:38:56</text>
+</svg>
