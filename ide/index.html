@@ -6,7 +6,6 @@
     <title>AEOWUN // AEOWUN IDE</title>
     <link rel="stylesheet" href="../style.css">
     <style>
-        /* DEDICATED IDE PAGE STYLING */
         .ide-content-stage {
             padding-top: 180px;
             padding-bottom: 120px;
@@ -19,29 +18,30 @@
         }
         .ide-preview-visual {
             position: relative;
-            border: 1px solid var(--border-bright);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 4px;
-            background: var(--void-elevated);
-            box-shadow: 0 80px 160px rgba(0,0,0,0.9);
+            background: #000;
+            box-shadow: 0 80px 160px rgba(0,0,0,0.9), 0 0 40px rgba(138, 43, 226, 0.1);
             overflow: hidden;
             margin-bottom: 80px;
         }
         .ide-preview-visual img {
             width: 100%;
             display: block;
-            opacity: 0.9;
+            opacity: 1;
         }
         .ide-status-bar {
-            background: rgba(138, 43, 226, 0.1);
+            background: rgba(20, 20, 30, 0.9);
             border-top: 1px solid var(--accent-violet);
-            padding: 12px 24px;
+            padding: 16px 28px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-family: var(--font-mono);
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             letter-spacing: 0.25em;
             color: var(--accent-violet);
+            font-weight: bold;
         }
         .ide-info-grid {
             display: grid;
@@ -55,13 +55,13 @@
             border-radius: 2px;
         }
         .info-card h3 {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-bright);
             margin-bottom: 20px;
             letter-spacing: 0.2em;
         }
         .info-card p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-dim);
             line-height: 1.8;
         }
@@ -74,6 +74,7 @@
         @media (max-width: 900px) {
             .ide-info-grid { grid-template-columns: 1fr; gap: 40px; }
             .ide-content-stage { padding-top: 120px; }
+            .ide-preview-visual { border-radius: 0; border-left: 0; border-right: 0; }
         }
     </style>
 </head>
@@ -119,22 +120,22 @@
                 <div class="brand-label mono">AEOWUN RUNTIME</div>
                 <h1 class="product-title mono">AEOWUN IDE</h1>
                 <p class="hero-lead">COMING SOON</p>
-                <p style="color: var(--text-dim); max-width: 600px; margin-inline: auto; font-size: 0.95rem; line-height: 1.6;">
-                    A serious development environment built around your projects, your tools, and your workflow.
+                <p style="color: var(--text-dim); max-width: 650px; margin-inline: auto; font-size: 1rem; line-height: 1.7;">
+                    A professional development environment built around your projects, your tools, and your workflow.
                 </p>
             </div>
 
             <div class="ide-preview-visual">
                 <img src="../assets/ide-preview.png" alt="AEOWUN IDE Interface Preview">
                 <div class="ide-status-bar">
-                    <span>SYSTEM STATUS: IN DEVELOPMENT</span>
+                    <span>SYSTEM STATUS: ACTIVE DEVELOPMENT</span>
                     <span>V2.0.7-PREVIEW</span>
                 </div>
             </div>
 
             <div class="ide-info-grid">
                 <div class="info-card">
-                    <h3 class="mono">REAL PROJECT CONTEXT</h3>
+                    <h3 class="mono">PROJECT AWARENESS</h3>
                     <p>AEOWUN IDE is centered around actual software engineering. It maintains physical awareness of your codebase, allowing for autonomous reasoning and verified implementation within a stable project runtime.</p>
                 </div>
                 <div class="info-card">
@@ -144,7 +145,7 @@
             </div>
 
             <div class="fallback-action">
-                <div class="mono" style="font-size: 0.6rem; color: var(--text-dim); margin-bottom: 24px;">AEOPIN IS AVAILABLE NOW</div>
+                <div class="mono" style="font-size: 0.65rem; color: var(--text-dim); margin-bottom: 24px; letter-spacing: 0.2em;">AEOPIN IS AVAILABLE NOW</div>
                 <a href="/" class="secondary-button mono">GO TO AEOPIN</a>
             </div>
         </div>
