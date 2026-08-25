@@ -5,7 +5,7 @@ import os
 
 # Add parent directory to sys.path to import schematic_gen
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from schematic_gen import CardanoSolver, SchematicGenerator, PROJECTS
+from schematic_gen import CardanoSolver, WorkstationGenerator
 
 @pytest.fixture
 def solver():
@@ -13,7 +13,7 @@ def solver():
 
 @pytest.fixture
 def generator():
-    return SchematicGenerator(PROJECTS)
+    return WorkstationGenerator()
 
 # --- PRECISION TESTS (23 Total) ---
 
@@ -27,7 +27,6 @@ def test_cardano_boundary_one(solver):
 
 def test_cardano_midpoint(solver):
     """Test 3: Spline hitting accuracy at p=0.5."""
-    # For a symmetric ease-in-out curve, p=0.5 should map to t=0.5
     assert pytest.approx(solver.solve_for_t(0.5), rel=1e-5) == 0.5
 
 def test_cardano_monotonicity(solver):
@@ -41,7 +40,6 @@ def test_cardano_monotonicity(solver):
 
 def test_cardano_subpixel_precision_02(solver):
     """Test 5: Sub-pixel precision at 20% progress."""
-    # Analytical verification for 0.45 0 0.55 1 curve
     t = solver.solve_for_t(0.2)
     assert 0.0 <= t <= 1.0
 
@@ -67,37 +65,35 @@ def test_svg_output_contains_smil(generator):
     svg = generator.generate_svg()
     assert "<animateMotion" in svg
 
-def test_svg_output_contains_cardano_anchors(generator):
-    """Test 15: Verify SVG contains defined project nodes."""
+def test_svg_output_contains_whoami(generator):
+    """Test 15: Verify SVG contains the identity block."""
     svg = generator.generate_svg()
-    for p in PROJECTS:
-        assert p["name"] in svg
+    assert "ZACHARY JOUBERT" in svg
 
-def test_svg_output_contains_glow_filter(generator):
-    """Test 16: Verify SVG contains the glow filter def."""
+def test_svg_output_contains_phosphor_filter(generator):
+    """Test 16: Verify SVG contains the phosphor filter def."""
     svg = generator.generate_svg()
-    assert 'id="glow"' in svg
+    assert 'id="phosphor"' in svg
 
 def test_svg_output_is_authoritative(generator):
-    """Test 17: Verify SVG contains the NexiCode signature."""
+    """Test 17: Verify SVG contains the Workstation signature."""
     svg = generator.generate_svg()
     assert "NEXICODE" in svg
-    assert "OS" in svg
+    assert "WORKSTATION" in svg
 
 def test_causal_flow_path_structure(generator):
-    """Test 18: Verify flow lines use quadratic bezier curves."""
+    """Test 18: Verify causal probe uses a path."""
     svg = generator.generate_svg()
-    assert 'class="flow-line"' in svg
-    assert ' d="M' in svg
-    assert ' Q ' in svg
+    assert 'id="probePath"' in svg
 
-def test_pulse_monotony(generator):
-    """Test 19: Verify pulse duration is monotonic and constant."""
+def test_syslog_sync(generator):
+    """Test 19: Verify SYSLOG contains curated logic fragments."""
     svg = generator.generate_svg()
-    assert 'dur="4s"' in svg
+    assert "AUTHORITY_VIOLATION" in svg
+    assert "fd.sync()" in svg
 
 def test_injection_hardening_bg(generator):
-    """Test 20: Verify background rect exists and is hardened."""
+    """Test 20: Verify background rect exists."""
     svg = generator.generate_svg()
     assert '<rect width="100%" height="100%"' in svg
 
@@ -109,10 +105,10 @@ def test_font_authoritative_monospaced(generator):
 def test_viewport_boundary_invariance(generator):
     """Test 22: Verify viewBox matches global width/height."""
     svg = generator.generate_svg()
-    assert 'viewBox="0 0 1000 600"' in svg
+    assert 'viewBox="0 0 1000 700"' in svg
 
 def test_final_verification_idempotency(generator):
-    """Test 23: Verify generating twice produces identical hashes."""
+    """Test 23: Verify generating twice produce identical hashes."""
     svg1 = generator.generate_svg()
     svg2 = generator.generate_svg()
     assert hash(svg1) == hash(svg2)
