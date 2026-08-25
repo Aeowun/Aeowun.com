@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="dark">
+
     <title>AEOWUN // IDE</title>
 
     <link rel="stylesheet" href="../style.css">
@@ -12,20 +13,27 @@
         .ide-content-stage {
             max-width: 1180px;
             margin: 0 auto;
-            padding: 170px 30px 130px;
+            padding: 165px 30px 130px;
         }
 
         .ide-hero {
-            text-align: center;
             margin-bottom: 90px;
+        }
+
+        .ide-kicker,
+        .section-kicker,
+        .tech-label,
+        .spec-label,
+        .history-version {
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: .18em;
         }
 
         .ide-kicker {
             color: var(--accent-violet);
-            font-family: var(--font-mono);
-            font-size: .72rem;
-            font-weight: 800;
-            letter-spacing: .28em;
+            font-size: .66rem;
+            font-weight: 700;
             margin-bottom: 18px;
         }
 
@@ -33,32 +41,29 @@
             margin: 0;
             color: #fff;
             font-family: var(--font-mono);
-            font-size: clamp(3rem, 7vw, 6.5rem);
-            letter-spacing: -.06em;
+            font-size: clamp(3.2rem, 7vw, 6.4rem);
+            font-weight: 500;
+            letter-spacing: -.065em;
             line-height: .92;
         }
 
         .ide-subtitle {
-            margin: 24px auto 0;
-            max-width: 780px;
+            max-width: 860px;
+            margin: 28px 0 0;
             color: var(--text);
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.08rem;
+            line-height: 1.85;
         }
 
         .ide-status {
             display: inline-flex;
-            gap: 12px;
             align-items: center;
-            margin-top: 28px;
-            padding: 9px 14px;
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            background: rgba(255,255,255,.025);
+            gap: 10px;
+            margin-top: 26px;
             color: var(--text-dim);
             font-family: var(--font-mono);
-            font-size: .68rem;
-            letter-spacing: .16em;
+            font-size: .66rem;
+            letter-spacing: .14em;
         }
 
         .status-dot {
@@ -66,36 +71,37 @@
             height: 6px;
             border-radius: 50%;
             background: #00ff66;
-            box-shadow: 0 0 12px rgba(0,255,102,.45);
+            box-shadow: 0 0 10px rgba(0, 255, 102, .4);
         }
 
         .ide-preview {
-            border: 1px solid rgba(255,255,255,.15);
-            border-radius: 10px;
+            margin-bottom: 115px;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, .15);
+            border-radius: 10px;
             background: #030305;
             box-shadow:
-                0 80px 160px rgba(0,0,0,.82),
-                0 0 70px rgba(138,43,226,.11);
-            margin-bottom: 110px;
+                0 80px 160px rgba(0, 0, 0, .82),
+                0 0 70px rgba(138, 43, 226, .10);
         }
 
         .ide-preview img {
-            width: 100%;
             display: block;
+            width: 100%;
         }
 
         .ide-preview-bar {
             display: flex;
             justify-content: space-between;
             gap: 20px;
-            padding: 15px 22px;
+            padding: 14px 20px;
             border-top: 1px solid var(--accent-violet);
             background: #08070b;
             color: var(--accent-violet);
             font-family: var(--font-mono);
-            font-size: .68rem;
-            letter-spacing: .16em;
+            font-size: .64rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
         }
 
         .ide-section {
@@ -103,12 +109,10 @@
         }
 
         .section-kicker {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             color: var(--accent-violet);
-            font-family: var(--font-mono);
-            font-size: .68rem;
-            font-weight: 800;
-            letter-spacing: .25em;
+            font-size: .64rem;
+            font-weight: 700;
         }
 
         .section-title {
@@ -116,85 +120,89 @@
             color: #fff;
             font-family: var(--font-mono);
             font-size: clamp(1.8rem, 3vw, 2.7rem);
+            font-weight: 500;
             letter-spacing: -.04em;
         }
 
         .section-copy {
-            max-width: 830px;
+            max-width: 860px;
             color: var(--text);
-            font-size: 1rem;
             line-height: 1.85;
         }
 
-        .tech-grid {
+        .feature-grid,
+        .tech-grid,
+        .metric-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0,1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 18px;
         }
 
-        .tech-card {
-            min-height: 180px;
+        .feature-card,
+        .tech-card,
+        .metric-card {
             padding: 28px;
             border: 1px solid var(--border);
             border-radius: 7px;
-            background: rgba(255,255,255,.02);
+            background: rgba(255, 255, 255, .02);
         }
 
-        .tech-label {
-            margin-bottom: 12px;
-            color: var(--accent-violet);
-            font-family: var(--font-mono);
-            font-size: .63rem;
-            font-weight: 800;
-            letter-spacing: .2em;
-        }
-
-        .tech-card h3 {
-            margin: 0 0 14px;
+        .feature-card h3,
+        .tech-card h3,
+        .metric-card h3 {
+            margin: 0 0 12px;
             color: #fff;
             font-family: var(--font-mono);
-            font-size: 1rem;
+            font-size: .88rem;
+            font-weight: 600;
             letter-spacing: .08em;
         }
 
-        .tech-card p {
+        .feature-card p,
+        .tech-card p,
+        .metric-card p {
             margin: 0;
             color: var(--text);
             line-height: 1.75;
         }
 
-        .spec-table {
-            border-top: 1px solid var(--border);
+        .tech-label {
+            margin-bottom: 10px;
+            color: var(--accent-violet);
+            font-size: .60rem;
+            font-weight: 700;
         }
 
-        .spec-row {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 24px;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border);
-            font-family: var(--font-mono);
-            font-size: .8rem;
+        .metric-card {
+            min-height: 165px;
         }
 
-        .spec-row span {
-            color: var(--muted);
-        }
-
-        .spec-row strong {
+        .metric-value {
+            margin-bottom: 10px;
             color: #fff;
-            font-weight: 500;
+            font-family: var(--font-mono);
+            font-size: 1.65rem;
+            letter-spacing: -.03em;
         }
 
-        .architecture {
-            padding: 30px;
+        .metric-caption {
+            margin-bottom: 10px;
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+            font-size: .63rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .code-panel {
+            overflow-x: auto;
+            padding: 28px;
             border: 1px solid var(--border);
             border-radius: 7px;
             background: #050509;
-            overflow-x: auto;
         }
 
-        .architecture pre {
+        .code-panel pre {
             margin: 0;
             color: #d8d1e4;
             font-family: var(--font-mono);
@@ -203,85 +211,105 @@
             white-space: pre;
         }
 
-        .architecture .accent {
+        .code-accent {
             color: var(--accent-violet);
         }
 
-        .architecture .green {
+        .code-green {
             color: #00ff66;
         }
 
-        .architecture .dim {
-            color: var(--muted-2);
+        .spec-table {
+            border-top: 1px solid var(--border);
+        }
+
+        .spec-row {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 24px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .spec-label {
+            color: var(--muted);
+            font-size: .64rem;
+        }
+
+        .spec-value {
+            color: #fff;
+            font-family: var(--font-mono);
+            font-size: .78rem;
         }
 
         .history-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0,1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 12px;
         }
 
         .history-card {
+            min-height: 145px;
             padding: 20px;
             border: 1px solid var(--border);
             border-radius: 7px;
-            background: rgba(255,255,255,.015);
+            background: rgba(255, 255, 255, .015);
         }
 
         .history-version {
-            margin-bottom: 8px;
+            margin-bottom: 9px;
             color: var(--accent-violet);
-            font-family: var(--font-mono);
-            font-size: .68rem;
-            letter-spacing: .12em;
+            font-size: .59rem;
+            font-weight: 700;
         }
 
         .history-card strong {
             display: block;
+            margin-bottom: 8px;
             color: #fff;
             font-family: var(--font-mono);
-            font-size: .82rem;
+            font-size: .77rem;
             line-height: 1.5;
         }
 
         .history-card span {
-            display: block;
-            margin-top: 8px;
             color: var(--text-dim);
-            font-size: .8rem;
+            font-size: .77rem;
             line-height: 1.55;
         }
 
         .ide-cta {
-            text-align: center;
-            padding-top: 70px;
+            padding-top: 60px;
             border-top: 1px solid var(--border);
         }
 
         .ide-cta h2 {
-            margin: 0 0 14px;
+            margin: 0 0 12px;
             color: #fff;
             font-family: var(--font-mono);
-            font-size: 1.9rem;
+            font-size: 1.7rem;
+            font-weight: 500;
         }
 
         .ide-cta p {
-            margin: 0 0 28px;
+            margin: 0 0 26px;
             color: var(--text-dim);
         }
 
         @media (max-width: 900px) {
-            .tech-grid {
+            .feature-grid,
+            .tech-grid,
+            .metric-grid {
                 grid-template-columns: 1fr;
             }
 
             .history-grid {
-                grid-template-columns: repeat(2, minmax(0,1fr));
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
             .spec-row {
                 grid-template-columns: 1fr;
-                gap: 6px;
+                gap: 7px;
             }
         }
 
@@ -301,7 +329,8 @@
         }
     </style>
 
-    <script async
+    <script
+        async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7976685360451203"
         crossorigin="anonymous">
     </script>
@@ -313,24 +342,73 @@
     <div id="technical-grid"></div>
 
     <div id="wave-field">
-        <svg id="wave-field-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <svg
+            id="wave-field-svg"
+            viewBox="0 0 1000 1000"
+            preserveAspectRatio="none">
+
             <defs>
-                <filter id="ribbon-glow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="15" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+
+                <filter
+                    id="ribbon-glow"
+                    x="-50%"
+                    y="-50%"
+                    width="200%"
+                    height="200%">
+
+                    <feGaussianBlur
+                        stdDeviation="15"
+                        result="blur"/>
+
+                    <feComposite
+                        in="SourceGraphic"
+                        in2="blur"
+                        operator="over"/>
+
                 </filter>
 
-                <linearGradient id="grad-v" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="rgba(124, 34, 228, 0)" />
-                    <stop offset="50%" stop-color="rgba(124, 34, 228, 0.7)" />
-                    <stop offset="100%" stop-color="rgba(124, 34, 228, 0)" />
+                <linearGradient
+                    id="grad-v"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%">
+
+                    <stop
+                        offset="0%"
+                        stop-color="rgba(124,34,228,0)"/>
+
+                    <stop
+                        offset="50%"
+                        stop-color="rgba(124,34,228,.7)"/>
+
+                    <stop
+                        offset="100%"
+                        stop-color="rgba(124,34,228,0)"/>
+
                 </linearGradient>
 
-                <linearGradient id="grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="rgba(0, 210, 241, 0)" />
-                    <stop offset="50%" stop-color="rgba(0, 210, 241, 0.5)" />
-                    <stop offset="100%" stop-color="rgba(0, 210, 241, 0)" />
+                <linearGradient
+                    id="grad-b"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%">
+
+                    <stop
+                        offset="0%"
+                        stop-color="rgba(0,210,241,0)"/>
+
+                    <stop
+                        offset="50%"
+                        stop-color="rgba(0,210,241,.5)"/>
+
+                    <stop
+                        offset="100%"
+                        stop-color="rgba(0,210,241,0)"/>
+
                 </linearGradient>
+
             </defs>
         </svg>
     </div>
@@ -338,200 +416,547 @@
     <canvas id="ambient-canvas"></canvas>
 
     <header class="aeowun-header">
+
         <div class="header-inner container">
+
             <a href="/" class="brand">
                 <span class="brand-name mono">AEOWUN</span>
             </a>
 
             <nav class="product-nav">
-                <a href="/" class="nav-item mono">AEOPIN</a>
-                <a href="/ide/" class="nav-item mono active">AEOWUN IDE</a>
+
+                <a
+                    href="/"
+                    class="nav-item mono">
+                    AEOPIN
+                </a>
+
+                <a
+                    href="/ide/"
+                    class="nav-item mono active">
+                    AEOWUN IDE
+                </a>
+
                 <a
                     href="https://github.com/Aeowun/Aeopin_v0.1.5/releases/tag/v1.6.0"
                     class="nav-item download-link mono">
                     DOWNLOAD
                 </a>
+
             </nav>
+
         </div>
+
     </header>
 
     <main class="container">
+
         <div class="ide-content-stage">
 
             <!-- HERO -->
-            <section class="ide-hero">
-                <div class="ide-kicker">AEOWUN / WINDOWS DEVELOPMENT ENVIRONMENT</div>
 
-                <h1 class="ide-title">AEOWUN IDE</h1>
+            <section class="ide-hero">
+
+                <div class="ide-kicker">
+                    AEOWUN / WINDOWS DEVELOPMENT ENVIRONMENT
+                </div>
+
+                <h1 class="ide-title">
+                    AEOWUN IDE
+                </h1>
 
                 <p class="ide-subtitle">
-                    A project-centered development environment built around
-                    real files, real processes, source intelligence, terminal
-                    execution, project structure, and verification.
+                    A development environment centered on the project:
+                    source, filesystem, terminal, runtime, analysis,
+                    semantic structure, and project state.
                 </p>
 
                 <div class="ide-status">
                     <span class="status-dot"></span>
                     <span>ACTIVE DEVELOPMENT</span>
                 </div>
+
             </section>
 
-            <!-- REAL UI -->
+            <!-- PREVIEW -->
+
             <section class="ide-preview">
+
                 <img
                     src="../assets/ide-teaser.png"
-                    alt="AEOWUN IDE showing Explorer, editor, terminal, project mapping, and assistant">
+                    alt="AEOWUN IDE interface">
 
                 <div class="ide-preview-bar">
-                    <span>MONACO / XTERM / CODEGRAPH</span>
-                    <span>RUST + PYTHON</span>
+
+                    <span>
+                        MONACO / XTERM / CODEGRAPH
+                    </span>
+
+                    <span>
+                        RUST / PYTHON
+                    </span>
+
                 </div>
+
             </section>
 
-            <!-- SYSTEM -->
+            <!-- WORKSPACE DESIGN -->
+
             <section class="ide-section">
-                <div class="section-kicker">SYSTEM</div>
-                <h2 class="section-title">THE STACK IS THE PRODUCT.</h2>
+
+                <div class="section-kicker">
+                    WORKSPACE
+                </div>
+
+                <h2 class="section-title">
+                    SAME IDE CAPABILITY. LESS PERMANENT UI.
+                </h2>
+
+                <p class="section-copy">
+                    AEOWUN uses a dynamic panel model instead of keeping every
+                    tool visible at the same time. Explorer, terminal,
+                    project analysis, assistant, and other surfaces can be
+                    opened, closed, resized, layered, and rearranged as the
+                    current task requires.
+                </p>
+
+                <div
+                    class="feature-grid"
+                    style="margin-top:30px;">
+
+                    <div class="feature-card">
+
+                        <h3>
+                            DYNAMIC PANELS
+                        </h3>
+
+                        <p>
+                            Tools are available when needed instead of
+                            permanently consuming workspace area.
+                        </p>
+
+                    </div>
+
+                    <div class="feature-card">
+
+                        <h3>
+                            DYNAMIC TABS
+                        </h3>
+
+                        <p>
+                            Editors and terminal sessions share a flexible
+                            tab model rather than a fixed collection of views.
+                        </p>
+
+                    </div>
+
+                    <div class="feature-card">
+
+                        <h3>
+                            RESIZABLE REGIONS
+                        </h3>
+
+                        <p>
+                            Horizontal and vertical panel boundaries can be
+                            adjusted directly to fit the current workflow.
+                        </p>
+
+                    </div>
+
+                    <div class="feature-card">
+
+                        <h3>
+                            LAYERED WORKSPACE
+                        </h3>
+
+                        <p>
+                            Workspace surfaces can be combined rather than
+                            forcing a single rigid layout.
+                        </p>
+
+                    </div>
+
+                    <div class="feature-card">
+
+                        <h3>
+                            PERSISTENT STATE
+                        </h3>
+
+                        <p>
+                            Project, editor, window, and workspace state
+                            persist across launches.
+                        </p>
+
+                    </div>
+
+                    <div class="feature-card">
+
+                        <h3>
+                            COMMAND SYSTEM
+                        </h3>
+
+                        <p>
+                            Commands are centrally registered and exposed
+                            through menus and keyboard shortcuts.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- IDE SURFACE -->
+
+            <section class="ide-section">
+
+                <div class="section-kicker">
+                    IDE SURFACE
+                </div>
+
+                <h2 class="section-title">
+                    THE STANDARD PARTS ARE STILL THERE.
+                </h2>
 
                 <div class="tech-grid">
 
                     <div class="tech-card">
-                        <div class="tech-label">NATIVE RUNTIME</div>
-                        <h3>RUST</h3>
+
+                        <div class="tech-label">
+                            PROJECT
+                        </div>
+
+                        <h3>
+                            EXPLORER
+                        </h3>
+
                         <p>
-                            Native runtime layer for Windows integration,
-                            filesystem operations, process management,
-                            terminal infrastructure, IPC, and runtime control.
+                            Real project filesystem navigation with nested
+                            directories and direct source-file access.
                         </p>
+
                     </div>
 
                     <div class="tech-card">
-                        <div class="tech-label">ENGINEERING CORE</div>
-                        <h3>PYTHON</h3>
+
+                        <div class="tech-label">
+                            SOURCE
+                        </div>
+
+                        <h3>
+                            MONACO EDITOR
+                        </h3>
+
                         <p>
-                            Project intelligence, semantic analysis,
-                            structure analysis, intent, context, diagnostics,
-                            orchestration, and worker infrastructure.
+                            Multi-tab source editing, dirty state, save,
+                            save-as, search, replacement, navigation,
+                            minimap, selection, and formatting.
                         </p>
+
                     </div>
 
                     <div class="tech-card">
-                        <div class="tech-label">SOURCE EDITOR</div>
-                        <h3>MONACO</h3>
+
+                        <div class="tech-label">
+                            EXECUTION
+                        </div>
+
+                        <h3>
+                            TERMINAL
+                        </h3>
+
                         <p>
-                            Full source editing surface with tabs, dirty-state
-                            tracking, save/save-as, find/replace, selections,
-                            minimap, navigation, and project-backed files.
+                            Multiple interactive local terminal sessions
+                            with real process input, output, resizing,
+                            and lifecycle control.
                         </p>
+
                     </div>
 
                     <div class="tech-card">
-                        <div class="tech-label">TERMINAL</div>
-                        <h3>XTERM.JS + PTY</h3>
+
+                        <div class="tech-label">
+                            NAVIGATION
+                        </div>
+
+                        <h3>
+                            PROJECT MAP
+                        </h3>
+
                         <p>
-                            Real terminal sessions connected to the local
-                            development environment, with resizing,
-                            multiple sessions, process lifecycle, and
-                            interactive input.
+                            Structural and semantic project navigation,
+                            graph visualization, context inspection,
+                            source jumps, and explorer bridging.
                         </p>
+
                     </div>
 
                     <div class="tech-card">
-                        <div class="tech-label">PYTHON INTELLIGENCE</div>
-                        <h3>JEDI</h3>
+
+                        <div class="tech-label">
+                            ASSISTANCE
+                        </div>
+
+                        <h3>
+                            AI PANEL
+                        </h3>
+
                         <p>
-                            Python-aware completion, inference, navigation,
-                            and source analysis.
+                            Integrated engineering assistance connected
+                            to the same project and runtime environment.
                         </p>
+
                     </div>
 
                     <div class="tech-card">
-                        <div class="tech-label">STRUCTURAL PARSING</div>
-                        <h3>TREE-SITTER</h3>
-                        <p>
-                            Incremental syntax parsing used to understand
-                            source structure beyond plain text.
-                        </p>
-                    </div>
 
-                    <div class="tech-card">
-                        <div class="tech-label">GRAPH VISUALIZATION</div>
-                        <h3>CYTOSCAPE</h3>
-                        <p>
-                            Interactive project-architecture visualization
-                            for relationships, hierarchy, semantic regions,
-                            and source wayfinding.
-                        </p>
-                    </div>
+                        <div class="tech-label">
+                            SYSTEM
+                        </div>
 
-                    <div class="tech-card">
-                        <div class="tech-label">DESKTOP RUNTIME</div>
-                        <h3>WEBVIEW2 / WRY</h3>
+                        <h3>
+                            WINDOW / PROCESS CONTROL
+                        </h3>
+
                         <p>
-                            The desktop shell connects the interface to the
-                            native runtime through an explicit IPC boundary.
+                            Windows desktop behavior, runtime startup,
+                            process management, status reporting, and
+                            persistent workspace handling.
                         </p>
+
                     </div>
 
                 </div>
+
+            </section>
+
+            <!-- SOFTWARE STACK -->
+
+            <section class="ide-section">
+
+                <div class="section-kicker">
+                    BUILT WITH
+                </div>
+
+                <h2 class="section-title">
+                    SOFTWARE STACK
+                </h2>
+
+                <div class="tech-grid">
+
+                    <div class="tech-card">
+
+                        <div class="tech-label">
+                            NATIVE RUNTIME
+                        </div>
+
+                        <h3>
+                            RUST
+                        </h3>
+
+                        <p>
+                            Native runtime infrastructure for filesystem
+                            operations, processes, IPC, terminal support,
+                            and Windows integration.
+                        </p>
+
+                    </div>
+
+                    <div class="tech-card">
+
+                        <div class="tech-label">
+                            PROJECT INTELLIGENCE
+                        </div>
+
+                        <h3>
+                            PYTHON
+                        </h3>
+
+                        <p>
+                            Semantic analysis, structure analysis,
+                            project mapping, intent, context, diagnostics,
+                            watchdog, worker infrastructure, and the
+                            Affinity Engine.
+                        </p>
+
+                    </div>
+
+                    <div class="tech-card">
+
+                        <div class="tech-label">
+                            SOURCE INTELLIGENCE
+                        </div>
+
+                        <h3>
+                            JEDI
+                        </h3>
+
+                        <p>
+                            Python-aware completion, inference,
+                            navigation, and source analysis.
+                        </p>
+
+                    </div>
+
+                    <div class="tech-card">
+
+                        <div class="tech-label">
+                            STRUCTURAL PARSING
+                        </div>
+
+                        <h3>
+                            TREE-SITTER
+                        </h3>
+
+                        <p>
+                            Incremental syntax parsing for source-level
+                            structural understanding.
+                        </p>
+
+                    </div>
+
+                    <div class="tech-card">
+
+                        <div class="tech-label">
+                            EDITOR
+                        </div>
+
+                        <h3>
+                            MONACO
+                        </h3>
+
+                        <p>
+                            The primary source-editing surface.
+                        </p>
+
+                    </div>
+
+                    <div class="tech-card">
+
+                        <div class="tech-label">
+                            TERMINAL
+                        </div>
+
+                        <h3>
+                            XTERM.JS + PORTABLE-PTY
+                        </h3>
+
+                        <p>
+                            Terminal rendering and interactive process
+                            communication.
+                        </p>
+
+                    </div>
+
+                    <div class="tech-card">
+
+                        <div class="tech-label">
+                            GRAPH
+                        </div>
+
+                        <h3>
+                            CYTOSCAPE
+                        </h3>
+
+                        <p>
+                            Interactive project relationship and
+                            architecture visualization.
+                        </p>
+
+                    </div>
+
+                    <div class="tech-card">
+
+                        <div class="tech-label">
+                            DESKTOP
+                        </div>
+
+                        <h3>
+                            WEBVIEW2 / WRY
+                        </h3>
+
+                        <p>
+                            Desktop rendering and native runtime integration.
+                        </p>
+
+                    </div>
+
+                </div>
+
             </section>
 
             <!-- ARCHITECTURE -->
-            <section class="ide-section">
-                <div class="section-kicker">ARCHITECTURE</div>
-                <h2 class="section-title">FROM UI TO NATIVE RUNTIME.</h2>
 
-                <div class="architecture">
-<pre><span class="accent">AEOWUN IDE</span>
+            <section class="ide-section">
+
+                <div class="section-kicker">
+                    ARCHITECTURE
+                </div>
+
+                <h2 class="section-title">
+                    SYSTEM LAYOUT
+                </h2>
+
+                <div class="code-panel">
+
+<pre><span class="code-accent">AEOWUN IDE</span>
 │
-├── Frontend
+├── UI
 │   ├── HTML / CSS / JavaScript
-│   ├── Monaco Editor
+│   ├── Monaco
 │   ├── xterm.js
 │   └── Cytoscape
 │
 ├── IPC
 │   └── Native message bridge
 │
-├── <span class="green">Rust Runtime</span>
+├── <span class="code-green">RUST RUNTIME</span>
 │   ├── WebView2 / Wry
 │   ├── Tokio
 │   ├── portable-pty
 │   ├── Windows APIs
 │   ├── Filesystem
-│   └── Process / Runtime Control
+│   └── Process control
 │
-├── <span class="accent">Python Core</span>
-│   ├── Affinity Engine
-│   ├── Semantic Engine
-│   ├── Structural Analysis
-│   ├── Project Mapper
-│   ├── Intent
-│   ├── Context
-│   ├── Diagnostics
-│   ├── Watchdog
-│   └── Worker System
-│
-└── Language / Project Intelligence
-    ├── Jedi
-    └── Tree-sitter</pre>
+└── <span class="code-accent">PYTHON CORE</span>
+    ├── Affinity Engine
+    ├── Semantic Engine
+    ├── Structure
+    ├── Project Mapper
+    ├── Intent
+    ├── Context
+    ├── Diagnostics
+    ├── Watchdog
+    └── Worker System</pre>
+
                 </div>
+
             </section>
 
-            <!-- PROJECT MODEL -->
+            <!-- CODEGRAPH -->
+
             <section class="ide-section">
-                <div class="section-kicker">PROJECT MODEL</div>
-                <h2 class="section-title">CODE IS A STRUCTURE.</h2>
+
+                <div class="section-kicker">
+                    CODEGRAPH
+                </div>
+
+                <h2 class="section-title">
+                    PROJECT MODEL
+                </h2>
 
                 <p class="section-copy">
-                    AEOWUN maintains a project model that connects the physical
-                    filesystem to the structure and relationships inside the source.
-                    CodeGraph exposes that model as a navigable surface instead of
-                    reducing the project to a folder tree.
+                    CodeGraph represents the project as a typed property
+                    multigraph connecting physical files, symbols,
+                    occurrences, architecture, and relationships.
                 </p>
 
-                <div class="architecture" style="margin-top:30px;">
-<pre><span class="accent">Project</span>
+                <div
+                    class="code-panel"
+                    style="margin-top:30px;">
+
+<pre><span class="code-accent">Project</span>
+│
 ├── Region
 │   └── Subsystem
 │       └── Component
@@ -548,310 +973,671 @@
 ├── Type-Uses
 ├── Architecturally-Related
 └── Semantically-Related</pre>
+
                 </div>
+
             </section>
 
-            <!-- CODEGRAPH -->
+            <!-- PROJECT VIEWS -->
+
             <section class="ide-section">
-                <div class="section-kicker">CODEGRAPH</div>
-                <h2 class="section-title">MULTIPLE VIEWS. ONE PROJECT MODEL.</h2>
 
-                <div class="tech-grid">
+                <div class="section-kicker">
+                    CODEGRAPH
+                </div>
 
-                    <div class="tech-card">
-                        <div class="tech-label">PHYSICAL</div>
-                        <h3>DIRECTORY VIEW</h3>
+                <h2 class="section-title">
+                    MULTIPLE PROJECT VIEWS
+                </h2>
+
+                <div class="feature-grid">
+
+                    <div class="feature-card">
+
+                        <h3>
+                            DIRECTORY
+                        </h3>
+
                         <p>
-                            Filesystem hierarchy mapped directly to the project.
+                            Physical filesystem hierarchy.
+                            Folder → file relationships.
                         </p>
+
                     </div>
 
-                    <div class="tech-card">
-                        <div class="tech-label">ARCHITECTURAL</div>
-                        <h3>ARCHITECTURE VIEW</h3>
+                    <div class="feature-card">
+
+                        <h3>
+                            ARCHITECTURE
+                        </h3>
+
                         <p>
-                            Recovered regions, subsystems, and components.
+                            Recovered regions, subsystems,
+                            components, and relationships.
                         </p>
+
                     </div>
 
-                    <div class="tech-card">
-                        <div class="tech-label">SEMANTIC</div>
-                        <h3>SEMANTICS VIEW</h3>
+                    <div class="feature-card">
+
+                        <h3>
+                            SEMANTICS
+                        </h3>
+
                         <p>
-                            Files grouped through structural, lexical,
-                            and semantic affinity.
+                            Semantic and lexical relationships
+                            across project components.
                         </p>
+
                     </div>
 
-                    <div class="tech-card">
-                        <div class="tech-label">SYMBOLIC</div>
-                        <h3>SYMBOL VIEW</h3>
+                    <div class="feature-card">
+
+                        <h3>
+                            SYMBOLS
+                        </h3>
+
                         <p>
-                            Symbols, occurrences, calls, references,
-                            imports, and related source locations.
+                            Symbol definitions, references,
+                            calls, and occurrences.
                         </p>
+
+                    </div>
+
+                    <div class="feature-card">
+
+                        <h3>
+                            RELATIONSHIPS
+                        </h3>
+
+                        <p>
+                            Focused views over specific edge types
+                            such as imports or calls.
+                        </p>
+
+                    </div>
+
+                    <div class="feature-card">
+
+                        <h3>
+                            LAYERS
+                        </h3>
+
+                        <p>
+                            Complexity, coupling, task relevance,
+                            build state, linting, and coverage overlays.
+                        </p>
+
                     </div>
 
                 </div>
+
             </section>
 
             <!-- AFFINITY -->
-            <section class="ide-section">
-                <div class="section-kicker">AFFINITY ENGINE</div>
-                <h2 class="section-title">MULTIPLE SIGNALS. DETERMINISTIC CORE.</h2>
 
-                <div class="architecture">
-<pre><span class="accent">STRUCTURAL EVIDENCE</span>
-          +
-<span class="accent">LEXICAL / TF-IDF</span>
-          +
-<span class="accent">ORGANIZATIONAL EVIDENCE</span>
-          ↓
-     <span class="green">AFFINITY ENGINE</span>
-          ↓
-<span class="accent">PROJECT RELATIONSHIPS</span>
-          ↓
-<span class="accent">HIERARCHY RECOVERY</span></pre>
+            <section class="ide-section">
+
+                <div class="section-kicker">
+                    PROJECT INTELLIGENCE
                 </div>
 
-                <p class="section-copy" style="margin-top:26px;">
-                    The core project model is designed to derive structure from
-                    measurable project evidence rather than requiring an LLM
-                    to invent the architecture.
-                </p>
-            </section>
+                <h2 class="section-title">
+                    AFFINITY ENGINE
+                </h2>
 
-            <!-- ANALYTICS -->
-            <section class="ide-section">
-                <div class="section-kicker">ANALYTICS</div>
-                <h2 class="section-title">MEASURE THE PROJECT.</h2>
+                <div class="code-panel">
 
-                <div class="tech-grid">
-
-                    <div class="tech-card">
-                        <div class="tech-label">COMPLEXITY</div>
-                        <h3>LOGIC DENSITY</h3>
-                        <p>
-                            Cyclomatic or cognitive complexity can identify
-                            code that is becoming harder to reason about.
-                        </p>
-                    </div>
-
-                    <div class="tech-card">
-                        <div class="tech-label">COUPLING</div>
-                        <h3>DEPENDENCY PRESSURE</h3>
-                        <p>
-                            Identify highly connected components and
-                            dependency-heavy areas of the system.
-                        </p>
-                    </div>
-
-                    <div class="tech-card">
-                        <div class="tech-label">CENTRALITY</div>
-                        <h3>NETWORK IMPORTANCE</h3>
-                        <p>
-                            Measure relative importance inside the project's
-                            relationship network.
-                        </p>
-                    </div>
-
-                    <div class="tech-card">
-                        <div class="tech-label">CHURN</div>
-                        <h3>CHANGE FREQUENCY</h3>
-                        <p>
-                            Track areas of the project that change frequently.
-                        </p>
-                    </div>
-
-                    <div class="tech-card">
-                        <div class="tech-label">DOI</div>
-                        <h3>DEGREE OF INTEREST</h3>
-                        <p>
-                            Surface project regions relevant to the work
-                            currently being performed.
-                        </p>
-                    </div>
-
-                    <div class="tech-card">
-                        <div class="tech-label">STATUS</div>
-                        <h3>RUNTIME SIGNALS</h3>
-                        <p>
-                            Project views can incorporate build, lint,
-                            coverage, and runtime status where available.
-                        </p>
-                    </div>
+<pre><span class="code-accent">STRUCTURAL</span>
+        +
+<span class="code-accent">LEXICAL / TF-IDF</span>
+        +
+<span class="code-accent">ORGANIZATIONAL</span>
+        │
+        ▼
+<span class="code-green">AFFINITY ENGINE</span>
+        │
+        ▼
+<span class="code-accent">RELATIONSHIPS</span>
+        │
+        ▼
+<span class="code-accent">HIERARCHY RECOVERY</span></pre>
 
                 </div>
+
             </section>
 
-            <!-- WORKFLOW -->
-            <section class="ide-section">
-                <div class="section-kicker">ENGINEERING LOOP</div>
-                <h2 class="section-title">WRITE. RUN. OBSERVE. VERIFY.</h2>
+            <!-- NAVIGATION -->
 
-                <div class="architecture">
-<pre><span class="accent">OPEN PROJECT</span>
-      ↓
-<span class="accent">UNDERSTAND STRUCTURE</span>
-      ↓
-<span class="accent">EDIT SOURCE</span>
-      ↓
-<span class="accent">EXECUTE</span>
-      ↓
-<span class="accent">OBSERVE RUNTIME</span>
-      ↓
-<span class="accent">TRACE FAILURE</span>
-      ↓
-<span class="accent">CORRECT</span>
-      ↓
-<span class="green">VERIFY RESULT</span></pre>
+            <section class="ide-section">
+
+                <div class="section-kicker">
+                    NAVIGATION
                 </div>
-            </section>
 
-            <!-- HISTORY -->
-            <section class="ide-section">
-                <div class="section-kicker">PROJECT HISTORY</div>
-                <h2 class="section-title">BUILT IN PUBLIC.</h2>
+                <h2 class="section-title">
+                    SOURCE ↔ PROJECT MODEL
+                </h2>
 
-                <div class="history-grid">
+                <div class="feature-grid">
 
-                    <div class="history-card">
-                        <div class="history-version">V2.0.0.0</div>
-                        <strong>V2 GENESIS</strong>
-                        <span>3-panel IDE shell and atmospheric UI foundation.</span>
+                    <div class="feature-card">
+
+                        <h3>
+                            SEMANTIC SEARCH
+                        </h3>
+
+                        <p>
+                            Search semantic regions and symbols from the
+                            project model.
+                        </p>
+
                     </div>
 
-                    <div class="history-card">
-                        <div class="history-version">V2.0.2.0</div>
-                        <strong>MONACO</strong>
-                        <span>Professional source editor integrated into the workspace.</span>
+                    <div class="feature-card">
+
+                        <h3>
+                            EDITOR CONTEXT
+                        </h3>
+
+                        <p>
+                            Editor position is resolved against the
+                            project's semantic context.
+                        </p>
+
                     </div>
 
-                    <div class="history-card">
-                        <div class="history-version">V2.0.4.0</div>
-                        <strong>PROJECT SEARCH</strong>
-                        <span>Project-wide text search with regex support and navigation.</span>
+                    <div class="feature-card">
+
+                        <h3>
+                            OPEN SOURCE
+                        </h3>
+
+                        <p>
+                            Move from project structure directly to the
+                            relevant source file and location.
+                        </p>
+
                     </div>
 
-                    <div class="history-card">
-                        <div class="history-version">V2.0.5.0</div>
-                        <strong>TERMINAL</strong>
-                        <span>Integrated local shell through xterm.js.</span>
-                    </div>
+                    <div class="feature-card">
 
-                    <div class="history-card">
-                        <div class="history-version">V2.0.6.X</div>
-                        <strong>SEMANTIC PROVIDERS</strong>
-                        <span>Jedi Python analysis and Tree-sitter structural parsing.</span>
-                    </div>
+                        <h3>
+                            REVEAL
+                        </h3>
 
-                    <div class="history-card">
-                        <div class="history-version">V2.0.6.X</div>
-                        <strong>AFFINITY ENGINE</strong>
-                        <span>Structural, lexical, and organizational project evidence.</span>
-                    </div>
+                        <p>
+                            Move from semantic structure back to the
+                            physical project hierarchy.
+                        </p>
 
-                    <div class="history-card">
-                        <div class="history-version">V2.0.7.3</div>
-                        <strong>WINDOW PRESENTATION</strong>
-                        <span>Persistent geometry and Windows 11 DWM integration.</span>
-                    </div>
-
-                    <div class="history-card">
-                        <div class="history-version">V2.0.8.0</div>
-                        <strong>QUALITY / SCALE</strong>
-                        <span>Type coverage, testing infrastructure, profiling, and watchdog hardening.</span>
                     </div>
 
                 </div>
+
             </section>
 
-            <!-- SPEC -->
+            <!-- MEASURED ENGINEERING -->
+
             <section class="ide-section">
-                <div class="section-kicker">CURRENT SPEC</div>
-                <h2 class="section-title">TECHNICAL PROFILE.</h2>
+
+                <div class="section-kicker">
+                    ENGINEERING RECORD
+                </div>
+
+                <h2 class="section-title">
+                    MEASURED WORK
+                </h2>
+
+                <div class="metric-grid">
+
+                    <div class="metric-card">
+
+                        <div class="metric-value">
+                            5,000
+                        </div>
+
+                        <div class="metric-caption">
+                            Affinity Engine benchmark nodes
+                        </div>
+
+                        <p>
+                            Scalability boundary quantified during V2.0.8.0
+                            quality and scalability work.
+                        </p>
+
+                    </div>
+
+                    <div class="metric-card">
+
+                        <div class="metric-value">
+                            100%
+                        </div>
+
+                        <div class="metric-caption">
+                            PEP 484 coverage / core
+                        </div>
+
+                        <p>
+                            Strict type hinting established across the
+                            Python core module.
+                        </p>
+
+                    </div>
+
+                    <div class="metric-card">
+
+                        <div class="metric-value">
+                            PYTEST
+                        </div>
+
+                        <div class="metric-caption">
+                            Automated core testing
+                        </div>
+
+                        <p>
+                            Core unit-test infrastructure established
+                            alongside coverage measurement.
+                        </p>
+
+                    </div>
+
+                    <div class="metric-card">
+
+                        <div class="metric-value">
+                            WATCHDOG
+                        </div>
+
+                        <div class="metric-caption">
+                            Concurrency hardening
+                        </div>
+
+                        <p>
+                            Race-condition hardening applied to the
+                            orchestration watchdog.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- SPECIFICATIONS -->
+
+            <section class="ide-section">
+
+                <div class="section-kicker">
+                    SPECIFICATIONS
+                </div>
+
+                <h2 class="section-title">
+                    CURRENT SYSTEM
+                </h2>
 
                 <div class="spec-table">
 
                     <div class="spec-row">
-                        <span>Platform</span>
-                        <strong>Windows</strong>
+
+                        <div class="spec-label">
+                            PLATFORM
+                        </div>
+
+                        <div class="spec-value">
+                            Windows
+                        </div>
+
                     </div>
 
                     <div class="spec-row">
-                        <span>Native Runtime</span>
-                        <strong>Rust</strong>
+
+                        <div class="spec-label">
+                            NATIVE RUNTIME
+                        </div>
+
+                        <div class="spec-value">
+                            Rust
+                        </div>
+
                     </div>
 
                     <div class="spec-row">
-                        <span>Engineering Core</span>
-                        <strong>Python</strong>
+
+                        <div class="spec-label">
+                            ENGINEERING CORE
+                        </div>
+
+                        <div class="spec-value">
+                            Python
+                        </div>
+
                     </div>
 
                     <div class="spec-row">
-                        <span>Desktop Shell</span>
-                        <strong>WebView2 / Wry</strong>
+
+                        <div class="spec-label">
+                            DESKTOP
+                        </div>
+
+                        <div class="spec-value">
+                            WebView2 / Wry
+                        </div>
+
                     </div>
 
                     <div class="spec-row">
-                        <span>Editor</span>
-                        <strong>Monaco Editor 0.44.0</strong>
+
+                        <div class="spec-label">
+                            EDITOR
+                        </div>
+
+                        <div class="spec-value">
+                            Monaco Editor 0.44.0
+                        </div>
+
                     </div>
 
                     <div class="spec-row">
-                        <span>Terminal</span>
-                        <strong>xterm.js 5.3.0 + PTY</strong>
+
+                        <div class="spec-label">
+                            TERMINAL
+                        </div>
+
+                        <div class="spec-value">
+                            xterm.js 5.3.0 / portable-pty
+                        </div>
+
                     </div>
 
                     <div class="spec-row">
-                        <span>Python Intelligence</span>
-                        <strong>Jedi</strong>
+
+                        <div class="spec-label">
+                            PYTHON INTELLIGENCE
+                        </div>
+
+                        <div class="spec-value">
+                            Jedi
+                        </div>
+
                     </div>
 
                     <div class="spec-row">
-                        <span>Structural Parsing</span>
-                        <strong>Tree-sitter</strong>
+
+                        <div class="spec-label">
+                            STRUCTURAL PARSING
+                        </div>
+
+                        <div class="spec-value">
+                            Tree-sitter
+                        </div>
+
                     </div>
 
                     <div class="spec-row">
-                        <span>Graph Visualization</span>
-                        <strong>Cytoscape 3.26.0</strong>
+
+                        <div class="spec-label">
+                            GRAPH
+                        </div>
+
+                        <div class="spec-value">
+                            Cytoscape 3.26.0
+                        </div>
+
                     </div>
 
                     <div class="spec-row">
-                        <span>Project Analysis</span>
-                        <strong>Affinity / Semantic / Structural / Mapping</strong>
+
+                        <div class="spec-label">
+                            PROJECT ANALYSIS
+                        </div>
+
+                        <div class="spec-value">
+                            Structural / Semantic / Affinity / Mapping
+                        </div>
+
                     </div>
 
                     <div class="spec-row">
-                        <span>Workspace</span>
-                        <strong>Persistent project and editor state</strong>
+
+                        <div class="spec-label">
+                            SEARCH
+                        </div>
+
+                        <div class="spec-value">
+                            Project-wide text search / regex
+                        </div>
+
                     </div>
 
                     <div class="spec-row">
-                        <span>Status</span>
-                        <strong>Active development</strong>
+
+                        <div class="spec-label">
+                            PERSISTENCE
+                        </div>
+
+                        <div class="spec-value">
+                            Workspace / editor / window state
+                        </div>
+
+                    </div>
+
+                    <div class="spec-row">
+
+                        <div class="spec-label">
+                            WORKSPACE MODEL
+                        </div>
+
+                        <div class="spec-value">
+                            Dynamic tabs / panels / resizing / layout control
+                        </div>
+
                     </div>
 
                 </div>
+
+            </section>
+
+            <!-- HISTORY -->
+
+            <section class="ide-section">
+
+                <div class="section-kicker">
+                    DEVELOPMENT HISTORY
+                </div>
+
+                <h2 class="section-title">
+                    V2
+                </h2>
+
+                <div class="history-grid">
+
+                    <div class="history-card">
+
+                        <div class="history-version">
+                            V2.0.0.0
+                        </div>
+
+                        <strong>
+                            FOUNDATION SHELL
+                        </strong>
+
+                        <span>
+                            3-panel IDE layout and V2 visual foundation.
+                        </span>
+
+                    </div>
+
+                    <div class="history-card">
+
+                        <div class="history-version">
+                            V2.0.1.0
+                        </div>
+
+                        <strong>
+                            FILESYSTEM BRIDGE
+                        </strong>
+
+                        <span>
+                            Real-time local filesystem integration
+                            and project explorer.
+                        </span>
+
+                    </div>
+
+                    <div class="history-card">
+
+                        <div class="history-version">
+                            V2.0.2.0
+                        </div>
+
+                        <strong>
+                            MONACO
+                        </strong>
+
+                        <span>
+                            Professional source editor integrated
+                            into the workspace.
+                        </span>
+
+                    </div>
+
+                    <div class="history-card">
+
+                        <div class="history-version">
+                            V2.0.3.5
+                        </div>
+
+                        <strong>
+                            RESTART TRUST
+                        </strong>
+
+                        <span>
+                            Persistent project and editor state
+                            across launches.
+                        </span>
+
+                    </div>
+
+                    <div class="history-card">
+
+                        <div class="history-version">
+                            V2.0.4.0
+                        </div>
+
+                        <strong>
+                            PROJECT SEARCH
+                        </strong>
+
+                        <span>
+                            Project-wide search with regex support
+                            and navigation.
+                        </span>
+
+                    </div>
+
+                    <div class="history-card">
+
+                        <div class="history-version">
+                            V2.0.5.0
+                        </div>
+
+                        <strong>
+                            INTEGRATED TERMINAL
+                        </strong>
+
+                        <span>
+                            Local shell integration through xterm.js.
+                        </span>
+
+                    </div>
+
+                    <div class="history-card">
+
+                        <div class="history-version">
+                            V2.0.6.X
+                        </div>
+
+                        <strong>
+                            SEMANTIC REBUILD
+                        </strong>
+
+                        <span>
+                            Jedi, Tree-sitter, Affinity Engine,
+                            recursive hierarchy recovery,
+                            and semantic wayfinding.
+                        </span>
+
+                    </div>
+
+                    <div class="history-card">
+
+                        <div class="history-version">
+                            V2.0.8.0
+                        </div>
+
+                        <strong>
+                            QUALITY / SCALE
+                        </strong>
+
+                        <span>
+                            Type coverage, testing infrastructure,
+                            scalability profiling, and watchdog hardening.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- STATUS -->
+
+            <section class="ide-section">
+
+                <div class="section-kicker">
+                    STATUS
+                </div>
+
+                <h2 class="section-title">
+                    ACTIVE DEVELOPMENT
+                </h2>
+
+                <p class="section-copy">
+                    AEOWUN IDE is under active development.
+                    The current system is focused on project handling,
+                    source editing, terminal execution, project intelligence,
+                    semantic navigation, runtime integration, persistent state,
+                    and workspace control.
+                </p>
+
             </section>
 
             <!-- CTA -->
+
             <section class="ide-cta">
-                <h2>AEOWUN IDE</h2>
+
+                <h2>
+                    AEOWUN IDE
+                </h2>
+
                 <p>
-                    The IDE is being built. AEOPIN is available now.
+                    Windows development environment.
                 </p>
 
-                <a href="/" class="secondary-button mono">
-                    EXPLORE AEOPIN
+                <a
+                    href="/"
+                    class="secondary-button mono">
+                    AEOPIN
                 </a>
+
             </section>
 
         </div>
+
     </main>
 
     <footer class="aeowun-footer">
+
         <div class="container footer-inner">
 
             <div class="mono footer-copy">
@@ -859,13 +1645,25 @@
             </div>
 
             <div class="footer-links">
-                <a href="/support/" class="mono">SUPPORT</a>
-                <a href="/privacy/" class="mono">PRIVACY</a>
+
+                <a
+                    href="/support/"
+                    class="mono">
+                    SUPPORT
+                </a>
+
+                <a
+                    href="/privacy/"
+                    class="mono">
+                    PRIVACY
+                </a>
+
             </div>
 
         </div>
     </footer>
 
     <script src="../app.js"></script>
+
 </body>
 </html>
