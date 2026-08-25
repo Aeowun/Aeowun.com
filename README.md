@@ -6,11 +6,12 @@
 
 ## SYSTEM_DIAGNOSTIC: LIVE
 I build standalone engineering tools that solve the problems I actually run into. 
-
+Open Source prototypes are FREE to use, I build things I love to use, and would LOVE to see other people start building things too!
+Ill start rolling them all out one by one as I go through testing them, all projects will be available here on Git-Hub.
 ![NexiCode Schematic](aeowun_dossier.svg)
 
 ### Build it. Break it. Understand why.
-I don't believe in trusting a model blindly. I build systems that track their own state, own the workspace, and demand physical evidence before they claim a task is complete.
+I don't believe in trusting blindly. I try to build systems that track their own state, own the workspace, and demand physical evidence before it can claim a task is complete.
 
 ---
 
@@ -20,7 +21,6 @@ I don't believe in trusting a model blindly. I build systems that track their ow
 - **[DROP (Aeopin)](https://github.com/joubertzack-web/Aeopin)**: A native Windows capture engine. It uses an atomic "Copy-Verify-Delete" protocol with SHA-256 integrity to ensure you never lose a file.
 - **[AXEIS](https://github.com/joubertzack-web/AXEIS)**: Adversarial research software. It forces every conclusion to have a traceable "Evidence Path" and subjects every hypothesis to a mandatory Kill Phase.
 - **[LANGO](https://github.com/joubertzack-web/Lango)**: A concept-transfer simulator. It normalizes code logic into a language-neutral IR so you can skip the "Variables 101" fluff when picking up a new stack.
-- **[LEFTOVERS](https://github.com/joubertzack-web/Leftovers)**: A local-first kitchen hub. Zero cloud, zero tracking—just physical inventory forensics for your fridge.
 
 ---
 
