@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,722 +6,709 @@
     <title>AEOWUN // AEOWUN IDE</title>
     <link rel="stylesheet" href="../style.css">
 
-```
-<style>
-    .ide-content-stage {
-        padding-top: 180px;
-        padding-bottom: 120px;
-        max-width: 1100px;
-        margin-inline: auto;
-    }
-
-    .ide-hero-header {
-        text-align: center;
-        margin-bottom: 80px;
-    }
-
-    .ide-hero-header .brand-label {
-        margin-bottom: 18px;
-    }
-
-    .ide-hero-header .product-title {
-        margin-bottom: 18px;
-    }
-
-    .ide-hero-header .hero-lead {
-        font-size: 1.15rem;
-        margin-bottom: 24px;
-    }
-
-    .ide-hero-header .hero-description {
-        max-width: 720px;
-        margin-inline: auto;
-        color: var(--text);
-        font-size: 1.05rem;
-        line-height: 1.8;
-    }
-
-    .ide-preview-visual {
-        position: relative;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 8px;
-        background: #000;
-        box-shadow:
-            0 80px 160px rgba(0, 0, 0, 0.9),
-            0 0 60px rgba(138, 43, 226, 0.1);
-        overflow: hidden;
-        margin-bottom: 90px;
-    }
-
-    .ide-preview-visual img {
-        width: 100%;
-        display: block;
-    }
-
-    .ide-status-bar {
-        background: #0a0a0f;
-        border-top: 1px solid var(--accent-violet);
-        padding: 18px 28px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        letter-spacing: 0.2em;
-        color: var(--accent-violet);
-        font-weight: 800;
-    }
-
-    .ide-section {
-        margin-bottom: 90px;
-    }
-
-    .ide-section-header {
-        margin-bottom: 40px;
-    }
-
-    .ide-section-label {
-        color: var(--accent-violet);
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        letter-spacing: 0.25em;
-        font-weight: 800;
-        margin-bottom: 14px;
-    }
-
-    .ide-section-title {
-        font-family: var(--font-mono);
-        color: #fff;
-        font-size: 2rem;
-        margin: 0;
-    }
-
-    .ide-section-text {
-        color: var(--text);
-        font-size: 1rem;
-        line-height: 1.8;
-        max-width: 760px;
-    }
-
-    .ide-feature-grid,
-    .ide-tech-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    .ide-feature-card,
-    .ide-tech-card {
-        background: rgba(255,255,255,0.02);
-        border: 1px solid var(--border);
-        padding: 34px;
-        border-radius: 6px;
-    }
-
-    .ide-feature-card h3,
-    .ide-tech-card h3 {
-        font-family: var(--font-mono);
-        font-size: 0.82rem;
-        color: #fff;
-        margin: 0 0 14px;
-        letter-spacing: 0.18em;
-    }
-
-    .ide-feature-card p,
-    .ide-tech-card p {
-        margin: 0;
-        color: var(--text);
-        line-height: 1.75;
-    }
-
-    .ide-tech-card .tech-value {
-        display: block;
-        color: var(--accent-violet);
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        letter-spacing: 0.16em;
-        margin-bottom: 12px;
-        text-transform: uppercase;
-    }
-
-    .ide-tech-card ul {
-        margin: 0;
-        padding-left: 18px;
-        color: var(--text);
-        line-height: 1.8;
-    }
-
-    .ide-tech-card li {
-        margin-bottom: 6px;
-    }
-
-    .ide-loop {
-        border: 1px solid var(--border);
-        background: rgba(255,255,255,0.015);
-        border-radius: 6px;
-        padding: 34px;
-        font-family: var(--font-mono);
-        color: #fff;
-        line-height: 2.2;
-        letter-spacing: 0.04em;
-    }
-
-    .ide-loop span {
-        color: var(--accent-violet);
-    }
-
-    .ide-code-panel {
-        background: #050509;
-        border: 1px solid var(--border);
-        border-radius: 6px;
-        overflow: hidden;
-        margin-top: 30px;
-    }
-
-    .ide-code-header {
-        padding: 14px 18px;
-        border-bottom: 1px solid var(--border);
-        color: var(--text-dim);
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        letter-spacing: 0.15em;
-    }
-
-    .ide-code-body {
-        padding: 24px;
-        color: #d7d7e0;
-        font-family: var(--font-mono);
-        font-size: 0.8rem;
-        line-height: 1.8;
-        overflow-x: auto;
-        white-space: pre;
-    }
-
-    .ide-status-panel {
-        border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
-        padding: 36px 0;
-    }
-
-    .ide-status-panel strong {
-        color: #fff;
-    }
-
-    .ide-footer-cta {
-        margin-top: 110px;
-        padding-top: 60px;
-        border-top: 1px solid var(--border);
-        text-align: center;
-    }
-
-    .ide-footer-cta h2 {
-        font-family: var(--font-mono);
-        color: #fff;
-        font-size: 1.8rem;
-        margin-bottom: 18px;
-    }
-
-    .ide-footer-cta p {
-        color: var(--text-dim);
-        margin-bottom: 28px;
-    }
-
-    @media (max-width: 900px) {
+    <style>
         .ide-content-stage {
-            padding-top: 120px;
-            padding-inline: 30px;
+            padding-top: 180px;
+            padding-bottom: 120px;
+            max-width: 1100px;
+            margin-inline: auto;
+        }
+
+        .ide-hero-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .ide-hero-header .brand-label {
+            margin-bottom: 18px;
+        }
+
+        .ide-hero-header .product-title {
+            margin-bottom: 18px;
+        }
+
+        .ide-hero-header .hero-lead {
+            font-size: 1.15rem;
+            margin-bottom: 24px;
+        }
+
+        .ide-hero-header .hero-description {
+            max-width: 760px;
+            margin-inline: auto;
+            color: var(--text);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .ide-preview-visual {
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            background: #000;
+            box-shadow:
+                0 80px 160px rgba(0, 0, 0, 0.9),
+                0 0 60px rgba(138, 43, 226, 0.1);
+            overflow: hidden;
+            margin-bottom: 90px;
+        }
+
+        .ide-preview-visual img {
+            width: 100%;
+            display: block;
+        }
+
+        .ide-status-bar {
+            background: #0a0a0f;
+            border-top: 1px solid var(--accent-violet);
+            padding: 18px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: var(--accent-violet);
+            font-weight: 800;
+        }
+
+        .ide-section {
+            margin-bottom: 90px;
+        }
+
+        .ide-section-header {
+            margin-bottom: 38px;
+        }
+
+        .ide-section-label {
+            color: var(--accent-violet);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .ide-section-title {
+            font-family: var(--font-mono);
+            color: #fff;
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .ide-section-text {
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 780px;
         }
 
         .ide-feature-grid,
         .ide-tech-grid {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
 
-        .ide-preview-visual {
-            border-radius: 4px;
+        .ide-feature-card,
+        .ide-tech-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            padding: 34px;
+            border-radius: 6px;
         }
-    }
-</style>
 
-<script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7976685360451203"
-    crossorigin="anonymous">
-</script>
-```
+        .ide-feature-card h3,
+        .ide-tech-card h3 {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            color: #fff;
+            margin: 0 0 14px;
+            letter-spacing: 0.18em;
+        }
 
+        .ide-feature-card p,
+        .ide-tech-card p {
+            margin: 0;
+            color: var(--text);
+            line-height: 1.75;
+        }
+
+        .ide-tech-card .tech-value {
+            display: block;
+            color: var(--accent-violet);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            margin-bottom: 12px;
+        }
+
+        .ide-loop {
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.015);
+            border-radius: 6px;
+            padding: 34px;
+            font-family: var(--font-mono);
+            color: #fff;
+            line-height: 2.2;
+            letter-spacing: 0.04em;
+        }
+
+        .ide-loop span {
+            color: var(--accent-violet);
+        }
+
+        .ide-code-panel {
+            background: #050509;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        .ide-code-header {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+        }
+
+        .ide-code-body {
+            padding: 24px;
+            color: #d7d7e0;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            line-height: 1.8;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .ide-status-panel {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 36px 0;
+        }
+
+        .ide-status-panel strong {
+            color: #fff;
+        }
+
+        .ide-footer-cta {
+            margin-top: 110px;
+            padding-top: 60px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .ide-footer-cta h2 {
+            font-family: var(--font-mono);
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 18px;
+        }
+
+        .ide-footer-cta p {
+            color: var(--text-dim);
+            margin-bottom: 28px;
+        }
+
+        @media (max-width: 900px) {
+            .ide-content-stage {
+                padding-top: 120px;
+                padding-inline: 30px;
+            }
+
+            .ide-feature-grid,
+            .ide-tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ide-preview-visual {
+                border-radius: 4px;
+            }
+        }
+    </style>
+
+    <script async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7976685360451203"
+        crossorigin="anonymous">
+    </script>
 </head>
 
 <body class="aeowun-environment">
 
-```
-<div id="void-bg"></div>
-<div id="technical-grid"></div>
+    <div id="void-bg"></div>
+    <div id="technical-grid"></div>
 
-<div id="wave-field">
-    <svg id="wave-field-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <defs>
-            <filter id="ribbon-glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="15" result="blur" />
-                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
+    <div id="wave-field">
+        <svg id="wave-field-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <defs>
+                <filter id="ribbon-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="15" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
 
-            <linearGradient id="grad-v" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="rgba(124, 34, 228, 0)" />
-                <stop offset="50%" stop-color="rgba(124, 34, 228, 0.7)" />
-                <stop offset="100%" stop-color="rgba(124, 34, 228, 0)" />
-            </linearGradient>
+                <linearGradient id="grad-v" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(124, 34, 228, 0)" />
+                    <stop offset="50%" stop-color="rgba(124, 34, 228, 0.7)" />
+                    <stop offset="100%" stop-color="rgba(124, 34, 228, 0)" />
+                </linearGradient>
 
-            <linearGradient id="grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="rgba(0, 210, 241, 0)" />
-                <stop offset="50%" stop-color="rgba(0, 210, 241, 0.5)" />
-                <stop offset="100%" stop-color="rgba(0, 210, 241, 0)" />
-            </linearGradient>
-        </defs>
-    </svg>
-</div>
-
-<canvas id="ambient-canvas"></canvas>
-
-<header class="aeowun-header">
-    <div class="header-inner container">
-        <a href="/" class="brand">
-            <span class="brand-name mono">AEOWUN</span>
-        </a>
-
-        <nav class="product-nav">
-            <a href="/" class="nav-item mono">AEOPIN</a>
-            <a href="/ide/" class="nav-item mono active">AEOWUN IDE</a>
-            <a
-                href="https://github.com/Aeowun/Aeopin_v0.1.5/releases/tag/v1.6.0"
-                class="nav-item download-link mono">
-                DOWNLOAD
-            </a>
-        </nav>
+                <linearGradient id="grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(0, 210, 241, 0)" />
+                    <stop offset="50%" stop-color="rgba(0, 210, 241, 0.5)" />
+                    <stop offset="100%" stop-color="rgba(0, 210, 241, 0)" />
+                </linearGradient>
+            </defs>
+        </svg>
     </div>
-</header>
 
-<main class="container">
+    <canvas id="ambient-canvas"></canvas>
 
-    <div class="ide-content-stage">
+    <header class="aeowun-header">
+        <div class="header-inner container">
+            <a href="/" class="brand">
+                <span class="brand-name mono">AEOWUN</span>
+            </a>
 
-        <!-- HERO -->
-
-        <section class="ide-hero-header">
-
-            <div
-                class="brand-label mono"
-                style="color: var(--accent-violet);">
-                AEOWUN
-            </div>
-
-            <h1 class="product-title mono">
-                AEOWUN IDE
-            </h1>
-
-            <p
-                class="hero-lead mono"
-                style="color:#fff; font-weight:700;">
-                A REAL IDE.
-            </p>
-
-            <p class="hero-description">
-                A development environment built around the software project itself —
-                its files, editor, terminal, tools, runtime, intelligence, and the
-                work happening inside it.
-            </p>
-
-        </section>
-
-        <!-- PREVIEW -->
-
-        <div class="ide-preview-visual">
-
-            <img
-                src="../assets/ide-teaser.png"
-                alt="AEOWUN IDE interface preview">
-
-            <div class="ide-status-bar">
-                <span>ACTIVE DEVELOPMENT</span>
-                <span>AEOWUN IDE</span>
-            </div>
-
+            <nav class="product-nav">
+                <a href="/" class="nav-item mono">AEOPIN</a>
+                <a href="/ide/" class="nav-item mono active">AEOWUN IDE</a>
+                <a
+                    href="https://github.com/Aeowun/Aeopin_v0.1.5/releases/tag/v1.6.0"
+                    class="nav-item download-link mono">
+                    DOWNLOAD
+                </a>
+            </nav>
         </div>
+    </header>
 
-        <!-- THE IDEA -->
+    <main class="container">
 
-        <section class="ide-section">
+        <div class="ide-content-stage">
 
-            <div class="ide-section-header">
-                <div class="ide-section-label">THE IDEA</div>
+            <!-- HERO -->
 
-                <h2 class="ide-section-title">
-                    THE PROJECT COMES FIRST.
-                </h2>
-            </div>
+            <section class="ide-hero-header">
 
-            <p class="ide-section-text">
-                Software development is more than writing code.
-                You have to understand the project, edit its files,
-                run commands, inspect the environment, test what changed,
-                and determine what actually happened.
-            </p>
-
-            <p class="ide-section-text">
-                AEOWUN IDE is being built around that complete engineering loop,
-                rather than treating the editor as the entire development environment.
-            </p>
-
-        </section>
-
-        <!-- CORE ENVIRONMENT -->
-
-        <section class="ide-section">
-
-            <div class="ide-section-header">
-                <div class="ide-section-label">THE ENVIRONMENT</div>
-
-                <h2 class="ide-section-title">
-                    EVERYTHING AROUND THE CODE.
-                </h2>
-            </div>
-
-            <div class="ide-feature-grid">
-
-                <div class="ide-feature-card">
-                    <h3>PROJECT</h3>
-                    <p>
-                        Open a real software project and work directly with
-                        its actual filesystem, structure, configuration, and state.
-                    </p>
+                <div
+                    class="brand-label mono"
+                    style="color: var(--accent-violet);">
+                    AEOWUN
                 </div>
 
-                <div class="ide-feature-card">
-                    <h3>EDITOR</h3>
-                    <p>
-                        Read, edit, and save the source files that make up
-                        the project while keeping the rest of the environment
-                        in context.
-                    </p>
-                </div>
+                <h1 class="product-title mono">
+                    AEOWUN IDE
+                </h1>
 
-                <div class="ide-feature-card">
-                    <h3>TERMINAL</h3>
-                    <p>
-                        Use the real Windows shell and the development tools
-                        installed on your machine.
-                    </p>
-                </div>
+                <p
+                    class="hero-lead mono"
+                    style="color:#fff; font-weight:700;">
+                    AN IDE. NOT A CHAT WINDOW.
+                </p>
 
-                <div class="ide-feature-card">
-                    <h3>TOOLS</h3>
-                    <p>
-                        Keep build, runtime, debugging, source-control,
-                        and inspection workflows close to the project.
-                    </p>
-                </div>
+                <p class="hero-description">
+                    I wanted an IDE built around the actual project instead of
+                    another editor with a bunch of panels bolted onto it.
+                    AEOWUN IDE is being built around the files, terminal,
+                    runtime, tools, and everything else that actually matters
+                    when you're building software.
+                </p>
 
-                <div class="ide-feature-card">
-                    <h3>CHAT</h3>
-                    <p>
-                        AI assistance can work beside the engineering
-                        environment without becoming a replacement for it.
-                    </p>
-                </div>
+            </section>
 
-                <div class="ide-feature-card">
-                    <h3>VERIFICATION</h3>
-                    <p>
-                        Distinguish between code that was written,
-                        commands that ran, and results that were actually verified.
-                    </p>
+            <!-- PREVIEW -->
+
+            <div class="ide-preview-visual">
+
+                <img
+                    src="../assets/ide-teaser.png"
+                    alt="AEOWUN IDE interface preview">
+
+                <div class="ide-status-bar">
+                    <span>ACTIVE DEVELOPMENT</span>
+                    <span>AEOWUN IDE</span>
                 </div>
 
             </div>
 
-        </section>
+            <!-- THE IDEA -->
 
-        <!-- TECH STACK -->
+            <section class="ide-section">
 
-        <section class="ide-section">
+                <div class="ide-section-header">
+                    <div class="ide-section-label">WHY I AM BUILDING IT</div>
 
-            <div class="ide-section-header">
-                <div class="ide-section-label">ENGINEERING STACK</div>
-
-                <h2 class="ide-section-title">
-                    BUILT ON REAL DEVELOPER TECHNOLOGY.
-                </h2>
-            </div>
-
-            <div class="ide-tech-grid">
-
-                <div class="ide-tech-card">
-                    <span class="tech-value">Core Runtime</span>
-                    <h3>RUST</h3>
-                    <p>
-                        Native systems infrastructure where low-level control,
-                        process management, filesystem operations, and reliable
-                        runtime behavior matter.
-                    </p>
+                    <h2 class="ide-section-title">
+                        CODE IS ONLY PART OF THE JOB.
+                    </h2>
                 </div>
 
-                <div class="ide-tech-card">
-                    <span class="tech-value">Application / Tooling</span>
-                    <h3>PYTHON</h3>
-                    <p>
-                        Python remains an important part of the development
-                        environment and tooling ecosystem, particularly where
-                        rapid iteration and language tooling provide value.
-                    </p>
+                <p class="ide-section-text">
+                    You write code, then you have to run it.
+                    You run it, then something breaks.
+                    Then you have to figure out what broke, change something,
+                    run it again, and somehow keep track of what the hell
+                    actually happened.
+                </p>
+
+                <p class="ide-section-text">
+                    Most IDEs are good at the editor part.
+                    I'm interested in the rest of the loop too.
+                </p>
+
+            </section>
+
+            <!-- CORE ENVIRONMENT -->
+
+            <section class="ide-section">
+
+                <div class="ide-section-header">
+                    <div class="ide-section-label">THE IDE</div>
+
+                    <h2 class="ide-section-title">
+                        THE PROJECT STAYS IN THE MIDDLE.
+                    </h2>
                 </div>
 
-                <div class="ide-tech-card">
-                    <span class="tech-value">Python Intelligence</span>
-                    <h3>JEDI</h3>
-                    <p>
-                        Deep Python-aware tooling for completion, navigation,
-                        inspection, and code intelligence.
-                    </p>
+                <div class="ide-feature-grid">
+
+                    <div class="ide-feature-card">
+                        <h3>PROJECT</h3>
+                        <p>
+                            Open a real project and work with its actual
+                            filesystem instead of some abstract copy of it.
+                        </p>
+                    </div>
+
+                    <div class="ide-feature-card">
+                        <h3>EDITOR</h3>
+                        <p>
+                            Edit real files. Save them. Close the IDE.
+                            Open it again. The project is still there.
+                        </p>
+                    </div>
+
+                    <div class="ide-feature-card">
+                        <h3>TERMINAL</h3>
+                        <p>
+                            Use the real Windows shell and the tools that
+                            are actually installed on the machine.
+                        </p>
+                    </div>
+
+                    <div class="ide-feature-card">
+                        <h3>RUNTIME</h3>
+                        <p>
+                            Run the actual project and see what actually
+                            happens instead of assuming the code worked.
+                        </p>
+                    </div>
+
+                    <div class="ide-feature-card">
+                        <h3>TOOLS</h3>
+                        <p>
+                            Keep the stuff you use to build, inspect,
+                            debug, and work on the project close at hand.
+                        </p>
+                    </div>
+
+                    <div class="ide-feature-card">
+                        <h3>CHAT</h3>
+                        <p>
+                            AI can help with the work. It is not the
+                            reason the IDE exists.
+                        </p>
+                    </div>
+
                 </div>
 
-                <div class="ide-tech-card">
-                    <span class="tech-value">Syntax Intelligence</span>
-                    <h3>TREE-SITTER</h3>
-                    <p>
-                        Incremental syntax parsing that gives the IDE a structured
-                        understanding of source code rather than treating files as
-                        plain text.
-                    </p>
+            </section>
+
+            <!-- STACK -->
+
+            <section class="ide-section">
+
+                <div class="ide-section-header">
+                    <div class="ide-section-label">UNDER THE HOOD</div>
+
+                    <h2 class="ide-section-title">
+                        SOME OF THE GOOD STUFF.
+                    </h2>
                 </div>
 
-                <div class="ide-tech-card">
-                    <span class="tech-value">Desktop Environment</span>
-                    <h3>WINDOWS</h3>
-                    <p>
-                        Designed as a real Windows desktop development environment,
-                        with native filesystem, process, terminal, and application
-                        behavior as first-class concerns.
-                    </p>
+                <div class="ide-tech-grid">
+
+                    <div class="ide-tech-card">
+                        <span class="tech-value">SYSTEMS</span>
+                        <h3>RUST</h3>
+                        <p>
+                            Rust is being used where I need native control,
+                            reliable process management, filesystem work,
+                            and a stronger systems-level foundation.
+                        </p>
+                    </div>
+
+                    <div class="ide-tech-card">
+                        <span class="tech-value">LANGUAGE / TOOLING</span>
+                        <h3>PYTHON</h3>
+                        <p>
+                            Python remains a first-class part of the
+                            environment and gives the IDE a lot of flexibility
+                            for tooling and development workflows.
+                        </p>
+                    </div>
+
+                    <div class="ide-tech-card">
+                        <span class="tech-value">PYTHON INTELLIGENCE</span>
+                        <h3>JEDI</h3>
+                        <p>
+                            Python-aware completion, navigation and code
+                            intelligence through Jedi.
+                        </p>
+                    </div>
+
+                    <div class="ide-tech-card">
+                        <span class="tech-value">PARSING</span>
+                        <h3>TREE-SITTER</h3>
+                        <p>
+                            Incremental parsing so the IDE can work with
+                            the structure of source code instead of treating
+                            every file like a big text box.
+                        </p>
+                    </div>
+
+                    <div class="ide-tech-card">
+                        <span class="tech-value">DESKTOP</span>
+                        <h3>WINDOWS</h3>
+                        <p>
+                            Built as a real Windows development environment.
+                            Native filesystem behavior, processes, terminal
+                            interaction, and desktop integration matter here.
+                        </p>
+                    </div>
+
+                    <div class="ide-tech-card">
+                        <span class="tech-value">ARCHITECTURE</span>
+                        <h3>HYBRID</h3>
+                        <p>
+                            I'm not interested in forcing one language to do
+                            everything. Different parts of the system should
+                            use the technology that actually fits the job.
+                        </p>
+                    </div>
+
                 </div>
 
-                <div class="ide-tech-card">
-                    <span class="tech-value">Architecture</span>
-                    <h3>HYBRID ENGINEERING</h3>
-                    <p>
-                        Different technologies are used where they are strongest:
-                        native systems work where reliability matters and higher-level
-                        tooling where development intelligence benefits from it.
-                    </p>
+            </section>
+
+            <!-- SOURCE INTELLIGENCE -->
+
+            <section class="ide-section">
+
+                <div class="ide-section-header">
+                    <div class="ide-section-label">CODE INTELLIGENCE</div>
+
+                    <h2 class="ide-section-title">
+                        DON'T TREAT CODE LIKE A TEXT FILE.
+                    </h2>
                 </div>
 
-            </div>
+                <p class="ide-section-text">
+                    Tree-sitter gives the IDE an actual syntax tree.
+                    Jedi gives it deeper Python understanding.
+                    That matters because a real IDE needs to know what it is
+                    looking at, not just where the characters are.
+                </p>
 
-        </section>
+                <div class="ide-code-panel">
 
-        <!-- SOURCE INTELLIGENCE -->
+                    <div class="ide-code-header">
+                        PROJECT → PARSE → UNDERSTAND → EDIT → RUN → VERIFY
+                    </div>
 
-        <section class="ide-section">
-
-            <div class="ide-section-header">
-                <div class="ide-section-label">SOURCE INTELLIGENCE</div>
-
-                <h2 class="ide-section-title">
-                    CODE IS STRUCTURE, NOT JUST TEXT.
-                </h2>
-            </div>
-
-            <p class="ide-section-text">
-                AEOWUN IDE is designed to understand source code structurally.
-                Tree-sitter provides incremental parsing, while language-specific
-                tooling such as Jedi can provide deeper Python intelligence.
-            </p>
-
-            <div class="ide-code-panel">
-
-                <div class="ide-code-header">
-                    CODE → PARSE → UNDERSTAND → EDIT → VERIFY
-                </div>
-
-                <div class="ide-code-body">
-```
-
+                    <div class="ide-code-body">
 Project
 ├── Source
 │   ├── Python
-│   │   └── Jedi intelligence
+│   │   └── Jedi
 │   ├── Rust
 │   │   └── Native systems layer
-│   └── Other source
-│       └── Tree-sitter parsing
+│   └── Other languages
+│       └── Tree-sitter
 │
 ├── Runtime
 ├── Terminal
 ├── Tools
-└── Verification </div>
+└── Verification
+                    </div>
 
-```
-            </div>
+                </div>
 
-        </section>
+            </section>
 
-        <!-- DEVELOPMENT LOOP -->
+            <!-- LOOP -->
 
-        <section class="ide-section">
+            <section class="ide-section">
 
-            <div class="ide-section-header">
-                <div class="ide-section-label">THE WORK</div>
+                <div class="ide-section-header">
+                    <div class="ide-section-label">THE LOOP</div>
 
-                <h2 class="ide-section-title">
-                    MORE THAN GENERATING CODE.
-                </h2>
-            </div>
+                    <h2 class="ide-section-title">
+                        THIS IS THE PART I CARE ABOUT.
+                    </h2>
+                </div>
 
-            <div class="ide-loop">
-                <span>PROJECT</span>
-                →
-                <span>EDIT</span>
-                →
-                <span>RUN</span>
-                →
-                <span>OBSERVE</span>
-                →
-                <span>FIX</span>
-                →
-                <span>VERIFY</span>
-            </div>
+                <div class="ide-loop">
+                    <span>OPEN</span>
+                    →
+                    <span>EDIT</span>
+                    →
+                    <span>RUN</span>
+                    →
+                    <span>SEE WHAT BROKE</span>
+                    →
+                    <span>FIX IT</span>
+                    →
+                    <span>VERIFY IT</span>
+                </div>
 
-            <p
-                class="ide-section-text"
-                style="margin-top: 28px;">
-                Writing code is only one part of software engineering.
-                AEOWUN IDE is being designed around the complete loop that
-                happens before and after the code is written.
-            </p>
-
-        </section>
-
-        <!-- PROJECT AWARENESS -->
-
-        <section class="ide-section">
-
-            <div class="ide-section-header">
-                <div class="ide-section-label">PROJECT AWARENESS</div>
-
-                <h2 class="ide-section-title">
-                    KNOW WHAT YOU ARE ACTUALLY WORKING ON.
-                </h2>
-            </div>
-
-            <p class="ide-section-text">
-                A project is more than a collection of source files.
-                The environment around those files matters too.
-            </p>
-
-            <p class="ide-section-text">
-                AEOWUN IDE is designed to keep the working project environment
-                connected — including files, editor state, terminal activity,
-                runtime state, and verification results.
-            </p>
-
-            <div class="ide-status-panel">
-                <p class="ide-section-text" style="margin:0;">
-                    <strong>
-                        Open a real project. Work on it. Restart the IDE.
-                        Trust what it shows you.
-                    </strong>
+                <p
+                    class="ide-section-text"
+                    style="margin-top: 28px;">
+                    The point isn't to generate code as fast as possible.
+                    The point is to build software and actually know what
+                    happened when you did it.
                 </p>
-            </div>
 
-        </section>
+            </section>
 
-        <!-- AI -->
+            <!-- PROJECT AWARENESS -->
 
-        <section class="ide-section">
+            <section class="ide-section">
 
-            <div class="ide-section-header">
-                <div class="ide-section-label">AI</div>
+                <div class="ide-section-header">
+                    <div class="ide-section-label">PROJECT AWARENESS</div>
 
-                <h2 class="ide-section-title">
-                    AI BELONGS INSIDE THE IDE.
+                    <h2 class="ide-section-title">
+                        OPEN IT. WORK ON IT. COME BACK LATER.
+                    </h2>
+                </div>
+
+                <p class="ide-section-text">
+                    A project is more than a pile of files.
+                    There is editor state, terminal work, running processes,
+                    configuration, and everything else sitting around the code.
+                </p>
+
+                <p class="ide-section-text">
+                    One of the basic rules I'm building around is simple:
+                </p>
+
+                <div class="ide-status-panel">
+                    <p class="ide-section-text" style="margin:0;">
+                        <strong>
+                            Open a real project. Work on it.
+                            Restart AEOWUN IDE.
+                            Trust what it shows you.
+                        </strong>
+                    </p>
+                </div>
+
+            </section>
+
+            <!-- AI -->
+
+            <section class="ide-section">
+
+                <div class="ide-section-header">
+                    <div class="ide-section-label">AI</div>
+
+                    <h2 class="ide-section-title">
+                        AI IS A TOOL. THE IDE IS THE ENVIRONMENT.
+                    </h2>
+                </div>
+
+                <p class="ide-section-text">
+                    I'm interested in what AI can actually do when it has a
+                    real development environment around it.
+                </p>
+
+                <p class="ide-section-text">
+                    That means real files. Real commands. Real project state.
+                    Real runtime behavior. Real verification.
+                </p>
+
+                <p class="ide-section-text">
+                    Not just a chat box telling you what code to paste.
+                </p>
+
+            </section>
+
+            <!-- STATUS -->
+
+            <section class="ide-section">
+
+                <div class="ide-section-header">
+                    <div class="ide-section-label">CURRENT STATUS</div>
+
+                    <h2 class="ide-section-title">
+                        I'M BUILDING IT.
+                    </h2>
+                </div>
+
+                <p class="ide-section-text">
+                    AEOWUN IDE is still in development.
+                    The current work is focused on getting the foundation
+                    right before piling more intelligence on top of it.
+                </p>
+
+                <p class="ide-section-text">
+                    I'm not going to pretend it is finished when it isn't.
+                </p>
+
+            </section>
+
+            <!-- CTA -->
+
+            <div class="ide-footer-cta">
+
+                <h2>
+                    AEOWUN IDE
                 </h2>
+
+                <p>
+                    Still building.
+                </p>
+
+                <a href="/" class="secondary-button mono">
+                    EXPLORE AEOPIN
+                </a>
+
             </div>
 
-            <p class="ide-section-text">
-                AEOWUN IDE is not a chatbot with an editor attached.
-            </p>
+        </div>
 
-            <p class="ide-section-text">
-                AI assistance is intended to operate inside a real engineering
-                environment where it can work with the project, tools, terminal,
-                source structure, and verification systems around it.
-            </p>
+    </main>
 
-        </section>
+    <footer class="aeowun-footer">
 
-        <!-- STATUS -->
+        <div class="container footer-inner">
 
-        <section class="ide-section">
-
-            <div class="ide-section-header">
-                <div class="ide-section-label">CURRENT STATUS</div>
-
-                <h2 class="ide-section-title">
-                    IN DEVELOPMENT.
-                </h2>
+            <div class="mono footer-copy">
+                © 2026 AEOWUN.
             </div>
 
-            <p class="ide-section-text">
-                AEOWUN IDE is currently under active development.
-                The current focus is the reliable foundation of the
-                development environment itself.
-            </p>
-
-            <p class="ide-section-text">
-                Advanced engineering automation comes later.
-                The IDE has to be trustworthy first.
-            </p>
-
-        </section>
-
-        <!-- CTA -->
-
-        <div class="ide-footer-cta">
-
-            <h2>
-                BUILT BY AEOWUN.
-            </h2>
-
-            <p>
-                Explore the current AEOWUN product.
-            </p>
-
-            <a href="/" class="secondary-button mono">
-                EXPLORE AEOPIN
-            </a>
+            <div class="footer-links">
+                <a href="/support/" class="mono">SUPPORT</a>
+                <a href="/privacy/" class="mono">PRIVACY</a>
+            </div>
 
         </div>
+    </footer>
 
-    </div>
-</main>
-
-<footer class="aeowun-footer">
-
-    <div class="container footer-inner">
-
-        <div class="mono footer-copy">
-            © 2026 AEOWUN.
-        </div>
-
-        <div class="footer-links">
-            <a href="/support/" class="mono">SUPPORT</a>
-            <a href="/privacy/" class="mono">PRIVACY</a>
-        </div>
-
-    </div>
-
-</footer>
-
-<script src="../app.js"></script>
-```
+    <script src="../app.js"></script>
 
 </body>
 </html>
