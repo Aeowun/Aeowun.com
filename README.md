@@ -1,8 +1,8 @@
-﻿# ZACHARY JOUBERT // WORKSTATION INDEX
+# ZACHARY JOUBERT // WORKSTATION INDEX
 
 I build standalone engineering tools that solve specific state and data problems. I don't believe in trusting blindly. I build systems that track their own state, own the workspace, and demand physical evidence before claiming a task is complete.
 
-## [ THE SYSTEMS ]
+## Systems
 
 - **[AEOWUN](https://github.com/joubertzack-web/Aeowun)**: Autonomous engineering runtime. Manages a Rust-based PTY supervisor and a Cytoscape knowledge graph.
 - **[AEODOX](https://github.com/joubertzack-web/Aeodox)**: Operational Mesh. High-fidelity TUI for managing autonomous task loops.
@@ -12,3 +12,4 @@ I build standalone engineering tools that solve specific state and data problems
 
 ---
 [Portfolio](https://joubertzack-web.github.io/portfolio/) // [The Network](https://github.com/joubertzack-web/NETWORK)
+
