@@ -110,9 +110,9 @@ body:not(.home-page) {
 .download-disclaimer {
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-10px);
+    right: 0; /* Align to right edge of button to prevent overflow */
     width: 320px;
+    max-width: calc(100vw - 40px); /* Responsive safety */
     padding: 16px;
     background: rgba(10, 8, 14, 0.98);
     border: 1px solid rgba(255, 191, 0, 0.3);
@@ -133,7 +133,7 @@ body:not(.home-page) {
 .download-wrapper:hover .download-disclaimer {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(15px);
+    transform: translateY(15px);
     pointer-events: all;
 }
 
@@ -150,9 +150,16 @@ body:not(.home-page) {
     font-weight: 700;
 }
 
-/* Adjust for hero buttons which might need wider cards */
+/* Adjust for hero buttons which need centered cards */
 .hero-actions .download-wrapper .download-disclaimer {
     width: 400px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hero-actions .download-wrapper:hover .download-disclaimer {
+    transform: translateX(-50%) translateY(15px);
 }
 
 .disabled {
