@@ -125,11 +125,7 @@ body:not(.home-page) {
     opacity: 0;
     visibility: hidden;
     z-index: 2000;
-    transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease,
-        transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    transform: translateY(-10px); /* Default start position for the "drop" */
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     box-shadow: 0 20px 50px rgba(0,0,0,0.8);
     backdrop-filter: blur(10px);
 }
@@ -137,7 +133,7 @@ body:not(.home-page) {
 .download-wrapper:hover .download-disclaimer {
     opacity: 1;
     visibility: visible;
-    transform: translateY(15px); /* Final position after drop */
+    transform: translateY(15px);
     pointer-events: all;
 }
 
