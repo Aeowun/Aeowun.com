@@ -98,6 +98,63 @@ body:not(.home-page) {
 .download-link { color: var(--text-bright); border: 1px solid var(--border-bright); padding: 8px 20px; border-radius: 2px; background: rgba(255,255,255,0.03); transition: all 0.3s ease; }
 .download-link:hover:not(.disabled) { background: rgba(255,255,255,0.08); border-color: var(--text-bright); box-shadow: 0 0 30px var(--glow-violet); }
 
+/* =========================================================
+   DOWNLOAD DISCLAIMER SYSTEM
+========================================================= */
+
+.download-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.download-disclaimer {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    width: 320px;
+    padding: 16px;
+    background: rgba(10, 8, 14, 0.98);
+    border: 1px solid rgba(255, 191, 0, 0.3);
+    border-radius: 6px;
+    color: #ffcc00;
+    font-size: 0.65rem;
+    line-height: 1.6;
+    text-align: left;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2000;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+}
+
+.download-wrapper:hover .download-disclaimer {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(15px);
+    pointer-events: all;
+}
+
+.download-disclaimer .disclaimer-title {
+    color: #ffcc00;
+    font-weight: 800;
+    margin-right: 8px;
+    letter-spacing: 0.1em;
+}
+
+.download-disclaimer a {
+    color: #ffcc00;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+/* Adjust for hero buttons which might need wider cards */
+.hero-actions .download-wrapper .download-disclaimer {
+    width: 400px;
+}
+
 .disabled {
     pointer-events: none;
     position: relative;
