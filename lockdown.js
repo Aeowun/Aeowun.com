@@ -1,5 +1,5 @@
 // The hash for "recursion"
-const magicWordHash = "18f729226593b4f620e7f78c8a77a972626e2e4e421295b922096e248b11b51e";
+const magicWordHash = "09a0845b88aee7df02062295a5e300eea8cb6d796ddefa1195560e444af4a09d";
 
 let strikes = 0;
 let isLockdown = false;
