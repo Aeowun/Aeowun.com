@@ -1,4 +1,4 @@
-// The hash for "recursion"
+// The hash for 
 const magicWordHash = "09a0845b88aee7df02062295a5e300eea8cb6d796ddefa1195560e444af4a09d";
 
 let strikes = 0;
