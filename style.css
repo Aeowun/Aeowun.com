@@ -18,6 +18,19 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
 body {
     background: var(--void);
     color: var(--text);
@@ -393,6 +406,22 @@ body:not(.home-page) {
     line-height: 1.7;
 }
 
+.product-disclaimer {
+    max-width: 620px;
+    margin-top: 24px;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    line-height: 1.7;
+}
+
+.inline-link {
+    color: var(--accent-cyan);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 .product-page {
     padding-top: 180px;
     padding-bottom: 120px;
@@ -510,6 +539,46 @@ body:not(.home-page) {
 .architecture-panel {
     padding: 100px 0;
     border-bottom: 1px solid var(--border);
+}
+
+.workflow-section {
+    padding: 100px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.workflow-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    margin-top: 50px;
+    background: var(--border);
+    border: 1px solid var(--border);
+}
+
+.workflow-step {
+    min-height: 210px;
+    padding: 26px;
+    background: var(--void-elevated);
+}
+
+.workflow-step > span {
+    display: block;
+    margin-bottom: 34px;
+    color: var(--accent-cyan);
+    font-size: 0.7rem;
+}
+
+.workflow-step strong {
+    display: block;
+    margin-bottom: 14px;
+    color: var(--text-bright);
+    font-size: 0.75rem;
+}
+
+.workflow-step p {
+    color: var(--text);
+    font-size: 0.85rem;
+    line-height: 1.7;
 }
 
 .architecture-diagram {
@@ -666,7 +735,8 @@ body:not(.home-page) .aeowun-footer { position: relative; margin-top: 100px; bor
     .trust-panel,
     .limitations-panel,
     .feature-grid,
-    .evidence-section {
+    .evidence-section,
+    .workflow-section {
         grid-template-columns: 1fr;
         gap: 30px;
         padding: 70px 0;
@@ -678,6 +748,10 @@ body:not(.home-page) .aeowun-footer { position: relative; margin-top: 100px; bor
 
     .evidence-card-wide {
         grid-column: auto;
+    }
+
+    .workflow-grid {
+        grid-template-columns: 1fr;
     }
 
     /* Disable heavy environmental effects on mobile to prevent freezing */

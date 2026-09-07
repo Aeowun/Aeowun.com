@@ -4,10 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AEOWUN // AEOPIN</title>
-    <meta http-equiv="refresh" content="0; url=../">
-    <link rel="canonical" href="https://aeowun.com/">
+    <meta name="description" content="AEOPIN is a local-first capture and retrieval tool for files, folders, links, and notes.">
+    <link rel="stylesheet" href="../style.css">
 </head>
-<body>
-    <p>AEOPIN is part of Aeowun. <a href="../">Return to Aeowun.</a></p>
+<body class="aeowun-environment">
+    <div id="void-bg"></div>
+    <div id="technical-grid"></div>
+    <div id="wave-field">
+        <svg id="wave-field-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <defs>
+                <filter id="ribbon-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="15" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+                <linearGradient id="grad-v" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(124, 34, 228, 0)" />
+                    <stop offset="50%" stop-color="rgba(124, 34, 228, 0.7)" />
+                    <stop offset="100%" stop-color="rgba(124, 34, 228, 0)" />
+                </linearGradient>
+                <linearGradient id="grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(0, 210, 241, 0)" />
+                    <stop offset="50%" stop-color="rgba(0, 210, 241, 0.5)" />
+                    <stop offset="100%" stop-color="rgba(0, 210, 241, 0)" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <canvas id="ambient-canvas"></canvas>
+
+    <header class="aeowun-header">
+        <div class="header-inner container">
+            <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
+            <nav class="product-nav">
+                <a href="/" class="nav-item mono">STUDIO</a>
+                <a href="/aeopin/" class="nav-item mono active">AEOPIN</a>
+                <a href="/magy/" class="nav-item mono">MAGY</a>
+                <a href="/ide/" class="nav-item mono">IDE</a>
+                <a href="/support/" class="nav-item mono">SUPPORT</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="product-page container">
+        <section class="product-hero">
+            <div class="brand-label mono">AEOWUN // AVAILABLE // v1.2.3</div>
+            <h1 class="product-title mono">AEOPIN</h1>
+            <p class="hero-lead">Keep files, folders, links, and notes within reach. Capture now. Find later. Stay local.</p>
+            <div class="hero-actions">
+                <a class="primary-button mono" href="https://github.com/Aeowun/Aeopin/releases/download/v1.2.3/aeopin-authority.exe" target="_blank" rel="noopener">DOWNLOAD v1.2.3</a>
+                <a class="secondary-button mono" href="/docs/">READ THE DOCS</a>
+            </div>
+            <p class="product-disclaimer">The v1.2.3 Authority release verifies the matching portable payload, installs the managed application, and fails closed when integrity checks do not pass.</p>
+        </section>
+
+        <section class="trust-panel">
+            <div>
+                <div class="brand-label mono">PRODUCT PROMISE</div>
+                <h2 class="section-heading mono">YOUR FILES STAY YOURS.</h2>
+            </div>
+            <p>AEOPIN is designed as a local-first Windows tool. Your captured data is stored on your computer, without an account or cloud dependency for the core experience.</p>
+        </section>
+
+        <section class="evidence-section">
+            <div class="brand-label mono">EVIDENCE // CURRENT BUILD</div>
+            <h2 class="section-heading mono">CAPTURE WITHOUT FRICTION.</h2>
+            <p class="evidence-intro">The current interface is built around a small desktop companion: drag something in, see it saved, and retrieve it through search when you need it.</p>
+            <div class="evidence-grid">
+                <figure class="evidence-card">
+                    <img src="../assets/aeopin/empty.png" alt="AEOPIN ready to receive a dropped file">
+                    <figcaption><strong class="mono">READY</strong><span>A quiet capture surface waiting for a file, folder, link, or note.</span></figcaption>
+                </figure>
+                <figure class="evidence-card">
+                    <img src="../assets/aeopin/capture.png" alt="AEOPIN receiving a dragged file">
+                    <figcaption><strong class="mono">CAPTURE</strong><span>Drop an item directly onto the companion window.</span></figcaption>
+                </figure>
+                <figure class="evidence-card evidence-card-wide">
+                    <img src="../assets/aeopin/saved.png" alt="AEOPIN showing a saved file in its searchable list">
+                    <figcaption><strong class="mono">RETRIEVE</strong><span>Saved items remain searchable and ready to drag back out.</span></figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="feature-grid">
+            <article class="feature-card">
+                <span class="mono ecosystem-status available">LOCAL-FIRST</span>
+                <h2 class="mono">NO ACCOUNT REQUIRED</h2>
+                <p>The core application works locally. Your files are not uploaded just to make capture useful.</p>
+            </article>
+            <article class="feature-card">
+                <span class="mono ecosystem-status available">WINDOWS</span>
+                <h2 class="mono">A DESKTOP COMPANION</h2>
+                <p>AEOPIN stays close to the desktop so capturing something does not require opening another workflow.</p>
+            </article>
+            <article class="feature-card">
+                <span class="mono ecosystem-status">IN DEVELOPMENT</span>
+                <h2 class="mono">WHAT COMES NEXT</h2>
+                <p>Future cloud services may add optional sync and backup without replacing local ownership.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="aeowun-footer">
+        <div class="container footer-inner">
+            <div class="mono footer-copy">© 2026 AEOWUN.</div>
+            <div class="footer-links">
+                <a href="/support/" class="mono">SUPPORT</a>
+                <a href="/privacy/" class="mono">PRIVACY</a>
+            </div>
+        </div>
+    </footer>
+    <script src="../app.js"></script>
 </body>
 </html>

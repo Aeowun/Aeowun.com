@@ -39,6 +39,8 @@
                 <a href="/" class="nav-item mono">STUDIO</a>
                 <a href="/magy/" class="nav-item mono active">MAGY</a>
                 <a href="/ide/" class="nav-item mono">IDE</a>
+                <a href="/research/" class="nav-item mono">RESEARCH</a>
+                <a href="/security/" class="nav-item mono">TRUST</a>
                 <a href="/support/" class="nav-item mono">SUPPORT</a>
             </nav>
         </div>
@@ -48,10 +50,10 @@
         <section class="product-hero">
             <div class="brand-label mono">AEOWUN // ACTIVE DEVELOPMENT</div>
             <h1 class="product-title mono">MAGY</h1>
-            <p class="hero-lead">A local AI software engineering system where the model proposes and the runtime verifies.</p>
+            <p class="hero-lead">A local AI software engineering system where a Planner proposes architecture, an Executor handles bounded tasks, and the runtime verifies the result.</p>
             <div class="hero-actions">
                 <a class="primary-button mono" href="#how-it-works">READ THE ARCHITECTURE</a>
-                <a class="secondary-button mono" href="#how-it-works">HOW IT WORKS</a>
+                <a class="secondary-button mono" href="https://github.com/Aeowun/Magy/tree/magy-current-work" target="_blank" rel="noopener">VIEW SOURCE</a>
             </div>
         </section>
 
@@ -60,7 +62,7 @@
                 <div class="brand-label mono">THE SAFETY BOUNDARY</div>
                 <h2 class="section-heading mono">REASONING IS NOT AUTHORITY.</h2>
             </div>
-            <p>Magy separates model reasoning from action execution. The model can suggest a plan, but the runtime controls what is read, changed, and executed inside the selected project.</p>
+            <p>Magy separates project architecture from bounded task execution. The Planner can decompose a goal, the Executor can request work for one task, and the runtime controls what is read, changed, and executed inside the selected project.</p>
         </section>
 
         <section class="evidence-section">
@@ -81,6 +83,13 @@
                     <figcaption><strong class="mono">OPERATOR APPROVAL</strong><span>Restricted writes pause for an explicit human decision.</span></figcaption>
                 </figure>
             </div>
+        </section>
+
+        <section class="evidence-section">
+            <div class="brand-label mono">DEMO // COMING SOON</div>
+            <h2 class="section-heading mono">WATCH THE LOOP IN ACTION.</h2>
+            <p class="evidence-intro">A guided Magy demo is being prepared. It will show project setup, the dual-model Planner/Executor boundary, approval, tool execution, and verification from one local run.</p>
+            <span class="mono ecosystem-status">NO PUBLIC DEMO LINK YET</span>
         </section>
 
         <section class="feature-grid">
@@ -119,10 +128,26 @@ PROJECT</pre>
             <p>Magy is built around a simple promise: intelligence may propose, but evidence decides whether the work is complete.</p>
         </section>
 
+        <section class="workflow-section">
+            <div class="brand-label mono">THE LOOP</div>
+            <h2 class="section-heading mono">FROM INTENT TO EVIDENCE.</h2>
+            <div class="workflow-grid">
+                <div class="workflow-step"><span class="mono">01</span><strong class="mono">DEFINE</strong><p>Load a project and describe the outcome you want.</p></div>
+                <div class="workflow-step"><span class="mono">02</span><strong class="mono">PROPOSE</strong><p>The model reasons about the project and suggests an action.</p></div>
+                <div class="workflow-step"><span class="mono">03</span><strong class="mono">APPROVE</strong><p>Restricted writes and commands stop for operator review.</p></div>
+                <div class="workflow-step"><span class="mono">04</span><strong class="mono">VERIFY</strong><p>The runtime checks the result before the task can be complete.</p></div>
+            </div>
+        </section>
+
         <section class="limitations-panel">
             <div class="brand-label mono">HONEST STATUS</div>
             <h2 class="section-heading mono">ALPHA // LOCAL-FIRST // IN PROGRESS</h2>
             <p>Magy is an active engineering project. It currently expects a local OpenAI-compatible model server, such as LM Studio, and is not presented as a finished hosted service. The goal is dependable local development assistance with explicit boundaries—not an autonomous replacement for an engineer.</p>
+        </section>
+        <section class="limitations-panel">
+            <div class="brand-label mono">BOUNDARIES</div>
+            <h2 class="section-heading mono">WHAT MAGY DOES NOT DO.</h2>
+            <p>Magy does not guarantee that a model is correct, silently approve dangerous actions, replace independent review, or treat a model’s completion message as proof. Verification still depends on the project’s configured checks and the quality of its acceptance criteria.</p>
         </section>
     </main>
 
@@ -131,6 +156,7 @@ PROJECT</pre>
             <div class="mono footer-copy">© 2026 AEOWUN.</div>
             <div class="footer-links">
                 <a href="/support/" class="mono">SUPPORT</a>
+                <a href="/security/" class="mono">TRUST</a>
                 <a href="/privacy/" class="mono">PRIVACY</a>
             </div>
         </div>

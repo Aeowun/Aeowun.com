@@ -3,11 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AEOWUN // AEOPIN</title>
-    <meta http-equiv="refresh" content="0; url=home.html">
-    <link rel="canonical" href="https://aeowun.com/home.html">
+    <title>AEOWUN // CONTROLLED COMPUTING</title>
+    <meta name="description" content="Aeowun builds local-first tools for files, software, automation, and intelligent systems.">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <p>Redirecting to AEOWUN. <a href="home.html">Continue</a></p>
+<body class="aeowun-environment home-page">
+
+    <!-- ENVIRONMENTAL STACK (The Stage) -->
+    <div id="void-bg"></div>
+    <div id="technical-grid"></div>
+    <div id="wave-field">
+        <svg id="wave-field-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <defs>
+                <filter id="ribbon-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="15" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+                <linearGradient id="grad-v" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(124, 34, 228, 0)" />
+                    <stop offset="50%" stop-color="rgba(124, 34, 228, 0.7)" />
+                    <stop offset="100%" stop-color="rgba(124, 34, 228, 0)" />
+                </linearGradient>
+                <linearGradient id="grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(0, 210, 241, 0)" />
+                    <stop offset="50%" stop-color="rgba(0, 210, 241, 0.5)" />
+                    <stop offset="100%" stop-color="rgba(0, 210, 241, 0)" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <div id="showroom-aura"></div>
+    <canvas id="ambient-canvas"></canvas>
+
+    <!-- AEOWUN SHELL -->
+    <header class="aeowun-header">
+        <div class="header-inner container">
+            <a href="/" class="brand"><span class="brand-name mono" style="letter-spacing: 0.5em;">AEOWUN</span></a>
+            <nav class="product-nav">
+                <a href="/" class="nav-item mono active">AEOWUN</a>
+                <a href="/aeopin/" class="nav-item mono">AEOPIN</a>
+                <a href="/magy/" class="nav-item mono">MAGY</a>
+                <a href="/checkmaker/" class="nav-item mono">CHECKMAKER</a>
+                <a href="/ide/" class="nav-item mono">IDE</a>
+                <a href="/research/" class="nav-item mono">RESEARCH</a>
+                <a href="/security/" class="nav-item mono">TRUST</a>
+                <div class="download-wrapper">
+                    <a href="https://github.com/Aeowun/Aeopin/releases/download/v1.2.3/aeopin-authority.exe" target="_blank" rel="noopener" class="nav-item download-link mono">DOWNLOAD v1.2.3</a>
+                    <div class="download-disclaimer mono">
+                        <span class="disclaimer-title">[ RELEASE ]</span> AEOPIN v1.2.3 IS AVAILABLE FROM THE VERIFIED <a href="https://github.com/Aeowun/Aeopin/releases/tag/v1.2.3" target="_blank" rel="noopener">GITHUB RELEASE</a>.
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- STORYBOARD STAGE -->
+    <main id="scene-stage">
+
+        <!-- SCENE 01: ARRIVAL & PRODUCT PRESENCE -->
+        <div class="scene" id="scene-01">
+            <div class="content-wrap container split-layout">
+                <div class="scene-text">
+                    <div class="brand-label mono">INDEPENDENT SOFTWARE STUDIO</div>
+                    <h1 class="product-title mono">AEOWUN</h1>
+                    <p class="hero-lead">
+                        TOOLS FOR CONTROLLED COMPUTING.<br>
+                        LOCAL-FIRST SYSTEMS FOR FILES, SOFTWARE, AND INTELLIGENT WORK.
+                    </p>
+                    <div class="hero-actions">
+                        <div class="download-wrapper">
+                            <a href="/aeopin/" class="primary-button mono">EXPLORE AEOPIN</a>
+                            <div class="download-disclaimer mono">
+                                <span class="disclaimer-title">[ RELEASE ]</span> AEOPIN v1.2.3 IS AVAILABLE FROM THE VERIFIED <a href="https://github.com/Aeowun/Aeopin/releases/tag/v1.2.3" target="_blank" rel="noopener">GITHUB RELEASE</a>.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="scene-visual">
+                    <div class="aeopin-ui glass-effect">
+                        <div class="ui-header">
+                            <span class="ui-dot pulse"></span>
+                            <span class="ui-title mono">AEOPIN</span>
+                        </div>
+                        <div class="ui-content">
+                            <div class="ui-capture-area mono">DRAG AND DROP</div>
+                            <div class="ui-search-bar">
+                                <div class="search-placeholder mono">Search drops...</div>
+                            </div>
+                            <div class="ui-filters mono">
+                                <span class="filter active">All</span>
+                                <span class="filter">Files</span>
+                                <span class="filter">Folders</span>
+                                <span class="filter">Links</span>
+                                <span class="filter">Text</span>
+                            </div>
+                            <div class="ui-list-label mono">TODAY</div>
+                            <div class="ui-items-container">
+                                <div class="ui-item">
+                                    <div class="item-thumb icon-file"></div>
+                                    <div class="item-meta">
+                                        <div class="item-name mono">Honeymoon.png</div>
+                                        <div class="item-details mono">Aug 24, 15:25 · file</div>
+                                    </div>
+                                    <div class="item-menu"></div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="item-thumb icon-file"></div>
+                                    <div class="item-meta">
+                                        <div class="item-name mono">backup.md</div>
+                                        <div class="item-details mono">Aug 24, 07:13 · file</div>
+                                    </div>
+                                    <div class="item-menu"></div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="item-thumb icon-folder"></div>
+                                    <div class="item-meta">
+                                        <div class="item-name mono">Pictures</div>
+                                        <div class="item-details mono">May 5, 15:24 · folder</div>
+                                    </div>
+                                    <div class="item-menu"></div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="item-thumb icon-folder"></div>
+                                    <div class="item-meta">
+                                        <div class="item-name mono">Notes</div>
+                                        <div class="item-details mono">Last Year · folder</div>
+                                    </div>
+                                    <div class="item-menu"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCENE 02: THE PROBLEM (Editorial) -->
+        <div class="scene" id="scene-02">
+            <div class="content-wrap container">
+                <p class="editorial-statement">
+                    Aeowun builds tools for people who want powerful software without surrendering control.
+                    <br><br>
+                    Local-first by default. Explicit when it acts. Honest when it fails.
+                </p>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- SCENE 04: SEARCH CONVERGENCE -->
+        <div class="scene" id="scene-04">
+            <div class="content-wrap container">
+                <div class="brand-label mono text-center">THE AEOWUN NETWORK</div>
+                <h2 class="mono luminous-text text-center">TOOLS FOR CONTROLLED COMPUTING.</h2>
+                <div class="ecosystem-grid">
+                    <a class="ecosystem-card" href="/aeopin/"><span class="mono ecosystem-status available">AVAILABLE // v1.2.3</span><strong class="mono">AEOPIN</strong><span>Capture and retrieve files, notes, and links without giving up ownership.</span></a>
+                    <a class="ecosystem-card" href="/ide/"><span class="mono ecosystem-status">IN DEVELOPMENT</span><strong class="mono">AEOWUN IDE</strong><span>Build software with intelligence, evidence, and a human in control.</span></a>
+                    <a class="ecosystem-card" href="/magy/"><span class="mono ecosystem-status available">ACTIVE DEVELOPMENT</span><strong class="mono">MAGY</strong><span>A local AI engineering system where models propose and the runtime verifies.</span></a>
+                    <a class="ecosystem-card" href="/checkmaker/"><span class="mono ecosystem-status available">AVAILABLE // v1.0.0</span><strong class="mono">CHECKMAKER</strong><span>Toggle Markdown checkboxes without rewriting the file around them.</span></a>
+                    <a class="ecosystem-card" href="/aein/"><span class="mono ecosystem-status">EXPERIMENTAL</span><strong class="mono">AEIN</strong><span>A local operator for machine actions with explicit policy and verification.</span></a>
+                    <a class="ecosystem-card" href="/zero/"><span class="mono ecosystem-status">RESEARCH</span><strong class="mono">AEOWUN ZERO</strong><span>Research into intelligence that understands architecture, constraints, and behavior.</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCENE 05: FINAL CALL -->
+        <div class="scene" id="scene-05">
+            <div class="content-wrap container text-center">
+                <div class="brand-label mono">START WITH THE FIRST TOOL</div>
+                <h2 class="mono luminous-text">ENTER AEOWUN.</h2>
+                <p class="hero-meta mono">AEOPIN // FREE FOR WINDOWS</p>
+                <div class="hero-actions justify-center">
+                    <div class="download-wrapper">
+                        <a href="/aeopin/" class="primary-button mono">EXPLORE AEOPIN</a>
+                        <div class="download-disclaimer mono">
+                            <span class="disclaimer-title">[ RELEASE ]</span> AEOPIN v1.2.3 IS AVAILABLE FROM THE VERIFIED <a href="https://github.com/Aeowun/Aeopin/releases/tag/v1.2.3" target="_blank" rel="noopener">GITHUB RELEASE</a>.
+                        </div>
+                    </div>
+                </div>
+                <p class="final-note">
+                    One local-first tool today. A connected ecosystem of controlled,
+                    verifiable software tomorrow.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="aeowun-footer">
+        <div class="container footer-inner">
+            <div class="mono footer-copy">© 2026 AEOWUN.</div>
+            <div class="footer-links">
+                <a href="/support/" class="mono">SUPPORT</a>
+                <a href="/security/" class="mono">TRUST</a>
+                <a href="/privacy/" class="mono">PRIVACY</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
 </body>
 </html>
