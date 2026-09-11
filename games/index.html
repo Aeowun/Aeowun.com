@@ -80,6 +80,64 @@
         .ecosystem-card .mono.ecosystem-status {
             margin-bottom: 4px;
         }
+
+        /* Leaderboards */
+        .leaderboards-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+        }
+
+        .leaderboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .leaderboard-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 6px;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        .leaderboard-table th {
+            text-align: left;
+            color: var(--text-dim);
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+            font-weight: 500;
+        }
+
+        .leaderboard-table td {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            color: var(--text);
+        }
+
+        .leaderboard-table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .score-val {
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        @media (max-width: 900px) {
+            .leaderboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body class="aeowun-environment">
@@ -93,11 +151,16 @@
             <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
             <nav class="product-nav">
                 <a href="/aeowun/" class="nav-item mono">PROJECT</a>
-                <a href="/aeopin/" class="nav-item mono">AEOPIN</a>
-                <a href="/checkmaker/" class="nav-item mono">CHECKMAKER</a>
-                <a href="/ide/" class="nav-item mono">IDE</a>
-                <a href="/magy/" class="nav-item mono">MAGY</a>
-                <a href="/games/" class="nav-item mono active">GAMES</a>
+                <div class="nav-dropdown">
+                    <span class="nav-item mono dropdown-trigger">PRODUCTS</span>
+                    <div class="dropdown-content">
+                        <a href="/aeopin/" class="dropdown-item mono">AEOPIN</a>
+                        <a href="/checkmaker/" class="dropdown-item mono">CHECKMAKER</a>
+                        <a href="/ide/" class="dropdown-item mono">IDE</a>
+                        <a href="/magy/" class="dropdown-item mono">MAGY</a>
+                        <a href="/games/" class="dropdown-item mono active">GAMES</a>
+                    </div>
+                </div>
                 <a href="/engineering/" class="nav-item mono">WORK</a>
                 <a href="/security/" class="nav-item mono">TRUST</a>
             </nav>
@@ -124,6 +187,45 @@
                     <strong class="mono">BrantsWrold</strong>
                     <span>An abstract architectural exploration. Build, break, and verify.</span>
                     <div class="primary-button mono launch-button" onclick="launchGame('BrantsWrold', 'BrantsWrold/Brantsworld.html')">LAUNCH</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="leaderboards-section">
+            <div class="brand-label mono text-center">SYSTEM RECORDS</div>
+            <h2 class="mono luminous-text text-center" style="font-size: 2rem; margin-bottom: 40px;">LEADERBOARDS</h2>
+
+            <div class="leaderboard-grid">
+                <div class="leaderboard-card">
+                    <div class="mono" style="color: var(--accent-cyan); letter-spacing: 0.2em; font-size: 0.9rem;">SPACE ADVENTURE X // TOP PILOTS</div>
+                    <table class="leaderboard-table" id="sa-leaderboard">
+                        <thead>
+                            <tr>
+                                <th>PILOT</th>
+                                <th>LEVEL</th>
+                                <th>DATE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data injected here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="leaderboard-card">
+                    <div class="mono" style="color: var(--accent-violet); letter-spacing: 0.2em; font-size: 0.9rem;">BRANT'S WORLD // TOP COLLECTORS</div>
+                    <table class="leaderboard-table" id="bw-leaderboard">
+                        <thead>
+                            <tr>
+                                <th>PLAYER</th>
+                                <th>COINS</th>
+                                <th>DATE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data injected here -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
@@ -161,13 +263,48 @@
             frame.src = url;
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            frame.onload = () => {
+                frame.contentWindow.focus();
+            };
         }
 
         function closeGame() {
+            try {
+                if(frame.contentWindow && frame.contentWindow.saveGameProgress) {
+                    frame.contentWindow.saveGameProgress();
+                }
+            } catch(e) {}
             modal.classList.remove('active');
             frame.src = '';
             document.body.style.overflow = '';
+            renderLeaderboards();
         }
+
+        function renderLeaderboards() {
+            const saData = JSON.parse(localStorage.getItem('aeowun_space_adventure_leaderboard') || '[]');
+            const bwData = JSON.parse(localStorage.getItem('aeowun_brants_world_leaderboard') || '[]');
+
+            const saBody = document.querySelector('#sa-leaderboard tbody');
+            const bwBody = document.querySelector('#bw-leaderboard tbody');
+
+            saBody.innerHTML = saData.length ? saData.map(d => `
+                <tr>
+                    <td>${d.name}</td>
+                    <td class="score-val">${d.level}</td>
+                    <td>${d.date}</td>
+                </tr>
+            `).join('') : '<tr><td colspan="3" style="text-align:center; opacity:0.3">NO DATA ACQUIRED</td></tr>';
+
+            bwBody.innerHTML = bwData.length ? bwData.map(d => `
+                <tr>
+                    <td>${d.name}</td>
+                    <td class="score-val" style="color: var(--accent-violet)">${d.score}</td>
+                    <td>${d.date}</td>
+                </tr>
+            `).join('') : '<tr><td colspan="3" style="text-align:center; opacity:0.3">NO DATA ACQUIRED</td></tr>';
+        }
+
+        renderLeaderboards();
 
         // Close on ESC
         window.addEventListener('keydown', (e) => {

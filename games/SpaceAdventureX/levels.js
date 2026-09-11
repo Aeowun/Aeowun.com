@@ -6,23 +6,24 @@ function rng(seed){let s=(seed>>>0)||1;return()=>{s=(s*1664525+1013904223)>>>0;r
 function createLevel(number){
   const random=rng((number*2654435761)>>>0);
   const seed=Math.floor(random()*0xffffffff);
-  const difficulty=clamp(number/250,0,1);
-  const boss=number%25===0;
+  const difficulty=clamp(number/50,0,1); // Increased difficulty scaling (was number/250)
+  const boss=number%5===0; // Boss every 5 levels (was 25)
 
   return {
     number,
     seed,
-    length:Math.floor(9000+number*55),
-    cruiseSpeed:clamp(360+number*1.5,360,650),
-    maxSpeed:clamp(790+number*.25,790,900),
-    enemyDensity:clamp(.16+difficulty*.62,.16,.78),
-    asteroidDensity:clamp(.08+difficulty*.44,.08,.52),
-    projectileDifficulty:clamp(.12+difficulty*.70,.12,.82),
-    enemyHealth:1+Math.floor(number/45),
+    length:Math.floor(6000+number*200), // Adjusted length scaling
+    cruiseSpeed:clamp(360+number*4,360,800), // Faster cruise speed scaling
+    maxSpeed:clamp(790+number*2,790,1200),
+    enemyDensity:clamp(.20+difficulty*.75,.20,.95), // Much higher density at higher levels
+    asteroidDensity:clamp(.12+difficulty*.50,.12,.65),
+    projectileDifficulty:clamp(.15+difficulty*.85,.15,1.0),
+    enemyHealth:1+Math.floor(number/15), // Health scales faster (was number/45)
+    bossHealth:15+Math.floor(number*8), // New property for boss health
     boostCost:22,
     planetType:number%8,
     boss,
-    band:number<=10?'learning':number<=25?'introduction':number<=50?'pressure':number<=75?'advanced':number<=100?'dangerous':number<=150?'insane':number<=200?'expert':number<=249?'nightmare':'endgame'
+    band:number<=5?'scouting':number<=15?'borderland':number<=30?'hostile':number<=50?'warzone':number<=75?'dangerous':number<=100?'extreme':number<=150?'catastrophic':number<=200?'galactic-threat':'oblivion'
   };
 }
 

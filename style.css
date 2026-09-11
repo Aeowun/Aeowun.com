@@ -107,8 +107,79 @@ body:not(.home-page) {
 .nav-item { text-decoration: none; font-size: 0.6rem; color: var(--text-dim); transition: color 0.3s ease; position: relative; }
 .nav-item:hover:not(.disabled) { color: var(--text-bright); }
 .nav-item.active { color: var(--text-bright); }
-.nav-item:hover:not(.disabled) { color: var(--text-bright); }
 .nav-item.disabled { cursor: default; color: var(--text-dim); opacity: 0.5; }
+
+/* Dropdown System */
+.nav-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-trigger {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown-trigger::after {
+    content: '▼';
+    font-size: 0.45rem;
+    opacity: 0.5;
+    transition: transform 0.3s ease;
+    margin-top: 1px;
+}
+
+.nav-dropdown:hover .dropdown-trigger::after {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(4, 5, 8, 0.98);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 2000;
+    padding: 12px 0;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    backdrop-filter: blur(12px);
+}
+
+.nav-dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 24px;
+    text-decoration: none;
+    font-size: 0.58rem;
+    color: var(--text-dim);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.dropdown-item:hover {
+    color: var(--text-bright);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.dropdown-item.active {
+    color: var(--accent-cyan);
+}
 
 .download-link { color: var(--text-bright); border: 1px solid var(--border-bright); padding: 8px 20px; border-radius: 2px; background: rgba(255,255,255,0.03); transition: all 0.3s ease; }
 .download-link:hover:not(.disabled) { background: rgba(255,255,255,0.08); border-color: var(--text-bright); box-shadow: 0 0 30px var(--glow-violet); }

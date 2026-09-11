@@ -186,7 +186,11 @@
       min-height: 52px;
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
     }
+
+    /* Overlays */
+    .overlay-screen{position:fixed;inset:0;background:rgba(2,5,15,.9);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;pointer-events:auto;color:white}.overlay-card{background: #0c1432;border:2px solid #55e6ff;padding:30px;border-radius:25px;max-width:400px;width:100%;text-align:center;box-shadow:0 20px 80px #0009}.overlay-title{font-size:32px;margin-bottom:20px;color:#55e6ff;font-weight:bold}.overlay-text{font-size:18px;line-height:1.45;margin-bottom:24px;text-align:left}.overlay-text ul{padding-left:20px;margin:10px 0}.overlay-text li{margin-bottom:8px}input.initials-input{background:rgba(0,0,0,.3);border:2px solid #55e6ff;color:#fff;padding:12px;width:100px;text-align:center;font-size:24px;font-weight:bold;text-transform:uppercase;margin-bottom:20px;outline:none;border-radius:10px}
 
     @media (max-width: 700px) {
       .topbar {
@@ -239,7 +243,7 @@
 
   <div id="hud">
     <div class="topbar">
-      <div class="badge">Stars <span id="stars">0</span></div>
+      <div class="badge">Coins <span id="stars">0</span></div>
       <div class="badge">Robots <span id="robots">0/8</span></div>
       <div class="badge">Energy <span id="energyText">100</span></div>
       <div class="energyWrap">
@@ -261,6 +265,38 @@
       <h1 id="messageTitle"></h1>
       <p id="messageText"></p>
       <button id="playAgain" class="play" type="button">PLAY AGAIN</button>
+    </div>
+  </div>
+
+  <div id="setup-overlay" class="overlay-screen">
+    <div class="overlay-card">
+        <div class="overlay-title">BRANT'S WORLD</div>
+        <div class="overlay-text">
+            IDENTIFICATION REQUIRED. ENTER INITIALS TO PROCEED:
+        </div>
+        <input type="text" id="player-initials" class="initials-input" maxlength="3" placeholder="AAA">
+        <br>
+        <button id="start-game-btn" class="play">ENGAGE</button>
+    </div>
+  </div>
+
+  <div id="instructions-overlay" class="overlay-screen" style="display:none">
+    <div class="overlay-card">
+        <div class="overlay-title">HOW TO PLAY</div>
+        <div class="overlay-text">
+            <strong>CONTROLS:</strong>
+            <ul>
+                <li>WASD / ARROWS: Move Brant</li>
+                <li>SPACE / BURST: Star Burst</li>
+            </ul>
+            <strong>OBJECTIVE:</strong>
+            <ul>
+                <li>Rescue all 8 friendly robots!</li>
+                <li>Collect blue crystals for bonus stars.</li>
+                <li>Star Burst rescues nearby robots and stuns enemies.</li>
+            </ul>
+        </div>
+        <button id="dismiss-instructions" class="play" style="padding: 8px 20px; font-size: 16px;">START EXPLORATION</button>
     </div>
   </div>
 

@@ -38,6 +38,62 @@
   var lost = false;
   var joyPointer = null;
   var input = { x: 0, y: 0, keys: {} };
+  var playerInitials = '';
+
+  const setupOverlay = document.getElementById('setup-overlay'),
+        initialsInput = document.getElementById('player-initials'),
+        startBtn = document.getElementById('start-game-btn'),
+        instrOverlay = document.getElementById('instructions-overlay'),
+        dismissBtn = document.getElementById('dismiss-instructions');
+
+  startBtn.onclick = () => {
+      const val = initialsInput.value.trim();
+      if (!val) {
+          initialsInput.style.borderColor = '#ff6b7c';
+          initialsInput.style.boxShadow = '0 0 15px rgba(255, 107, 124, 0.4)';
+          initialsInput.focus();
+          return;
+      }
+      playerInitials = val.toUpperCase();
+      localStorage.setItem('aeowun_user_initials', playerInitials);
+      setupOverlay.style.display = 'none';
+      instrOverlay.style.display = 'flex';
+  };
+
+  const savedInitials = localStorage.getItem('aeowun_user_initials');
+  if(savedInitials) {
+      playerInitials = savedInitials;
+      setupOverlay.style.display = 'none';
+      instrOverlay.style.display = 'flex';
+  }
+
+  dismissBtn.onclick = () => {
+      instrOverlay.style.display = 'none';
+      spawn();
+      BWAudio.playMusic();
+      last = performance.now();
+      requestAnimationFrame(loop);
+  };
+
+  function saveScore() {
+      if(!playerInitials) return;
+      const leaderboard = JSON.parse(localStorage.getItem('aeowun_brants_world_leaderboard') || '[]');
+      const existing = leaderboard.find(e => e.name === playerInitials);
+      if(existing) {
+          if(player.stars > existing.score) {
+              existing.score = player.stars;
+              existing.date = new Date().toLocaleDateString();
+          }
+      } else {
+          leaderboard.push({ name: playerInitials, score: player.stars, date: new Date().toLocaleDateString() });
+      }
+      leaderboard.sort((a, b) => b.score - a.score);
+      localStorage.setItem('aeowun_brants_world_leaderboard', JSON.stringify(leaderboard.slice(0, 10)));
+  }
+
+  window.saveGameProgress = () => {
+      if(playerInitials) saveScore();
+  };
 
   var planets = [
     { x: 700, y: 600, r: 210, color: '#304f9e', ring: '#86d9ff', alpha: 0.9 },
@@ -228,6 +284,7 @@
     messageText.textContent = 'BRANT SAVED THE WORLD! All 8 friendly robots are safe. You earned ' + player.stars + ' stars!';
     playAgain.textContent = 'PLAY AGAIN';
     message.style.display = 'grid';
+    saveScore();
   }
 
   function finishLose() {
@@ -243,6 +300,7 @@
     messageText.textContent = 'Brant ran out of energy! The robots are still waiting to be rescued.';
     playAgain.textContent = 'TRY AGAIN';
     message.style.display = 'grid';
+    saveScore();
     resetJoystick();
   }
 
@@ -610,17 +668,15 @@
 
   window.addEventListener('resize', resize);
   resize();
-  spawn();
 
   var last = performance.now();
 
   function loop(now) {
+    if (!playerInitials) return;
     var dt = Math.min(0.033, (now - last) / 1000);
     last = now;
     update(dt);
     draw();
     requestAnimationFrame(loop);
   }
-
-  requestAnimationFrame(loop);
 })();
