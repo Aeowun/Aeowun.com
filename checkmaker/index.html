@@ -4,39 +4,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AEOWUN // CHECKMAKER</title>
-    <meta name="description" content="CheckMaker is a surgical Markdown checklist editor that preserves the bytes around every checkbox.">
+    <meta name="description" content="CheckMaker is a shipped AEOWUN product: a surgical Markdown checklist editor that changes only checkbox bytes on disk.">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body class="aeowun-environment">
-    <div id="void-bg"></div><div id="technical-grid"></div><div id="wave-field"></div><canvas id="ambient-canvas"></canvas>
-    <header class="aeowun-header"><div class="header-inner container"><a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a><nav class="product-nav"><a href="/" class="nav-item mono">STUDIO</a><a href="/aeopin/" class="nav-item mono">AEOPIN</a><a href="/magy/" class="nav-item mono">MAGY</a><a href="/checkmaker/" class="nav-item mono active">CHECKMAKER</a><a href="/security/" class="nav-item mono">TRUST</a></nav></div></header>
+    <div id="void-bg"></div>
+    <div id="technical-grid"></div>
+    <div id="wave-field">
+        <svg id="wave-field-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <defs>
+                <filter id="ribbon-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="15" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+                <linearGradient id="grad-v" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(124, 34, 228, 0)" />
+                    <stop offset="50%" stop-color="rgba(124, 34, 228, 0.7)" />
+                    <stop offset="100%" stop-color="rgba(124, 34, 228, 0)" />
+                </linearGradient>
+                <linearGradient id="grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(0, 210, 241, 0)" />
+                    <stop offset="50%" stop-color="rgba(0, 210, 241, 0.5)" />
+                    <stop offset="100%" stop-color="rgba(0, 210, 241, 0)" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <canvas id="ambient-canvas"></canvas>
+
+    <header class="aeowun-header">
+        <div class="header-inner container">
+            <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
+            <nav class="product-nav">
+                <a href="/aeowun/" class="nav-item mono">PROJECT</a>
+                <a href="/aeopin/" class="nav-item mono">AEOPIN</a>
+                <a href="/checkmaker/" class="nav-item mono active">CHECKMAKER</a>
+                <a href="/ide/" class="nav-item mono">IDE</a>
+                <a href="/magy/" class="nav-item mono">MAGY</a>
+                <a href="/games/" class="nav-item mono">GAMES</a>
+                <a href="/engineering/" class="nav-item mono">WORK</a>
+                <a href="/security/" class="nav-item mono">TRUST</a>
+                <div class="download-wrapper">
+                    <a href="https://github.com/Aeowun/Checkmaker/releases/download/V1.0.0/CheckMaker.exe" target="_blank" rel="noopener" class="nav-item download-link mono">DOWNLOAD v1.0.0</a>
+                    <div class="download-disclaimer mono">
+                        <span class="disclaimer-title">[ RELEASE ]</span> CHECKMAKER v1.0.0 IS AVAILABLE FROM THE VERIFIED <a href="https://github.com/Aeowun/Checkmaker/releases/tag/V1.0.0" target="_blank" rel="noopener">GITHUB RELEASE</a>.
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
     <main class="product-page container">
         <section class="product-hero">
-            <div class="brand-label mono">AEOWUN // AVAILABLE // WINDOWS</div>
+            <div class="brand-label mono">A SHIPPED AEOWUN PRODUCT // v1.0.0</div>
             <h1 class="product-title mono">CHECKMAKER</h1>
             <p class="hero-lead">Check boxes. Touch nothing else. A surgical Markdown checklist editor for people who care about predictable files and tiny diffs.</p>
             <div class="hero-actions">
                 <a class="primary-button mono" href="https://github.com/Aeowun/Checkmaker/releases/download/V1.0.0/CheckMaker.exe" target="_blank" rel="noopener">DOWNLOAD v1.0.0</a>
                 <a class="secondary-button mono" href="https://github.com/Aeowun/Checkmaker" target="_blank" rel="noopener">VIEW SOURCE</a>
             </div>
+            <p class="product-disclaimer">The Windows release is a standalone CheckMaker.exe from the GitHub V1.0.0 tag. No installer and no Python required to run the published build.</p>
         </section>
+
         <section class="trust-panel">
-            <div><div class="brand-label mono">THE PROMISE</div><h2 class="section-heading mono">SMALL CHANGE. SMALL DIFF.</h2></div>
-            <p>Most Markdown editors rewrite an entire document for a checkbox toggle. CheckMaker seeks to the exact checkbox byte and changes only that marker, preserving line endings, encoding, and surrounding content.</p>
+            <div>
+                <div class="brand-label mono">THE PROMISE</div>
+                <h2 class="section-heading mono">SMALL CHANGE. SMALL DIFF.</h2>
+            </div>
+            <p>Most Markdown editors treat a checkbox toggle as a document rewrite: parse, modify, then save the whole file. That can change line endings, encoding, or surrounding formatting. CheckMaker seeks the exact checkbox bytes and writes only those markers. It is a shipped AEOWUN product, alongside AEOPIN—not a side utility.</p>
         </section>
+
+        <section class="evidence-section">
+            <div class="brand-label mono">EVIDENCE // CURRENT RELEASE</div>
+            <h2 class="section-heading mono">SEE THE EDITOR.</h2>
+            <p class="evidence-intro">This is the demo from the public CheckMaker repository. The viewer renders Markdown; a checkbox click writes only the marker on disk.</p>
+            <div class="evidence-grid">
+                <figure class="evidence-card evidence-card-wide">
+                    <img src="../assets/checkmaker/demo.gif" alt="CheckMaker toggling Markdown checkboxes in a desktop window">
+                    <figcaption><strong class="mono">SURGICAL TOGGLE</strong><span>Click a checkbox. The rest of the file stays as it was.</span></figcaption>
+                </figure>
+            </div>
+        </section>
+
         <section class="feature-grid">
-            <article class="feature-card"><span class="mono ecosystem-status available">SURGICAL EDITS</span><h2 class="mono">PRESERVE THE FILE</h2><p>Only the checkbox marker changes. No formatting churn or accidental document rewrite.</p></article>
-            <article class="feature-card"><span class="mono ecosystem-status available">DRIFT PROTECTION</span><h2 class="mono">REFUSE STALE WRITES</h2><p>External changes are detected before a write so an old view cannot silently overwrite newer work.</p></article>
-            <article class="feature-card"><span class="mono ecosystem-status available">OFFLINE READY</span><h2 class="mono">NO CLOUD REQUIRED</h2><p>Assets are bundled locally and the standalone Windows release runs without an internet connection.</p></article>
+            <article class="feature-card">
+                <span class="mono ecosystem-status available">SURGICAL EDITS</span>
+                <h2 class="mono">PRESERVE THE FILE</h2>
+                <p>Find <code class="mono">[ ]</code>, seek to that offset, write the marker. Encoding, line endings, and surrounding content are left alone.</p>
+            </article>
+            <article class="feature-card">
+                <span class="mono ecosystem-status available">DRIFT PROTECTION</span>
+                <h2 class="mono">REFUSE STALE WRITES</h2>
+                <p>Before a write, CheckMaker verifies the file has not changed externally and that a checkbox marker is actually present at the target bytes.</p>
+            </article>
+            <article class="feature-card">
+                <span class="mono ecosystem-status available">OFFLINE READY</span>
+                <h2 class="mono">NO CLOUD REQUIRED</h2>
+                <p>Assets are bundled locally. The standalone Windows build runs without an internet connection.</p>
+            </article>
         </section>
+
+        <section class="feature-grid">
+            <article class="feature-card">
+                <span class="mono ecosystem-status available">TABS</span>
+                <h2 class="mono">MULTIPLE FILES</h2>
+                <p>Open and switch between multiple documents in one session. Tab IDs are UUID-based so actions stay attached to the correct file.</p>
+            </article>
+            <article class="feature-card">
+                <span class="mono ecosystem-status available">INPUT</span>
+                <h2 class="mono">OPEN HOW YOU WANT</h2>
+                <p>Drag-and-drop, native file picker, or paste a path. Recent files remember the last 10 documents.</p>
+            </article>
+            <article class="feature-card">
+                <span class="mono ecosystem-status available">GIT-FRIENDLY</span>
+                <h2 class="mono">TINY DIFFS</h2>
+                <p>Because only the checkbox bytes change, Git diffs stay a single marker instead of a rewritten document.</p>
+            </article>
+        </section>
+
+        <section class="architecture-panel">
+            <div class="brand-label mono">HOW IT WORKS</div>
+            <pre class="architecture-diagram mono">MARKDOWN FILE
+  ↓
+MARKDOWN RENDERER
+  ↓
+NATIVE WEBVIEW VIEWER
+  ↓
+CHECKBOX CLICK
+  ↓
+BINARY BYTE SEEK + WRITE
+  ↓
+SAME FILE</pre>
+            <p>Viewing is separated from modification. If CheckMaker cannot prove a write is safe, it refuses to write. Configuration history is written atomically; IO uses fsync so the change is flushed to storage.</p>
+        </section>
+
+        <section class="limitations-panel">
+            <div>
+                <div class="brand-label mono">WHAT IT IS NOT</div>
+                <h2 class="section-heading mono">NOT A FULL MARKDOWN IDE.</h2>
+            </div>
+            <p>CheckMaker is a surgical checklist editor. It is not a WYSIWYG authoring environment and not a replacement for VS Code or Obsidian. GFM-style task items are recognized, including nested lists. Tab reordering and in-file search are listed as unfinished in the public roadmap.</p>
+        </section>
+
         <section class="evidence-section">
             <div class="brand-label mono">RELEASE</div>
-            <h2 class="section-heading mono">v1.0.0 IS AVAILABLE.</h2>
-            <p class="evidence-intro">The first public Windows release is available from GitHub. CheckMaker is intentionally focused: it is a surgical checklist editor, not a replacement for a full Markdown authoring environment.</p>
-            <a class="secondary-button mono" href="https://github.com/Aeowun/Checkmaker/releases/tag/V1.0.0" target="_blank" rel="noopener">READ RELEASE NOTES</a>
+            <h2 class="section-heading mono">v1.0.0 IS ON GITHUB.</h2>
+            <p class="evidence-intro">Download CheckMaker.exe from the V1.0.0 GitHub release, or run from source with Python 3. Source, PyInstaller spec, and build script are public under <a class="inline-link" href="https://github.com/Aeowun/Checkmaker" target="_blank" rel="noopener">github.com/Aeowun/Checkmaker</a>.</p>
+            <div class="hero-actions">
+                <a class="primary-button mono" href="https://github.com/Aeowun/Checkmaker/releases/download/V1.0.0/CheckMaker.exe" target="_blank" rel="noopener">DOWNLOAD EXE</a>
+                <a class="secondary-button mono" href="https://github.com/Aeowun/Checkmaker/releases/tag/V1.0.0" target="_blank" rel="noopener">RELEASE NOTES</a>
+            </div>
         </section>
     </main>
-    <footer class="aeowun-footer"><div class="container footer-inner"><div class="mono footer-copy">© 2026 AEOWUN.</div><div class="footer-links"><a href="/security/" class="mono">TRUST</a><a href="/support/" class="mono">SUPPORT</a></div></div></footer>
+
+    <footer class="aeowun-footer">
+        <div class="container footer-inner">
+            <div class="mono footer-copy">© 2026 AEOWUN.</div>
+            <div class="footer-links">
+                <a href="/support/" class="mono">SUPPORT</a>
+                <a href="/security/" class="mono">TRUST</a>
+                <a href="/privacy/" class="mono">PRIVACY</a>
+                <a href="https://github.com/Aeowun/Checkmaker" target="_blank" rel="noopener" class="mono">GITHUB</a>
+            </div>
+        </div>
+    </footer>
     <script src="../app.js"></script>
 </body>
 </html>

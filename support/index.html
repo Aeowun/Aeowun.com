@@ -19,6 +19,25 @@
             gap: 80px;
             margin-top: 80px;
         }
+        .product-list a {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 0;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .product-list a:hover {
+            color: var(--accent-cyan);
+        }
+        @media (max-width: 900px) {
+            .support-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
         .support-section-title {
             color: var(--text-bright);
             margin-bottom: 30px;
@@ -106,14 +125,14 @@
         <div class="header-inner container">
             <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
             <nav class="product-nav">
-                <a href="/" class="nav-item mono">AEOPIN</a>
-                <a href="/ide/" class="nav-item mono">AEOWUN IDE</a>
-                <div class="download-wrapper">
-                    <a href="https://github.com/Aeowun/Aeopin/releases/download/v1.2.3/aeopin-authority.exe" target="_blank" rel="noopener" class="nav-item download-link mono">DOWNLOAD v1.2.3</a>
-                    <div class="download-disclaimer mono">
-                        <span class="disclaimer-title">[ RELEASE ]</span> AEOPIN v1.2.3 IS AVAILABLE FROM THE VERIFIED <a href="https://github.com/Aeowun/Aeopin/releases/tag/v1.2.3" target="_blank" rel="noopener">GITHUB RELEASE</a>.
-                    </div>
-                </div>
+                <a href="/aeowun/" class="nav-item mono">PROJECT</a>
+                <a href="/aeopin/" class="nav-item mono">AEOPIN</a>
+                <a href="/checkmaker/" class="nav-item mono">CHECKMAKER</a>
+                <a href="/ide/" class="nav-item mono">IDE</a>
+                <a href="/magy/" class="nav-item mono">MAGY</a>
+                <a href="/games/" class="nav-item mono">GAMES</a>
+                <a href="/engineering/" class="nav-item mono">WORK</a>
+                <a href="/security/" class="nav-item mono">TRUST</a>
             </nav>
         </div>
     </header>
@@ -122,7 +141,7 @@
         <section class="support-hero">
             <div class="brand-label mono">SUPPORT</div>
             <h1 class="product-title mono">SUPPORT</h1>
-            <p class="hero-lead">Need help with AEOPIN?</p>
+            <p class="hero-lead">Help for AEOWUN software: shipped products, active systems, and the public repositories.</p>
 
             <div class="hero-actions" style="margin-top: 40px;">
                 <a href="/support/report/" class="primary-button mono">REPORT A BUG</a>
@@ -131,7 +150,16 @@
 
         <div class="support-grid">
             <div class="support-column">
-                <h2 class="support-section-title mono">CONTACT</h2>
+                <h2 class="support-section-title mono">SOFTWARE</h2>
+                <div class="product-list">
+                    <a href="/aeopin/"><span class="mono">AEOPIN</span><span>Shipped // Windows</span></a>
+                    <a href="/checkmaker/"><span class="mono">CHECKMAKER</span><span>Shipped // Windows</span></a>
+                    <a href="/ide/"><span class="mono">AEOWUN IDE</span><span>Active development</span></a>
+                    <a href="/magy/"><span class="mono">MAGY</span><span>Active development</span></a>
+                    <a href="https://github.com/Aeowun" target="_blank" rel="noopener"><span class="mono">GITHUB</span><span>Built in the open</span></a>
+                </div>
+
+                <h2 class="support-section-title mono" style="margin-top: 60px;">CONTACT</h2>
                 <p style="font-size: 0.85rem; margin-bottom: 20px;">For direct inquiries or partnership requests:</p>
                 <a href="mailto:Aeowun.AI@gmail.com" class="mono" style="color: var(--accent-cyan); text-decoration: none; font-size: 0.8rem;">Aeowun.AI@gmail.com</a>
 
@@ -151,58 +179,58 @@
                 <h2 class="support-section-title mono">FAQ</h2>
 
                 <div class="faq-item">
-                    <div class="faq-question mono">What is AEOPIN? <span class="faq-toggle">+</span></div>
+                    <div class="faq-question mono">What is AEOWUN? <span class="faq-toggle">+</span></div>
                     <div class="faq-answer">
-                        AEOPIN is a professional Windows capture appliance designed for one simple idea: Capture immediately, find later. It takes physical possession of your originals and preserves them in a secure local vault.
+                        AEOWUN is an independent software project building local-first systems for controlled computing. AEOPIN and CheckMaker are shipped products. The IDE and MAGY are active systems. AEIN is experimental. ZERO is research.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question mono">Is AEOPIN free? <span class="faq-toggle">+</span></div>
+                    <div class="faq-question mono">What can I download today? <span class="faq-toggle">+</span></div>
                     <div class="faq-answer">
-                        AEOPIN is free for Windows. It is currently in active development.
+                        Two Windows releases are public: <a href="/aeopin/" style="color: var(--accent-cyan);">AEOPIN v1.2.3</a> and <a href="/checkmaker/" style="color: var(--accent-cyan);">CheckMaker v1.0.0</a>. Both are available from verified GitHub releases. Other AEOWUN work is inspectable on GitHub and is not presented as finished downloads.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question mono">Does AEOPIN require an account? <span class="faq-toggle">+</span></div>
+                    <div class="faq-question mono">Do I need an account? <span class="faq-toggle">+</span></div>
                     <div class="faq-answer">
-                        No. AEOPIN is 100% local-first. Everything stays on your computer. No cloud, no tracking, no accounts required.
+                        No AEOWUN account is required for AEOPIN or CheckMaker. MAGY expects a local OpenAI-compatible model server, such as LM Studio, rather than an AEOWUN login.
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question mono">Where is data stored? <span class="faq-toggle">+</span></div>
                     <div class="faq-answer">
-                        Your authoritative data is kept locally in <code class="mono" style="font-size: 0.7rem;">Documents/AEOPIN</code>.
+                        AEOPIN keeps captured data locally under <code class="mono" style="font-size: 0.7rem;">Documents/AEOPIN</code>. CheckMaker edits Markdown files you open and stores recent-file history locally. MAGY works against a project directory you select on your machine.
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question mono">Is my data sent anywhere? <span class="faq-toggle">+</span></div>
                     <div class="faq-answer">
-                        No. AEOPIN operates entirely on your local machine. Files are never transmitted to external servers.
+                        AEOPIN and CheckMaker are designed as local Windows tools and do not upload your files to AEOWUN servers. MAGY talks to a local model server you configure. This website may load advertising scripts; that is separate from the desktop applications. See the <a href="/privacy/" style="color: var(--accent-cyan);">privacy policy</a>.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question mono">Does it show ads? <span class="faq-toggle">+</span></div>
+                    <div class="faq-question mono">Do the apps show ads? <span class="faq-toggle">+</span></div>
                     <div class="faq-answer">
-                        AEOPIN itself contains no advertisements.
+                        AEOPIN does not display advertisements inside the application. CheckMaker’s published description does not include in-app ads. This website can show sponsored units.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question mono">Supported Windows versions? <span class="faq-toggle">+</span></div>
+                    <div class="faq-question mono">Which Windows versions? <span class="faq-toggle">+</span></div>
                     <div class="faq-answer">
-                        AEOPIN is built for Windows 10 and Windows 11.
+                        AEOPIN is built for Windows 10 and Windows 11. CheckMaker’s public release is a standalone Windows executable.
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question mono">How do I report a problem? <span class="faq-toggle">+</span></div>
                     <div class="faq-answer">
-                        Please use the <a href="/support/report/" style="color: var(--accent-cyan);">Report a Bug</a> page to submit an issue via our GitHub repository.
+                        Use the <a href="/support/report/" style="color: var(--accent-cyan);">report page</a> and open an issue on the GitHub repository for the software you are using. Do not include passwords, private files, tokens, or confidential information.
                     </div>
                 </div>
             </div>
@@ -222,6 +250,7 @@
             <div class="footer-links">
                 <a href="/support/" class="mono">SUPPORT</a>
                 <a href="/privacy/" class="mono">PRIVACY</a>
+                <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="mono">GITHUB</a>
             </div>
         </div>
     </footer>

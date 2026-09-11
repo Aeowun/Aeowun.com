@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEOWUN // GAMES</title>
+    <meta name="description" content="AEOWUN GAMES - Experimental local-first entertainment.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Aequon Window (Modal) Styling */
+        #game-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            background: rgba(1, 1, 2, 0.95);
+            backdrop-filter: blur(20px);
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        #game-modal.active {
+            display: flex;
+        }
+
+        .modal-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 80vh;
+            background: var(--void-elevated);
+            border: 1px solid var(--accent-cyan);
+            box-shadow: 0 0 50px rgba(0, 229, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .modal-title {
+            color: var(--accent-cyan);
+            font-size: 0.8rem;
+        }
+
+        .close-button {
+            background: transparent;
+            border: 1px solid var(--border-bright);
+            color: var(--text-bright);
+            padding: 6px 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .close-button:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            box-shadow: 0 0 15px var(--glow-cyan);
+        }
+
+        .game-viewport {
+            flex: 1;
+            border: 0;
+            background: #000;
+        }
+
+        .launch-button {
+            margin-top: auto;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .ecosystem-card .mono.ecosystem-status {
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body class="aeowun-environment">
+    <div id="void-bg"></div>
+    <div id="technical-grid"></div>
+    <div id="wave-field"></div>
+    <canvas id="ambient-canvas"></canvas>
+
+    <header class="aeowun-header">
+        <div class="header-inner container">
+            <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
+            <nav class="product-nav">
+                <a href="/aeowun/" class="nav-item mono">PROJECT</a>
+                <a href="/aeopin/" class="nav-item mono">AEOPIN</a>
+                <a href="/checkmaker/" class="nav-item mono">CHECKMAKER</a>
+                <a href="/ide/" class="nav-item mono">IDE</a>
+                <a href="/magy/" class="nav-item mono">MAGY</a>
+                <a href="/games/" class="nav-item mono active">GAMES</a>
+                <a href="/engineering/" class="nav-item mono">WORK</a>
+                <a href="/security/" class="nav-item mono">TRUST</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="product-page container">
+        <section class="product-hero">
+            <div class="brand-label mono">AEOWUN // EXPERIMENTAL</div>
+            <h1 class="product-title mono">GAMES</h1>
+            <p class="hero-lead">Experimental web-based experiences built for the AEOWUN ecosystem.</p>
+        </section>
+
+        <section class="home-ecosystem">
+            <div class="ecosystem-grid">
+                <div class="ecosystem-card">
+                    <span class="mono ecosystem-status">EXPERIMENTAL</span>
+                    <strong class="mono">SpaceAdventureX</strong>
+                    <span>A cosmic survival challenge. Navigate the void and maintain system integrity.</span>
+                    <div class="primary-button mono launch-button" onclick="launchGame('SpaceAdventureX', 'SpaceAdventureX/index.html')">LAUNCH</div>
+                </div>
+                <div class="ecosystem-card">
+                    <span class="mono ecosystem-status">EXPERIMENTAL</span>
+                    <strong class="mono">BrantsWrold</strong>
+                    <span>An abstract architectural exploration. Build, break, and verify.</span>
+                    <div class="primary-button mono launch-button" onclick="launchGame('BrantsWrold', 'BrantsWrold/Brantsworld.html')">LAUNCH</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="game-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <span id="modal-game-title" class="modal-title mono">GAME_TITLE</span>
+                <button class="close-button mono" onclick="closeGame()">[ CLOSE ]</button>
+            </div>
+            <iframe id="game-frame" class="game-viewport"></iframe>
+        </div>
+    </div>
+
+    <footer class="aeowun-footer">
+        <div class="container footer-inner">
+            <div class="mono footer-copy">© 2026 AEOWUN.</div>
+            <div class="footer-links">
+                <a href="/support/" class="mono">SUPPORT</a>
+                <a href="/security/" class="mono">TRUST</a>
+                <a href="/privacy/" class="mono">PRIVACY</a>
+                <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="mono">GITHUB</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const modal = document.getElementById('game-modal');
+        const frame = document.getElementById('game-frame');
+        const title = document.getElementById('modal-game-title');
+
+        function launchGame(name, url) {
+            title.textContent = name.toUpperCase();
+            frame.src = url;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGame() {
+            modal.classList.remove('active');
+            frame.src = '';
+            document.body.style.overflow = '';
+        }
+
+        // Close on ESC
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeGame();
+        });
+    </script>
+    <script src="../app.js"></script>
+</body>
+</html>

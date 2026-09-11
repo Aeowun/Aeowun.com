@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Space Adventure X</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#030712}body{position:fixed;inset:0;font-family:Arial,sans-serif;color:#fff;user-select:none}#game{position:fixed;inset:0;width:100%;height:100%;display:block}#hud{position:fixed;inset:0;pointer-events:none;z-index:5}.topbar{position:absolute;top:max(12px,env(safe-area-inset-top));left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));display:flex;justify-content:space-between;gap:12px}.panel{padding:9px 12px;border:1px solid rgba(120,220,255,.3);border-radius:12px;background:rgba(4,10,30,.72);backdrop-filter:blur(8px);font-weight:700}.meter{width:min(230px,38vw);height:10px;margin-top:6px;overflow:hidden;border-radius:10px;background:rgba(255,255,255,.12)}.meterFill{width:100%;height:100%;border-radius:inherit}.energyFill{background:#48e8ff}.healthFill{background:#ff5577}#touchControls{position:fixed;inset:0;z-index:10;pointer-events:none}.touchZone{position:absolute;pointer-events:auto;touch-action:none;-webkit-tap-highlight-color:transparent}#verticalPad{left:max(18px,env(safe-area-inset-left));bottom:max(22px,env(safe-area-inset-bottom));width:126px;height:126px;border:2px solid rgba(120,220,255,.4);border-radius:50%;background:rgba(10,25,55,.42)}#verticalStick{position:absolute;left:38px;top:38px;width:46px;height:46px;border-radius:50%;background:rgba(90,230,255,.82);box-shadow:0 0 24px rgba(70,220,255,.45);pointer-events:none}.action{bottom:max(24px,env(safe-area-inset-bottom));width:92px;height:92px;border-radius:50%;border:2px solid rgba(255,255,255,.3);color:white;font-weight:900;background:rgba(15,28,58,.72)}#brake{right:224px}#boost{right:120px;border-color:rgba(255,210,90,.6)}#fire{right:max(18px,env(safe-area-inset-right));border-color:rgba(255,90,110,.65);background:rgba(90,15,35,.72)}@media(max-width:700px){.panel{font-size:12px;padding:7px 9px}.action{width:82px;height:82px;font-size:11px}#brake{right:210px}#boost{right:108px}#verticalPad{width:112px;height:112px}#verticalStick{left:33px;top:33px;width:42px;height:42px}}
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+<div id="hud"><div class="topbar"><div class="panel">LEVEL <span id="level">1</span></div><div class="panel">DISTANCE <span id="distance">0</span>m</div><div class="panel">ENERGY<div class="meter"><div id="energyBar" class="meterFill energyFill"></div></div></div><div class="panel">HULL<div class="meter"><div id="healthBar" class="meterFill healthFill"></div></div></div></div></div>
+<div id="touchControls"><div id="verticalPad" class="touchZone"><div id="verticalStick"></div></div><button id="brake" class="touchZone action">BRAKE</button><button id="boost" class="touchZone action">BOOST</button><button id="fire" class="touchZone action">FIRE</button></div>
+<script src="levels.js"></script><script src="level-generator.js"></script><script src="physics.js"></script><script src="entities.js"></script><script src="weapons.js"></script><script src="renderer.js"></script><script src="audio.js"></script><script src="ui.js"></script><script src="game.js"></script><script src="controls.js"></script>
+</body>
+</html>
