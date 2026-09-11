@@ -5,7 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <title>Space Adventure X</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#030712}body{position:fixed;inset:0;font-family:Arial,sans-serif;color:#fff;user-select:none}#game{position:fixed;inset:0;width:100%;height:100%;display:block}#hud{position:fixed;inset:0;pointer-events:none;z-index:5}.topbar{position:absolute;top:max(12px,env(safe-area-inset-top));left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));display:flex;justify-content:space-between;gap:12px}.panel{padding:9px 12px;border:1px solid rgba(120,220,255,.3);border-radius:12px;background:rgba(4,10,30,.72);backdrop-filter:blur(8px);font-weight:700}.meter{width:min(230px,38vw);height:10px;margin-top:6px;overflow:hidden;border-radius:10px;background:rgba(255,255,255,.12)}.meterFill{width:100%;height:100%;border-radius:inherit}.energyFill{background:#48e8ff}.healthFill{background:#ff5577}#touchControls{position:fixed;inset:0;z-index:10;pointer-events:none}.touchZone{position:absolute;pointer-events:auto;touch-action:none;-webkit-tap-highlight-color:transparent}#verticalPad{left:max(18px,env(safe-area-inset-left));bottom:max(22px,env(safe-area-inset-bottom));width:126px;height:126px;border:2px solid rgba(120,220,255,.4);border-radius:50%;background:rgba(10,25,55,.42)}#verticalStick{position:absolute;left:38px;top:38px;width:46px;height:46px;border-radius:50%;background:rgba(90,230,255,.82);box-shadow:0 0 24px rgba(70,220,255,.45);pointer-events:none}.action{bottom:max(24px,env(safe-area-inset-bottom));width:92px;height:92px;border-radius:50%;border:2px solid rgba(255,255,255,.3);color:white;font-weight:900;background:rgba(15,28,58,.72)}#brake{right:224px}#boost{right:120px;border-color:rgba(255,210,90,.6)}#fire{right:max(18px,env(safe-area-inset-right));border-color:rgba(255,90,110,.65);background:rgba(90,15,35,.72)}@media(max-width:700px){.panel{font-size:12px;padding:7px 9px}.action{width:82px;height:82px;font-size:11px}#brake{right:210px}#boost{right:108px}#verticalPad{width:112px;height:112px}#verticalStick{left:33px;top:33px;width:42px;height:42px}}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#030712}body{position:fixed;inset:0;font-family:Arial,sans-serif;color:#fff;user-select:none}#game{position:fixed;inset:0;width:100%;height:100%;display:block}#hud{position:fixed;inset:0;pointer-events:none;z-index:5}.topbar{position:absolute;top:max(12px,env(safe-area-inset-top));left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));display:flex;justify-content:space-between;gap:12px}.panel{padding:9px 12px;border:1px solid rgba(120,220,255,.3);border-radius:12px;background:rgba(4,10,30,.72);backdrop-filter:blur(8px);font-weight:700}.meter{width:min(230px,38vw);height:10px;margin-top:6px;overflow:hidden;border-radius:10px;background:rgba(255,255,255,.12)}.meterFill{width:100%;height:100%;border-radius:inherit}.energyFill{background:#48e8ff}.healthFill{background:#ff5577}#touchControls{position:fixed;inset:0;z-index:10;pointer-events:none}.touchZone{position:absolute;pointer-events:auto;touch-action:none;-webkit-tap-highlight-color:transparent}#verticalPad{left:max(18px,env(safe-area-inset-left));bottom:max(22px,env(safe-area-inset-bottom));width:126px;height:126px;border:2px solid rgba(120,220,255,.4);border-radius:50%;background:rgba(10,25,55,.42)}#verticalStick{position:absolute;left:38px;top:38px;width:46px;height:46px;border-radius:50%;background:rgba(90,230,255,.82);box-shadow:0 0 24px rgba(70,220,255,.45);pointer-events:none}.action{bottom:max(24px,env(safe-area-inset-bottom));width:92px;height:92px;border-radius:50%;border:2px solid rgba(255,255,255,.3);color:white;font-weight:900;background:rgba(15,28,58,.72)}#brake{right:224px}#boost{right:120px;border-color:rgba(255,210,90,.6)}#fire{right:max(18px,env(safe-area-inset-right));border-color:rgba(255,90,110,.65);background:rgba(90,15,35,.72)}@media(max-width:700px){
+    .topbar{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:6px;
+        top:max(6px,env(safe-area-inset-top));
+    }
+    .panel{
+        font-size:10px;
+        padding:5px 8px;
+        flex:1 1 40%;
+        max-width:48%;
+    }
+    .meter{
+        width:100%;
+        height:6px;
+    }
+    .action{
+        width:74px;
+        height:74px;
+        font-size:10px;
+    }
+    #brake{right:180px}
+    #boost{right:92px}
+    #fire{right:max(12px,env(safe-area-inset-right))}
+    #verticalPad{
+        width:100px;
+        height:100px;
+        left:max(12px,env(safe-area-inset-left));
+    }
+    #verticalStick{left:28px;top:28px;width:40px;height:40px}
+    #instructions-overlay .overlay-card{
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        max-width: none;
+    }
+}
 
 /* Overlays */
 .overlay-screen{position:fixed;inset:0;background:rgba(2,5,15,.9);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;pointer-events:auto}.overlay-card{background:rgba(4,10,30,.85);border:1px solid #48e8ff;padding:30px;border-radius:12px;max-width:400px;width:100%;text-align:center;backdrop-filter:blur(10px);box-shadow:0 0 40px rgba(72,232,255,.15)}.overlay-title{font-family:monospace;color:#48e8ff;font-size:1.4rem;margin-bottom:20px;letter-spacing:2px}.overlay-text{font-size:0.9rem;line-height:1.6;color:#9cefff;margin-bottom:24px;text-align:left}.overlay-text ul{padding-left:20px;margin:10px 0}.overlay-text li{margin-bottom:8px}input.initials-input{background:rgba(0,0,0,.3);border:1px solid #48e8ff;color:#fff;padding:12px;width:80px;text-align:center;font-size:1.2rem;font-family:monospace;text-transform:uppercase;margin-bottom:20px;outline:none}input.initials-input:focus{box-shadow:0 0 15px rgba(72,232,255,.4)}.start-btn{background:#48e8ff;color:#030712;border:none;padding:12px 30px;font-weight:900;font-family:monospace;cursor:pointer;border-radius:4px;text-transform:uppercase;letter-spacing:1px;transition:all 0.2s}.start-btn:hover{background:#fff;box-shadow:0 0 20px #fff}#instructions-overlay{background:rgba(2,5,15,.7);pointer-events:none}#instructions-overlay .overlay-card{pointer-events:auto;position:absolute;bottom:140px;left:max(18px,env(safe-area-inset-left));text-align:left;max-width:300px;padding:20px;font-size:0.8rem}

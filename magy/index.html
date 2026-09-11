@@ -35,23 +35,35 @@
     <header class="aeowun-header">
         <div class="header-inner container">
             <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
-            <nav class="product-nav">
-                <a href="/aeowun/" class="nav-item mono">PROJECT</a>
-                <div class="nav-dropdown">
-                    <span class="nav-item mono dropdown-trigger">PRODUCTS</span>
-                    <div class="dropdown-content">
-                        <a href="/aeopin/" class="dropdown-item mono">AEOPIN</a>
-                        <a href="/checkmaker/" class="dropdown-item mono">CHECKMAKER</a>
-                        <a href="/ide/" class="dropdown-item mono">IDE</a>
-                        <a href="/magy/" class="dropdown-item mono active">MAGY</a>
-                        <a href="/games/" class="dropdown-item mono">GAMES</a>
-                    </div>
-                </div>
-                <a href="/engineering/" class="nav-item mono">WORK</a>
-                <a href="/security/" class="nav-item mono">TRUST</a>
-            </nav>
+            <button class="nav-hamburger mono" id="nav-toggle" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </div>
     </header>
+    <div class="nav-rail" id="nav-rail">
+        <div class="rail-backdrop" id="rail-close"></div>
+        <div class="rail-content">
+            <div class="rail-header">
+                <span class="mono" style="font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.5em;">MENU</span>
+                <button class="close-rail mono" id="rail-close-btn">[ CLOSE ]</button>
+            </div>
+            <nav class="rail-links">
+                <a href="/aeowun/" class="rail-link mono">PROJECT</a>
+                <div class="rail-divider"></div>
+                <span class="rail-label mono">PRODUCTS</span>
+                <a href="/aeopin/" class="rail-link mono">AEOPIN</a>
+                <a href="/checkmaker/" class="rail-link mono">CHECKMAKER</a>
+                <a href="/ide/" class="rail-link mono">IDE</a>
+                <a href="/magy/" class="rail-link mono active">MAGY</a>
+                <a href="/games/" class="rail-link mono">GAMES</a>
+                <div class="rail-divider"></div>
+                <a href="/engineering/" class="rail-link mono">WORK</a>
+                <a href="/security/" class="rail-link mono">TRUST</a>
+            </nav>
+        </div>
+    </div>
 
     <main class="product-page container">
         <section class="product-hero">

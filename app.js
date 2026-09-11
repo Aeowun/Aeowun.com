@@ -7,7 +7,44 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeEnvironment();
     initializeSceneController();
     initializeAmbientField();
+    initializeNavRail();
 });
+
+/**
+ * NAV RAIL
+ * Toggles the side navigation menu
+ */
+function initializeNavRail() {
+    const toggle = document.getElementById('nav-toggle');
+    const rail = document.getElementById('nav-rail');
+    const closeBtns = [
+        document.getElementById('rail-close'),
+        document.getElementById('rail-close-btn')
+    ];
+
+    if (!toggle || !rail) return;
+
+    toggle.addEventListener('click', () => {
+        rail.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    closeBtns.forEach(btn => {
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+            rail.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Close on ESC
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && rail.classList.contains('active')) {
+            rail.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
 
 /**
  * SCENE CONTROLLER

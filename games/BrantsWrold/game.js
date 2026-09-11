@@ -46,15 +46,20 @@
         instrOverlay = document.getElementById('instructions-overlay'),
         dismissBtn = document.getElementById('dismiss-instructions');
 
+  initialsInput.onkeydown = (e) => {
+      if(e.key === 'Enter') startBtn.onclick();
+  };
+
   startBtn.onclick = () => {
       const val = initialsInput.value.trim();
-      if (!val) {
+      if (!val || val.length < 1) {
           initialsInput.style.borderColor = '#ff6b7c';
-          initialsInput.style.boxShadow = '0 0 15px rgba(255, 107, 124, 0.4)';
+          initialsInput.style.boxShadow = '0 0 20px rgba(255, 107, 124, 0.6)';
+          initialsInput.placeholder = 'REQUIRED';
           initialsInput.focus();
           return;
       }
-      playerInitials = val.toUpperCase();
+      playerInitials = val.toUpperCase().substring(0, 3);
       localStorage.setItem('aeowun_user_initials', playerInitials);
       setupOverlay.style.display = 'none';
       instrOverlay.style.display = 'flex';
