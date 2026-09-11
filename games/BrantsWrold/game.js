@@ -70,6 +70,9 @@
       playerInitials = savedInitials;
       setupOverlay.style.display = 'none';
       instrOverlay.style.display = 'flex';
+  } else {
+      setupOverlay.style.display = 'flex';
+      instrOverlay.style.display = 'none';
   }
 
   dismissBtn.onclick = () => {

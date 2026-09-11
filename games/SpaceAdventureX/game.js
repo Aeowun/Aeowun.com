@@ -45,15 +45,21 @@ startBtn.onclick=()=>{
     playerInitials=val.toUpperCase().substring(0,3);
     localStorage.setItem('aeowun_user_initials', playerInitials);
     setupOverlay.style.display='none';
+    // Success - now show instructions
     instrOverlay.style.display='flex';
 };
 
-// Auto-skip initials if already set
+// Handle saved state correctly
 const savedInitials = localStorage.getItem('aeowun_user_initials');
 if(savedInitials) {
     playerInitials = savedInitials;
+    // Hide initials completely, but still show instructions for a new session
     setupOverlay.style.display = 'none';
     instrOverlay.style.display = 'flex';
+} else {
+    // New user: Show initials first, instructions are hidden by CSS/inline
+    setupOverlay.style.display = 'flex';
+    instrOverlay.style.display = 'none';
 }
 
 dismissBtn.onclick=()=>{
@@ -83,7 +89,7 @@ window.saveGameProgress = () => {
     if(playerInitials) saveScore();
 };
 
-function resetLevel(){generator=levels.createLevel(level);random=levelGen.create(generator.seed);worldX=0;cameraX=0;state='play';transitionTimer=0;spawnTimer=0;fireTimer=0;boostSoundTimer=0;boss=null;enemies=[];bullets=[];enemyBullets=[];asteroids=[];particles=[];player=entities.createPlayer(260,H*.5,generator.cruiseSpeed);stars=Array.from({length:170},(_,i)=>({x:hash(generator.seed+i)*generator.length,y:hash(generator.seed+i+500)*H,s:hash(generator.seed+i+900)*2+.4,a:hash(generator.seed+i+1300)*.7+.2}));ui.update({level,distance:generator.length,energy:player.energy,health:player.hp})}
+function resetLevel(){generator=levels.createLevel(level);random=levelGen.create(generator.seed);worldX=0;cameraX=0;state='play';transitionTimer=0;spawnTimer=0;fireTimer=0;boostSoundTimer=0;boss=null;enemies=[];bullets=[];enemyBullets=[];asteroids=[];particles=[];player=entities.createPlayer(180,H*.5,generator.cruiseSpeed);stars=Array.from({length:170},(_,i)=>({x:hash(generator.seed+i)*generator.length,y:hash(generator.seed+i+500)*H,s:hash(generator.seed+i+900)*2+.4,a:hash(generator.seed+i+1300)*.7+.2}));ui.update({level,distance:generator.length,energy:player.energy,health:player.hp})}
 // resetLevel(); // Don't call here, wait for overlay
 
 function spawnEnemy(x){const e=entities.createEnemy(generator.seed+random.integer(0,0xffffff),x,H,generator.enemyHealth);e.y=H*(.12+random.range(0,.76));e.amp=random.range(18,78);e.shoot=random.chance(.7);enemies.push(e)}
