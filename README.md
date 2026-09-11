@@ -1,6 +1,6 @@
 # AEOWUN // 2026
 
-> Independent software for controlled computing.
+> Independent software that keeps you in control.
 
 AEOWUN is an independent software project building local-first tools and systems around control, verification, and understandable software behavior.
 
@@ -10,7 +10,7 @@ This repository contains the public AEOWUN website and its documentation.
 
 AEOWUN is not a finished commercial platform or a single application.
 
-It is a collection of related software projects with different levels of maturity. The common idea is controlled computing: software should make its boundaries visible, preserve operator authority, and avoid claiming that work is complete without evidence.
+It is a collection of related software projects with different statuses. The common idea is that software should keep you in control: it should make its boundaries visible, preserve operator authority, and avoid claiming that work is complete without evidence.
 
 ## Projects
 
