@@ -34,10 +34,18 @@ def create_logo(width, height, output_name):
     
     # Text
     try:
-        # Try to use a common Windows font
-        font_path = "C:\\Windows\\Fonts\\segoeuib.ttf"
+        # Try to use a common font
+        font_candidates = [
+            "C:\\Windows\\Fonts\\segoeuib.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+            "/System/Library/Fonts/Helvetica.ttc"
+        ]
+        font_path = next((p for p in font_candidates if os.path.exists(p)), None)
         font_size = width // 10
-        font = ImageFont.truetype(font_path, font_size)
+        if font_path:
+            font = ImageFont.truetype(font_path, font_size)
+        else:
+            font = ImageFont.load_default()
     except:
         font = ImageFont.load_default()
     
@@ -52,11 +60,15 @@ def create_logo(width, height, output_name):
     img.save(output_name)
     print(f"Created {output_name}")
 
+# Use script-relative paths
+script_dir = os.path.dirname(os.path.abspath(__file__))
+assets_dir = os.path.join(script_dir, "..", "assets", "aeopin")
+
 # Create directories
-os.makedirs("C:/Users/fixit/Documents/NexiCode/Projects/Portfolio/assets/aeopin", exist_ok=True)
+os.makedirs(assets_dir, exist_ok=True)
 
 # Generate Box Art (1:1)
-create_logo(2160, 2160, "C:/Users/fixit/Documents/NexiCode/Projects/Portfolio/assets/aeopin/box_art.png")
+create_logo(2160, 2160, os.path.join(assets_dir, "box_art.png"))
 
 # Generate Poster Art (2:3)
-create_logo(1440, 2160, "C:/Users/fixit/Documents/NexiCode/Projects/Portfolio/assets/aeopin/poster_art.png")
+create_logo(1440, 2160, os.path.join(assets_dir, "poster_art.png"))

@@ -4,11 +4,11 @@ import { dist } from '../world/map.js';
 import { drawWorld, drawRoofs, drawDecorations } from './worldRenderer.js';
 import { drawHuman } from './human.js';
 import { drawEnemy } from './enemyRenderer.js';
-import { drawSword, drawAttack } from './effectsRenderer.js';
-import { drawHUD, drawStore, drawDialogue, drawMainMenu, drawServerBrowser, drawDeathScreen, drawNotifications, drawPauseMenu, drawInventoryOverlay } from './uiRenderer.js';
+import { drawSword, drawAttack, drawArrow } from './effectsRenderer.js';
+import { drawHUD, drawStore, drawDialogue, drawMainMenu, drawServerBrowser, drawDeathScreen, drawNotifications, drawPauseMenu, drawInventoryOverlay, drawLevelUpOverlay } from './uiRenderer.js';
 
 export function draw(ctx, innerWidth, innerHeight) {
-    const { player, camera, enemies, npcs, sword, ui, billboards } = gameState;
+    const { player, camera, enemies, npcs, sword, ui, billboards, projectiles } = gameState;
 
     ctx.fillStyle = '#111';
     ctx.fillRect(0, 0, innerWidth, innerHeight);
@@ -190,6 +190,15 @@ export function draw(ctx, innerWidth, innerHeight) {
 
     drawRoofs(ctx, camera, scale, innerWidth, innerHeight, { x: player.x, y: player.y });
     drawAttack(ctx, playerX, playerY, scale, player);
+
+    // Draw Projectiles (Arrows)
+    if (projectiles && projectiles.length) {
+        projectiles.forEach(p => {
+            const px = screenX + (p.x - camera.x) * T * scale;
+            const py = screenY + (p.y - camera.y) * T * scale;
+            drawArrow(ctx, px, py, scale, p.angle);
+        });
+    }
 
     // Draw Floating Billboards in World Space
     if (billboards && billboards.length) {

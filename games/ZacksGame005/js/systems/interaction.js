@@ -77,8 +77,20 @@ function interactWithChest(tx, ty) {
     const chance = isBossRoom ? 1.0 : (isDungeon ? 0.6 : 0.3);
 
     if (rand < chance) {
-        // 40% chance of Heart (if injured), else Gold
-        if (Math.random() < 0.4 && player.hp < player.maxHP) {
+        // 15% chance of rare item in late dungeons
+        const rareChance = (isDungeon && getDungeonState().level >= 3) ? 0.25 : 0.05;
+
+        if (Math.random() < rareChance) {
+            rewardType = 'item';
+            const items = ['expert_bow', 'armor_plate', 'potion_health', 'herb_stamina'];
+            const item = items[Math.floor(Math.random() * items.length)];
+            addItem(item);
+        } else if (Math.random() < 0.3) {
+            rewardType = 'item';
+            const commonItems = ['bow', 'armor_leather', 'potion_health'];
+            const item = commonItems[Math.floor(Math.random() * commonItems.length)];
+            addItem(item);
+        } else if (Math.random() < 0.4 && player.hp < player.maxHP) {
             rewardType = 'heart';
             player.hp = Math.min(player.maxHP, player.hp + 1);
             addBillboard("+1 Heart", tx + 0.5, ty + 0.5, "#ff5577");
@@ -94,7 +106,8 @@ function interactWithChest(tx, ty) {
     const messages = {
         nothing: "The chest is empty.",
         heart: "You found a heart! Your health is partially restored.",
-        gold: `You found ${player.lastAmount} gold coins!`
+        gold: `You found ${player.lastAmount} gold coins!`,
+        item: "You found something useful! Check your inventory."
     };
 
     gameState.ui.activeNPC = { name: "Chest", dialogue: messages[rewardType] };

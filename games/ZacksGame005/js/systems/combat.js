@@ -12,73 +12,171 @@ import { gainXP } from './leveling.js';
 let spikeDamageTimer = 0;
 
 export function startAttack() {
-    const { player, ui, enemies, quest } = gameState;
+    const { player, ui, enemies, quest, projectiles } = gameState;
     if (ui.dialogueOpen || ui.storeOpen || player.attackTimer > 0 || player.attackCooldown > 0 || !player.swordPickedUp || player.isDodging) return;
 
-    player.attackTimer = .32;
-    player.attackCooldown = .48;
-    player.attackAngle = Math.atan2(player.dirY, player.dirX);
-    playSFX('sfx_slash');
+    const equippedWeapon = player.equipment.weapon;
+    const isRanged = equippedWeapon && equippedWeapon.id.includes('bow');
 
-    try {
-        broadcastImmediateAttack(player.attackAngle);
-    } catch (e) {
-        console.error('Failed to broadcast attack:', e);
-    }
+    if (isRanged) {
+        // RANGED ATTACK (BOW)
+        player.attackTimer = 0.25;
+        player.attackCooldown = 0.6;
+        const angle = Math.atan2(player.dirY, player.dirX);
 
-    // Damage based on sword tier + base attack level
-    const damage = (player.steelSword ? 2 : 1) + (player.baseAttack - 1);
+        projectiles.push({
+            x: player.x,
+            y: player.y,
+            vx: Math.cos(angle) * 12,
+            vy: Math.sin(angle) * 12,
+            angle: angle,
+            owner: 'player',
+            damage: (equippedWeapon.damage || 1) + (player.baseAttack - 1),
+            life: 1.5 // Seconds before despawn
+        });
 
-    for (const enemy of enemies) {
-        if (enemy.dungeonLevel != null && gameState.currentWorld !== 'dungeon') continue;
-        if (enemy.dungeonLevel == null && gameState.currentWorld === 'dungeon') continue;
-        if (!enemy.alive) continue;
+        playSFX('sfx_slash'); // TODO: Add shoot sfx
+    } else {
+        // MELEE ATTACK (SWORD)
+        player.attackTimer = .32;
+        player.attackCooldown = .48;
+        player.attackAngle = Math.atan2(player.dirY, player.dirX);
+        playSFX('sfx_slash');
 
-        if (dist(player.x, player.y, enemy.x, enemy.y) < 2.4) {
-            enemy.hp -= damage;
-            enemy.hitFlash = .18;
-            playSFX('sfx_hit');
-            addBillboard(`-${damage} Heart`, enemy.x, enemy.y, "#ffaa00");
+        try {
+            broadcastImmediateAttack(player.attackAngle);
+        } catch (e) {
+            console.error('Failed to broadcast attack:', e);
+        }
 
-            if (enemy.hp <= 0) {
-                enemy.hp = 0;
-                enemy.alive = false;
+        // Damage based on sword tier + base attack level
+        const damage = (player.steelSword ? 2 : 1) + (player.baseAttack - 1);
 
-                // XP REWARDS
-                const xpMap = {
-                    wolf: 15,
-                    demon: 15,
-                    bandit: 25,
-                    ghost: 35,
-                    drowned: 35
-                };
-                gainXP(xpMap[enemy.type] || 15);
+        for (const enemy of enemies) {
+            if (enemy.dungeonLevel != null && gameState.currentWorld !== 'dungeon') continue;
+            if (enemy.dungeonLevel == null && gameState.currentWorld === 'dungeon') continue;
+            if (!enemy.alive) continue;
 
-                if (enemy.dungeonLevel == null) {
-                    updateQuestProgress('KILL', { target: 'creature' });
+            if (dist(player.x, player.y, enemy.x, enemy.y) < 2.4) {
+                applyDamageToEnemy(enemy, damage);
+            }
+        }
+
+        if (gameState.currentWorld === 'dungeon' && gameState.boss?.alive) {
+            const boss = gameState.boss;
+            const state = getDungeonState();
+            const hitRange = 2.6;
+            const d = dist(player.x, player.y, boss.x, boss.y);
+
+            if (d < hitRange) {
+                boss.hitFlash = .18;
+                damageBoss(damage);
+                playSFX('sfx_hit');
+                addBillboard(`-${damage} Heart`, boss.x, boss.y, "#ffcc55");
+
+                if (state.boss.hp <= 0) {
+                    boss.hp = 0;
+                    boss.alive = false;
+                    gainXP(250); // Big boss reward
                 }
             }
         }
     }
+}
 
-    if (gameState.currentWorld === 'dungeon' && gameState.boss?.alive) {
-        const boss = gameState.boss;
-        const state = getDungeonState();
-        const hitRange = 2.6;
-        const d = dist(player.x, player.y, boss.x, boss.y);
+function applyDamageToEnemy(enemy, damage) {
+    enemy.hp -= damage;
+    enemy.hitFlash = .18;
+    playSFX('sfx_hit');
+    addBillboard(`-${damage} Heart`, enemy.x, enemy.y, "#ffaa00");
 
-        if (d < hitRange) {
-            boss.hitFlash = .18;
-            damageBoss(damage);
-            playSFX('sfx_hit');
-            addBillboard(`-${damage} Heart`, boss.x, boss.y, "#ffcc55");
+    if (enemy.hp <= 0) {
+        enemy.hp = 0;
+        enemy.alive = false;
 
-            if (state.boss.hp <= 0) {
-                boss.hp = 0;
-                boss.alive = false;
-                gainXP(250); // Big boss reward
+        // XP REWARDS
+        const xpMap = {
+            wolf: 15,
+            demon: 15,
+            bandit: 25,
+            ghost: 35,
+            drowned: 35
+        };
+        gainXP(xpMap[enemy.type] || 15);
+
+        if (enemy.dungeonLevel == null) {
+            updateQuestProgress('KILL', { target: 'creature' });
+        }
+    }
+}
+
+function updateProjectiles(dt) {
+    const { projectiles, enemies, boss, currentWorld } = gameState;
+
+    for (let i = projectiles.length - 1; i >= 0; i--) {
+        const p = projectiles[i];
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+        p.life -= dt;
+
+        // Collision with walls
+        if (isBlocked(p.x, p.y) || p.life <= 0) {
+            projectiles.splice(i, 1);
+            continue;
+        }
+
+        // Collision with enemies (if player owned)
+        if (p.owner === 'player') {
+            let hit = false;
+            for (const enemy of enemies) {
+                if (!enemy.alive) continue;
+                if (enemy.dungeonLevel != null && currentWorld !== 'dungeon') continue;
+                if (enemy.dungeonLevel == null && currentWorld === 'dungeon') continue;
+
+                if (dist(p.x, p.y, enemy.x, enemy.y) < 0.8) {
+                    applyDamageToEnemy(enemy, p.damage);
+                    hit = true;
+                    break;
+                }
+            }
+
+            if (!hit && currentWorld === 'dungeon' && boss?.alive) {
+                if (dist(p.x, p.y, boss.x, boss.y) < 1.5) {
+                    boss.hitFlash = 0.18;
+                    damageBoss(p.damage);
+                    playSFX('sfx_hit');
+                    addBillboard(`-${p.damage} Heart`, boss.x, boss.y, "#ffcc55");
+                    hit = true;
+                }
+            }
+
+            if (hit) {
+                projectiles.splice(i, 1);
             }
         }
+    }
+}
+
+function applyDamageToPlayer(amount, enemyType = 'enemy') {
+    const { player } = gameState;
+    if (player.isDodging) return;
+
+    // Every point of defense adds a 12% block chance
+    const blockChance = (player.equipment.armor?.defense || 0) * 0.12;
+
+    if (Math.random() < blockChance) {
+        addBillboard("BLOCK!", player.x, player.y, "#44ccff");
+        playSFX('sfx_hit'); // Clang sound?
+        return;
+    }
+
+    player.hp = Math.max(0, player.hp - amount);
+    addBillboard(`-${amount} Heart`, player.x, player.y, "#ff3333");
+    playSFX('sfx_hit');
+
+    if (enemyType === 'drowned') {
+        player.slowTimer = 2.0; // Slow for 2 seconds
+        import('./feedback.js').then(mod => mod.notify("Drowned: You feel heavy...", "info"));
     }
 }
 
@@ -106,14 +204,13 @@ function updateBoss(dt) {
     }
 
     if (d < 1.65 && boss.attackCooldown <= 0) {
-        gameState.player.hp = Math.max(0, gameState.player.hp - 1);
+        applyDamageToPlayer(1, 'boss');
         boss.attackCooldown = 1.65;
 
         // Attack effects
         boss.attackTimer = 0.32;
         boss.attackAngle = Math.atan2(dy, dx);
         playSFX('sfx_slash');
-        addBillboard("-1 Heart", gameState.player.x, gameState.player.y, "#ff3333");
     }
 
     const state = getDungeonState();
@@ -133,6 +230,7 @@ export function updateCombat(dt) {
 
     player.attackTimer = Math.max(0, player.attackTimer - dt);
     player.attackCooldown = Math.max(0, player.attackCooldown - dt);
+    player.slowTimer = Math.max(0, (player.slowTimer || 0) - dt);
 
     if (ui.dialogueOpen || ui.storeOpen || ui.paused) return;
 
@@ -142,6 +240,7 @@ export function updateCombat(dt) {
     }
 
     updateBoss(dt);
+    updateProjectiles(dt);
 
     // Update Global Trap State
     gameState.world.trapTimer += dt;
@@ -155,10 +254,8 @@ export function updateCombat(dt) {
     spikeDamageTimer = Math.max(0, spikeDamageTimer - dt);
     const txp = Math.floor(player.x), typ = Math.floor(player.y);
     if (inside(txp, typ) && map[typ][txp] === TILE_TYPES.Spike && gameState.world.trapsActive && spikeDamageTimer <= 0 && !player.isDodging) {
-        player.hp = Math.max(0, player.hp - 1);
+        applyDamageToPlayer(1, 'spike');
         spikeDamageTimer = 1.0;
-        addBillboard("-1 Heart", player.x, player.y, "#ff3333");
-        playSFX('sfx_hit');
     }
 
     const detectRange = 5.0;
@@ -177,17 +274,23 @@ export function updateCombat(dt) {
         const ed = Math.hypot(ex, ey);
         const isHunting = gameState.currentWorld === 'overworld' && quest.state === 'hunt';
 
-        if (ed < detectRange || (isHunting && ed < 10.0)) {
-            // MOVEMENT (Slightly further detection for the meter logic)
+        // WOLF STALKER SPEED
+        const currentSpeed = enemy.type === 'wolf' ? enemy.speed * 1.4 : enemy.speed;
+        const currentDetect = enemy.type === 'wolf' ? detectRange * 1.5 : detectRange;
+
+        if (ed < currentDetect || (isHunting && ed < 10.0)) {
+            // MOVEMENT
             if (ed > 1.1 && ed > 0) {
                 const enx = ex / ed;
                 const eny = ey / ed;
-                const enemyMoveX = enx * enemy.speed * dt;
-                const enemyMoveY = eny * enemy.speed * dt;
+                const enemyMoveX = enx * currentSpeed * dt;
+                const enemyMoveY = eny * currentSpeed * dt;
 
-                if (canMoveTo(enemy.x + enemyMoveX, enemy.y)) enemy.x += enemyMoveX;
-                if (canMoveTo(enemy.x, enemy.y + enemyMoveY)) enemy.y += enemyMoveY;
-                enemy.animTime += dt * 9;
+                // GHOSTS IGNORE WALLS
+                const canPhase = (enemy.type === 'ghost');
+                if (canPhase || canMoveTo(enemy.x + enemyMoveX, enemy.y)) enemy.x += enemyMoveX;
+                if (canPhase || canMoveTo(enemy.x, enemy.y + enemyMoveY)) enemy.y += enemyMoveY;
+                enemy.animTime += dt * 12;
             }
 
             // ATTACK METER BUILDING
@@ -198,10 +301,8 @@ export function updateCombat(dt) {
                     enemy.attackMeter = 0; // Reset
 
                     // Trigger Attack
-                    if (!player.isDodging && ed < 1.3) {
-                        player.hp = Math.max(0, player.hp - 1);
-                        addBillboard("-1 Heart", player.x, player.y, "#ff3333");
-                        playSFX('sfx_hit');
+                    if (ed < 1.3) {
+                        applyDamageToPlayer(1, enemy.type);
                     }
 
                     // Attack Visuals

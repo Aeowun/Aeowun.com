@@ -1,201 +1,151 @@
-# AEOWUN // 2026
+# AEOWUN
 
-> Independent software that keeps you in control.
+Independent software projects by Zachary Joubert.
 
-AEOWUN is an independent software project building local-first tools and systems around control, verification, and understandable software behavior.
-
-This repository contains the public AEOWUN website and its documentation.
-
-## What Is AEOWUN?
-
-AEOWUN is not a finished commercial platform or a single application.
-
-It is a collection of related software projects with different statuses. The common idea is that software should keep you in control: it should make its boundaries visible, preserve operator authority, and avoid claiming that work is complete without evidence.
+This repository contains the AEOWUN website and its project documentation.
 
 ## Projects
 
 ### AEOPIN
 
-Status: Shipped
+**Status: Shipped — v1.2.3**
 
-AEOPIN is a Windows capture and retrieval tool. The current public release is v1.2.3.
+AEOPIN is a Windows tool for keeping files, folders, links, and notes close by. You can capture something, find it later, and restore it when needed.
 
-- Windows 10 and 11
-- Local capture and retrieval
-- Authority installer with payload integrity verification
-- SHA-256 validation
-- Atomic update and recovery flow
-
-Repository: https://github.com/Aeowun/Aeopin
+[Repository](https://github.com/Aeowun/Aeopin) · [Release v1.2.3](https://github.com/Aeowun/Aeopin/releases/tag/v1.2.3)
 
 ### CheckMaker
 
-Status: Shipped
+**Status: Shipped — v1.0.0**
 
-CheckMaker is a small Markdown checkbox editor for Windows.
+CheckMaker is a Markdown checklist editor for Windows.
 
-Its purpose is deliberately narrow: change the checkbox that needs changing without rewriting the surrounding document. It detects external file drift before writing so an old view does not silently overwrite newer work.
+It changes the checkbox marker at the required location instead of rewriting the surrounding document.
 
-Repository: https://github.com/Aeowun/Checkmaker
+[Repository](https://github.com/Aeowun/Checkmaker) · [Release V1.0.0](https://github.com/Aeowun/Checkmaker/releases/tag/V1.0.0)
 
 ### AEOWUN IDE
 
-Status: Active development
+**Status: Active development**
 
-AEOWUN IDE is a project-centered development environment. Its work includes filesystem integration, Monaco, persistent workspace state, search, terminal functionality, semantic rebuilding, Python type coverage, pytest infrastructure, and watchdog race-condition hardening.
+AEOWUN IDE is a development environment based on VS Code with integrated MAGY and Relay support.
 
-It is not presented as a finished commercial IDE product.
+It is an active development project.
 
-Repository: https://github.com/Aeowun/AeowunV2
+[Repository](https://github.com/Aeowun/Aeowun)
 
 ### MAGY
 
-Status: Active / alpha
+**Status: Active / alpha**
 
-MAGY is a local-first AI engineering system built around a runtime boundary between reasoning and execution.
+MAGY is a local AI engineering system.
 
-The core principle is:
+It separates model reasoning from execution so that the runtime controls which actions can actually be performed. It can use AI to propose work, while execution and verification remain separate from the model's response.
 
-> Reasoning is not authority.
+[Repository](https://github.com/Aeowun/Magy)
 
-MAGY can use intelligent systems to propose work, but restricted actions are subject to an execution boundary and operator approval. Verification is part of the workflow; a model's statement that a task is complete is not treated as proof.
+### Relay
 
-The public GitHub repository is currently described as an emergency backup. The website documents the current local architecture and development direction.
+**Status: Active development**
 
-Repository: https://github.com/Aeowun/Magy
+Relay is a local bridge between engineering tools and an authenticated ChatGPT session.
 
-### AEIN
+[Repository](https://github.com/Aeowun/Relay)
 
-Status: Experimental
+### AID
 
-AEIN explores controlled machine operation and auditable actions over local systems.
+**Status: Research / experimental**
 
-It is experimental and is not a downloadable shipped product.
+AID is a terminal application for AI debates between local models. It connects to local models through LM Studio.
+
+[Repository](https://github.com/Aeowun/AID)
+
+### QuietTube
+
+**Status: Shipped / experimental**
+
+QuietTube is a Chrome extension that mutes and speeds up YouTube advertisements.
+
+[Repository](https://github.com/Aeowun/QuietTube)
+
+### PC-Lockscreen(Toy)
+
+**Status: Toy project**
+
+PC-Lockscreen(Toy) is a Windows program that simulates a lockdown screen.
+
+[Repository](https://github.com/Aeowun/PC-Lockscreen-Toy)
 
 ### ZERO
 
-Status: Research
+**Status: Research**
 
-ZERO is research into structure, constraints, and behavior around intelligent systems.
+ZERO is a research project exploring intelligent system behavior and structural validation.
 
-The public repository contains research code. It is not a finished product or consumer download.
-
-Repository: https://github.com/Aeowun/AeowunZero-1B
-
-## Design Principles
-
-### Human Authority
-
-A model or automated tool may propose an action. The operator remains responsible for deciding when restricted work is allowed.
-
-### Local First
-
-AEOWUN favors software that can remain useful on the machine where it runs rather than making cloud dependence part of the product's identity.
-
-### Evidence Over Claims
-
-A completion message is not evidence of completion. Verification should come from the system that was actually changed or executed.
-
-### Fail Closed
-
-Where integrity matters, failure should stop the operation rather than silently continuing with an unverified state.
-
-### Small, Understandable Changes
-
-Software should avoid unnecessary changes. CheckMaker is one example: a checkbox change should not require rewriting an entire Markdown document.
-
-### Honest Status
-
-Shipped software, active development, experiments, and research are different categories. AEOWUN labels them separately rather than presenting every repository as a finished product.
+[Repository](https://github.com/Aeowun/AeowunZero_1B_26MN)
 
 ## Repository Map
 
-text
+```text
 AEOWUN
-│
 ├── PRODUCTS
 │   ├── AEOPIN
 │   └── CHECKMAKER
 │
 ├── SYSTEMS
 │   ├── AEOWUN IDE
-│   └── MAGY
+│   ├── MAGY
+│   └── RELAY
 │
 ├── EXPERIMENTAL
-│   └── AEIN
+│   ├── AID
+│   ├── QUIETTUBE
+│   └── PC-LOCKSCREEN(Toy)
 │
 └── RESEARCH
     └── ZERO
-
-
-The website also contains project documentation, engineering notes, security information, support material, tests, and other development work.
+```
 
 ## Public Repositories
 
-| Repository | Role | Status |
-|---|---|---|
-| Aeopin | Windows capture and retrieval tool | Shipped |
-| Checkmaker | Markdown checkbox editor | Shipped |
-| AeowunV2 | IDE-related development tree | Active |
-| Magy | Local AI engineering system | Active / alpha |
-| AeowunZero-1B | ZERO research code | Research |
-| Aeopin_Support | AEOPIN support and issue tracking | Support |
-| Aeowun.com | This website | Website |
-| devTool_xO0 | Experimental toolkit | Experimental |
-
-## Development Philosophy
-
-AEOWUN is being built in public, but public does not mean finished.
-
-The working progression is:
-
-text
-UNDERSTAND
-    ↓
-BUILD
-    ↓
-VERIFY
-    ↓
-USE
-    ↓
-RETAIN HUMAN CONTROL
-
-
-Failures, limitations, experiments, and unfinished work are part of the engineering record rather than something to hide behind product language.
+| Repository                                                         | Description                                 | Status                  |
+| ------------------------------------------------------------------ | ------------------------------------------- | ----------------------- |
+| [Aeopin](https://github.com/Aeowun/Aeopin)                         | Windows capture and retrieval tool          | Shipped                 |
+| [Checkmaker](https://github.com/Aeowun/Checkmaker)                 | Markdown checkbox editor                    | Shipped                 |
+| [Aeowun](https://github.com/Aeowun/Aeowun)                         | AEOWUN IDE                                  | Active development      |
+| [Magy](https://github.com/Aeowun/Magy)                             | Local AI engineering system                 | Active / alpha          |
+| [Relay](https://github.com/Aeowun/Relay)                           | Local ChatGPT bridge                        | Active development      |
+| [AID](https://github.com/Aeowun/AID)                               | Local-model AI debate application           | Research / experimental |
+| [QuietTube](https://github.com/Aeowun/QuietTube)                   | Chrome extension for YouTube advertisements | Experimental            |
+| [PC-Lockscreen-Toy](https://github.com/Aeowun/PC-Lockscreen-Toy)   | Windows lockdown-screen toy                 | Toy project             |
+| [AeowunZero_1B_26MN](https://github.com/Aeowun/AeowunZero_1B_26MN) | ZERO research code                          | Research                |
+| [Aeopin_Support](https://github.com/Aeowun/Aeopin_Support)         | AEOPIN support and issue tracking           | Support                 |
+| [Aeowun.com](https://github.com/Aeowun/Aeowun.com)                 | AEOWUN website                              | Website                 |
 
 ## Current Release
 
-The current AEOPIN release is v1.2.3.
+The current shipped AEOWUN project releases are:
 
-For the verified Windows Authority installer, use the corresponding GitHub release:
+* **AEOPIN v1.2.3**
+* **CheckMaker V1.0.0**
 
-https://github.com/Aeowun/Aeopin/releases/tag/v1.2.3
-
-Experimental repositories and active development trees should not be treated as equivalent to the shipped AEOPIN release.
+Other repositories are active development, experimental, or research projects.
 
 ## Website
 
-The project website is:
-
 https://aeowun.com/
 
-Relevant sections include:
+Project pages:
 
-- Project: https://aeowun.com/aeowun/
-- AEOPIN: https://aeowun.com/aeopin/
-- CheckMaker: https://aeowun.com/checkmaker/
-- IDE: https://aeowun.com/ide/
-- MAGY: https://aeowun.com/magy/
-- Engineering: https://aeowun.com/engineering/
-- Security / Trust: https://aeowun.com/security/
-- Research: https://aeowun.com/research/
+* https://aeowun.com/aeowun/
+* https://aeowun.com/aeopin/
+* https://aeowun.com/checkmaker/
+* https://aeowun.com/ide/
+* https://aeowun.com/magy/
+* https://aeowun.com/engineering/
+* https://aeowun.com/security/
+* https://aeowun.com/research/
 
-## License
+## Licensing
 
-Licensing is defined by each individual repository. Check the repository you are using for its authoritative license and release terms.
-
----
-
-AEOWUN // 2026
-
-Independent software. Local systems. Verifiable behavior. Human control.
+Licensing and release terms are defined by each individual repository. Check the repository for its applicable license.

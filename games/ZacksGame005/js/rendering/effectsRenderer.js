@@ -27,6 +27,34 @@ export function drawSword(ctx, x, y, scale) {
     ctx.restore();
 }
 
+export function drawArrow(ctx, x, y, scale, angle) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+
+    // Shaft
+    ctx.strokeStyle = '#8b5e3c';
+    ctx.lineWidth = 1.5 * scale;
+    ctx.beginPath();
+    ctx.moveTo(-10 * scale, 0);
+    ctx.lineTo(10 * scale, 0);
+    ctx.stroke();
+
+    // Head
+    ctx.fillStyle = '#999';
+    ctx.beginPath();
+    ctx.moveTo(10 * scale, 0);
+    ctx.lineTo(4 * scale, -4 * scale);
+    ctx.lineTo(4 * scale, 4 * scale);
+    ctx.fill();
+
+    // Fletching
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(-10 * scale, -2 * scale, 4 * scale, 4 * scale);
+
+    ctx.restore();
+}
+
 export function drawAttack(ctx, x, y, scale, player) {
     if (player.attackTimer <= 0) return;
 
@@ -48,6 +76,34 @@ export function drawAttack(ctx, x, y, scale, player) {
     ctx.beginPath();
     ctx.arc(0, 0, 24 * scale, -.8, .8);
     ctx.stroke();
+
+    ctx.restore();
+}
+
+export function drawArrow(ctx, x, y, scale, angle) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+
+    // Shaft
+    ctx.strokeStyle = '#8b5e3c';
+    ctx.lineWidth = 1.5 * scale;
+    ctx.beginPath();
+    ctx.moveTo(-10 * scale, 0);
+    ctx.lineTo(10 * scale, 0);
+    ctx.stroke();
+
+    // Head
+    ctx.fillStyle = '#999';
+    ctx.beginPath();
+    ctx.moveTo(10 * scale, 0);
+    ctx.lineTo(4 * scale, -4 * scale);
+    ctx.lineTo(4 * scale, 4 * scale);
+    ctx.fill();
+
+    // Fletching
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(-10 * scale, -2 * scale, 4 * scale, 4 * scale);
 
     ctx.restore();
 }
