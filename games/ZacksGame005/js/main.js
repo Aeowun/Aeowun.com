@@ -52,6 +52,11 @@ async function handleMenuSelect() {
     const screen = gameState.ui.currentScreen;
     const selection = gameState.ui.menuSelection ?? 0;
 
+    if (gameState.ui.levelUpOpen) {
+        import('./systems/leveling.js').then(mod => mod.applyUpgrade(gameState.ui.levelUpSelection));
+        return;
+    }
+
     if (screen === 'game') {
         if (gameState.ui.paused) {
             // RESUME

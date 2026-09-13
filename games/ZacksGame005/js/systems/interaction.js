@@ -5,6 +5,7 @@ import { NPC_DIALOGUE } from '../data/textData.js';
 import { buyStoreItem } from './economy.js';
 import { updateQuestProgress } from './quests.js';
 import { addBillboard } from './feedback.js';
+import { addItem } from './inventory.js';
 import {
     findNearbyDoor,
     findNearbyDiamond,
@@ -62,8 +63,12 @@ function interactWithChest(tx, ty) {
     const isDungeon = currentWorld === 'dungeon';
     const isBossRoom = isDungeon && tx === 63 && ty === 38;
 
-    // Remove chest after opening
-    setTile(tx, ty, TILE_TYPES.Floor);
+    // Remove chest after opening: Replace with Floor in dungeons/buildings, else Grass
+    const replacementTile = isDungeon || (map[ty][tx] === TILE_TYPES.Floor)
+        ? TILE_TYPES.Floor
+        : TILE_TYPES.Grass;
+
+    setTile(tx, ty, replacementTile);
 
     const rand = Math.random();
     let rewardType = 'nothing';
@@ -134,7 +139,9 @@ export function interact() {
 
     if (!sword.pickedUp && gameState.currentWorld === 'overworld' && dist(player.x, player.y, sword.x, sword.y) < 1.4) {
         sword.pickedUp = true;
-        player.swordPickedUp = true;
+
+        // Add to inventory
+        addItem('old_sword');
 
         if (quest.state === 'sword') {
             quest.state = 'hunt';
@@ -171,6 +178,22 @@ export function interact() {
     updateQuestProgress('TALK', { npcName: npc.name });
 
     const dialogueData = NPC_DIALOGUE[npc.name];
+    if (dialogueData) {
+        const text = dialogueData[quest.state] || dialogueData.default;
+
+        if (npc.name === 'Village Elder') {
+            if (quest.state === 'return') {
+                quest.state = 'complete';
+                if (!quest.rewardClaimed) {
+                    player.coins += 50;
+                    quest.rewardClaimed = true;
+                }
+            } else if (quest.state === 'not_started') {
+                quest.state = player.swordPickedUp ? 'hunt' : 'sword';
+            }
+        }
+
+        ui.activeNPC = { name: npc.name, dialogue: text };
         ui.dialogueOpen = true;
         return;
     }

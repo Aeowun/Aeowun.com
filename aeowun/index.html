@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AEOWUN // THE PROJECT</title>
-    <meta name="description" content="AEOWUN is an independent software project building local-first systems that keep you in control.">
+    <meta name="description" content="AEOWUN is an independent software project building local-first tools and systems with an emphasis on control, verification, and understandable behavior.">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body class="aeowun-environment">
@@ -42,6 +42,7 @@
             </button>
         </div>
     </header>
+
     <div class="nav-rail" id="nav-rail">
         <div class="rail-backdrop" id="rail-close"></div>
         <div class="rail-content">
@@ -49,16 +50,20 @@
                 <span class="mono" style="font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.5em;">MENU</span>
                 <button class="close-rail mono" id="rail-close-btn">[ CLOSE ]</button>
             </div>
+
             <nav class="rail-links">
                 <a href="/aeowun/" class="rail-link mono active">PROJECT</a>
                 <div class="rail-divider"></div>
+
                 <span class="rail-label mono">PRODUCTS</span>
                 <a href="/aeopin/" class="rail-link mono">AEOPIN</a>
                 <a href="/checkmaker/" class="rail-link mono">CHECKMAKER</a>
                 <a href="/ide/" class="rail-link mono">IDE</a>
                 <a href="/magy/" class="rail-link mono">MAGY</a>
                 <a href="/games/" class="rail-link mono">GAMES</a>
+
                 <div class="rail-divider"></div>
+
                 <a href="/engineering/" class="rail-link mono">WORK</a>
                 <a href="/security/" class="rail-link mono">TRUST</a>
             </nav>
@@ -66,10 +71,16 @@
     </div>
 
     <main class="product-page container">
+
         <section class="product-hero">
             <div class="brand-label mono">AEOWUN // PROJECT</div>
+
             <h1 class="product-title mono">WHAT IS AEOWUN?</h1>
-            <p class="hero-lead">AEOWUN is an independent software project building local-first systems that keep you in control.</p>
+
+            <p class="hero-lead">
+                AEOWUN is an independent software project building local-first tools and systems with an emphasis on control, verification, and understandable behavior.
+            </p>
+
             <div class="hero-actions">
                 <a class="primary-button mono" href="#projects">SEE THE WORK</a>
                 <a class="secondary-button mono" href="https://github.com/Aeowun" target="_blank" rel="noopener">GITHUB</a>
@@ -78,59 +89,103 @@
 
         <section class="trust-panel">
             <div>
-                <div class="brand-label mono">WHY CONTROL?</div>
-                <h2 class="section-heading mono">POWER WITHOUT SURRENDER.</h2>
+                <div class="brand-label mono">THE IDEA</div>
+                <h2 class="section-heading mono">KEEP THE OPERATOR IN THE LOOP.</h2>
             </div>
-            <p>Software can be useful and still leave the operator in charge of data, execution, and failure. AEOWUN is built for people who want local ownership, visible boundaries, and systems that do not hide what they did. The common denominator is not AI. It is control.</p>
+
+            <p>
+                A useful system does not have to become a black box. I want the person using the software to be able to see what it has access to, what it changed, and what happened when something failed. That applies to small utilities as much as it does to AI-assisted systems.
+            </p>
         </section>
 
         <section class="principle-grid">
+
             <article class="principle-card">
                 <span class="mono ecosystem-status available">CONTROL</span>
-                <h2 class="mono">HUMAN AUTHORITY</h2>
-                <p>A model or tool may propose. A person decides when a restricted action is allowed. MAGY pauses restricted writes for approval. AEIN explores the same idea for machine operations.</p>
+                <h2 class="mono">PEOPLE DECIDE</h2>
+                <p>
+                    A model or tool can propose an action. The runtime determines what is actually permitted, and restricted actions can require approval. MAGY is built around this distinction.
+                </p>
             </article>
+
             <article class="principle-card">
                 <span class="mono ecosystem-status available">LOCAL-FIRST</span>
-                <h2 class="mono">USEFUL WITHOUT THE CLOUD</h2>
-                <p>AEOPIN stores captured data on the computer that runs it. CheckMaker bundles assets locally. MAGY expects a local OpenAI-compatible model server rather than a hosted service.</p>
+                <h2 class="mono">KEEP DATA CLOSE</h2>
+                <p>
+                    AEOPIN stores captured data locally. CheckMaker works with local files. MAGY is designed around a local model server instead of requiring a hosted AI service.
+                </p>
             </article>
+
             <article class="principle-card">
                 <span class="mono ecosystem-status available">EVIDENCE</span>
-                <h2 class="mono">CLAIMS ARE NOT COMPLETION</h2>
-                <p>MAGY runs a verification command after changes and feeds failure output back into the loop. The runtime, not a completion message, decides whether work is done.</p>
+                <h2 class="mono">A MESSAGE IS NOT PROOF</h2>
+                <p>
+                    MAGY can run verification after making a change and use the resulting output to determine what happened. A completion message is not a substitute for checking the result.
+                </p>
             </article>
+
             <article class="principle-card">
                 <span class="mono ecosystem-status available">VERIFICATION</span>
-                <h2 class="mono">THE BOUNDARY IS THE PRODUCT</h2>
-                <p>AEOPIN’s Authority installer checks the matching payload and fails closed when integrity checks do not pass. CheckMaker refuses stale writes when the file has drifted.</p>
+                <h2 class="mono">CHECK THE BOUNDARY</h2>
+                <p>
+                    AEOPIN's Authority installer checks the expected package and payload before installing. CheckMaker can detect when a file has changed since it was last read.
+                </p>
             </article>
+
             <article class="principle-card">
                 <span class="mono ecosystem-status">SYSTEMS</span>
-                <h2 class="mono">UNDERSTAND BEFORE YOU ACT</h2>
-                <p>AEOWUN IDE is built around the project: source, filesystem, terminal, analysis, and persistent workspace state. Understanding the system comes before asking an assistant to change it.</p>
+                <h2 class="mono">UNDERSTAND FIRST</h2>
+                <p>
+                    AEOWUN IDE is a VS Code fork with MAGY integrated into it. The point is to work with the source, filesystem, terminal, project information, and assistant in the same development environment.
+                </p>
             </article>
+
             <article class="principle-card">
-                <span class="mono ecosystem-status">HONEST STATUS</span>
-                <h2 class="mono">MATURITY IS LABELED</h2>
-                <p>Shipped products, active systems, experiments, and research are not the same thing. A prototype is not presented here as a finished service.</p>
+                <span class="mono ecosystem-status">STATUS</span>
+                <h2 class="mono">SAY WHAT EXISTS</h2>
+                <p>
+                    A shipped application, an active project, an experiment, and a research idea are different things. AEOWUN labels them that way instead of presenting everything as finished software.
+                </p>
             </article>
+
         </section>
 
         <section class="workflow-section" id="projects">
-            <div class="brand-label mono">THE PROGRESSION</div>
-            <h2 class="section-heading mono">UNDERSTAND. BUILD. VERIFY. RETAIN CONTROL.</h2>
+            <div class="brand-label mono">HOW I WORK ON IT</div>
+
+            <h2 class="section-heading mono">UNDERSTAND. BUILD. TEST. REPEAT.</h2>
+
             <div class="progress-chain">
-                <div class="progress-step"><span class="mono">01</span><strong class="mono">UNDERSTAND SYSTEMS</strong></div>
-                <div class="progress-step"><span class="mono">02</span><strong class="mono">BUILD SYSTEMS</strong></div>
-                <div class="progress-step"><span class="mono">03</span><strong class="mono">USE INTELLIGENT SYSTEMS</strong></div>
-                <div class="progress-step"><span class="mono">04</span><strong class="mono">VERIFY BEHAVIOR</strong></div>
-                <div class="progress-step"><span class="mono">05</span><strong class="mono">RETAIN HUMAN CONTROL</strong></div>
+                <div class="progress-step">
+                    <span class="mono">01</span>
+                    <strong class="mono">UNDERSTAND THE SYSTEM</strong>
+                </div>
+
+                <div class="progress-step">
+                    <span class="mono">02</span>
+                    <strong class="mono">BUILD THE PIECE</strong>
+                </div>
+
+                <div class="progress-step">
+                    <span class="mono">03</span>
+                    <strong class="mono">TRY IT IN PRACTICE</strong>
+                </div>
+
+                <div class="progress-step">
+                    <span class="mono">04</span>
+                    <strong class="mono">VERIFY WHAT HAPPENED</strong>
+                </div>
+
+                <div class="progress-step">
+                    <span class="mono">05</span>
+                    <strong class="mono">KEEP THE BOUNDARIES VISIBLE</strong>
+                </div>
             </div>
         </section>
 
         <section class="architecture-panel">
-            <div class="brand-label mono">WHAT AEOWUN IS BUILDING</div>
+            <div class="brand-label mono">WHAT IS CURRENTLY HERE</div>
+
             <pre class="architecture-diagram mono">AEOWUN
 │
 ├── PRODUCTS
@@ -138,7 +193,7 @@
 │   └── CHECKMAKER    shipped Markdown checkbox editor
 │
 ├── SYSTEMS
-│   ├── AEOWUN IDE    project-centered development environment
+│   ├── AEOWUN IDE    VS Code fork with MAGY integrated
 │   └── MAGY          local AI engineering with a runtime boundary
 │
 ├── EXPERIMENTAL
@@ -146,39 +201,78 @@
 │
 └── RESEARCH
     └── ZERO          structure, constraints, and behavior</pre>
-            <p>AEOPIN is the first shipped AEOWUN product. CheckMaker is a second shipped utility. The IDE and MAGY are active systems. AEIN is experimental. ZERO is research. They are all built for control.</p>
+
+            <p>
+                These projects are at different points. AEOPIN and CheckMaker are shipped. The IDE and MAGY are active development projects. AEIN is experimental. ZERO is research. The labels are there so it is clear which is which.
+            </p>
         </section>
 
         <section class="feature-grid" style="border-bottom: 0;">
+
             <article class="feature-card">
                 <span class="mono ecosystem-status available">SHIPPED</span>
+
                 <h2 class="mono">PRODUCTS</h2>
-            <p>AEOPIN and <a class="inline-link" href="/checkmaker/">CheckMaker</a> are both shipped Windows products. They are tools you can run today, not a catalog of future promises.</p>
+
+                <p>
+                    <a class="inline-link" href="/aeopin/">AEOPIN</a> and
+                    <a class="inline-link" href="/checkmaker/">CheckMaker</a>
+                    are Windows applications that can be used today. They are the parts of AEOWUN that have made it through the build-and-release process.
+                </p>
             </article>
+
             <article class="feature-card">
                 <span class="mono ecosystem-status">ACTIVE</span>
+
                 <h2 class="mono">SYSTEMS</h2>
-                <p><a class="inline-link" href="/ide/">AEOWUN IDE</a> and <a class="inline-link" href="/magy/">MAGY</a> are under active development. They show that AEOWUN is larger than a pair of utilities.</p>
+
+                <p>
+                    <a class="inline-link" href="/ide/">AEOWUN IDE</a> and
+                    <a class="inline-link" href="/magy/">MAGY</a>
+                    are still being built. The IDE is a VS Code fork used to integrate and work on MAGY alongside normal development tools.
+                </p>
             </article>
+
             <article class="feature-card">
                 <span class="mono ecosystem-status">EXPERIMENTAL / RESEARCH</span>
-                <h2 class="mono">OPEN QUESTIONS</h2>
-                <p><a class="inline-link" href="/aein/">AEIN</a> and <a class="inline-link" href="/zero/">ZERO</a> are not downloadable products. They record direction: auditable action, and intelligence that needs structure.</p>
+
+                <h2 class="mono">OTHER WORK</h2>
+
+                <p>
+                    <a class="inline-link" href="/aein/">AEIN</a> and
+                    <a class="inline-link" href="/zero/">ZERO</a>
+                    are not shipped products. They are places to work through ideas around controlled machine operation, structure, constraints, and system behavior.
+                </p>
             </article>
+
         </section>
 
         <section class="limitations-panel">
             <div>
-                <div class="brand-label mono">ENGINEERING</div>
-                <h2 class="section-heading mono">AN ONGOING PROJECT.</h2>
+                <div class="brand-label mono">WHERE IT STANDS</div>
+                <h2 class="section-heading mono">THIS IS STILL A PROJECT.</h2>
             </div>
-            <p>AEOWUN is not a finished commercial platform. Public GitHub repositories include shipped tools, an IDE-related tree (<a class="inline-link" href="https://github.com/Aeowun/AeowunV2" target="_blank" rel="noopener">AeowunV2</a>), MAGY (publicly labeled as an emergency backup), ZERO research code, support tracking, and experimental tooling. Status belongs on the page, not behind a polished catalog. See the <a class="inline-link" href="/engineering/">engineering record</a>.</p>
+
+            <p>
+                AEOWUN is not a finished commercial platform. The public repositories contain released applications, active development trees, research code, experiments, and supporting work. Some parts are useful today. Some parts are still being figured out. The point of this site is to show that distinction rather than hide it behind a polished product catalog.
+            </p>
+
+            <p>
+                The code is public because I want the work to be useful beyond my own machine. Download it, read it, reverse engineer it, hypothesize about it, or build something from it.
+            </p>
+
+            <p>
+                The <a class="inline-link" href="/engineering/">engineering record</a>
+                contains more detail about the work and the systems behind it.
+            </p>
         </section>
+
     </main>
 
     <footer class="aeowun-footer">
         <div class="container footer-inner">
             <div class="mono footer-copy">© 2026 AEOWUN.</div>
+
             <div class="footer-links">
                 <a href="/support/" class="mono">SUPPORT</a>
                 <a href="/security/" class="mono">TRUST</a>
@@ -187,6 +281,7 @@
             </div>
         </div>
     </footer>
+
     <script src="../app.js"></script>
 </body>
 </html>

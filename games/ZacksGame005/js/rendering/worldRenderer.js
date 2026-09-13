@@ -118,6 +118,25 @@ export function drawWorld(ctx, camera, scale, innerWidth, innerHeight) {
             ctx.lineWidth = 1.5;
             ctx.strokeRect(px + sz * .15, py + sz * .3, sz * .7, sz * .55);
         }
+
+        if (tileType === TILE_TYPES.Spike) {
+            const isActive = gameState.world.trapsActive;
+            ctx.fillStyle = isActive ? '#555' : '#111'; // Black when safe
+            ctx.fillRect(px, py, sz, sz);
+
+            if (isActive) {
+                ctx.fillStyle = '#999';
+                // Draw sharp spikes only if active
+                for (let i = 0; i < 3; i++) {
+                    const ox = (i + 0.5) * (sz / 3);
+                    ctx.beginPath();
+                    ctx.moveTo(px + ox, py + sz * 0.2);
+                    ctx.lineTo(px + ox - sz * 0.15, py + sz * 0.8);
+                    ctx.lineTo(px + ox + sz * 0.15, py + sz * 0.8);
+                    ctx.fill();
+                }
+            }
+        }
     }
 }
 
@@ -160,11 +179,29 @@ export function drawRoofs(ctx, camera, scale, innerWidth, innerHeight, playerPos
     const ty = Math.floor(playerPos.y);
 
     const currentTile = inside(tx, ty) ? map[ty][tx] : TILE_TYPES.Void;
-    const isInside = currentTile === TILE_TYPES.Floor || currentTile === TILE_TYPES.Torch || currentTile === TILE_TYPES.Diamond || currentTile === TILE_TYPES.Crypt;
+    const isInside =
+        currentTile === TILE_TYPES.Floor ||
+        currentTile === TILE_TYPES.Torch ||
+        currentTile === TILE_TYPES.Diamond ||
+        currentTile === TILE_TYPES.Crypt ||
+        currentTile === TILE_TYPES.Chest ||
+        currentTile === TILE_TYPES.Spike;
+
     if (isInside || currentTile === TILE_TYPES.HiddenPassage) return;
 
     for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
-        if (map[y][x] !== TILE_TYPES.Floor) continue;
+        const tile = map[y][x];
+
+        // Render a roof if it's a Floor tile, OR if it's an interactive tile surrounded by Floor/Buildings
+        let shouldHaveRoof = (tile === TILE_TYPES.Floor);
+
+        if (!shouldHaveRoof && (tile === TILE_TYPES.Chest || tile === TILE_TYPES.Spike || tile === TILE_TYPES.Torch)) {
+            // Check neighbors to see if this is an "Indoor" version of the item
+            if (inside(x, y-1) && (map[y-1][x] === TILE_TYPES.Floor || map[y-1][x] === TILE_TYPES.Building)) shouldHaveRoof = true;
+            else if (inside(x, y+1) && (map[y+1][x] === TILE_TYPES.Floor || map[y+1][x] === TILE_TYPES.Building)) shouldHaveRoof = true;
+        }
+
+        if (!shouldHaveRoof) continue;
 
         const px = screenX + (x - camera.x) * T * scale;
         const py = screenY + (y - camera.y) * T * scale;

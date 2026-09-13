@@ -22,8 +22,22 @@ export function createGameState() {
             swordPickedUp: false,
             steelSword: false,
             coins: 0,
+            xp: 0,
+            level: 1,
+            xpToNextLevel: 100,
+            baseAttack: 1,
+            baseDefense: 0,
+            dodgeTimer: 0,
+            dodgeCooldown: 0,
+            isDodging: false,
             dungeonDiamonds: 0,
-            dungeonKeys: {}
+            dungeonKeys: {},
+            inventory: [],
+            equipment: {
+                weapon: null,
+                armor: null,
+                accessory: null
+            }
         },
 
         currentWorld: 'overworld',
@@ -54,6 +68,7 @@ export function createGameState() {
                 attackCooldown: 0,
                 animTime: 0,
                 hitFlash: 0,
+                attackMeter: 0,
                 spawnX: 65.5,
                 spawnY: 62.5,
                 targetX: 65.5,
@@ -72,6 +87,26 @@ export function createGameState() {
                 x: 89,
                 y: 70,
                 name: "Shopkeeper"
+            },
+            {
+                x: 75,
+                y: 72,
+                name: "Mara"
+            },
+            {
+                x: 32,
+                y: 76,
+                name: "Tessa"
+            },
+            {
+                x: 70,
+                y: 107,
+                name: "Fen"
+            },
+            {
+                x: 105,
+                y: 73,
+                name: "Orren"
             }
         ],
 
@@ -92,6 +127,10 @@ export function createGameState() {
             activeNPC: null,
             storeOpen: false,
             storeMessage: "",
+            inventoryOpen: false,
+            inventorySelection: 0,
+            levelUpOpen: false,
+            levelUpSelection: 0,
             fadeAlpha: 0,
             transitioning: false,
             transitionPhase: 0,
@@ -121,6 +160,7 @@ export function createGameState() {
 
         notifications: [],
         billboards: [],
+        projectiles: [],
 
         keys: {},
         touch: {
@@ -133,6 +173,16 @@ export function createGameState() {
             dy: 0,
             tapTime: 0,
             isTap: false
+        },
+
+        debug: {
+            ghostMode: false,
+            showCoords: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        },
+
+        world: {
+            trapTimer: 0,
+            trapsActive: true
         }
     };
 }

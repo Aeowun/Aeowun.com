@@ -10,6 +10,7 @@
             padding-top: 180px;
             padding-bottom: 60px;
         }
+
         .privacy-content {
             max-width: 900px;
             line-height: 1.8;
@@ -17,9 +18,11 @@
             margin-top: 60px;
             padding-bottom: 120px;
         }
+
         section {
             margin-bottom: 60px;
         }
+
         h3 {
             color: var(--text-bright);
             margin-bottom: 20px;
@@ -27,70 +30,121 @@
             padding-bottom: 10px;
             font-size: 0.9rem;
         }
+
         ul {
             margin-left: 20px;
             margin-top: 10px;
             margin-bottom: 20px;
         }
+
         li {
             margin-bottom: 10px;
         }
     </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7976685360451203"
-     crossorigin="anonymous"></script>
+
+    <script async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7976685360451203"
+        crossorigin="anonymous"></script>
 </head>
+
 <body class="aeowun-environment">
+
     <div id="void-bg"></div>
     <div id="technical-grid"></div>
+
     <div id="wave-field">
-        <svg id="wave-field-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <svg id="wave-field-svg"
+             viewBox="0 0 1000 1000"
+             preserveAspectRatio="none">
             <defs>
-                <filter id="ribbon-glow" x="-50%" y="-50%" width="200%" height="200%">
+                <filter id="ribbon-glow"
+                        x="-50%"
+                        y="-50%"
+                        width="200%"
+                        height="200%">
                     <feGaussianBlur stdDeviation="15" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    <feComposite in="SourceGraphic"
+                                  in2="blur"
+                                  operator="over" />
                 </filter>
-                <linearGradient id="grad-v" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="rgba(124, 34, 228, 0)" />
-                    <stop offset="50%" stop-color="rgba(124, 34, 228, 0.7)" />
-                    <stop offset="100%" stop-color="rgba(124, 34, 228, 0)" />
+
+                <linearGradient id="grad-v"
+                                x1="0%"
+                                y1="0%"
+                                x2="100%"
+                                y2="100%">
+                    <stop offset="0%"
+                          stop-color="rgba(124, 34, 228, 0)" />
+                    <stop offset="50%"
+                          stop-color="rgba(124, 34, 228, 0.7)" />
+                    <stop offset="100%"
+                          stop-color="rgba(124, 34, 228, 0)" />
                 </linearGradient>
-                <linearGradient id="grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="rgba(0, 210, 241, 0)" />
-                    <stop offset="50%" stop-color="rgba(0, 210, 241, 0.5)" />
-                    <stop offset="100%" stop-color="rgba(0, 210, 241, 0)" />
+
+                <linearGradient id="grad-b"
+                                x1="0%"
+                                y1="0%"
+                                x2="100%"
+                                y2="100%">
+                    <stop offset="0%"
+                          stop-color="rgba(0, 210, 241, 0)" />
+                    <stop offset="50%"
+                          stop-color="rgba(0, 210, 241, 0.5)" />
+                    <stop offset="100%"
+                          stop-color="rgba(0, 210, 241, 0)" />
                 </linearGradient>
             </defs>
         </svg>
     </div>
+
     <canvas id="ambient-canvas"></canvas>
 
     <header class="aeowun-header">
         <div class="header-inner container">
-            <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
-            <button class="nav-hamburger mono" id="nav-toggle" aria-label="Menu">
+            <a href="/" class="brand">
+                <span class="brand-name mono">AEOWUN</span>
+            </a>
+
+            <button class="nav-hamburger mono"
+                    id="nav-toggle"
+                    aria-label="Menu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
             </button>
         </div>
     </header>
+
     <div class="nav-rail" id="nav-rail">
         <div class="rail-backdrop" id="rail-close"></div>
+
         <div class="rail-content">
             <div class="rail-header">
-                <span class="mono" style="font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.5em;">MENU</span>
-                <button class="close-rail mono" id="rail-close-btn">[ CLOSE ]</button>
+                <span class="mono"
+                      style="font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.5em;">
+                    MENU
+                </span>
+
+                <button class="close-rail mono" id="rail-close-btn">
+                    [ CLOSE ]
+                </button>
             </div>
+
             <nav class="rail-links">
                 <a href="/aeowun/" class="rail-link mono">PROJECT</a>
+
                 <div class="rail-divider"></div>
+
                 <span class="rail-label mono">PRODUCTS</span>
+
                 <a href="/aeopin/" class="rail-link mono">AEOPIN</a>
                 <a href="/checkmaker/" class="rail-link mono">CHECKMAKER</a>
                 <a href="/ide/" class="rail-link mono">IDE</a>
                 <a href="/magy/" class="rail-link mono">MAGY</a>
                 <a href="/games/" class="rail-link mono">GAMES</a>
+
                 <div class="rail-divider"></div>
+
                 <a href="/engineering/" class="rail-link mono">WORK</a>
                 <a href="/security/" class="rail-link mono">TRUST</a>
             </nav>
@@ -98,70 +152,303 @@
     </div>
 
     <main class="container">
+
         <section class="privacy-hero">
             <div class="brand-label mono">LEGAL</div>
+
             <h1 class="product-title mono">PRIVACY POLICY</h1>
-            <p class="hero-lead">Effective Date: August 24, 2026</p>
+
+            <p class="hero-lead">
+                Effective Date: August 24, 2026
+            </p>
         </section>
 
         <div class="privacy-content">
-            <p style="margin-bottom: 40px;">AEOWUN ("AEOWUN," "we," "us," or "our") develops and distributes AEOPIN, a Windows desktop application. This Privacy Policy explains how AEOPIN handles information when you use the application.</p>
+
+            <p style="margin-bottom: 40px;">
+                AEOWUN ("AEOWUN," "we," "us," or "our") develops and distributes
+                local-first Windows software, including AEOPIN and CheckMaker.
+                This Privacy Policy explains how these applications handle
+                information when you use them.
+            </p>
 
             <section>
-                <h3 class="mono">1. Information AEOPIN Handles</h3>
-                <p>AEOPIN is designed to operate on your Windows computer and to work with files and information that you choose to provide to it. Depending on how you use AEOPIN, the application may access information such as:</p>
+                <h3 class="mono">1. INFORMATION THE APPLICATIONS HANDLE</h3>
+
+                <p>
+                    AEOPIN and CheckMaker are designed to operate on your
+                    Windows computer and work with files and other information
+                    that you choose to provide to them.
+                </p>
+
+                <p>
+                    Depending on how you use the applications, they may handle
+                    information such as:
+                </p>
+
                 <ul>
-                    <li>Files and folders that you explicitly make available to AEOPIN.</li>
-                    <li>File names, paths, file types, timestamps, and other filesystem metadata.</li>
-                    <li>Content that AEOPIN indexes or processes for search and organization.</li>
-                    <li>Information you enter directly into AEOPIN, such as search queries.</li>
+                    <li>
+                        Files and folders that you explicitly open, provide,
+                        capture, or save through the application.
+                    </li>
+
+                    <li>
+                        File names, paths, file types, timestamps, and other
+                        filesystem metadata associated with those files.
+                    </li>
+
+                    <li>
+                        Content that AEOPIN processes or indexes for local
+                        search, organization, and retrieval.
+                    </li>
+
+                    <li>
+                        Markdown document content that CheckMaker reads in
+                        order to display documents and locate checkbox
+                        markers.
+                    </li>
+
+                    <li>
+                        Information you enter directly into the applications,
+                        such as search queries, notes, or file paths.
+                    </li>
                 </ul>
             </section>
 
             <section>
-                <h3 class="mono">2. Local Processing</h3>
-                <p>AEOPIN is designed as a local Windows application. Information processed by AEOPIN is stored and processed on your computer. AEOPIN does not transmit your personal files or captured data to external servers.</p>
+                <h3 class="mono">2. LOCAL PROCESSING</h3>
+
+                <p>
+                    AEOPIN and CheckMaker are local-first Windows applications.
+                    Their core workflows run on the computer where the
+                    applications are installed.
+                </p>
+
+                <p>
+                    In the current releases, AEOPIN and CheckMaker do not
+                    transmit the files, folders, Markdown documents, notes,
+                    or other application data you provide to AEOWUN-operated
+                    external servers as part of their normal core workflows.
+                </p>
             </section>
 
             <section>
-                <h3 class="mono">3. No Account Required</h3>
-                <p>AEOPIN does not require you to create an AEOWUN account to use the application. We do not require you to provide your name, email address, telephone number, or other account information merely to use AEOPIN.</p>
+                <h3 class="mono">3. AEOPIN</h3>
+
+                <p>
+                    AEOPIN is a local capture and retrieval application for
+                    files, folders, links, and notes.
+                </p>
+
+                <p>
+                    Captured items and the local application data required to
+                    organize, search, and retrieve them are stored on the
+                    computer running AEOPIN.
+                </p>
+
+                <p>
+                    AEOPIN does not require an AEOWUN account for its core
+                    functionality.
+                </p>
             </section>
 
             <section>
-                <h3 class="mono">4. Advertising</h3>
-                <p>AEOPIN does not display advertisements within the application.</p>
+                <h3 class="mono">4. CHECKMAKER</h3>
+
+                <p>
+                    CheckMaker is a standalone Markdown checklist editor.
+                    Markdown files opened in CheckMaker remain on the local
+                    computer.
+                </p>
+
+                <p>
+                    CheckMaker reads Markdown content locally for display and
+                    handles checkbox changes locally. Its editing workflow is
+                    designed to modify the relevant checkbox marker rather
+                    than send the document to a remote service.
+                </p>
+
+                <p>
+                    The published CheckMaker Windows build does not require an
+                    AEOWUN account or cloud service for its core editing
+                    functions.
+                </p>
             </section>
 
             <section>
-                <h3 class="mono">5. Analytics and Tracking</h3>
-                <p>AEOWUN does not collect analytics, telemetry, or tracking information from AEOPIN in its current release. If this changes, this policy will be updated accordingly.</p>
+                <h3 class="mono">5. NO ACCOUNT REQUIRED</h3>
+
+                <p>
+                    AEOPIN and CheckMaker do not require an AEOWUN account for
+                    their core functionality.
+                </p>
+
+                <p>
+                    You are not required to provide your name, email address,
+                    telephone number, or similar account information simply to
+                    use these applications.
+                </p>
             </section>
 
             <section>
-                <h3 class="mono">6. Contact</h3>
-                <p>Questions about AEOPIN privacy may be submitted through the AEOWUN support page: <a href="/support/" style="color: var(--accent-cyan); text-decoration: none;">aeowun.com/support</a></p>
-                <p style="margin-top: 20px;">AEOWUN<br>United States</p>
+                <h3 class="mono">6. ADVERTISEMENTS IN THE APPLICATIONS</h3>
+
+                <p>
+                    AEOPIN and CheckMaker do not display advertisements within
+                    the applications.
+                </p>
+
+                <p>
+                    Advertising displayed on the AEOWUN website is separate
+                    from the applications and is not part of AEOPIN or
+                    CheckMaker.
+                </p>
             </section>
+
+            <section>
+                <h3 class="mono">7. ANALYTICS AND TELEMETRY</h3>
+
+                <p>
+                    The current AEOPIN and CheckMaker releases do not send
+                    analytics, telemetry, or behavioral tracking information to
+                    AEOWUN-operated servers as part of the applications'
+                    normal operation.
+                </p>
+
+                <p>
+                    This statement describes the current application releases.
+                    If an application's data-collection behavior changes, this
+                    policy will be updated.
+                </p>
+            </section>
+
+            <section>
+                <h3 class="mono">8. DATA STORED ON YOUR COMPUTER</h3>
+
+                <p>
+                    AEOPIN and CheckMaker may create local files and application
+                    state required for their operation. Depending on the
+                    application and features used, this can include
+                    configuration, indexes, recent-file information, cached
+                    state, or other local application data.
+                </p>
+
+                <p>
+                    These files remain on the computer where the application is
+                    running unless you or another process on that computer
+                    moves, deletes, copies, or otherwise accesses them.
+                </p>
+            </section>
+
+            <section>
+                <h3 class="mono">9. WEBSITE ADVERTISING</h3>
+
+                <p>
+                    The AEOWUN website may display advertisements supplied by
+                    third-party advertising services, including Google
+                    AdSense.
+                </p>
+
+                <p>
+                    Website advertising is separate from AEOPIN and CheckMaker.
+                    This application privacy policy does not describe the data
+                    practices of third-party advertising providers when you
+                    visit the AEOWUN website.
+                </p>
+
+                <p>
+                    Information about website privacy and third-party services
+                    should be considered separately from the local application
+                    behavior described above.
+                </p>
+            </section>
+
+            <section>
+                <h3 class="mono">10. THIS POLICY AND FUTURE RELEASES</h3>
+
+                <p>
+                    This policy describes the current AEOPIN and CheckMaker
+                    releases. AEOWUN may change application functionality over
+                    time.
+                </p>
+
+                <p>
+                    Material changes to how these applications handle
+                    information will be reflected in an updated version of
+                    this policy.
+                </p>
+            </section>
+
+            <section>
+                <h3 class="mono">11. CONTACT</h3>
+
+                <p>
+                    Privacy questions about AEOPIN or CheckMaker may be
+                    submitted through the
+                    <a href="/support/"
+                       style="color: var(--accent-cyan); text-decoration: none;">
+                        AEOWUN support page
+                    </a>.
+                </p>
+
+                <p style="margin-top: 20px;">
+                    AEOWUN<br>
+                    United States
+                </p>
+            </section>
+
         </div>
 
-        <section class="subtle-ads" style="margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center;">
-            <div class="mono" style="font-size: 0.6rem; color: var(--text); opacity: 0.3; margin-bottom: 20px; letter-spacing: 2px;">SPONSORED</div>
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7976685360451203" crossorigin="anonymous"></script>
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7976685360451203" data-ad-slot="9729764284" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <section class="subtle-ads"
+                 style="margin-top: 100px;
+                        padding-top: 40px;
+                        border-top: 1px solid var(--border);
+                        text-align: center;">
+
+            <div class="mono"
+                 style="font-size: 0.6rem;
+                        color: var(--text);
+                        opacity: 0.3;
+                        margin-bottom: 20px;
+                        letter-spacing: 2px;">
+                SPONSORED
+            </div>
+
+            <script async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7976685360451203"
+                crossorigin="anonymous"></script>
+
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7976685360451203"
+                 data-ad-slot="9729764284"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true">
+            </ins>
+
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
         </section>
+
     </main>
 
     <footer class="aeowun-footer">
         <div class="container footer-inner">
-            <div class="mono footer-copy">© 2026 AEOWUN.</div>
+
+            <div class="mono footer-copy">
+                © 2026 AEOWUN.
+            </div>
+
             <div class="footer-links">
                 <a href="/support/" class="mono">SUPPORT</a>
                 <a href="/privacy/" class="mono">PRIVACY</a>
             </div>
+
         </div>
     </footer>
+
     <script src="../app.js"></script>
 </body>
 </html>

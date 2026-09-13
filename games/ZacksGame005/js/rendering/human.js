@@ -18,6 +18,14 @@ export function drawHuman(ctx, x, y, scale, options = {}) {
 
     ctx.save();
 
+    if (options.isDodging) {
+        ctx.globalAlpha = 0.6;
+        // Apply a roll rotation based on animTime
+        ctx.translate(ox, oy);
+        ctx.rotate(animTime * 12);
+        ctx.translate(-ox, -oy);
+    }
+
     // Shadow
     ctx.fillStyle = "rgba(0,0,0,.32)";
     ctx.beginPath();

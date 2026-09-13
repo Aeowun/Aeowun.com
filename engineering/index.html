@@ -1,10 +1,9 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AEOWUN // ENGINEERING</title>
-    <meta name="description" content="Engineering record for AEOWUN: built, failed, changed, and verified work. Built in the open on GitHub.">
+    <meta name="description" content="A look at the projects, experiments, problems, and ideas being worked on at AEOWUN. Built in the open on GitHub.">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body class="aeowun-environment">
@@ -13,154 +12,466 @@
     <div id="wave-field"></div>
     <canvas id="ambient-canvas"></canvas>
 
-    <header class="aeowun-header">
-        <div class="header-inner container">
-            <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
-            <button class="nav-hamburger mono" id="nav-toggle" aria-label="Menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
+```
+<header class="aeowun-header">
+    <div class="header-inner container">
+        <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
+        <button class="nav-hamburger mono" id="nav-toggle" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </div>
+</header>
+
+<div class="nav-rail" id="nav-rail">
+    <div class="rail-backdrop" id="rail-close"></div>
+    <div class="rail-content">
+        <div class="rail-header">
+            <span class="mono" style="font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.5em;">MENU</span>
+            <button class="close-rail mono" id="rail-close-btn">[ CLOSE ]</button>
         </div>
-    </header>
-    <div class="nav-rail" id="nav-rail">
-        <div class="rail-backdrop" id="rail-close"></div>
-        <div class="rail-content">
-            <div class="rail-header">
-                <span class="mono" style="font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.5em;">MENU</span>
-                <button class="close-rail mono" id="rail-close-btn">[ CLOSE ]</button>
-            </div>
-            <nav class="rail-links">
-                <a href="/aeowun/" class="rail-link mono">PROJECT</a>
-                <div class="rail-divider"></div>
-                <span class="rail-label mono">PRODUCTS</span>
-                <a href="/aeopin/" class="rail-link mono">AEOPIN</a>
-                <a href="/checkmaker/" class="rail-link mono">CHECKMAKER</a>
-                <a href="/ide/" class="rail-link mono">IDE</a>
-                <a href="/magy/" class="rail-link mono">MAGY</a>
-                <a href="/games/" class="rail-link mono">GAMES</a>
-                <div class="rail-divider"></div>
-                <a href="/engineering/" class="rail-link mono active">WORK</a>
-                <a href="/security/" class="rail-link mono">TRUST</a>
-            </nav>
+
+        <nav class="rail-links">
+            <a href="/aeowun/" class="rail-link mono">PROJECT</a>
+            <div class="rail-divider"></div>
+
+            <span class="rail-label mono">PRODUCTS</span>
+            <a href="/aeopin/" class="rail-link mono">AEOPIN</a>
+            <a href="/checkmaker/" class="rail-link mono">CHECKMAKER</a>
+            <a href="/ide/" class="rail-link mono">IDE</a>
+            <a href="/magy/" class="rail-link mono">MAGY</a>
+            <a href="/games/" class="rail-link mono">GAMES</a>
+
+            <div class="rail-divider"></div>
+
+            <a href="/engineering/" class="rail-link mono active">WORK</a>
+            <a href="/security/" class="rail-link mono">TRUST</a>
+        </nav>
+    </div>
+</div>
+
+<main class="product-page container">
+
+    <section class="product-hero">
+        <div class="brand-label mono">AEOWUN // ENGINEERING</div>
+
+        <h1 class="product-title mono">
+            OPEN|x|GitHub<br>
+            OPEN SOURCE FOR OPEN MINDS
+        </h1>
+
+        <p class="hero-lead">
+            All of my projects are presented in hopes that others will download,
+            reverse engineer, hypothesize, and build something.
+        </p>
+
+        <div class="hero-actions">
+            <a class="primary-button mono"
+               href="https://github.com/Aeowun"
+               target="_blank"
+               rel="noopener">
+                GITHUB / AEOWUN
+            </a>
+
+            <a class="secondary-button mono" href="/aeowun/">
+                READ THE PROJECT
+            </a>
+        </div>
+    </section>
+
+
+    <section class="evidence-section">
+        <div class="brand-label mono">MAGY</div>
+
+        <h2 class="section-heading mono">
+            REASONING IS NOT AUTHORITY.
+        </h2>
+
+        <div class="evidence-loop">
+
+            <article>
+                <span class="mono loop-label">THE QUESTION</span>
+
+                <h3 class="mono">
+                    WHAT HAPPENS WHEN AI SAYS IT'S DONE?
+                </h3>
+
+                <p>
+                    A model can produce a convincing explanation without actually
+                    completing the work. That became one of the problems I wanted
+                    MAGY to deal with.
+                </p>
+            </article>
+
+            <article>
+                <span class="mono loop-label">THE APPROACH</span>
+
+                <h3 class="mono">
+                    LET THE RUNTIME CHECK
+                </h3>
+
+                <p>
+                    MAGY separates planning and execution from the runtime that
+                    controls what can actually happen. Restricted writes and
+                    commands can require operator approval, and completion is
+                    checked instead of simply being accepted from model output.
+                </p>
+            </article>
+
+            <article>
+                <span class="mono loop-label">WHAT I'M LEARNING</span>
+
+                <h3 class="mono">
+                    OUTPUT ISN'T PROOF
+                </h3>
+
+                <p>
+                    A model can reason about a task without being the authority
+                    over the machine. Failure output can go back into the loop
+                    instead of being treated as a finished result. MAGY is still
+                    alpha, local-first, and in progress.
+                </p>
+            </article>
+
+        </div>
+
+        <p class="evidence-intro">
+            <a class="inline-link" href="/magy/">MAGY architecture</a>
+            ·
+            <a class="inline-link"
+               href="https://github.com/Aeowun/Magy"
+               target="_blank"
+               rel="noopener">
+                github.com/Aeowun/Magy
+            </a>
+            (public description: emergency backup)
+        </p>
+    </section>
+
+
+    <section class="evidence-section">
+        <div class="brand-label mono">AEOPIN</div>
+
+        <h2 class="section-heading mono">
+            INSTALLERS FAIL CLOSED.
+        </h2>
+
+        <div class="evidence-loop">
+
+            <article>
+                <span class="mono loop-label">THE PROBLEM</span>
+
+                <h3 class="mono">
+                    WHAT ARE YOU ACTUALLY INSTALLING?
+                </h3>
+
+                <p>
+                    An installer should not have to assume that the payload sitting
+                    beside it is the one it was supposed to receive.
+                </p>
+            </article>
+
+            <article>
+                <span class="mono loop-label">THE CHANGE</span>
+
+                <h3 class="mono">
+                    CHECK BEFORE INSTALLING
+                </h3>
+
+                <p>
+                    AEOPIN v1.2.3 verifies the expected portable payload, checks
+                    its SHA-256 hash, and uses an atomic update and recovery flow.
+                    The installer has its own authority while the application
+                    payload can be replaced.
+                </p>
+            </article>
+
+            <article>
+                <span class="mono loop-label">THE RESULT</span>
+
+                <h3 class="mono">
+                    STOP WHEN THE CHECK FAILS
+                </h3>
+
+                <p>
+                    If the integrity checks do not pass, the installer does not
+                    continue with the update. The current Windows release is the
+                    verified GitHub release rather than a separate download path.
+                </p>
+            </article>
+
+        </div>
+
+        <p class="evidence-intro">
+            <a class="inline-link" href="/aeopin/">AEOPIN product page</a>
+            ·
+            <a class="inline-link" href="/changelog/">changelog</a>
+            ·
+            <a class="inline-link"
+               href="https://github.com/Aeowun/Aeopin"
+               target="_blank"
+               rel="noopener">
+                github.com/Aeowun/Aeopin
+            </a>
+        </p>
+    </section>
+
+
+    <section class="evidence-section">
+        <div class="brand-label mono">CHECKMAKER</div>
+
+        <h2 class="section-heading mono">
+            SMALL CHANGE. SMALL DIFF.
+        </h2>
+
+        <div class="evidence-loop">
+
+            <article>
+                <span class="mono loop-label">THE PROBLEM</span>
+
+                <h3 class="mono">
+                    WHY REWRITE THE WHOLE FILE?
+                </h3>
+
+                <p>
+                    A checkbox is one small part of a Markdown document. Rewriting
+                    the entire document to toggle it can introduce unnecessary
+                    changes.
+                </p>
+            </article>
+
+            <article>
+                <span class="mono loop-label">THE APPROACH</span>
+
+                <h3 class="mono">
+                    CHANGE ONLY WHAT CHANGED
+                </h3>
+
+                <p>
+                    CheckMaker finds the exact checkbox marker and changes only
+                    that part of the file. Before writing, it checks whether the
+                    file has changed underneath the current view.
+                </p>
+            </article>
+
+            <article>
+                <span class="mono loop-label">WHAT THAT MEANS</span>
+
+                <h3 class="mono">
+                    DON'T WRITE STALE DATA
+                </h3>
+
+                <p>
+                    Line endings, encoding, and unrelated content are left alone.
+                    If the file has drifted since it was read, CheckMaker refuses
+                    to silently overwrite the newer version.
+                </p>
+            </article>
+
+        </div>
+
+        <p class="evidence-intro">
+            <a class="inline-link" href="/checkmaker/">CheckMaker</a>
+            ·
+            <a class="inline-link"
+               href="https://github.com/Aeowun/Checkmaker"
+               target="_blank"
+               rel="noopener">
+                github.com/Aeowun/Checkmaker
+            </a>
+        </p>
+    </section>
+
+
+    <section class="evidence-section">
+        <div class="brand-label mono">AEOWUN IDE</div>
+
+        <h2 class="section-heading mono">
+            STILL BUILDING IT.
+        </h2>
+
+        <p class="evidence-intro">
+            The IDE page is where I keep track of the work as it develops:
+            filesystem access, Monaco, persistent state, search, terminal,
+            semantic rebuilding, Python type coverage, pytest infrastructure,
+            and watchdog race-condition work.
+        </p>
+
+        <p class="evidence-intro">
+            It is an active project, not a finished commercial IDE. Some parts
+            work, some parts are still being worked on, and the page exists to
+            show where things actually are.
+        </p>
+
+        <p class="evidence-intro">
+            <a class="inline-link" href="/ide/">AEOWUN IDE</a>
+            ·
+            <a class="inline-link"
+               href="https://github.com/Aeowun/AeowunV2"
+               target="_blank"
+               rel="noopener">
+                github.com/Aeowun/AeowunV2
+            </a>
+        </p>
+    </section>
+
+
+    <section class="architecture-panel">
+        <div class="brand-label mono">PUBLIC REPOSITORIES</div>
+
+        <h2 class="section-heading mono">
+            WHAT'S ON GITHUB.
+        </h2>
+
+        <p>
+            These are the public repositories under
+            <a class="inline-link"
+               href="https://github.com/Aeowun"
+               target="_blank"
+               rel="noopener">
+                github.com/Aeowun
+            </a>.
+            Some are finished projects, some are active work, and some are
+            experiments. They're all public because there is something worth
+            learning from in having the work available.
+        </p>
+
+        <div class="repo-grid">
+
+            <a class="repo-card"
+               href="https://github.com/Aeowun/Aeopin"
+               target="_blank"
+               rel="noopener">
+                <strong class="mono">AEOPIN</strong>
+                <span class="mono ecosystem-status available">
+                    SHIPPED // KOTLIN
+                </span>
+                <span>
+                    Windows capture and retrieval. Public GPL-3.0 repository.
+                </span>
+            </a>
+
+            <a class="repo-card"
+               href="https://github.com/Aeowun/Checkmaker"
+               target="_blank"
+               rel="noopener">
+                <strong class="mono">CHECKMAKER</strong>
+                <span class="mono ecosystem-status available">
+                    SHIPPED // PYTHON
+                </span>
+                <span>
+                    Surgical Markdown checkbox editor. Public source and v1.0.0 release.
+                </span>
+            </a>
+
+            <a class="repo-card"
+               href="https://github.com/Aeowun/AeowunV2"
+               target="_blank"
+               rel="noopener">
+                <strong class="mono">AEOWUNV2</strong>
+                <span class="mono ecosystem-status">
+                    ACTIVE // TYPESCRIPT
+                </span>
+                <span>
+                    Public IDE-related tree. No GitHub description set.
+                </span>
+            </a>
+
+            <a class="repo-card"
+               href="https://github.com/Aeowun/Magy"
+               target="_blank"
+               rel="noopener">
+                <strong class="mono">MAGY</strong>
+                <span class="mono ecosystem-status">
+                    BACKUP // RUST
+                </span>
+                <span>
+                    GitHub description: “Emergency backup.” Site documentation
+                    covers the current local architecture and a working branch.
+                </span>
+            </a>
+
+            <a class="repo-card"
+               href="https://github.com/Aeowun/AeowunZero-1B"
+               target="_blank"
+               rel="noopener">
+                <strong class="mono">AEOWUNZERO-1B</strong>
+                <span class="mono ecosystem-status">
+                    RESEARCH // PYTHON
+                </span>
+                <span>
+                    Public ZERO research code. Not a downloadable product.
+                </span>
+            </a>
+
+            <a class="repo-card"
+               href="https://github.com/Aeowun/Aeopin_Support"
+               target="_blank"
+               rel="noopener">
+                <strong class="mono">AEOPIN_SUPPORT</strong>
+                <span class="mono ecosystem-status">
+                    SUPPORT
+                </span>
+                <span>
+                    Issue tracking for AEOPIN reports and requests.
+                </span>
+            </a>
+
+            <a class="repo-card"
+               href="https://github.com/Aeowun/Aeowun.com"
+               target="_blank"
+               rel="noopener">
+                <strong class="mono">AEOWUN.COM</strong>
+                <span class="mono ecosystem-status">
+                    WEBSITE
+                </span>
+                <span>
+                    This site. GitHub description: “What is the magic word?”
+                </span>
+            </a>
+
+            <a class="repo-card"
+               href="https://github.com/Aeowun/devTool_xO0"
+               target="_blank"
+               rel="noopener">
+                <strong class="mono">DEVTOOL_XO0</strong>
+                <span class="mono ecosystem-status">
+                    EXPERIMENTAL
+                </span>
+                <span>
+                    GitHub description: “A MYSTERIOUS ocypodid toolkit.”
+                    Not presented as a product.
+                </span>
+            </a>
+
+        </div>
+    </section>
+
+</main>
+
+
+<footer class="aeowun-footer">
+    <div class="container footer-inner">
+        <div class="mono footer-copy">
+            © 2026 AEOWUN.
+        </div>
+
+        <div class="footer-links">
+            <a href="/support/" class="mono">SUPPORT</a>
+            <a href="/security/" class="mono">TRUST</a>
+            <a href="/privacy/" class="mono">PRIVACY</a>
+            <a href="https://github.com/Aeowun"
+               target="_blank"
+               rel="noopener"
+               class="mono">
+                GITHUB
+            </a>
         </div>
     </div>
+</footer>
 
-    <main class="product-page container">
-        <section class="product-hero">
-            <div class="brand-label mono">AEOWUN // ENGINEERING</div>
-            <h1 class="product-title mono">BUILT IN THE OPEN.</h1>
-            <p class="hero-lead">This is a record of engineering decisions that already exist in AEOWUN software.</p>
-            <div class="hero-actions">
-                <a class="primary-button mono" href="https://github.com/Aeowun" target="_blank" rel="noopener">GITHUB / AEOWUN</a>
-                <a class="secondary-button mono" href="/aeowun/">READ THE PROJECT</a>
-            </div>
-        </section>
+<script src="../app.js"></script>
 
-        <section class="evidence-section">
-            <div class="brand-label mono">MAGY</div>
-            <h2 class="section-heading mono">REASONING IS NOT AUTHORITY.</h2>
-            <div class="evidence-loop">
-                <article>
-                    <span class="mono loop-label">PROBLEM</span>
-                    <h3 class="mono">MODEL CLAIMS</h3>
-                    <p>If a model can declare a task complete, the system is trusting language instead of the project.</p>
-                </article>
-                <article>
-                    <span class="mono loop-label">CHANGE</span>
-                    <h3 class="mono">RUNTIME VERIFICATION</h3>
-                    <p>MAGY separates Planner and Executor from the runtime. Restricted writes and commands require operator approval. Completion depends on a verification command.</p>
-                </article>
-                <article>
-                    <span class="mono loop-label">RESULT</span>
-                    <h3 class="mono">EVIDENCE DECIDES</h3>
-                    <p>Model output is not treated as proof of completion. Failure output is fed back into the loop. MAGY remains alpha, local-first, and in progress.</p>
-                </article>
-            </div>
-            <p class="evidence-intro"><a class="inline-link" href="/magy/">MAGY architecture</a> · <a class="inline-link" href="https://github.com/Aeowun/Magy" target="_blank" rel="noopener">github.com/Aeowun/Magy</a> (public description: emergency backup)</p>
-        </section>
-
-        <section class="evidence-section">
-            <div class="brand-label mono">AEOPIN</div>
-            <h2 class="section-heading mono">INSTALLERS FAIL CLOSED.</h2>
-            <div class="evidence-loop">
-                <article>
-                    <span class="mono loop-label">PROBLEM</span>
-                    <h3 class="mono">UNTRUSTED PAYLOADS</h3>
-                    <p>A download that cannot check what it is installing leaves the operator guessing.</p>
-                </article>
-                <article>
-                    <span class="mono loop-label">CHANGE</span>
-                    <h3 class="mono">AUTHORITY RELEASE</h3>
-                    <p>AEOPIN v1.2.3 verifies the matching portable payload, installs the managed application, and uses SHA-256 validation with an atomic update and recovery flow.</p>
-                </article>
-                <article>
-                    <span class="mono loop-label">RESULT</span>
-                    <h3 class="mono">FAIL CLOSED</h3>
-                    <p>The installer fails closed when integrity checks do not pass. The current Windows release is the verified GitHub release, not a side channel.</p>
-                </article>
-            </div>
-            <p class="evidence-intro"><a class="inline-link" href="/aeopin/">AEOPIN product page</a> · <a class="inline-link" href="/changelog/">changelog</a> · <a class="inline-link" href="https://github.com/Aeowun/Aeopin" target="_blank" rel="noopener">github.com/Aeowun/Aeopin</a></p>
-        </section>
-
-        <section class="evidence-section">
-            <div class="brand-label mono">CHECKMAKER</div>
-            <h2 class="section-heading mono">SMALL CHANGE. SMALL DIFF.</h2>
-            <div class="evidence-loop">
-                <article>
-                    <span class="mono loop-label">PROBLEM</span>
-                    <h3 class="mono">REWRITE CHURN</h3>
-                    <p>Most Markdown editors rewrite an entire document to toggle a checkbox.</p>
-                </article>
-                <article>
-                    <span class="mono loop-label">CHANGE</span>
-                    <h3 class="mono">SURGICAL WRITE</h3>
-                    <p>CheckMaker seeks the exact checkbox byte and changes only that marker. External drift is detected before a write.</p>
-                </article>
-                <article>
-                    <span class="mono loop-label">RESULT</span>
-                    <h3 class="mono">REFUSE STALE WRITES</h3>
-                    <p>Line endings, encoding, and surrounding content stay put. An old view cannot silently overwrite newer work.</p>
-                </article>
-            </div>
-            <p class="evidence-intro"><a class="inline-link" href="/checkmaker/">CheckMaker</a> · <a class="inline-link" href="https://github.com/Aeowun/Checkmaker" target="_blank" rel="noopener">github.com/Aeowun/Checkmaker</a></p>
-        </section>
-
-        <section class="evidence-section">
-            <div class="brand-label mono">AEOWUN IDE</div>
-            <h2 class="section-heading mono">MEASURED WORK, NOT A SHIPPED IDE PRODUCT.</h2>
-            <p class="evidence-intro">The IDE page records V2 development: filesystem bridge, Monaco, persistent state, search, terminal, semantic rebuild, type coverage on the Python core, pytest infrastructure, and watchdog race-condition hardening. That is an engineering log for an active system, not a claim that the IDE is a finished commercial release.</p>
-            <p class="evidence-intro"><a class="inline-link" href="/ide/">AEOWUN IDE</a> · <a class="inline-link" href="https://github.com/Aeowun/AeowunV2" target="_blank" rel="noopener">github.com/Aeowun/AeowunV2</a></p>
-        </section>
-
-        <section class="architecture-panel">
-            <div class="brand-label mono">PUBLIC REPOSITORIES</div>
-            <h2 class="section-heading mono">WHAT IS ON GITHUB TODAY.</h2>
-            <p>These are the public repositories under <a class="inline-link" href="https://github.com/Aeowun" target="_blank" rel="noopener">github.com/Aeowun</a>. Descriptions below use GitHub’s own labels where they exist. Unfinished and experimental trees are listed on purpose.</p>
-            <div class="repo-grid">
-                <a class="repo-card" href="https://github.com/Aeowun/Aeopin" target="_blank" rel="noopener"><strong class="mono">AEOPIN</strong><span class="mono ecosystem-status available">SHIPPED // KOTLIN</span><span>Windows capture and retrieval. Public GPL-3.0 repository.</span></a>
-                <a class="repo-card" href="https://github.com/Aeowun/Checkmaker" target="_blank" rel="noopener"><strong class="mono">CHECKMAKER</strong><span class="mono ecosystem-status available">SHIPPED // PYTHON</span><span>Surgical Markdown checkbox editor. Public source and v1.0.0 release.</span></a>
-                <a class="repo-card" href="https://github.com/Aeowun/AeowunV2" target="_blank" rel="noopener"><strong class="mono">AEOWUNV2</strong><span class="mono ecosystem-status">ACTIVE // TYPESCRIPT</span><span>Public IDE-related tree. No GitHub description set.</span></a>
-                <a class="repo-card" href="https://github.com/Aeowun/Magy" target="_blank" rel="noopener"><strong class="mono">MAGY</strong><span class="mono ecosystem-status">BACKUP // RUST</span><span>GitHub description: “Emergency backup.” Site documentation covers the current local architecture and a working branch.</span></a>
-                <a class="repo-card" href="https://github.com/Aeowun/AeowunZero-1B" target="_blank" rel="noopener"><strong class="mono">AEOWUNZERO-1B</strong><span class="mono ecosystem-status">RESEARCH // PYTHON</span><span>Public ZERO research code. Not a downloadable product.</span></a>
-                <a class="repo-card" href="https://github.com/Aeowun/Aeopin_Support" target="_blank" rel="noopener"><strong class="mono">AEOPIN_SUPPORT</strong><span class="mono ecosystem-status">SUPPORT</span><span>Issue tracking for AEOPIN reports and requests.</span></a>
-                <a class="repo-card" href="https://github.com/Aeowun/Aeowun.com" target="_blank" rel="noopener"><strong class="mono">AEOWUN.COM</strong><span class="mono ecosystem-status">WEBSITE</span><span>This site. GitHub description: “What is the magic word?”</span></a>
-                <a class="repo-card" href="https://github.com/Aeowun/devTool_xO0" target="_blank" rel="noopener"><strong class="mono">DEVTOOL_XO0</strong><span class="mono ecosystem-status">EXPERIMENTAL</span><span>GitHub description: “A MYSTERIOUS ocypodid toolkit.” Not presented as a product.</span></a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="aeowun-footer">
-        <div class="container footer-inner">
-            <div class="mono footer-copy">© 2026 AEOWUN.</div>
-            <div class="footer-links">
-                <a href="/support/" class="mono">SUPPORT</a>
-                <a href="/security/" class="mono">TRUST</a>
-                <a href="/privacy/" class="mono">PRIVACY</a>
-                <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="mono">GITHUB</a>
-            </div>
-        </div>
-    </footer>
-    <script src="../app.js"></script>
 </body>
 </html>

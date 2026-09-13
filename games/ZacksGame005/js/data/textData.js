@@ -22,9 +22,28 @@ export const NPC_DIALOGUE = {
         default: "Welcome to the village store! Press B to browse my wares."
     },
     "Sign": {
-        "65,49": "DUNGEON ENTRANCE ->\nCAUTION: ENTER AT YOUR OWN RISK",
+        "65,49": "CURSED CAVE ->\nANCIENT CORRUPTION LIES WITHIN",
+        "38,49": "BANDIT HOLE ->\nTRESPASSERS WILL BE SHOT!",
+        "26,72": "SUNKEN VAULT ->\nWATCH YOUR STEP OVER THE WATER",
+        "97,45": "SKY REACH ->\nONLY GHOSTS DWELL IN THESE HEIGHTS",
         "82,77": "VILLAGE CENTER\n STORE -> NORTH | ELDERS HUT -> West ->",
+        "27,76": "BANDIT CAMP TERRITORY\nTURN BACK NOW!",
+        "100,73": "CASTLE RUINS\nRESTRICTED AREA",
+        "68,97": "NORTHERN WATCHTOWER",
+        "40,79": "HIDDEN GRAVEYARD\nREST IN PEACE",
         "default": "A wooden sign with weathered text."
+    },
+    "Mara": {
+        default: "The road north is dangerous. Watch out for the mountain beasts."
+    },
+    "Tessa": {
+        default: "These bandits have been terrorizing the woods. Someone should teach them a lesson."
+    },
+    "Fen": {
+        default: "The fish aren't biting today. Must be the corruption in the water."
+    },
+    "Orren": {
+        default: "This castle was once the pride of the realm. Now, only ghosts remain."
     }
 };
 

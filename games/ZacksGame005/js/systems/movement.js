@@ -16,6 +16,8 @@ import {
 import { updateQuestProgress } from './quests.js';
 
 export function isBlocked(x, y) {
+    if (gameState.debug?.ghostMode) return false;
+
     const tx = Math.floor(x), ty = Math.floor(y);
     if (!inside(tx, ty)) return true;
 
@@ -40,6 +42,15 @@ export function isBlocked(x, y) {
 export function canMoveTo(x, y) {
     const r = .28;
     return !isBlocked(x - r, y - r) && !isBlocked(x + r, y - r) && !isBlocked(x - r, y + r) && !isBlocked(x + r, y + r);
+}
+
+export function startDodge() {
+    const { player } = gameState;
+    if (player.dodgeCooldown > 0 || player.isDodging) return;
+
+    player.isDodging = true;
+    player.dodgeTimer = 0.35; // 350ms dodge duration
+    player.dodgeCooldown = 0.75; // 750ms cooldown
 }
 
 /**
@@ -78,26 +89,35 @@ function beginTransition() {
 }
 
 function enterDungeon() {
+    const tx = Math.floor(gameState.player.x);
+    const ty = Math.floor(gameState.player.y);
+
+    // Map cave entrance coordinates to dungeon IDs
+    let dungeonId = 'cursed_cave';
+    if (tx === 39 && ty === 49) dungeonId = 'bandit_hole';
+    else if (tx === 27 && ty === 72) dungeonId = 'sunken_vault';
+    else if (tx === 96 && ty === 45) dungeonId = 'sky_reach';
+
     gameState.currentWorld = 'dungeon';
 
     const state = getDungeonState();
 
-    // If the dungeon was already completed (boss dead), reset it for a fresh replay
-    if (state.boss.defeated) {
-        console.log("[DUNGEON] Resetting for replay...");
-        resetDungeon();
+    // If the dungeon was already completed or we are entering a different one, reset
+    if (state.boss.defeated || state.dungeonId !== dungeonId) {
+        console.log(`[DUNGEON] Initializing ${dungeonId}...`);
+        resetDungeon(dungeonId);
     }
 
-    // The Overworld cave always leads to the Level 1 entrance.
+    // Standard dungeon entry logic
+    loadDungeonLevel();
+
     const spawn = getLevelSpawn(1);
     gameState.player.x = spawn.x;
     gameState.player.y = spawn.y;
     gameState.camera.x = spawn.x;
     gameState.camera.y = spawn.y;
 
-    loadDungeonLevel(1);
     markDungeonEntered();
-
     updateQuestProgress('EXPLORE', { target: 'cave' });
 }
 
@@ -141,6 +161,15 @@ function handleDungeonDoorAt(tx, ty) {
 
 export function updateMovement(dt) {
     const { player, keys, ui } = gameState;
+
+    // Update Dodge State
+    player.dodgeCooldown = Math.max(0, player.dodgeCooldown - dt);
+    if (player.isDodging) {
+        player.dodgeTimer -= dt;
+        if (player.dodgeTimer <= 0) {
+            player.isDodging = false;
+        }
+    }
 
     if (ui.transitioning) {
         player.moving = false;
@@ -216,11 +245,12 @@ export function updateMovement(dt) {
             if (Math.abs(dx) > Math.abs(dy)) player.facing = dx > 0 ? 'right' : 'left';
             else player.facing = dy > 0 ? 'down' : 'up';
 
-            const moveX = dx * player.speed * dt;
-            const moveY = dy * player.speed * dt;
+            const speed = player.isDodging ? player.speed * 2.2 : player.speed;
+            const moveX = dx * speed * dt;
+            const moveY = dy * speed * dt;
             if (canMoveTo(player.x + moveX, player.y)) player.x += moveX;
             if (canMoveTo(player.x, player.y + moveY)) player.y += moveY;
-            player.animTime += dt * 9;
+            player.animTime += dt * (player.isDodging ? 18 : 9);
         }
     }
 }

@@ -18,7 +18,8 @@ export const TILE_TYPES = {
     Diamond: 13,
     Crypt: 14,
     Sign: 15,
-    Chest: 16
+    Chest: 16,
+    Spike: 17
 };
 
 export const COLORS = [
@@ -38,7 +39,8 @@ export const COLORS = [
     "#75602b", // 13: Diamond base tile
     "#332c28", // 14: Crypt stone
     "#8b5e3c", // 15: Sign post
-    "#7b4b3a"  // 16: Chest wood
+    "#7b4b3a", // 16: Chest wood
+    "#444444"  // 17: Spike metal
 ];
 
 export const INITIAL_SEED = 938271;

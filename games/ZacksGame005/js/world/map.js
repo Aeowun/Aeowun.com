@@ -32,6 +32,14 @@ export function setTile(x, y, type) {
     }
 }
 
+export function fillRect(x, y, w, h, type) {
+    for (let yy = y; yy < y + h; yy++) {
+        for (let xx = x; xx < x + w; xx++) {
+            setTile(xx, yy, type);
+        }
+    }
+}
+
 export function dist(x1, y1, x2, y2) {
     return Math.hypot(x1 - x2, y1 - y2);
 }

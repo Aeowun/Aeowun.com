@@ -8,8 +8,9 @@ const FINAL_BOSS_MAX_HP = 7;
 
 let dungeonMapBuilt = false;
 
-function createDungeonState() {
+function createDungeonState(dungeonId = 'cursed_cave') {
     return {
+        dungeonId: dungeonId,
         level: 1,
         room: 'entry',
         region: 'level1',
@@ -46,8 +47,9 @@ export function getDungeonState() {
     return dungeonState;
 }
 
-export function resetDungeon() {
-    dungeonState = createDungeonState();
+export function resetDungeon(dungeonId) {
+    if (!dungeonId) dungeonId = dungeonState.dungeonId || 'cursed_cave';
+    dungeonState = createDungeonState(dungeonId);
     dungeonMapBuilt = false;
 
     if (gameState.player) {
@@ -109,6 +111,21 @@ export function loadDungeonLevel() {
 }
 
 export function getLevelSpawn(level) {
+    if (level == null) {
+        level = dungeonState.level;
+    }
+
+    if (dungeonState.dungeonId === 'bandit_hole') {
+        const spawns = {
+            1: { x: 61.5, y: 108.5 }, // Start Room
+            2: { x: 61.5, y: 97.5 },  // Spine
+            3: { x: 42.5, y: 85.5 },  // Mini Arena
+            4: { x: 80.5, y: 68.5 },  // Trap Corridor Area
+            5: { x: 61.5, y: 25.5 }   // Boss
+        };
+        return spawns[level] || spawns[1];
+    }
+
     var spawns = {
         1: { x: 61.5, y: 111.5 },
         2: { x: 61.5, y: 74.5 },
@@ -116,10 +133,6 @@ export function getLevelSpawn(level) {
         4: { x: 88.5, y: 68.5 },
         5: { x: 61.5, y: 43.5 }
     };
-
-    if (level == null) {
-        level = dungeonState.level;
-    }
 
     return spawns[level] || spawns[1];
 }
@@ -267,6 +280,29 @@ function roomName(level) {
  * of movement can occur before the logical region changes.
  */
 function getRegionAt(x, y) {
+    if (dungeonState.dungeonId === 'bandit_hole') {
+        // BANDIT HOLE REGIONS
+        if (y < 30) return 'level5'; // Boss Area
+        if (x < 55 && y > 75 && y < 85) return 'level3'; // Mini Arena
+        if (x > 65 && y > 55 && y < 65) return 'level4'; // Trap Corridor
+        if (y > 100) return 'level1'; // Start
+        return 'level2'; // Winding Passages
+    }
+
+    if (dungeonState.dungeonId === 'sunken_vault') {
+        if (y < 35) return 'level5';
+        if (x < 45) return 'level3';
+        if (x > 75) return 'level4';
+        if (y > 100) return 'level1';
+        return 'level2';
+    }
+
+    if (dungeonState.dungeonId === 'sky_reach') {
+        if (y < 35) return 'level5';
+        if (y > 100) return 'level1';
+        return 'level2';
+    }
+
     /*
      * LEVEL 5 — BOSS
      */
@@ -1078,6 +1114,28 @@ function buildDungeon() {
 
     gameState.boss = null;
 
+    if (dungeonState.dungeonId === 'bandit_hole') {
+        buildBanditHoleLayout();
+    } else if (dungeonState.dungeonId === 'sunken_vault') {
+        buildSunkenVaultLayout();
+    } else if (dungeonState.dungeonId === 'sky_reach') {
+        buildSkyReachLayout();
+    } else {
+        // Default to Cursed Cave layout
+        buildCursedCaveLayout();
+    }
+
+    // Persist the built map so we can re-apply it when switching back to dungeon
+    gameState.worlds.dungeon = map.map(row => [...row]);
+
+    dungeonMapBuilt = true;
+
+    dungeonState.level = 1;
+    dungeonState.region = 'level1';
+    dungeonState.room = 'entry';
+}
+
+function buildCursedCaveLayout() {
     buildLevelOneRegion();
     buildArenaRegion();
     buildLevelThreeRegion();
@@ -1128,15 +1186,194 @@ function buildDungeon() {
      */
     dungeonState.doors.arenaSouth =
         dungeonState.doors.level1Exit;
+}
 
-    // Persist the built map so we can re-apply it when switching back to dungeon
-    gameState.worlds.dungeon = map.map(row => [...row]);
+function buildBanditHoleLayout() {
+    // START AT BOTTOM
+    const sx = 61, sy = 110;
 
-    dungeonMapBuilt = true;
+    // 1. START ROOM (Level 1)
+    room(sx - 5, sy - 5, 11, 8);
+    // Entry door (locked behind)
+    doorTile('level1EntryClosed', sx, sy + 2, { type: 'entrance', open: true, locked: false });
+    // Exit door to hallways
+    fillRect(sx - 1, sy - 5, 3, 1, TILE_TYPES.Floor);
 
-    dungeonState.level = 1;
-    dungeonState.region = 'level1';
-    dungeonState.room = 'entry';
+    // 2. CENTRAL SPINE (Winding upwards)
+    // First vertical stretch
+    hallway(sx - 1, sy - 15, 3, 10);
+    fillRect(sx - 1, sy - 12, 3, 1, TILE_TYPES.Spike); // 3-wide spikes
+
+    // 3. BOTTOM-RIGHT POCKET (Diamond 1)
+    // Horizontal connector
+    hallway(sx + 5, sy - 13, 10, 3);
+    // Diamond Room
+    room(sx + 15, sy - 16, 9, 9);
+    // Entrance to room
+    fillRect(sx + 15, sy - 12, 1, 3, TILE_TYPES.Floor);
+    diamond(sx + 19, sy - 12, 1);
+    addEnemy(sx + 18, sy - 14, 3, 1, 1.35, 'wolf');
+
+    // 4. MINI ARENA (Level 3 Area)
+    // Connector from spine
+    hallway(sx - 15, sy - 25, 10, 3);
+    // Arena Room
+    room(sx - 30, sy - 30, 15, 12);
+    // Entrance to room
+    fillRect(sx - 16, sy - 24, 1, 3, TILE_TYPES.Floor);
+    // Arena Enemies
+    addEnemy(sx - 25, sy - 25, 4, 3, 1.4, 'bandit');
+    addEnemy(sx - 20, sy - 22, 3, 3, 1.4, 'bandit');
+    addEnemy(sx - 20, sy - 28, 3, 3, 1.4, 'bandit');
+
+    // 5. TRAP CORRIDOR (Level 4 Area)
+    // Long vertical climb
+    hallway(sx - 1, sy - 45, 3, 30);
+    // Horizontal trap branch
+    hallway(sx + 2, sy - 42, 20, 3);
+    // Spikes (3 wide rows)
+    for (let x = sx + 8; x < sx + 20; x += 5) {
+        fillRect(x, sy - 42, 1, 3, TILE_TYPES.Spike);
+    }
+    // Reward Room
+    room(sx + 22, sy - 45, 7, 7);
+    fillRect(sx + 22, sy - 41, 1, 3, TILE_TYPES.Floor);
+    setTile(sx + 25, sy - 41, TILE_TYPES.Chest);
+
+    // 6. TOP-LEFT POCKET (Diamond 2)
+    // Connector
+    hallway(sx - 15, sy - 55, 15, 3);
+    // Room
+    room(sx - 25, sy - 58, 10, 10);
+    fillRect(sx - 16, sy - 54, 1, 3, TILE_TYPES.Floor);
+    diamond(sx - 20, sy - 54, 2);
+    addEnemy(sx - 22, sy - 52, 3, 4, 1.4, 'bandit');
+
+    // 7. FINAL BOSS APPROACH
+    // Last winding hallway
+    hallway(sx - 1, sy - 75, 3, 30);
+    fillRect(sx - 1, sy - 65, 3, 1, TILE_TYPES.Spike);
+
+    // 8. BOSS ROOM (Level 5)
+    // The door is at (61, 35 approx)
+    const bx = sx, by = sy - 75;
+    room(bx - 12, by - 20, 25, 20);
+    // Boss Door
+    doorTile('arenaNorth', bx, by, {
+        type: 'finalDoor',
+        open: false,
+        locked: true,
+        requiresDiamonds: 2,
+        message: "The Bandit Leader's gate requires two Diamonds."
+    });
+    addEnemy(bx, by - 10, 6, 5, 0.9, 'bandit'); // Bandit Leader placeholder type
+
+
+    // Reinforce boundaries
+    for (var x = 10; x <= 110; x++) {
+        setTile(x, 5, TILE_TYPES.Building);
+        setTile(x, 125, TILE_TYPES.Building);
+    }
+}
+
+function buildSunkenVaultLayout() {
+    const sx = 61, sy = 110;
+    // WATER THEMED - Narrow bridges (3 wide)
+    fillRect(0, 0, W, H, TILE_TYPES.Water);
+
+    // START ROOM
+    room(sx - 5, sy - 5, 11, 8);
+    doorTile('level1EntryClosed', sx, sy + 2, { type: 'entrance', open: true, locked: false });
+    fillRect(sx - 1, sy - 5, 3, 1, TILE_TYPES.Floor);
+
+    // CENTRAL SPINE - Narrow Bridge over Water
+    hallway(sx - 1, sy - 40, 3, 35);
+
+    // Winding Bridges
+    let cx = sx, cy = sy - 40;
+    const segments = [[-20, 0], [0, -15], [30, 0], [0, -15], [-10, 0], [0, -20]];
+    for (const [dx, dy] of segments) {
+        if (dx !== 0) {
+            const ax = Math.abs(dx);
+            const startX = dx < 0 ? cx + dx : cx;
+            hallway(startX, cy - 1, ax, 3);
+            cx += dx;
+        } else {
+            const ay = Math.abs(dy);
+            const startY = dy < 0 ? cy + dy : cy;
+            hallway(cx - 1, startY, 3, ay);
+            cy += dy;
+        }
+        if (Math.random() > 0.5) addEnemy(cx, cy, 4, 1, 1.2, 'drowned');
+    }
+
+    // DIAMONDS IN ISLANDS
+    // Island 1
+    room(sx - 28, sy - 45, 9, 9);
+    fillRect(sx - 20, sy - 41, 1, 3, TILE_TYPES.Floor);
+    diamond(sx - 24, sy - 41, 1);
+    addEnemy(sx - 24, sy - 43, 4, 1, 1.2, 'drowned');
+
+    // Island 2
+    room(sx + 20, sy - 60, 9, 9);
+    fillRect(sx + 19, sy - 56, 1, 3, TILE_TYPES.Floor);
+    diamond(sx + 24, sy - 56, 2);
+    addEnemy(sx + 24, sy - 58, 4, 1, 1.2, 'drowned');
+
+    // BOSS ROOM
+    const bx = cx, by = cy;
+    room(bx - 10, by - 15, 21, 15);
+    doorTile('arenaNorth', bx, by, {
+        type: 'finalDoor',
+        open: false,
+        locked: true,
+        requiresDiamonds: 2,
+        message: "The Sunken Gate requires the Water Diamonds."
+    });
+
+    // Spikes in water pockets (invisible if water? No, spikes are solid metal plates)
+    // Put them on the bridges
+    for (let i = 0; i < 5; i++) {
+        setTile(sx, sy - 20 - i * 5, TILE_TYPES.Spike);
+    }
+}
+
+function buildSkyReachLayout() {
+    const sx = 61, sy = 110;
+    // HIGH ALTITUDE - VOID
+    fillRect(0, 0, W, H, TILE_TYPES.Void);
+
+    // START ROOM
+    room(sx - 4, sy - 4, 9, 7);
+    doorTile('level1EntryClosed', sx, sy + 2, { type: 'entrance', open: true, locked: false });
+    setTile(sx, sy - 4, TILE_TYPES.Floor);
+
+    // WINDING THIN PATHS
+    let cx = sx, cy = sy - 4;
+    const path = [[0, -10], [15, 0], [0, -15], [-25, 0], [0, -10], [20, 0], [0, -15], [-15, 0], [0, -20]];
+    for (const [dx, dy] of path) {
+        const ax = Math.max(1, Math.abs(dx));
+        const ay = Math.max(1, Math.abs(dy));
+        hallway(dx < 0 ? cx + dx : cx, dy < 0 ? cy + dy : cy, ax, ay);
+        cx += dx; cy += dy;
+        if (Math.random() > 0.6) addEnemy(cx, cy, 5, 1, 1.5, 'ghost');
+        if (Math.random() > 0.4) setTile(cx, cy, TILE_TYPES.Spike);
+    }
+
+    // DIAMONDS
+    diamond(sx + 15, sy - 14, 1);
+    diamond(sx - 10, sy - 34, 2);
+
+    // BOSS ROOM
+    room(cx - 12, cy - 20, 25, 20);
+    doorTile('arenaNorth', cx, cy, {
+        type: 'finalDoor',
+        open: false,
+        locked: true,
+        requiresDiamonds: 2,
+        message: "The Sky Gate requires the Sky Diamonds."
+    });
+    addEnemy(cx, cy - 10, 7, 5, 1.0, 'ghost');
 }
 
 /* ============================================================
@@ -1247,6 +1484,15 @@ function hallway(
         height,
         TILE_TYPES.Floor
     );
+
+    // Add automatic walls around hallways if they are in the void
+    for (let yy = y - 1; yy <= y + height; yy++) {
+        for (let xx = x - 1; xx <= x + width; xx++) {
+            if (inside(xx, yy) && map[yy][xx] === TILE_TYPES.Void) {
+                setTile(xx, yy, TILE_TYPES.Building);
+            }
+        }
+    }
 }
 
 function addEnemy(
@@ -1254,7 +1500,8 @@ function addEnemy(
     y,
     hp,
     dungeonLevel,
-    speed
+    speed,
+    type
 ) {
     if (hp == null) {
         hp = 3;
@@ -1277,6 +1524,7 @@ function addEnemy(
 
         radius: 0.35,
         speed: speed,
+        type: type || 'demon',
 
         alive: true,
 
@@ -1395,14 +1643,18 @@ function buildLevelOneRegion() {
         61,
         96,
         3,
-        1
+        1,
+        1.35,
+        'demon'
     );
 
     addEnemy(
         64,
         109,
         3,
-        1
+        1,
+        1.35,
+        'demon'
     );
 }
 
@@ -1426,12 +1678,12 @@ function buildArenaRegion() {
     /*
      * Arena enemies (Central chamber distribution)
      */
-    addEnemy(50, 65, 3, 2);
-    addEnemy(70, 65, 3, 2);
-    addEnemy(60, 70, 4, 2);
-    addEnemy(55, 75, 3, 2);
-    addEnemy(65, 75, 3, 2);
-    addEnemy(60, 60, 4, 2);
+    addEnemy(50, 65, 3, 2, 1.35, 'demon');
+    addEnemy(70, 65, 3, 2, 1.35, 'demon');
+    addEnemy(60, 70, 4, 2, 1.35, 'demon');
+    addEnemy(55, 75, 3, 2, 1.35, 'demon');
+    addEnemy(65, 75, 3, 2, 1.35, 'demon');
+    addEnemy(60, 60, 4, 2, 1.35, 'demon');
 }
 
 /* ============================================================
@@ -1654,21 +1906,27 @@ function buildLevelFourRegion() {
         84,
         55,
         3,
-        4
+        4,
+        1.35,
+        'demon'
     );
 
     addEnemy(
         104,
         52,
         3,
-        4
+        4,
+        1.35,
+        'demon'
     );
 
     addEnemy(
         94,
         78,
         3,
-        4
+        4,
+        1.35,
+        'demon'
     );
 }
 
@@ -1726,8 +1984,8 @@ function buildLevelFiveRegion() {
     /*
      * Flanking enemies in boss room.
      */
-    addEnemy(50, 30, 2, 5, 1.2);
-    addEnemy(70, 30, 2, 5, 1.2);
+    addEnemy(50, 30, 2, 5, 1.2, 'demon');
+    addEnemy(70, 30, 2, 5, 1.2, 'demon');
 
     torch(50, 29);
     torch(70, 29);

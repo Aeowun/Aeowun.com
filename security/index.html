@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AEOWUN // TRUST CENTER</title>
-    <meta name="description" content="How Aeowun approaches privacy, permissions, verification, and honest product communication.">
+    <meta name="description" content="How AEOWUN approaches privacy, permissions, verification, and honest communication about its software.">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body class="aeowun-environment">
+
     <div id="void-bg"></div>
     <div id="technical-grid"></div>
     <div id="wave-field"></div>
     <canvas id="ambient-canvas"></canvas>
+
     <header class="aeowun-header">
         <div class="header-inner container">
-            <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
+            <a href="/" class="brand">
+                <span class="brand-name mono">AEOWUN</span>
+            </a>
+
             <button class="nav-hamburger mono" id="nav-toggle" aria-label="Menu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
@@ -22,57 +27,151 @@
             </button>
         </div>
     </header>
+
     <div class="nav-rail" id="nav-rail">
         <div class="rail-backdrop" id="rail-close"></div>
+
         <div class="rail-content">
             <div class="rail-header">
-                <span class="mono" style="font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.5em;">MENU</span>
+                <span class="mono" style="font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.5em;">
+                    MENU
+                </span>
+
                 <button class="close-rail mono" id="rail-close-btn">[ CLOSE ]</button>
             </div>
+
             <nav class="rail-links">
                 <a href="/aeowun/" class="rail-link mono">PROJECT</a>
+
                 <div class="rail-divider"></div>
+
                 <span class="rail-label mono">PRODUCTS</span>
                 <a href="/aeopin/" class="rail-link mono">AEOPIN</a>
                 <a href="/checkmaker/" class="rail-link mono">CHECKMAKER</a>
                 <a href="/ide/" class="rail-link mono">IDE</a>
                 <a href="/magy/" class="rail-link mono">MAGY</a>
                 <a href="/games/" class="rail-link mono">GAMES</a>
+
                 <div class="rail-divider"></div>
+
                 <a href="/engineering/" class="rail-link mono">WORK</a>
                 <a href="/security/" class="rail-link mono active">TRUST</a>
             </nav>
         </div>
     </div>
+
     <main class="product-page container">
+
         <section class="product-hero">
             <div class="brand-label mono">AEOWUN // TRUST CENTER</div>
-            <h1 class="product-title mono">TRUST, VERIFIED.</h1>
-            <p class="hero-lead">Aeowun builds software that should be understandable, bounded, and honest about what it can do.</p>
+
+            <h1 class="product-title mono">HOW THE SOFTWARE WORKS.</h1>
+
+            <p class="hero-lead">
+                Trust is easier when the important parts are visible: where data goes, what a tool is allowed to do, how changes are checked, and what stage the software is actually in.
+            </p>
         </section>
+
         <section class="trust-panel">
-            <div><div class="brand-label mono">01 // DATA</div><h2 class="section-heading mono">LOCAL BY DEFAULT.</h2></div>
-            <p>AEOPIN and CheckMaker are local-first Windows tools and currently require no account for their core workflows. Magy connects to local OpenAI-compatible model servers such as LM Studio. Optional cloud services are not part of the current feature set.</p>
+            <div>
+                <div class="brand-label mono">01 // DATA</div>
+                <h2 class="section-heading mono">LOCAL WHERE IT MAKES SENSE.</h2>
+            </div>
+
+            <p>
+                AEOPIN and CheckMaker are local-first Windows applications. Their core workflows do not require an account or a cloud service. MAGY can also be configured around local models and local model servers, while other MAGY configurations can use external model providers. The model provider is a configuration choice; the runtime boundary is part of MAGY itself.
+            </p>
         </section>
+
         <section class="trust-panel">
-            <div><div class="brand-label mono">02 // AUTHORITY</div><h2 class="section-heading mono">TOOLS DO NOT GET BLIND TRUST.</h2></div>
-            <p>Magy separates model reasoning from runtime execution. Restricted writes and commands can pause for approval, and completion depends on verification rather than a model saying it is finished.</p>
+            <div>
+                <div class="brand-label mono">02 // AUTHORITY</div>
+                <h2 class="section-heading mono">A MODEL IS NOT THE RUNTIME.</h2>
+            </div>
+
+            <p>
+                MAGY separates model reasoning from execution. A model can propose a tool call or other action, but the runtime decides what is permitted inside the project boundary. Restricted writes and commands can require operator approval.
+            </p>
         </section>
+
         <section class="trust-panel">
-            <div><div class="brand-label mono">03 // COMMUNICATION</div><h2 class="section-heading mono">STATUS IS PART OF THE PRODUCT.</h2></div>
-            <p>We label software according to its status: available, alpha, active development, experimental, research, or archived. A prototype should never be presented as a finished service.</p>
+            <div>
+                <div class="brand-label mono">03 // VERIFICATION</div>
+                <h2 class="section-heading mono">CHECK THE RESULT.</h2>
+            </div>
+
+            <p>
+                A completion message is not proof that work succeeded. MAGY can run configured verification after changes and use the resulting output as evidence about the state of the project. The quality of that evidence still depends on the checks configured for the project.
+            </p>
         </section>
+
+        <section class="trust-panel">
+            <div>
+                <div class="brand-label mono">04 // PRODUCT BEHAVIOR</div>
+                <h2 class="section-heading mono">NARROWER CHANGES ARE EASIER TO TRUST.</h2>
+            </div>
+
+            <p>
+                CheckMaker is one example. A checkbox change is handled as a targeted byte-level write instead of rewriting the whole Markdown file. AEOPIN's installation system verifies the expected payload before allowing the managed application to be installed. Different projects use different techniques, but the goal is the same: make important behavior explicit and bounded.
+            </p>
+        </section>
+
+        <section class="trust-panel">
+            <div>
+                <div class="brand-label mono">05 // COMMUNICATION</div>
+                <h2 class="section-heading mono">SAY WHAT EXISTS.</h2>
+            </div>
+
+            <p>
+                AEOWUN labels projects according to their actual state: shipped, active development, alpha, experimental, research, or archived. A working prototype is not described as a finished service, and an idea is not described as a product just because there is code behind it.
+            </p>
+        </section>
+
         <section class="limitations-panel">
-            <div><div class="brand-label mono">REPORTING</div><h2 class="section-heading mono">FIND A PROBLEM?</h2></div>
-            <p>Use the <a href="/support/report/" class="inline-link">support report form</a> for product issues. Do not include passwords, private files, tokens, or confidential information. For privacy questions, read the <a href="/privacy/" class="inline-link">privacy policy</a>.</p>
+            <div>
+                <div class="brand-label mono">WHAT THIS MEANS</div>
+                <h2 class="section-heading mono">TRUST IS NOT A CLAIM.</h2>
+            </div>
+
+            <p>
+                No software is automatically trustworthy because its author says it is. The useful question is what the system actually does: what it can access, what it changes, what it refuses to do, and what evidence exists after an operation.
+            </p>
+
+            <p>
+                That is why AEOWUN publishes working software, source code, engineering notes, release status, and known limitations where practical.
+            </p>
         </section>
+
+        <section class="limitations-panel">
+            <div>
+                <div class="brand-label mono">REPORTING</div>
+                <h2 class="section-heading mono">FOUND SOMETHING WRONG?</h2>
+            </div>
+
+            <p>
+                Use the <a href="/support/report/" class="inline-link">support report form</a>
+                for product issues. Do not include passwords, private files, tokens, or confidential information.
+            </p>
+
+            <p>
+                For questions about data handling, see the
+                <a href="/privacy/" class="inline-link">privacy policy</a>.
+            </p>
+        </section>
+
     </main>
+
     <footer class="aeowun-footer">
         <div class="container footer-inner">
             <div class="mono footer-copy">© 2026 AEOWUN.</div>
-            <div class="footer-links"><a href="/support/" class="mono">SUPPORT</a><a href="/privacy/" class="mono">PRIVACY</a></div>
+
+            <div class="footer-links">
+                <a href="/support/" class="mono">SUPPORT</a>
+                <a href="/privacy/" class="mono">PRIVACY</a>
+            </div>
         </div>
     </footer>
+
     <script src="../app.js"></script>
 </body>
 </html>

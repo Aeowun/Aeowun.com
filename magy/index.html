@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AEOWUN // MAGY</title>
-    <meta name="description" content="Magy is a local AI software engineering system where models propose and the runtime verifies.">
+    <meta name="description" content="MAGY is an AI-assisted software engineering system where models propose work and the runtime controls, executes, and verifies it.">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body class="aeowun-environment">
@@ -42,23 +42,29 @@
             </button>
         </div>
     </header>
+
     <div class="nav-rail" id="nav-rail">
         <div class="rail-backdrop" id="rail-close"></div>
+
         <div class="rail-content">
             <div class="rail-header">
                 <span class="mono" style="font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.5em;">MENU</span>
                 <button class="close-rail mono" id="rail-close-btn">[ CLOSE ]</button>
             </div>
+
             <nav class="rail-links">
                 <a href="/aeowun/" class="rail-link mono">PROJECT</a>
                 <div class="rail-divider"></div>
+
                 <span class="rail-label mono">PRODUCTS</span>
                 <a href="/aeopin/" class="rail-link mono">AEOPIN</a>
                 <a href="/checkmaker/" class="rail-link mono">CHECKMAKER</a>
                 <a href="/ide/" class="rail-link mono">IDE</a>
                 <a href="/magy/" class="rail-link mono active">MAGY</a>
                 <a href="/games/" class="rail-link mono">GAMES</a>
+
                 <div class="rail-divider"></div>
+
                 <a href="/engineering/" class="rail-link mono">WORK</a>
                 <a href="/security/" class="rail-link mono">TRUST</a>
             </nav>
@@ -66,121 +72,283 @@
     </div>
 
     <main class="product-page container">
+
         <section class="product-hero">
             <div class="brand-label mono">AEOWUN SYSTEM // ACTIVE DEVELOPMENT</div>
+
             <h1 class="product-title mono">MAGY</h1>
-            <p class="hero-lead">A local AI software engineering system where a Planner proposes architecture, an Executor handles bounded tasks, and the runtime verifies the result.</p>
+
+            <p class="hero-lead">
+                AI-assisted software engineering with a controlled runtime. Models propose work. MAGY decides what can actually happen, executes it within defined boundaries, and verifies the result.
+            </p>
+
             <div class="hero-actions">
                 <a class="primary-button mono" href="#how-it-works">READ THE ARCHITECTURE</a>
-                <a class="secondary-button mono" href="https://github.com/Aeowun/Magy/tree/magy-current-work" target="_blank" rel="noopener">VIEW SOURCE</a>
+
+                <a class="secondary-button mono"
+                   href="https://github.com/Aeowun/Magy/tree/magy-current-work"
+                   target="_blank"
+                   rel="noopener">
+                    VIEW SOURCE
+                </a>
             </div>
         </section>
 
         <section class="trust-panel" id="how-it-works">
             <div>
-                <div class="brand-label mono">THE SAFETY BOUNDARY</div>
-                <h2 class="section-heading mono">REASONING IS NOT AUTHORITY.</h2>
+                <div class="brand-label mono">THE IMPORTANT PART</div>
+                <h2 class="section-heading mono">THE MODEL IS NOT THE AUTHORITY.</h2>
             </div>
-            <p>Magy separates project architecture from bounded task execution. The Planner can decompose a goal, the Executor can request work for one task, and the runtime controls what is read, changed, and executed inside the selected project. MAGY is an AEOWUN system. AI is not the common denominator of AEOWUN.</p>
+
+            <p>
+                MAGY separates intelligence from execution. A model can reason about a task and propose what to do. The MAGY runtime controls the available tools, the project boundary, approvals, writes, and commands. The model does not get to redefine those rules.
+            </p>
         </section>
 
         <section class="evidence-section">
-            <div class="brand-label mono">EVIDENCE // CURRENT BUILD</div>
-            <h2 class="section-heading mono">SEE THE BOUNDARY.</h2>
-            <p class="evidence-intro">These are working screens from the current local build, not concept art. Magy makes the model state, project state, and operator decision visible.</p>
+            <div class="brand-label mono">EVIDENCE // CURRENT BUILDS</div>
+
+            <h2 class="section-heading mono">SEE WHAT MAGY LOOKS LIKE.</h2>
+
+            <p class="evidence-intro">
+                These are working screens from MAGY development. The exact model configuration can vary; the point is the system around the model: project state, task state, tool access, approvals, and verification.
+            </p>
+
             <div class="evidence-grid">
+
                 <figure class="evidence-card evidence-card-wide">
-                    <img src="../assets/magy/workbench.png" alt="Magy project overview showing an active task and runtime guardrails">
-                    <figcaption><strong class="mono">PROJECT OVERVIEW</strong><span>Active work, repository state, verification status, and runtime guardrails in one place.</span></figcaption>
+                    <img src="../assets/magy/workbench.png"
+                         alt="MAGY project overview showing an active task and runtime controls">
+
+                    <figcaption>
+                        <strong class="mono">PROJECT OVERVIEW</strong>
+                        <span>Project state, active work, verification, and runtime controls in one place.</span>
+                    </figcaption>
                 </figure>
+
                 <figure class="evidence-card">
-                    <img src="../assets/magy/setup.png" alt="Magy local model setup screen">
-                    <figcaption><strong class="mono">LOCAL SETUP</strong><span>Connect a local model before opening a project.</span></figcaption>
+                    <img src="../assets/magy/setup.png"
+                         alt="MAGY model setup screen">
+
+                    <figcaption>
+                        <strong class="mono">MODEL SETUP</strong>
+                        <span>The model is a replaceable part of the system.</span>
+                    </figcaption>
                 </figure>
+
                 <figure class="evidence-card">
-                    <img src="../assets/magy/approval.png" alt="Magy operator approval dialog for a proposed write action">
-                    <figcaption><strong class="mono">OPERATOR APPROVAL</strong><span>Restricted writes pause for an explicit human decision.</span></figcaption>
+                    <img src="../assets/magy/approval.png"
+                         alt="MAGY operator approval dialog for a proposed write action">
+
+                    <figcaption>
+                        <strong class="mono">OPERATOR APPROVAL</strong>
+                        <span>Restricted actions can stop for an explicit human decision.</span>
+                    </figcaption>
                 </figure>
+
+            </div>
+        </section>
+
+        <section class="feature-grid">
+
+            <article class="feature-card">
+                <span class="mono ecosystem-status available">MODEL LAYER</span>
+
+                <h2 class="mono">MORE THAN ONE CONFIGURATION</h2>
+
+                <p>
+                    MAGY can be configured around different model providers and model sizes. Local models are one path, including the smaller local models AEOWUN may package for its own builds. Other configurations can use OpenAI or ChatGPT-backed models.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="mono ecosystem-status available">RUNTIME</span>
+
+                <h2 class="mono">THE SYSTEM AROUND THE MODEL</h2>
+
+                <p>
+                    Models provide reasoning and proposals. The runtime handles tool calls, workspace access, approvals, state transitions, and execution boundaries.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="mono ecosystem-status available">VERIFICATION</span>
+
+                <h2 class="mono">CHECK THE RESULT</h2>
+
+                <p>
+                    After a change, MAGY can run configured verification and use the resulting output to determine whether the task actually succeeded.
+                </p>
+            </article>
+
+        </section>
+
+        <section class="architecture-panel">
+            <div class="brand-label mono">SYSTEM MODEL</div>
+
+            <pre class="architecture-diagram mono">USER
+  ↓
+MAGY
+  ↓
+MODEL PROVIDER
+  ↓
+PROPOSED ACTION
+  ↓
+MAGY RUNTIME
+  ↓
+CONTROLLED TOOLS
+  ↓
+PROJECT
+  ↓
+VERIFICATION
+  ↓
+RESULT</pre>
+
+            <p>
+                The model can change. The boundary around execution is the important part.
+            </p>
+        </section>
+
+        <section class="workflow-section">
+            <div class="brand-label mono">THE LOOP</div>
+
+            <h2 class="section-heading mono">FROM REQUEST TO VERIFIED RESULT.</h2>
+
+            <div class="workflow-grid">
+
+                <div class="workflow-step">
+                    <span class="mono">01</span>
+                    <strong class="mono">DEFINE</strong>
+                    <p>Load a project and describe the work you want done.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <span class="mono">02</span>
+                    <strong class="mono">REASON</strong>
+                    <p>A configured model analyzes the task and proposes an action.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <span class="mono">03</span>
+                    <strong class="mono">CONTROL</strong>
+                    <p>MAGY checks the requested operation against its runtime rules.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <span class="mono">04</span>
+                    <strong class="mono">EXECUTE</strong>
+                    <p>Approved work runs through controlled tools inside the project boundary.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <span class="mono">05</span>
+                    <strong class="mono">VERIFY</strong>
+                    <p>The result is checked instead of being accepted because the model says it worked.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="evidence-section">
+            <div class="brand-label mono">MODEL CONFIGURATIONS</div>
+
+            <h2 class="section-heading mono">THE MODEL CAN CHANGE.</h2>
+
+            <p class="evidence-intro">
+                There are multiple MAGY configurations in development. Some use local models; others can connect to external providers. AEOWUN's own small local-model packages are one possible distribution path, not a requirement for MAGY itself.
+            </p>
+
+            <div class="feature-grid">
+
+                <article class="feature-card">
+                    <span class="mono ecosystem-status available">LOCAL</span>
+
+                    <h2 class="mono">AEOWUN LOCAL MODELS</h2>
+
+                    <p>
+                        Small local models intended for AEOWUN builds where keeping the model on the machine is useful.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="mono ecosystem-status available">LOCAL PROVIDERS</span>
+
+                    <h2 class="mono">LOCAL MODEL SERVERS</h2>
+
+                    <p>
+                        MAGY can work with local model servers that expose a compatible provider interface.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="mono ecosystem-status">EXTERNAL</span>
+
+                    <h2 class="mono">OPENAI / CHATGPT</h2>
+
+                    <p>
+                        Other MAGY configurations can use external model providers. The provider changes; the MAGY runtime boundary remains the part being developed.
+                    </p>
+                </article>
+
             </div>
         </section>
 
         <section class="evidence-section">
             <div class="brand-label mono">DEMO // COMING SOON</div>
-            <h2 class="section-heading mono">WATCH THE LOOP IN ACTION.</h2>
-            <p class="evidence-intro">A guided Magy demo is being prepared. It will show project setup, the dual-model Planner/Executor boundary, approval, tool execution, and verification from one local run.</p>
+
+            <h2 class="section-heading mono">WATCH THE WHOLE LOOP.</h2>
+
+            <p class="evidence-intro">
+                A guided MAGY demo is being prepared showing project setup, model reasoning, runtime control, approval, tool execution, and verification in one run.
+            </p>
+
             <span class="mono ecosystem-status">NO PUBLIC DEMO LINK YET</span>
-        </section>
-
-        <section class="feature-grid">
-            <article class="feature-card">
-                <span class="mono ecosystem-status available">01 // PROPOSE</span>
-                <h2 class="mono">THE MODEL REASONS</h2>
-                <p>Magy uses a provider interface so local model backends can interpret the task without owning the project directly.</p>
-            </article>
-            <article class="feature-card">
-                <span class="mono ecosystem-status available">02 // CONTROL</span>
-                <h2 class="mono">THE RUNTIME DECIDES</h2>
-                <p>Tool calls are interpreted by the runtime. Read-only work can run automatically; restricted writes and commands require operator approval.</p>
-            </article>
-            <article class="feature-card">
-                <span class="mono ecosystem-status available">03 // VERIFY</span>
-                <h2 class="mono">THE PROJECT RESPONDS</h2>
-                <p>After changes, Magy runs a verification command and feeds objective failure output back into the loop instead of declaring success early.</p>
-            </article>
-        </section>
-
-        <section class="architecture-panel">
-            <div class="brand-label mono">SYSTEM MODEL</div>
-            <pre class="architecture-diagram mono">USER
-  ↓
-MAGY APP
-  ↓
-COORDINATOR ─── PROJECT STATE
-  ↓
-AGENT ─── MODEL
-  ↓
-CONTROLLED TOOLS
-  ↓
-RUNTIME
-  ↓
-PROJECT</pre>
-            <p>Magy is built around a simple promise: intelligence may propose, but evidence decides whether the work is complete.</p>
-        </section>
-
-        <section class="workflow-section">
-            <div class="brand-label mono">THE LOOP</div>
-            <h2 class="section-heading mono">FROM INTENT TO EVIDENCE.</h2>
-            <div class="workflow-grid">
-                <div class="workflow-step"><span class="mono">01</span><strong class="mono">DEFINE</strong><p>Load a project and describe the outcome you want.</p></div>
-                <div class="workflow-step"><span class="mono">02</span><strong class="mono">PROPOSE</strong><p>The model reasons about the project and suggests an action.</p></div>
-                <div class="workflow-step"><span class="mono">03</span><strong class="mono">APPROVE</strong><p>Restricted writes and commands stop for operator review.</p></div>
-                <div class="workflow-step"><span class="mono">04</span><strong class="mono">VERIFY</strong><p>The runtime checks the result before the task can be complete.</p></div>
-            </div>
         </section>
 
         <section class="limitations-panel">
             <div class="brand-label mono">HONEST STATUS</div>
-            <h2 class="section-heading mono">ALPHA // LOCAL-FIRST // IN PROGRESS</h2>
-            <p>Magy is an active engineering project. It currently expects a local OpenAI-compatible model server, such as LM Studio, and is not presented as a finished hosted service. The goal is dependable local development assistance with explicit boundaries—not an autonomous replacement for an engineer.</p>
+
+            <h2 class="section-heading mono">ACTIVE DEVELOPMENT.</h2>
+
+            <p>
+                MAGY is still being developed and currently exists in several configurations. It is not presented as a finished autonomous engineering service. The system is being built around a simpler question: how much useful work can an AI system do when the runtime, rather than the model, remains responsible for what actually happens?
+            </p>
         </section>
+
         <section class="limitations-panel">
             <div class="brand-label mono">BOUNDARIES</div>
-            <h2 class="section-heading mono">WHAT MAGY DOES NOT DO.</h2>
-            <p>Magy does not guarantee that a model is correct, silently approve dangerous actions, replace independent review, or treat a model’s completion message as proof. Verification still depends on the project’s configured checks and the quality of its acceptance criteria.</p>
+
+            <h2 class="section-heading mono">WHAT MAGY DOES NOT GUARANTEE.</h2>
+
+            <p>
+                MAGY does not make a model correct. It does not turn model output into authority. It does not silently approve restricted actions, and it does not treat a model's completion message as proof that the work succeeded.
+            </p>
+
+            <p>
+                Verification still depends on the checks available to the project and on whether those checks meaningfully test the requested result.
+            </p>
         </section>
+
     </main>
 
     <footer class="aeowun-footer">
         <div class="container footer-inner">
             <div class="mono footer-copy">© 2026 AEOWUN.</div>
+
             <div class="footer-links">
                 <a href="/support/" class="mono">SUPPORT</a>
                 <a href="/security/" class="mono">TRUST</a>
                 <a href="/privacy/" class="mono">PRIVACY</a>
-                <a href="https://github.com/Aeowun/Magy" target="_blank" rel="noopener" class="mono">GITHUB</a>
+                <a href="https://github.com/Aeowun/Magy"
+                   target="_blank"
+                   rel="noopener"
+                   class="mono">
+                    GITHUB
+                </a>
             </div>
         </div>
     </footer>
+
     <script src="../app.js"></script>
 </body>
 </html>

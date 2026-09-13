@@ -4,21 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AEOWUN // SUPPORT</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7976685360451203"
-     crossorigin="anonymous"></script>
+    <meta name="description" content="Support for AEOWUN software, including shipped products, active systems, and public repositories.">
+
+    <script async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7976685360451203"
+        crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="../style.css">
+
     <style>
         .support-hero {
             padding-top: 180px;
             padding-bottom: 100px;
             border-bottom: 1px solid var(--border);
         }
+
         .support-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
             margin-top: 80px;
         }
+
         .product-list a {
             display: flex;
             justify-content: space-between;
@@ -29,15 +36,18 @@
             font-size: 0.85rem;
             border-bottom: 1px solid var(--border);
         }
+
         .product-list a:hover {
             color: var(--accent-cyan);
         }
+
         @media (max-width: 900px) {
             .support-grid {
                 grid-template-columns: 1fr;
                 gap: 48px;
             }
         }
+
         .support-section-title {
             color: var(--text-bright);
             margin-bottom: 30px;
@@ -45,43 +55,53 @@
             border-bottom: 1px solid var(--border-bright);
             padding-bottom: 10px;
         }
+
         .faq-item {
             margin-bottom: 24px;
             border: 1px solid var(--border);
             border-radius: 4px;
             background: rgba(255,255,255,0.02);
         }
+
         .faq-question {
             padding: 20px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 20px;
             font-size: 0.85rem;
             color: var(--text-bright);
             transition: background 0.2s ease;
         }
+
         .faq-question:hover {
             background: rgba(255,255,255,0.04);
         }
+
         .faq-answer {
             padding: 0 20px 20px;
             font-size: 0.85rem;
             line-height: 1.6;
             display: none;
         }
+
         .faq-item.active .faq-answer {
             display: block;
         }
+
         .faq-item.active .faq-toggle {
             transform: rotate(45deg);
         }
+
         .faq-toggle {
             font-family: var(--font-mono);
             font-size: 1.2rem;
             transition: transform 0.2s ease;
             color: var(--accent-cyan);
+            flex-shrink: 0;
         }
+
         .topic-link {
             display: block;
             padding: 12px 0;
@@ -91,27 +111,50 @@
             border-bottom: 1px solid var(--border);
             transition: color 0.2s ease;
         }
+
         .topic-link:hover {
             color: var(--accent-cyan);
         }
     </style>
 </head>
+
 <body class="aeowun-environment">
+
     <div id="void-bg"></div>
     <div id="technical-grid"></div>
+
     <div id="wave-field">
-        <svg id="wave-field-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <svg id="wave-field-svg"
+             viewBox="0 0 1000 1000"
+             preserveAspectRatio="none">
+
             <defs>
-                <filter id="ribbon-glow" x="-50%" y="-50%" width="200%" height="200%">
+                <filter id="ribbon-glow"
+                        x="-50%"
+                        y="-50%"
+                        width="200%"
+                        height="200%">
                     <feGaussianBlur stdDeviation="15" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    <feComposite in="SourceGraphic"
+                                  in2="blur"
+                                  operator="over" />
                 </filter>
-                <linearGradient id="grad-v" x1="0%" y1="0%" x2="100%" y2="100%">
+
+                <linearGradient id="grad-v"
+                                x1="0%"
+                                y1="0%"
+                                x2="100%"
+                                y2="100%">
                     <stop offset="0%" stop-color="rgba(124, 34, 228, 0)" />
                     <stop offset="50%" stop-color="rgba(124, 34, 228, 0.7)" />
                     <stop offset="100%" stop-color="rgba(124, 34, 228, 0)" />
                 </linearGradient>
-                <linearGradient id="grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
+
+                <linearGradient id="grad-b"
+                                x1="0%"
+                                y1="0%"
+                                x2="100%"
+                                y2="100%">
                     <stop offset="0%" stop-color="rgba(0, 210, 241, 0)" />
                     <stop offset="50%" stop-color="rgba(0, 210, 241, 0.5)" />
                     <stop offset="100%" stop-color="rgba(0, 210, 241, 0)" />
@@ -119,35 +162,55 @@
             </defs>
         </svg>
     </div>
+
     <canvas id="ambient-canvas"></canvas>
 
     <header class="aeowun-header">
         <div class="header-inner container">
-            <a href="/" class="brand"><span class="brand-name mono">AEOWUN</span></a>
-            <button class="nav-hamburger mono" id="nav-toggle" aria-label="Menu">
+            <a href="/" class="brand">
+                <span class="brand-name mono">AEOWUN</span>
+            </a>
+
+            <button class="nav-hamburger mono"
+                    id="nav-toggle"
+                    aria-label="Menu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
             </button>
         </div>
     </header>
+
     <div class="nav-rail" id="nav-rail">
         <div class="rail-backdrop" id="rail-close"></div>
+
         <div class="rail-content">
             <div class="rail-header">
-                <span class="mono" style="font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.5em;">MENU</span>
-                <button class="close-rail mono" id="rail-close-btn">[ CLOSE ]</button>
+                <span class="mono"
+                      style="font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.5em;">
+                    MENU
+                </span>
+
+                <button class="close-rail mono" id="rail-close-btn">
+                    [ CLOSE ]
+                </button>
             </div>
+
             <nav class="rail-links">
                 <a href="/aeowun/" class="rail-link mono">PROJECT</a>
+
                 <div class="rail-divider"></div>
+
                 <span class="rail-label mono">PRODUCTS</span>
+
                 <a href="/aeopin/" class="rail-link mono">AEOPIN</a>
                 <a href="/checkmaker/" class="rail-link mono">CHECKMAKER</a>
                 <a href="/ide/" class="rail-link mono">IDE</a>
                 <a href="/magy/" class="rail-link mono">MAGY</a>
                 <a href="/games/" class="rail-link mono">GAMES</a>
+
                 <div class="rail-divider"></div>
+
                 <a href="/engineering/" class="rail-link mono">WORK</a>
                 <a href="/security/" class="rail-link mono">TRUST</a>
             </nav>
@@ -155,124 +218,337 @@
     </div>
 
     <main class="container">
+
         <section class="support-hero">
             <div class="brand-label mono">SUPPORT</div>
+
             <h1 class="product-title mono">SUPPORT</h1>
-            <p class="hero-lead">Help for AEOWUN software: shipped products, active systems, and the public repositories.</p>
+
+            <p class="hero-lead">
+                Information and help for AEOWUN software, from shipped Windows applications to active development projects.
+            </p>
 
             <div class="hero-actions" style="margin-top: 40px;">
-                <a href="/support/report/" class="primary-button mono">REPORT A BUG</a>
+                <a href="/support/report/" class="primary-button mono">
+                    REPORT A BUG
+                </a>
             </div>
         </section>
 
         <div class="support-grid">
+
             <div class="support-column">
+
                 <h2 class="support-section-title mono">SOFTWARE</h2>
+
                 <div class="product-list">
-                    <a href="/aeopin/"><span class="mono">AEOPIN</span><span>Shipped // Windows</span></a>
-                    <a href="/checkmaker/"><span class="mono">CHECKMAKER</span><span>Shipped // Windows</span></a>
-                    <a href="/ide/"><span class="mono">AEOWUN IDE</span><span>Active development</span></a>
-                    <a href="/magy/"><span class="mono">MAGY</span><span>Active development</span></a>
-                    <a href="https://github.com/Aeowun" target="_blank" rel="noopener"><span class="mono">GITHUB</span><span>Built in the open</span></a>
+                    <a href="/aeopin/">
+                        <span class="mono">AEOPIN</span>
+                        <span>Shipped // Windows</span>
+                    </a>
+
+                    <a href="/checkmaker/">
+                        <span class="mono">CHECKMAKER</span>
+                        <span>Shipped // Windows</span>
+                    </a>
+
+                    <a href="/ide/">
+                        <span class="mono">AEOWUN IDE</span>
+                        <span>Active development</span>
+                    </a>
+
+                    <a href="/magy/">
+                        <span class="mono">MAGY</span>
+                        <span>Active development</span>
+                    </a>
+
+                    <a href="https://github.com/Aeowun"
+                       target="_blank"
+                       rel="noopener">
+                        <span class="mono">GITHUB</span>
+                        <span>Public repositories</span>
+                    </a>
                 </div>
 
-                <h2 class="support-section-title mono" style="margin-top: 60px;">CONTACT</h2>
-                <p style="font-size: 0.85rem; margin-bottom: 20px;">For direct inquiries or partnership requests:</p>
-                <a href="mailto:support@aeowun.com" class="mono" style="color: var(--accent-cyan); text-decoration: none; font-size: 0.8rem;">support@aeowun.com</a>
+                <h2 class="support-section-title mono" style="margin-top: 60px;">
+                    CONTACT
+                </h2>
 
-                <h2 class="support-section-title mono" style="margin-top: 60px;">THE DEVELOPER</h2>
-                <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 20px; border-radius: 4px; display: flex; align-items: center; gap: 20px;">
-                    <div style="width: 60px; height: 60px; background: var(--void-elevated); border: 1px solid var(--border-bright); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                        <img src="../assets/developer.png" alt="Zachary Joubert" style="width: 100%; height: 100%; object-fit: cover;">
+                <p style="font-size: 0.85rem; margin-bottom: 20px;">
+                    For direct inquiries or partnership requests:
+                </p>
+
+                <a href="mailto:support@aeowun.com"
+                   class="mono"
+                   style="color: var(--accent-cyan); text-decoration: none; font-size: 0.8rem;">
+                    support@aeowun.com
+                </a>
+
+                <h2 class="support-section-title mono" style="margin-top: 60px;">
+                    THE DEVELOPER
+                </h2>
+
+                <div style="background: rgba(255,255,255,0.03);
+                            border: 1px solid var(--border);
+                            padding: 20px;
+                            border-radius: 4px;
+                            display: flex;
+                            align-items: center;
+                            gap: 20px;">
+
+                    <div style="width: 60px;
+                                height: 60px;
+                                background: var(--void-elevated);
+                                border: 1px solid var(--border-bright);
+                                border-radius: 50%;
+                                flex-shrink: 0;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                overflow: hidden;">
+
+                        <img src="../assets/developer.png"
+                             alt="Zachary Joubert"
+                             style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
+
                     <div>
-                        <div class="mono" style="font-size: 0.8rem; color: var(--text-bright); margin-bottom: 4px;">ZACHARY JOUBERT</div>
-                        <a href="https://www.linkedin.com/in/zachary-joubert-789005319/" target="_blank" class="mono" style="color: var(--accent-cyan); text-decoration: none; font-size: 0.65rem;">LINKEDIN PROFILE →</a>
+                        <div class="mono"
+                             style="font-size: 0.8rem;
+                                    color: var(--text-bright);
+                                    margin-bottom: 4px;">
+                            ZACHARY JOUBERT
+                        </div>
+
+                        <a href="https://www.linkedin.com/in/zachary-joubert-789005319/"
+                           target="_blank"
+                           rel="noopener"
+                           class="mono"
+                           style="color: var(--accent-cyan);
+                                  text-decoration: none;
+                                  font-size: 0.65rem;">
+                            LINKEDIN PROFILE →
+                        </a>
                     </div>
                 </div>
+
             </div>
 
             <div class="support-column">
+
                 <h2 class="support-section-title mono">FAQ</h2>
 
                 <div class="faq-item">
-                    <div class="faq-question mono">What is AEOWUN? <span class="faq-toggle">+</span></div>
+                    <div class="faq-question mono">
+                        What is AEOWUN?
+                        <span class="faq-toggle">+</span>
+                    </div>
+
                     <div class="faq-answer">
-                        AEOWUN is an independent software project building local-first systems that keep you in control. AEOPIN and CheckMaker are shipped products. The IDE and MAGY are active systems. AEIN is experimental. ZERO is research.
+                        AEOWUN is an independent software project building
+                        local-first tools and systems. AEOPIN and CheckMaker are
+                        shipped products. AEOWUN IDE and MAGY are active
+                        development projects. AEIN is experimental. ZERO is
+                        research.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question mono">What can I download today? <span class="faq-toggle">+</span></div>
+                    <div class="faq-question mono">
+                        What can I download today?
+                        <span class="faq-toggle">+</span>
+                    </div>
+
                     <div class="faq-answer">
-                        Two Windows apps are public: <a href="/aeopin/" style="color: var(--accent-cyan);">AEOPIN v1.2.3</a> and <a href="/checkmaker/" style="color: var(--accent-cyan);">CheckMaker v1.0.0</a>. Both are available from verified GitHub releases. Other AEOWUN work is inspectable on GitHub and is not presented as finished downloads.
+                        Two Windows applications are currently published:
+                        <a href="/aeopin/" style="color: var(--accent-cyan);">
+                            AEOPIN v1.2.3
+                        </a>
+                        and
+                        <a href="/checkmaker/" style="color: var(--accent-cyan);">
+                            CheckMaker v1.0.0
+                        </a>.
+                        Other AEOWUN work is available for inspection through
+                        the public GitHub repositories but is not presented as
+                        a finished downloadable product.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question mono">Do I need an account? <span class="faq-toggle">+</span></div>
+                    <div class="faq-question mono">
+                        Do I need an AEOWUN account?
+                        <span class="faq-toggle">+</span>
+                    </div>
+
                     <div class="faq-answer">
-                        No AEOWUN account is required for AEOPIN or CheckMaker. MAGY expects a local OpenAI-compatible model server, such as LM Studio, rather than an AEOWUN login.
+                        No AEOWUN account is required for AEOPIN or CheckMaker.
+                        MAGY can use different model configurations, including
+                        local models, local model servers, and external model
+                        providers. An AEOWUN account is not the definition of
+                        the MAGY system.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question mono">Where is data stored? <span class="faq-toggle">+</span></div>
+                    <div class="faq-question mono">
+                        Where is my data stored?
+                        <span class="faq-toggle">+</span>
+                    </div>
+
                     <div class="faq-answer">
-                        AEOPIN keeps captured data locally under <code class="mono" style="font-size: 0.7rem;">Documents/AEOPIN</code>. CheckMaker edits Markdown files you open and stores recent-file history locally. MAGY works against a project directory you select on your machine.
+                        AEOPIN stores captured data locally on your computer.
+                        CheckMaker works with the Markdown files you open and
+                        keeps its application state locally. MAGY operates
+                        against the project and model configuration you choose.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question mono">Is my data sent anywhere? <span class="faq-toggle">+</span></div>
+                    <div class="faq-question mono">
+                        Is my application data sent anywhere?
+                        <span class="faq-toggle">+</span>
+                    </div>
+
                     <div class="faq-answer">
-                        AEOPIN and CheckMaker are designed as local Windows tools and do not upload your files to AEOWUN servers. MAGY talks to a local model server you configure. This website may load advertising scripts; that is separate from the desktop applications. See the <a href="/privacy/" style="color: var(--accent-cyan);">privacy policy</a>.
+                        AEOPIN and CheckMaker are designed as local Windows
+                        applications and do not upload your files to
+                        AEOWUN-operated servers as part of their normal core
+                        workflows.
+                        MAGY is different because a MAGY configuration can use
+                        an external model provider if you choose one. In that
+                        case, data sent to that provider is governed by that
+                        provider's service and configuration.
+                        The AEOWUN website is separate from the desktop
+                        applications and may load third-party advertising
+                        services. See the
+                        <a href="/privacy/" style="color: var(--accent-cyan);">
+                            privacy policy
+                        </a>.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question mono">Do the apps show ads? <span class="faq-toggle">+</span></div>
+                    <div class="faq-question mono">
+                        Do the applications show ads?
+                        <span class="faq-toggle">+</span>
+                    </div>
+
                     <div class="faq-answer">
-                        AEOPIN does not display advertisements inside the application. CheckMaker’s published description does not include in-app ads. This website can show sponsored units.
+                        AEOPIN and CheckMaker do not display advertisements
+                        inside the applications. The AEOWUN website may display
+                        sponsored advertising separately from the desktop
+                        software.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question mono">Which Windows versions? <span class="faq-toggle">+</span></div>
+                    <div class="faq-question mono">
+                        Which Windows versions?
+                        <span class="faq-toggle">+</span>
+                    </div>
+
                     <div class="faq-answer">
-                        AEOPIN is built for Windows 10 and Windows 11. CheckMaker’s public release is a standalone Windows executable.
+                        AEOPIN is built for Windows 10 and Windows 11.
+                        CheckMaker's public release is a standalone Windows
+                        executable.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question mono">How do I report a problem? <span class="faq-toggle">+</span></div>
+                    <div class="faq-question mono">
+                        How do I report a problem?
+                        <span class="faq-toggle">+</span>
+                    </div>
+
                     <div class="faq-answer">
-                        Use the <a href="/support/report/" style="color: var(--accent-cyan);">report page</a> and open an issue on the GitHub repository for the software you are using. Do not include passwords, private files, tokens, or confidential information.
+                        Use the
+                        <a href="/support/report/"
+                           style="color: var(--accent-cyan);">
+                            report page
+                        </a>
+                        and include the relevant software and version.
+                        GitHub issues can also be used for repositories that
+                        accept public issue reports.
+                        Do not include passwords, private files, tokens, or
+                        confidential information.
                     </div>
                 </div>
+
+                <div class="faq-item">
+                    <div class="faq-question mono">
+                        Where can I read about privacy?
+                        <span class="faq-toggle">+</span>
+                    </div>
+
+                    <div class="faq-answer">
+                        The
+                        <a href="/privacy/"
+                           style="color: var(--accent-cyan);">
+                            privacy policy
+                        </a>
+                        covers the current data practices of AEOPIN and
+                        CheckMaker and distinguishes those applications from
+                        the AEOWUN website.
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <section class="subtle-ads" style="margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center;">
-            <div class="mono" style="font-size: 0.6rem; color: var(--text); opacity: 0.3; margin-bottom: 20px; letter-spacing: 2px;">SPONSORED</div>
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7976685360451203" crossorigin="anonymous"></script>
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7976685360451203" data-ad-slot="9729764284" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <section class="subtle-ads"
+                 style="margin-top: 100px;
+                        padding-top: 40px;
+                        border-top: 1px solid var(--border);
+                        text-align: center;">
+
+            <div class="mono"
+                 style="font-size: 0.6rem;
+                        color: var(--text);
+                        opacity: 0.3;
+                        margin-bottom: 20px;
+                        letter-spacing: 2px;">
+                SPONSORED
+            </div>
+
+            <script async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7976685360451203"
+                crossorigin="anonymous"></script>
+
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7976685360451203"
+                 data-ad-slot="9729764284"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true">
+            </ins>
+
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
         </section>
+
     </main>
 
     <footer class="aeowun-footer">
         <div class="container footer-inner">
             <div class="mono footer-copy">© 2026 AEOWUN.</div>
+
             <div class="footer-links">
                 <a href="/support/" class="mono">SUPPORT</a>
                 <a href="/privacy/" class="mono">PRIVACY</a>
-                <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="mono">GITHUB</a>
+                <a href="https://github.com/Aeowun"
+                   target="_blank"
+                   rel="noopener"
+                   class="mono">
+                    GITHUB
+                </a>
             </div>
         </div>
     </footer>
 
     <script src="../app.js"></script>
+
     <script>
         document.querySelectorAll('.faq-question').forEach(q => {
             q.addEventListener('click', () => {
@@ -280,5 +556,6 @@
             });
         });
     </script>
+
 </body>
 </html>

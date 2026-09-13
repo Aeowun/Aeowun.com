@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AEOWUN // AEOPIN</title>
-    <meta name="description" content="AEOPIN is a local-first capture and retrieval tool for files, folders, links, and notes.">
+    <meta name="description" content="AEOPIN is a local-first Windows tool for capturing and retrieving files, folders, links, and notes.">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body class="aeowun-environment">
@@ -42,6 +42,7 @@
             </button>
         </div>
     </header>
+
     <div class="nav-rail" id="nav-rail">
         <div class="rail-backdrop" id="rail-close"></div>
         <div class="rail-content">
@@ -49,16 +50,20 @@
                 <span class="mono" style="font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.5em;">MENU</span>
                 <button class="close-rail mono" id="rail-close-btn">[ CLOSE ]</button>
             </div>
+
             <nav class="rail-links">
                 <a href="/aeowun/" class="rail-link mono">PROJECT</a>
                 <div class="rail-divider"></div>
+
                 <span class="rail-label mono">PRODUCTS</span>
                 <a href="/aeopin/" class="rail-link mono active">AEOPIN</a>
                 <a href="/checkmaker/" class="rail-link mono">CHECKMAKER</a>
                 <a href="/ide/" class="rail-link mono">IDE</a>
                 <a href="/magy/" class="rail-link mono">MAGY</a>
                 <a href="/games/" class="rail-link mono">GAMES</a>
+
                 <div class="rail-divider"></div>
+
                 <a href="/engineering/" class="rail-link mono">WORK</a>
                 <a href="/security/" class="rail-link mono">TRUST</a>
             </nav>
@@ -66,75 +71,139 @@
     </div>
 
     <main class="product-page container">
+
         <section class="product-hero">
-            <div class="brand-label mono">A SHIPPED AEOWUN PRODUCT // v1.2.3</div>
+            <div class="brand-label mono">SHIPPED AEOWUN PRODUCT // v1.2.3</div>
+
             <h1 class="product-title mono">AEOPIN</h1>
-            <p class="hero-lead">Keep files, folders, links, and notes within reach. Capture now. Find later. Stay local.</p>
+
+            <p class="hero-lead">
+                A small Windows tool for keeping files, folders, links, and notes close by. Capture something when you need to. Find it again later.
+            </p>
+
             <div class="hero-actions">
-                <a class="primary-button mono" href="https://github.com/Aeowun/Aeopin/releases/download/v1.2.3/aeopin-authority.exe" target="_blank" rel="noopener">DOWNLOAD v1.2.3</a>
+                <a class="primary-button mono"
+                   href="https://github.com/Aeowun/Aeopin/releases/download/v1.2.3/aeopin-authority.exe"
+                   target="_blank"
+                   rel="noopener">
+                    DOWNLOAD v1.2.3
+                </a>
+
                 <a class="secondary-button mono" href="/docs/">READ THE DOCS</a>
             </div>
-            <p class="product-disclaimer">The v1.2.3 Authority release verifies the matching portable payload, installs the managed application, and fails closed when integrity checks do not pass.</p>
+
+            <p class="product-disclaimer">
+                The v1.2.3 Authority release verifies the matching portable payload, installs the managed application, and fails closed when integrity checks do not pass.
+            </p>
         </section>
 
         <section class="trust-panel">
             <div>
-                <div class="brand-label mono">GOAL</div>
-                <h2 class="section-heading mono">YOUR FILES STAY YOURS.</h2>
+                <div class="brand-label mono">THE IDEA</div>
+                <h2 class="section-heading mono">KEEP IT ON YOUR MACHINE.</h2>
             </div>
-            <p>AEOPIN is designed as a local-first Windows tool. Your captured data is stored on your computer, without an account or cloud dependency for the core experience. It is a shipped AEOWUN product.</p>
+
+            <p>
+                AEOPIN is a local-first Windows application. The things you capture are stored on the computer running AEOPIN, and the core workflow does not require an account or cloud service.
+            </p>
         </section>
 
         <section class="evidence-section">
-            <div class="brand-label mono">HOW IT WORKS // CURRENT BUILD</div>
-            <h2 class="section-heading mono">CAPTURE WITHOUT FRICTION.</h2>
-            <p class="evidence-intro">The current interface is built around a small desktop companion: drag something in, see it saved, and retrieve it through search when you need it.</p>
+            <div class="brand-label mono">THE CURRENT APP</div>
+
+            <h2 class="section-heading mono">CAPTURE. SAVE. FIND.</h2>
+
+            <p class="evidence-intro">
+                The current interface is intentionally small. It sits alongside the desktop, accepts things you want to keep, and gives you a searchable place to get them back.
+            </p>
+
             <div class="evidence-grid">
+
                 <figure class="evidence-card">
-                    <img src="../assets/aeopin/empty.png" alt="AEOPIN ready to receive a dropped file">
-                    <figcaption><strong class="mono">READY</strong><span>A quiet capture surface waiting for a file, folder, link, or note.</span></figcaption>
+                    <img src="../assets/aeopin/empty.png"
+                         alt="AEOPIN ready to receive a dropped file">
+
+                    <figcaption>
+                        <strong class="mono">READY</strong>
+                        <span>A capture surface waiting for a file, folder, link, or note.</span>
+                    </figcaption>
                 </figure>
+
                 <figure class="evidence-card">
-                    <img src="../assets/aeopin/capture.png" alt="AEOPIN receiving a dragged file">
-                    <figcaption><strong class="mono">CAPTURE</strong><span>Drop an item directly onto the companion window.</span></figcaption>
+                    <img src="../assets/aeopin/capture.png"
+                         alt="AEOPIN receiving a dragged file">
+
+                    <figcaption>
+                        <strong class="mono">CAPTURE</strong>
+                        <span>Drop something directly onto the companion window.</span>
+                    </figcaption>
                 </figure>
+
                 <figure class="evidence-card evidence-card-wide">
-                    <img src="../assets/aeopin/saved.png" alt="AEOPIN showing a saved file in its searchable list">
-                    <figcaption><strong class="mono">RETRIEVE</strong><span>Saved items remain searchable and ready to drag back out.</span></figcaption>
+                    <img src="../assets/aeopin/saved.png"
+                         alt="AEOPIN showing a saved file in its searchable list">
+
+                    <figcaption>
+                        <strong class="mono">RETRIEVE</strong>
+                        <span>Saved items stay searchable and can be dragged back out.</span>
+                    </figcaption>
                 </figure>
+
             </div>
         </section>
 
         <section class="feature-grid">
+
             <article class="feature-card">
                 <span class="mono ecosystem-status available">LOCAL-FIRST</span>
-                <h2 class="mono">NO ACCOUNT REQUIRED</h2>
-                <p>The core application works locally. Your files are not uploaded just to make capture useful.</p>
+
+                <h2 class="mono">NO ACCOUNT</h2>
+
+                <p>
+                    AEOPIN's core workflow runs locally. There is no account to create and no cloud service required just to save something you captured.
+                </p>
             </article>
+
             <article class="feature-card">
                 <span class="mono ecosystem-status available">WINDOWS</span>
-                <h2 class="mono">A DESKTOP COMPANION</h2>
-                <p>AEOPIN stays close to the desktop so capturing something does not require opening another workflow.</p>
+
+                <h2 class="mono">STAYS NEAR THE DESKTOP</h2>
+
+                <p>
+                    AEOPIN is meant to stay available while you work. Capturing something should not require switching to a separate web application or another workflow.
+                </p>
             </article>
+
             <article class="feature-card">
-                <span class="mono ecosystem-status">IN DEVELOPMENT</span>
-                <h2 class="mono">WHAT COMES NEXT</h2>
-                <p>Future cloud services may add optional sync and backup without replacing local ownership.</p>
+                <span class="mono ecosystem-status available">SHIPPED</span>
+
+                <h2 class="mono">A REAL RELEASE</h2>
+
+                <p>
+                    AEOPIN v1.2.3 is a released Windows application with an Authority installer, managed payload, integrity checks, and rollback-oriented installation behavior.
+                </p>
             </article>
+
         </section>
+
     </main>
 
     <footer class="aeowun-footer">
         <div class="container footer-inner">
             <div class="mono footer-copy">© 2026 AEOWUN.</div>
+
             <div class="footer-links">
                 <a href="/support/" class="mono">SUPPORT</a>
                 <a href="/security/" class="mono">TRUST</a>
                 <a href="/privacy/" class="mono">PRIVACY</a>
-                <a href="https://github.com/Aeowun/Aeopin" target="_blank" rel="noopener" class="mono">GITHUB</a>
+                <a href="https://github.com/Aeowun/Aeopin"
+                   target="_blank"
+                   rel="noopener"
+                   class="mono">GITHUB</a>
             </div>
         </div>
     </footer>
+
     <script src="../app.js"></script>
 </body>
 </html>

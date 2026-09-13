@@ -4,6 +4,8 @@ import { TILE_TYPES } from '../config.js';
 import { QUEST_TEXT } from '../data/textData.js';
 import { getDungeonState } from '../systems/dungeon.js';
 import { getQuestStage } from '../systems/quests.js';
+import { getPlayerStats } from '../systems/inventory.js';
+import { applyUpgrade } from '../systems/leveling.js';
 
 /**
  * Utility to draw wrapped text on a canvas context.
@@ -56,6 +58,10 @@ export function drawMainMenu(ctx, innerWidth, innerHeight) {
     ctx.font = 'bold 56px sans-serif';
     ctx.textAlign = 'center';
     ctx.fillText('ZACKSGAME005', centerX, centerY - 150);
+
+    ctx.fillStyle = 'rgba(232, 217, 163, 0.4)';
+    ctx.font = 'bold 14px monospace';
+    ctx.fillText('ALPHA V0.1.5', centerX, centerY - 125);
 
     ctx.fillStyle = '#8da0ad';
     ctx.font = '18px sans-serif';
@@ -319,9 +325,17 @@ export function drawHUD(ctx, innerWidth, innerHeight, playerX, playerY) {
         ctx.strokeRect(padding, padding, statusW, statusH);
     }
 
+    const dungeonNames = {
+        cursed_cave: 'CURSED CAVE',
+        bandit_hole: 'BANDIT HOLE',
+        sunken_vault: 'SUNKEN VAULT',
+        sky_reach: 'SKY REACH'
+    };
+    const dName = dungeonNames[dungeon?.dungeonId] || 'DUNGEON';
+
     ctx.fillStyle = isDungeon ? '#e8d9a8' : '#fff';
     ctx.font = 'bold 18px sans-serif';
-    ctx.fillText(isDungeon ? `DUNGEON • LVL ${dungeon.level}` : 'ZACKSGAME005', padding + 12, padding + 25);
+    ctx.fillText(isDungeon ? `${dName} • LVL ${dungeon.level}` : 'ZACKSGAME005', padding + 12, padding + 25);
 
     // Hearts
     for (let i = 0; i < player.maxHP; i++) {
@@ -341,6 +355,14 @@ export function drawHUD(ctx, innerWidth, innerHeight, playerX, playerY) {
     ctx.fillStyle = '#ddd';
     ctx.fillText(`Gold: ${player.coins}`, padding + 12, padding + 70);
     ctx.fillText(`Weapon: ${player.steelSword ? 'Steel' : (player.swordPickedUp ? 'Old' : 'None')}`, padding + 130, padding + 70);
+
+    // XP Bar
+    const xpBarW = statusW - 24;
+    const xpBarH = 4;
+    ctx.fillStyle = 'rgba(255,255,255,0.1)';
+    ctx.fillRect(padding + 12, padding + statusH - 8, xpBarW, xpBarH);
+    ctx.fillStyle = '#44ccff';
+    ctx.fillRect(padding + 12, padding + statusH - 8, xpBarW * (player.xp / player.xpToNextLevel), xpBarH);
 
     // ==========================================
     // 2. TOP-LEFT: QUEST PANEL + COMPASS
@@ -524,7 +546,7 @@ export function drawHUD(ctx, innerWidth, innerHeight, playerX, playerY) {
         tileName = Object.keys(TILE_TYPES).find(k => TILE_TYPES[k] === typeId) || 'Unknown';
     }
 
-    const infoText = `Pos: [${tx}, ${ty}] - ${tileName}`;
+    const infoText = `Pos: [${tx}, ${ty}] - ${tileName}${gameState.debug.ghostMode ? ' (GHOST)' : ''}`;
     ctx.font = 'bold 13px monospace';
     const textW = ctx.measureText(infoText).width;
     const centerX = innerWidth / 2;
@@ -567,27 +589,59 @@ export function drawHUD(ctx, innerWidth, innerHeight, playerX, playerY) {
     }
 
     // ==========================================
-    // 6. PAUSE BUTTON (Mobile)
+    // 6. PAUSE & INVENTORY BUTTONS (Mobile)
     // ==========================================
-    if (gameState.touch.active || true) {
-        ctx.fillStyle = 'rgba(0,0,0,0.5)';
-        ctx.fillRect(innerWidth - 50, 10, 40, 40);
-        ctx.strokeStyle = '#fff';
-        ctx.lineWidth = 2;
-        ctx.strokeRect(innerWidth - 50, 10, 40, 40);
+    const btnSize = 40;
+    const btnPadding = 10;
 
-        ctx.fillStyle = '#fff';
-        if (ui.paused) {
-             ctx.beginPath();
-             ctx.moveTo(innerWidth - 38, 20);
-             ctx.lineTo(innerWidth - 38, 40);
-             ctx.lineTo(innerWidth - 20, 30);
-             ctx.fill();
-        } else {
-            ctx.fillRect(innerWidth - 38, 22, 6, 16);
-            ctx.fillRect(innerWidth - 28, 22, 6, 16);
-        }
+    // Pause Button
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
+    ctx.fillRect(innerWidth - btnSize - btnPadding, btnPadding, btnSize, btnSize);
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(innerWidth - btnSize - btnPadding, btnPadding, btnSize, btnSize);
+
+    ctx.fillStyle = '#fff';
+    if (ui.paused) {
+         ctx.beginPath();
+         ctx.moveTo(innerWidth - 38, 20);
+         ctx.lineTo(innerWidth - 38, 40);
+         ctx.lineTo(innerWidth - 20, 30);
+         ctx.fill();
+    } else {
+        ctx.fillRect(innerWidth - 38, 22, 6, 16);
+        ctx.fillRect(innerWidth - 28, 22, 6, 16);
     }
+
+    // Inventory Button (Mobile)
+    const invBtnX = innerWidth - (btnSize * 2) - (btnPadding * 2);
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
+    ctx.fillRect(invBtnX, btnPadding, btnSize, btnSize);
+    ctx.strokeStyle = '#ffd700'; // Gold border for inventory
+    ctx.strokeRect(invBtnX, btnPadding, btnSize, btnSize);
+
+    ctx.fillStyle = '#ffd700';
+    ctx.font = 'bold 20px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('I', invBtnX + btnSize/2, btnPadding + btnSize/2);
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'alphabetic';
+
+    // Dodge Button (Top-Right, left of inventory)
+    const dodgeBtnX = invBtnX - btnSize - btnPadding;
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
+    ctx.fillRect(dodgeBtnX, btnPadding, btnSize, btnSize);
+    ctx.strokeStyle = '#44ccff'; // Blue border for dodge
+    ctx.strokeRect(dodgeBtnX, btnPadding, btnSize, btnSize);
+
+    ctx.fillStyle = '#44ccff';
+    ctx.font = 'bold 20px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('D', dodgeBtnX + btnSize/2, btnPadding + btnSize/2);
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'alphabetic';
 
     // ==========================================
     // 7. TOP-RIGHT: MULTIPLAYER
@@ -845,4 +899,155 @@ export function drawPauseMenu(ctx, innerWidth, innerHeight) {
     });
 
     ctx.textAlign = 'left';
+}
+
+export function drawInventoryOverlay(ctx, innerWidth, innerHeight) {
+    const { player, ui } = gameState;
+    const centerX = innerWidth / 2;
+    const centerY = innerHeight / 2;
+    const selection = ui.inventorySelection ?? 0;
+    const inv = player.inventory;
+
+    // Dark high-tech overlay
+    ctx.fillStyle = 'rgba(5, 7, 10, 0.96)';
+    ctx.fillRect(0, 0, innerWidth, innerHeight);
+
+    const panelW = Math.min(innerWidth - 40, 800);
+    const panelH = Math.min(innerHeight - 40, 500);
+    const px = centerX - panelW / 2;
+    const py = centerY - panelH / 2;
+
+    ctx.strokeStyle = 'rgba(70, 130, 180, 0.4)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(px, py, panelW, panelH);
+
+    // Title
+    ctx.fillStyle = '#e8d9a3';
+    ctx.font = 'bold 32px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('INVENTORY', centerX, py + 50);
+
+    // Stats Column
+    const statsX = px + 40;
+    const statsY = py + 100;
+    const stats = getPlayerStats();
+
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+    ctx.fillRect(statsX - 10, statsY - 25, 200, 150);
+
+    ctx.fillStyle = '#9fd9ff';
+    ctx.font = 'bold 16px sans-serif';
+    ctx.fillText('PLAYER STATS', statsX, statsY);
+
+    ctx.font = '14px sans-serif';
+    ctx.fillStyle = '#fff';
+    ctx.fillText(`Attack: ${stats.attack}`, statsX, statsY + 30);
+    ctx.fillText(`Defense: ${stats.defense}`, statsX, statsY + 55);
+    ctx.fillText(`Speed: x${stats.speedMultiplier.toFixed(1)}`, statsX, statsY + 80);
+
+    // Equipment Slots
+    ctx.fillStyle = '#e8d9a3';
+    ctx.fillText('EQUIPPED', statsX, statsY + 130);
+    ctx.font = '12px sans-serif';
+    ctx.fillStyle = '#aaa';
+    ctx.fillText(`Weapon: ${player.equipment.weapon?.name || 'None'}`, statsX, statsY + 155);
+    ctx.fillText(`Armor: ${player.equipment.armor?.name || 'None'}`, statsX, statsY + 175);
+
+    // Items Column
+    const listX = px + 260;
+    const listY = py + 100;
+    const listW = panelW - 300;
+    const itemH = 45;
+    const gap = 6;
+
+    ctx.fillStyle = '#9fd9ff';
+    ctx.font = 'bold 16px sans-serif';
+    ctx.fillText('COLLECTED GEAR', listX, listY - 10);
+
+    if (inv.length === 0) {
+        ctx.fillStyle = '#444';
+        ctx.fillText('Empty', listX, listY + 30);
+    } else {
+        inv.forEach((item, index) => {
+            const y = listY + index * (itemH + gap);
+            const isSelected = selection === index;
+            const isEquipped = (player.equipment.weapon?.instanceId === item.instanceId ||
+                               player.equipment.armor?.instanceId === item.instanceId);
+
+            ctx.fillStyle = isSelected ? 'rgba(70, 130, 180, 0.4)' : 'rgba(255, 255, 255, 0.05)';
+            ctx.fillRect(listX, y, listW, itemH);
+
+            if (isSelected) {
+                ctx.strokeStyle = '#9fd9ff';
+                ctx.strokeRect(listX, y, listW, itemH);
+            }
+
+            ctx.fillStyle = isEquipped ? '#ffd700' : '#fff';
+            ctx.font = 'bold 14px sans-serif';
+            ctx.fillText(item.name + (isEquipped ? ' (E)' : ''), listX + 15, y + 27);
+
+            ctx.fillStyle = '#888';
+            ctx.font = '11px sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText(item.type.toUpperCase(), listX + listW - 15, y + 27);
+            ctx.textAlign = 'left';
+        });
+    }
+
+    // Footer Hint
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#666';
+    ctx.font = '12px sans-serif';
+    ctx.fillText('Arrow Keys to navigate • Enter to Equip • I to close', centerX, py + panelH - 25);
+}
+
+export function drawLevelUpOverlay(ctx, innerWidth, innerHeight) {
+    const { ui, player } = gameState;
+    const centerX = innerWidth / 2;
+    const centerY = innerHeight / 2;
+    const selection = ui.levelUpSelection ?? 0;
+
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
+    ctx.fillRect(0, 0, innerWidth, innerHeight);
+
+    ctx.fillStyle = '#ffd700';
+    ctx.font = 'bold 42px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('LEVEL UP!', centerX, centerY - 120);
+    ctx.font = 'bold 18px sans-serif';
+    ctx.fillText(`REACHED LEVEL ${player.level}`, centerX, centerY - 85);
+
+    const options = [
+        { label: '+1 MAX HEART', desc: 'Permanently increase your health capacity.' },
+        { label: '+1 ATTACK POWER', desc: 'Deal more damage with every strike.' }
+    ];
+
+    const boxW = 400;
+    const boxH = 80;
+    const gap = 20;
+
+    options.forEach((opt, index) => {
+        const isSelected = selection === index;
+        const y = centerY - 30 + index * (boxH + gap);
+
+        ctx.fillStyle = isSelected ? 'rgba(255, 215, 0, 0.2)' : 'rgba(255, 255, 255, 0.05)';
+        ctx.fillRect(centerX - boxW/2, y, boxW, boxH);
+
+        ctx.strokeStyle = isSelected ? '#ffd700' : '#444';
+        ctx.lineWidth = isSelected ? 3 : 1;
+        ctx.strokeRect(centerX - boxW/2, y, boxW, boxH);
+
+        ctx.fillStyle = isSelected ? '#fff' : '#aaa';
+        ctx.font = 'bold 20px sans-serif';
+        ctx.fillText(opt.label, centerX, y + 35);
+
+        ctx.font = '13px sans-serif';
+        ctx.fillStyle = '#888';
+        ctx.fillText(opt.desc, centerX, y + 60);
+    });
+
+    ctx.fillStyle = '#666';
+    ctx.font = '12px sans-serif';
+    ctx.fillText('Use Arrow Keys & Enter to choose your path.', centerX, centerY + boxH * 2 + 50);
 }

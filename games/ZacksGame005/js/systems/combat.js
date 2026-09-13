@@ -1,15 +1,19 @@
 import { gameState } from '../state/gameState.js';
-import { dist } from '../world/map.js';
+import { dist, map, inside } from '../world/map.js';
 import { canMoveTo } from './movement.js';
+import { TILE_TYPES } from '../config.js';
 import { playSFX } from './audio.js';
 import { broadcastImmediateAttack } from './multiplayer.js';
 import { damageBoss, getDungeonState } from './dungeon.js';
 import { addBillboard } from './feedback.js';
 import { updateQuestProgress } from './quests.js';
+import { gainXP } from './leveling.js';
+
+let spikeDamageTimer = 0;
 
 export function startAttack() {
     const { player, ui, enemies, quest } = gameState;
-    if (ui.dialogueOpen || ui.storeOpen || player.attackTimer > 0 || player.attackCooldown > 0 || !player.swordPickedUp) return;
+    if (ui.dialogueOpen || ui.storeOpen || player.attackTimer > 0 || player.attackCooldown > 0 || !player.swordPickedUp || player.isDodging) return;
 
     player.attackTimer = .32;
     player.attackCooldown = .48;
@@ -22,7 +26,8 @@ export function startAttack() {
         console.error('Failed to broadcast attack:', e);
     }
 
-    const damage = player.steelSword ? 2 : 1;
+    // Damage based on sword tier + base attack level
+    const damage = (player.steelSword ? 2 : 1) + (player.baseAttack - 1);
 
     for (const enemy of enemies) {
         if (enemy.dungeonLevel != null && gameState.currentWorld !== 'dungeon') continue;
@@ -38,6 +43,17 @@ export function startAttack() {
             if (enemy.hp <= 0) {
                 enemy.hp = 0;
                 enemy.alive = false;
+
+                // XP REWARDS
+                const xpMap = {
+                    wolf: 15,
+                    demon: 15,
+                    bandit: 25,
+                    ghost: 35,
+                    drowned: 35
+                };
+                gainXP(xpMap[enemy.type] || 15);
+
                 if (enemy.dungeonLevel == null) {
                     updateQuestProgress('KILL', { target: 'creature' });
                 }
@@ -60,6 +76,7 @@ export function startAttack() {
             if (state.boss.hp <= 0) {
                 boss.hp = 0;
                 boss.alive = false;
+                gainXP(250); // Big boss reward
             }
         }
     }
@@ -126,6 +143,24 @@ export function updateCombat(dt) {
 
     updateBoss(dt);
 
+    // Update Global Trap State
+    gameState.world.trapTimer += dt;
+    // Toggle every 2.5 seconds
+    if (gameState.world.trapTimer > 2.5) {
+        gameState.world.trapTimer = 0;
+        gameState.world.trapsActive = !gameState.world.trapsActive;
+    }
+
+    // Trap Damage (Spikes)
+    spikeDamageTimer = Math.max(0, spikeDamageTimer - dt);
+    const txp = Math.floor(player.x), typ = Math.floor(player.y);
+    if (inside(txp, typ) && map[typ][txp] === TILE_TYPES.Spike && gameState.world.trapsActive && spikeDamageTimer <= 0 && !player.isDodging) {
+        player.hp = Math.max(0, player.hp - 1);
+        spikeDamageTimer = 1.0;
+        addBillboard("-1 Heart", player.x, player.y, "#ff3333");
+        playSFX('sfx_hit');
+    }
+
     const detectRange = 5.0;
 
     for (const enemy of enemies) {
@@ -135,6 +170,7 @@ export function updateCombat(dt) {
 
         enemy.hitFlash = Math.max(0, enemy.hitFlash - dt);
         enemy.attackTimer = Math.max(0, (enemy.attackTimer || 0) - dt);
+        enemy.attackMeter = enemy.attackMeter || 0;
 
         const ex = player.x - enemy.x;
         const ey = player.y - enemy.y;
@@ -142,6 +178,7 @@ export function updateCombat(dt) {
         const isHunting = gameState.currentWorld === 'overworld' && quest.state === 'hunt';
 
         if (ed < detectRange || (isHunting && ed < 10.0)) {
+            // MOVEMENT (Slightly further detection for the meter logic)
             if (ed > 1.1 && ed > 0) {
                 const enx = ex / ed;
                 const eny = ey / ed;
@@ -153,16 +190,28 @@ export function updateCombat(dt) {
                 enemy.animTime += dt * 9;
             }
 
-            enemy.attackCooldown = Math.max(0, enemy.attackCooldown - dt);
-            if (ed < 1.3 && enemy.attackCooldown <= 0) {
-                player.hp = Math.max(0, player.hp - 1);
-                enemy.attackCooldown = 1.2;
+            // ATTACK METER BUILDING
+            if (ed < 1.8) {
+                enemy.attackMeter = Math.min(1, enemy.attackMeter + dt * 0.8); // 1.25s to fill
 
-                // Attack effects
-                enemy.attackTimer = 0.32;
-                enemy.attackAngle = Math.atan2(ey, ex);
-                playSFX('sfx_slash');
-                addBillboard("-1 Heart", player.x, player.y, "#ff3333");
+                if (enemy.attackMeter >= 1) {
+                    enemy.attackMeter = 0; // Reset
+
+                    // Trigger Attack
+                    if (!player.isDodging && ed < 1.3) {
+                        player.hp = Math.max(0, player.hp - 1);
+                        addBillboard("-1 Heart", player.x, player.y, "#ff3333");
+                        playSFX('sfx_hit');
+                    }
+
+                    // Attack Visuals
+                    enemy.attackTimer = 0.32;
+                    enemy.attackAngle = Math.atan2(ey, ex);
+                    playSFX('sfx_slash');
+                }
+            } else {
+                // Slowly drain meter if out of range
+                enemy.attackMeter = Math.max(0, enemy.attackMeter - dt * 0.5);
             }
         } else {
             enemy.wanderTimer -= dt;

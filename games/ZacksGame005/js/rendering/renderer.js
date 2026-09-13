@@ -5,7 +5,7 @@ import { drawWorld, drawRoofs, drawDecorations } from './worldRenderer.js';
 import { drawHuman } from './human.js';
 import { drawEnemy } from './enemyRenderer.js';
 import { drawSword, drawAttack } from './effectsRenderer.js';
-import { drawHUD, drawStore, drawDialogue, drawMainMenu, drawServerBrowser, drawDeathScreen, drawNotifications, drawPauseMenu } from './uiRenderer.js';
+import { drawHUD, drawStore, drawDialogue, drawMainMenu, drawServerBrowser, drawDeathScreen, drawNotifications, drawPauseMenu, drawInventoryOverlay } from './uiRenderer.js';
 
 export function draw(ctx, innerWidth, innerHeight) {
     const { player, camera, enemies, npcs, sword, ui, billboards } = gameState;
@@ -161,7 +161,8 @@ export function draw(ctx, innerWidth, innerHeight) {
 
     drawHuman(ctx, playerX, playerY, scale, {
         skin: '#d09a72', hair: '#3b2418', shirt: '#536b80', pants: '#202832',
-        moving: player.moving, animTime: player.animTime, facing: player.facing
+        moving: player.moving, animTime: player.animTime, facing: player.facing,
+        isDodging: player.isDodging
     });
 
     if (gameState.otherPlayers) {
@@ -216,6 +217,14 @@ export function draw(ctx, innerWidth, innerHeight) {
     drawDialogue(ctx, innerWidth, innerHeight);
     drawStore(ctx, innerWidth, innerHeight);
     drawNotifications(ctx, innerWidth, innerHeight);
+
+    if (ui.inventoryOpen) {
+        drawInventoryOverlay(ctx, innerWidth, innerHeight);
+    }
+
+    if (ui.levelUpOpen) {
+        drawLevelUpOverlay(ctx, innerWidth, innerHeight);
+    }
 
     if (ui.paused) {
         drawPauseMenu(ctx, innerWidth, innerHeight);

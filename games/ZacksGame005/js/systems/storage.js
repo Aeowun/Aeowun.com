@@ -23,7 +23,11 @@ export function saveGame(isAuto = false) {
                 dungeonDiamonds:
                     gameState.player.dungeonDiamonds || 0,
                 dungeonKeys:
-                    gameState.player.dungeonKeys || {}
+                    gameState.player.dungeonKeys || {},
+                inventory:
+                    gameState.player.inventory || [],
+                equipment:
+                    gameState.player.equipment || { weapon: null, armor: null, accessory: null }
             },
 
             currentWorld: gameState.currentWorld,
@@ -39,6 +43,7 @@ export function saveGame(isAuto = false) {
             },
 
             dungeon: {
+                dungeonId: dungeon.dungeonId || 'cursed_cave',
                 level: dungeon.level,
                 room: dungeon.room,
                 diamonds:
@@ -80,6 +85,9 @@ export function saveGame(isAuto = false) {
 
 function restoreDungeonSave(saveData) {
     const saved = saveData.dungeon;
+
+    // Restore dungeon ID first
+    resetDungeon(saved.dungeonId || 'cursed_cave');
 
     loadDungeonLevel(saved.level);
 

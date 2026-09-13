@@ -79,6 +79,20 @@ export function setupKeyboard(
         // Gameplay
         // -----------------------------
         if (screen === 'game') {
+            if (gameState.ui.levelUpOpen) {
+                if (!event.repeat) {
+                    if (key === 'arrowup' || key === 'w') {
+                        gameState.ui.levelUpSelection = (gameState.ui.levelUpSelection - 1 + 2) % 2;
+                    } else if (key === 'arrowdown' || key === 's') {
+                        gameState.ui.levelUpSelection = (gameState.ui.levelUpSelection + 1) % 2;
+                    } else if (key === 'enter') {
+                        onMenuSelect?.();
+                    }
+                }
+                event.preventDefault();
+                return;
+            }
+
             if ((key === 'p' || key === 'escape') && !event.repeat) {
                 gameState.ui.paused = !gameState.ui.paused;
                 event.preventDefault();
@@ -99,6 +113,38 @@ export function setupKeyboard(
                 return;
             }
 
+            // Inventory Toggle
+            if (key === 'i' && !event.repeat) {
+                gameState.ui.inventoryOpen = !gameState.ui.inventoryOpen;
+                gameState.ui.inventorySelection = 0;
+                event.preventDefault();
+                return;
+            }
+
+            if (gameState.ui.inventoryOpen) {
+                if (!event.repeat) {
+                    const inv = gameState.player.inventory;
+                    if (key === 'arrowup' || key === 'w') {
+                        gameState.ui.inventorySelection = (gameState.ui.inventorySelection - 1 + inv.length) % Math.max(1, inv.length);
+                    } else if (key === 'arrowdown' || key === 's') {
+                        gameState.ui.inventorySelection = (gameState.ui.inventorySelection + 1) % Math.max(1, inv.length);
+                    } else if (key === 'enter') {
+                        import('../systems/inventory.js').then(mod => {
+                            const item = gameState.player.inventory[gameState.ui.inventorySelection];
+                            if (item?.type === 'consumable') {
+                                mod.useItem(gameState.ui.inventorySelection);
+                            } else {
+                                mod.equipItem(gameState.ui.inventorySelection);
+                            }
+                        });
+                    } else if (key === 'escape') {
+                        gameState.ui.inventoryOpen = false;
+                    }
+                }
+                event.preventDefault();
+                return;
+            }
+
             if (key === 'e' && !event.repeat) {
                 onInteract();
             }
@@ -109,6 +155,17 @@ export function setupKeyboard(
 
             if (key === 'b' && !event.repeat) {
                 onToggleStore();
+            }
+
+            // DODGE ROLL
+            if (key === 'shift' && !event.repeat) {
+                import('../systems/movement.js').then(mod => mod.startDodge());
+            }
+
+            // GHOST MODE (Localhost only)
+            if (key === 'g' && !event.repeat && gameState.debug.showCoords) {
+                gameState.debug.ghostMode = !gameState.debug.ghostMode;
+                import('../systems/feedback.js').then(mod => mod.notify(`Ghost Mode: ${gameState.debug.ghostMode ? 'ON' : 'OFF'}`, 'info'));
             }
 
             if (

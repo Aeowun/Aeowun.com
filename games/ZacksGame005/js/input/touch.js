@@ -75,6 +75,36 @@ function handleTap(onInteract, onAttack, onMenuSelect) {
             return;
         }
 
+        // Inventory Button area check (Top-Right, left of pause)
+        if (touchX > window.innerWidth - 110 && touchX < window.innerWidth - 60 && touchY < 60) {
+            gameState.ui.inventoryOpen = !gameState.ui.inventoryOpen;
+            gameState.ui.inventorySelection = 0;
+            return;
+        }
+
+        // Dodge Button (Top-Right, left of inventory)
+        if (touchX > window.innerWidth - 160 && touchX < window.innerWidth - 110 && touchY < 60) {
+            import('../systems/movement.js').then(mod => mod.startDodge());
+            return;
+        }
+
+        if (gameState.ui.levelUpOpen) {
+            const centerY = window.innerHeight / 2;
+            const boxH = 80;
+            const gap = 20;
+            const startY = centerY - 30;
+
+            for (let i = 0; i < 2; i++) {
+                const y = startY + i * (boxH + gap);
+                if (touchY >= y && touchY <= y + boxH) {
+                    gameState.ui.levelUpSelection = i;
+                    onMenuSelect();
+                    return;
+                }
+            }
+            return;
+        }
+
         if (gameState.ui.paused) {
             const centerY = window.innerHeight / 2;
             const buttonH = 60;
@@ -88,6 +118,44 @@ function handleTap(onInteract, onAttack, onMenuSelect) {
                     onMenuSelect();
                     return;
                 }
+            }
+            return;
+        }
+
+        if (gameState.ui.inventoryOpen) {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            const panelW = Math.min(window.innerWidth - 40, 800);
+            const panelH = Math.min(window.innerHeight - 40, 500);
+            const px = centerX - panelW / 2;
+            const py = centerY - panelH / 2;
+
+            const listX = px + 260;
+            const listY = py + 100;
+            const listW = panelW - 300;
+            const itemH = 45;
+            const gap = 6;
+
+            const inv = gameState.player.inventory;
+            for (let i = 0; i < inv.length; i++) {
+                const y = listY + i * (itemH + gap);
+                if (touchX >= listX && touchX <= listX + listW && touchY >= y && touchY <= y + itemH) {
+                    gameState.ui.inventorySelection = i;
+                    import('../systems/inventory.js').then(mod => {
+                        const item = gameState.player.inventory[i];
+                        if (item?.type === 'consumable') {
+                            mod.useItem(i);
+                        } else {
+                            mod.equipItem(i);
+                        }
+                    });
+                    return;
+                }
+            }
+
+            // Close if tap outside panel
+            if (touchX < px || touchX > px + panelW || touchY < py || touchY > py + panelH) {
+                gameState.ui.inventoryOpen = false;
             }
             return;
         }
