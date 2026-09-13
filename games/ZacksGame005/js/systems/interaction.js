@@ -60,7 +60,7 @@ function interactWithSign(tx, ty) {
 function interactWithChest(tx, ty) {
     const { player, currentWorld } = gameState;
     const isDungeon = currentWorld === 'dungeon';
-    const isBossRoom = isDungeon && tx === 60 && ty === 38;
+    const isBossRoom = isDungeon && tx === 63 && ty === 38;
 
     // Remove chest after opening
     setTile(tx, ty, TILE_TYPES.Floor);

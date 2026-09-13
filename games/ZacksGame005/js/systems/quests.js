@@ -18,38 +18,57 @@ import { gameState } from '../state/gameState.js';
 const QUEST_STAGES = [
     {
         id: 'not_started',
-        type: 'none'
+        type: 'talk',
+        npcName: 'Village Elder',
+        targetX: 78.5,
+        targetY: 79.5,
+        world: 'overworld'
     },
 
     {
         id: 'sword',
         type: 'find',
-        objectId: 'old_sword'
+        objectId: 'old_sword',
+        targetX: 82.2,
+        targetY: 74.5,
+        world: 'overworld'
     },
 
     {
         id: 'hunt',
         type: 'kill',
         target: 'creature',
-        goal: 1
+        goal: 1,
+        targetX: 65.5,
+        targetY: 62.5,
+        world: 'overworld'
     },
 
     {
         id: 'return',
         type: 'talk',
-        npcName: 'Village Elder'
+        npcName: 'Village Elder',
+        targetX: 78.5,
+        targetY: 79.5,
+        world: 'overworld'
     },
 
     {
         id: 'dungeon_intro',
         type: 'explore',
-        target: 'cave'
+        target: 'cave',
+        targetX: 67,
+        targetY: 49,
+        world: 'overworld'
     },
 
     {
         id: 'dungeon_boss',
         type: 'kill',
-        target: 'boss'
+        target: 'boss',
+        targetX: 61,
+        targetY: 36,
+        world: 'dungeon'
     },
 
     {

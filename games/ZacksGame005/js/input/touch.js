@@ -20,7 +20,7 @@ export function setupTouch(onInteract, onAttack, onMenuSelect) {
     }, { passive: false });
 
     canvas.addEventListener('touchmove', (e) => {
-        if (!gameState.touch.active) return;
+        if (!gameState.touch.active || gameState.ui.paused) return;
 
         const touch = e.touches[0];
         gameState.touch.currentX = touch.clientX;
@@ -64,8 +64,34 @@ export function setupTouch(onInteract, onAttack, onMenuSelect) {
 
 function handleTap(onInteract, onAttack, onMenuSelect) {
     const screen = gameState.ui.currentScreen;
+    const touchX = gameState.touch.startX;
+    const touchY = gameState.touch.startY;
 
     if (screen === 'game') {
+        // Pause Button area check (Top-Right)
+        if (touchX > window.innerWidth - 60 && touchY < 60) {
+            gameState.ui.paused = !gameState.ui.paused;
+            gameState.ui.menuSelection = 0;
+            return;
+        }
+
+        if (gameState.ui.paused) {
+            const centerY = window.innerHeight / 2;
+            const buttonH = 60;
+            const gap = 20;
+            const startY = centerY + 10;
+
+            for (let i = 0; i < 2; i++) {
+                const y = startY + i * (buttonH + gap);
+                if (touchY >= y && touchY <= y + buttonH) {
+                    gameState.ui.menuSelection = i;
+                    onMenuSelect();
+                    return;
+                }
+            }
+            return;
+        }
+
         // Context aware tap logic
         // 1. Try interact (E)
         // 2. If nothing to interact, try attack (Space)
@@ -97,6 +123,7 @@ function handleTap(onInteract, onAttack, onMenuSelect) {
             const startY = centerY - 45;
 
             for (let i = 0; i < 3; i++) {
+                if (i === 2) continue; // SKIP MULTIPLAYER (Disabled)
                 const y = startY + i * (buttonH + gap);
                 if (touchY >= y && touchY <= y + buttonH) {
                     gameState.ui.menuSelection = i;

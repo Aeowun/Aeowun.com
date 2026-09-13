@@ -361,6 +361,11 @@ function syncRegion() {
     dungeonState.room =
         roomName(dungeonState.level);
 
+    // FIX: Ensure boss activates if player reaches Level 5
+    if (dungeonState.level === 5 && !dungeonState.boss.defeated) {
+        activateBoss();
+    }
+
     return nextRegion;
 }
 
@@ -1021,7 +1026,7 @@ function defeatBoss() {
         }
     );
 
-    setTile(61, 38, TILE_TYPES.Chest); // Reward chest near fountain
+    setTile(63, 38, TILE_TYPES.Chest); // Reward chest 3 tiles away from fountain
 
     updateQuestProgress('KILL', { target: 'boss' });
 

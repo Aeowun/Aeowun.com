@@ -3,6 +3,7 @@ import { map, inside } from '../world/map.js';
 import { TILE_TYPES } from '../config.js';
 import { QUEST_TEXT } from '../data/textData.js';
 import { getDungeonState } from '../systems/dungeon.js';
+import { getQuestStage } from '../systems/quests.js';
 
 /**
  * Utility to draw wrapped text on a canvas context.
@@ -69,9 +70,9 @@ export function drawMainMenu(ctx, innerWidth, innerHeight) {
     );
 
     const buttons = [
-        'NEW GAME',
-        'RESUME GAME',
-        'MULTIPLAYER'
+        { label: 'NEW GAME', disabled: false },
+        { label: 'RESUME GAME', disabled: false },
+        { label: 'MULTIPLAYER', disabled: true }
     ];
 
     const buttonW = Math.min(360, innerWidth - 80);
@@ -79,13 +80,18 @@ export function drawMainMenu(ctx, innerWidth, innerHeight) {
     const gap = 14;
     const startY = centerY - 45;
 
-    buttons.forEach((label, index) => {
+    buttons.forEach((btn, index) => {
         const y = startY + index * (buttonH + gap);
-        const selected = selection === index;
+        const selected = selection === index && !btn.disabled;
 
-        ctx.fillStyle = selected
-            ? 'rgba(70, 130, 180, 0.85)'
-            : 'rgba(25, 28, 33, 0.95)';
+        if (btn.disabled) {
+            ctx.fillStyle = 'rgba(15, 15, 15, 0.5)';
+        } else {
+            ctx.fillStyle = selected
+                ? 'rgba(70, 130, 180, 0.85)'
+                : 'rgba(25, 28, 33, 0.95)';
+        }
+
         ctx.fillRect(
             centerX - buttonW / 2,
             y,
@@ -93,9 +99,14 @@ export function drawMainMenu(ctx, innerWidth, innerHeight) {
             buttonH
         );
 
-        ctx.strokeStyle = selected
-            ? '#9fd9ff'
-            : '#58616a';
+        if (btn.disabled) {
+            ctx.strokeStyle = 'rgba(40, 40, 40, 0.5)';
+        } else {
+            ctx.strokeStyle = selected
+                ? '#9fd9ff'
+                : '#58616a';
+        }
+
         ctx.lineWidth = selected ? 2.5 : 1;
         ctx.strokeRect(
             centerX - buttonW / 2,
@@ -104,9 +115,9 @@ export function drawMainMenu(ctx, innerWidth, innerHeight) {
             buttonH
         );
 
-        ctx.fillStyle = '#ffffff';
+        ctx.fillStyle = btn.disabled ? '#444' : '#ffffff';
         ctx.font = 'bold 17px sans-serif';
-        ctx.fillText(label, centerX, y + 33);
+        ctx.fillText(btn.label, centerX, y + 33);
     });
 
     ctx.fillStyle = '#777f87';
@@ -286,7 +297,7 @@ export function drawServerBrowser(ctx, innerWidth, innerHeight) {
     ctx.textAlign = 'left';
 }
 
-export function drawHUD(ctx, innerWidth, innerHeight) {
+export function drawHUD(ctx, innerWidth, innerHeight, playerX, playerY) {
     const { player, quest, multiplayer, currentWorld, ui } = gameState;
 
     const isDungeon = currentWorld === 'dungeon';
@@ -332,21 +343,140 @@ export function drawHUD(ctx, innerWidth, innerHeight) {
     ctx.fillText(`Weapon: ${player.steelSword ? 'Steel' : (player.swordPickedUp ? 'Old' : 'None')}`, padding + 130, padding + 70);
 
     // ==========================================
-    // 2. TOP-LEFT: QUEST PANEL (Separate)
+    // 2. TOP-LEFT: QUEST PANEL + COMPASS
     // ==========================================
     const questX = padding;
     const questY = padding + statusH + 8;
     const questW = 300;
+    const compassRadius = 26;
+    const compassPadding = 10;
+    const textMaxWidth = questW - (compassRadius * 2 + compassPadding * 3);
 
     ctx.save();
     ctx.font = 'bold 13px sans-serif';
     const questText = 'Quest: ' + (QUEST_TEXT[quest.state] || quest.state);
-    const qHeight = drawTextWrapped(ctx, questText, 0, 0, questW - 24, 16, 'left', true) + 20;
+
+    // Measure text height to adjust panel height if needed
+    const textHeight = drawTextWrapped(ctx, questText, 0, 0, textMaxWidth, 16, 'left', true);
+    const qHeight = Math.max(compassRadius * 2 + 20, textHeight + 20);
 
     ctx.fillStyle = 'rgba(0,0,0,.72)';
     ctx.fillRect(questX, questY, questW, qHeight);
+
     ctx.fillStyle = '#fff';
-    drawTextWrapped(ctx, questText, questX + 12, questY + 16, questW - 24, 16);
+    drawTextWrapped(ctx, questText, questX + 12, questY + 16, textMaxWidth, 16);
+
+    // COMPASS CENTER
+    const cx = questX + questW - compassRadius - compassPadding;
+    const cy = questY + qHeight / 2;
+
+    // Dial background
+    ctx.beginPath();
+    ctx.arc(cx, cy, compassRadius, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // Labels N S E W
+    ctx.font = 'bold 8px monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+    ctx.fillText('N', cx, cy - compassRadius + 5);
+    ctx.fillText('S', cx, cy + compassRadius - 5);
+    ctx.fillText('E', cx + compassRadius - 5, cy);
+    ctx.fillText('W', cx - compassRadius + 5, cy);
+
+    // 1. DIRECTION NEEDLE (Bold Black - North)
+    ctx.save();
+    ctx.translate(cx, cy);
+    // In our top-down coordinate system, North is -Y (0 radians is East, -PI/2 is North)
+    // For the UI compass, we treat UP as North.
+    ctx.beginPath();
+    ctx.moveTo(0, -compassRadius + 8); // Tip
+    ctx.lineTo(4, 0); // Base right
+    ctx.lineTo(-4, 0); // Base left
+    ctx.closePath();
+    ctx.fillStyle = '#000';
+    ctx.fill();
+    ctx.restore();
+
+    // 2. QUEST NEEDLE (Thin Golden)
+    const stage = getQuestStage();
+    if (stage && stage.targetX != null) {
+        let tx = stage.targetX;
+        let ty = stage.targetY;
+        let targetWorld = stage.world;
+
+        // Prioritize closest uncollected diamond in the dungeon
+        if (currentWorld === 'dungeon' && player.dungeonDiamonds < 2) {
+            const dState = getDungeonState();
+            const diamonds = [
+                { id: 1, x: 22, y: 81 },
+                { id: 2, x: 104, y: 69 }
+            ];
+
+            let closest = null;
+            let minDist = Infinity;
+
+            for (const d of diamonds) {
+                const item = dState.doors['diamond' + d.id];
+                if (item && !item.collected) {
+                    const distToD = Math.hypot(playerX - d.x, playerY - d.y);
+                    if (distToD < minDist) {
+                        minDist = distToD;
+                        closest = d;
+                    }
+                }
+            }
+
+            if (closest) {
+                tx = closest.x;
+                ty = closest.y;
+                targetWorld = 'dungeon';
+            }
+        }
+
+        // Cross-world logic: point to transitions
+        if (targetWorld !== currentWorld) {
+            if (currentWorld === 'overworld') {
+                // Point to cave entrance
+                tx = 67; ty = 49;
+            } else {
+                // Point to dungeon exit (level 1 entrance at 61, 116)
+                tx = 61; ty = 116;
+            }
+        }
+
+        const angle = Math.atan2(ty - playerY, tx - playerX);
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(angle + Math.PI/2); // Align arrow tip with target direction
+
+        // Needle Shadow
+        ctx.shadowColor = 'rgba(0,0,0,0.5)';
+        ctx.shadowBlur = 2;
+
+        ctx.beginPath();
+        ctx.moveTo(0, -compassRadius + 6); // Sharper tip
+        ctx.lineTo(2, 0);
+        ctx.lineTo(-2, 0);
+        ctx.closePath();
+        ctx.fillStyle = '#ffd700'; // GOLD
+        ctx.fill();
+
+        // Center Pin
+        ctx.beginPath();
+        ctx.arc(0, 0, 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+
+        ctx.restore();
+    }
+
     ctx.restore();
 
     // ==========================================
@@ -421,7 +551,7 @@ export function drawHUD(ctx, innerWidth, innerHeight) {
     // ==========================================
     // 5. TOUCH JOYSTICK OVERLAY
     // ==========================================
-    if (gameState.touch.active) {
+    if (gameState.touch.active && !ui.paused) {
         const { startX, startY, currentX, currentY } = gameState.touch;
 
         ctx.beginPath();
@@ -437,7 +567,30 @@ export function drawHUD(ctx, innerWidth, innerHeight) {
     }
 
     // ==========================================
-    // 6. TOP-RIGHT: MULTIPLAYER
+    // 6. PAUSE BUTTON (Mobile)
+    // ==========================================
+    if (gameState.touch.active || true) {
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.fillRect(innerWidth - 50, 10, 40, 40);
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(innerWidth - 50, 10, 40, 40);
+
+        ctx.fillStyle = '#fff';
+        if (ui.paused) {
+             ctx.beginPath();
+             ctx.moveTo(innerWidth - 38, 20);
+             ctx.lineTo(innerWidth - 38, 40);
+             ctx.lineTo(innerWidth - 20, 30);
+             ctx.fill();
+        } else {
+            ctx.fillRect(innerWidth - 38, 22, 6, 16);
+            ctx.fillRect(innerWidth - 28, 22, 6, 16);
+        }
+    }
+
+    // ==========================================
+    // 7. TOP-RIGHT: MULTIPLAYER
     // ==========================================
     if (multiplayer.roomId) {
         const rightBoxW = 260;
@@ -649,6 +802,47 @@ export function drawDeathScreen(ctx, innerWidth, innerHeight) {
     ctx.fillStyle = '#886666';
     ctx.font = '14px sans-serif';
     drawTextWrapped(ctx, 'Continue to respawn at a safe location.', centerX, startY + (buttonH + gap) * 2 + 30, innerWidth - 40, 18, 'center');
+
+    ctx.textAlign = 'left';
+}
+
+export function drawPauseMenu(ctx, innerWidth, innerHeight) {
+    const { ui } = gameState;
+    const centerX = innerWidth / 2;
+    const centerY = innerHeight / 2;
+    const selection = Number.isInteger(ui.menuSelection) ? ui.menuSelection : 0;
+
+    // Dark overlay
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+    ctx.fillRect(0, 0, innerWidth, innerHeight);
+
+    // Title
+    ctx.fillStyle = '#e8d9a3';
+    ctx.font = 'bold 64px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('PAUSED', centerX, centerY - 100);
+
+    const buttons = ['RESUME', 'QUIT TO MENU'];
+    const buttonW = 320;
+    const buttonH = 60;
+    const gap = 20;
+    const startY = centerY + 10;
+
+    buttons.forEach((label, index) => {
+        const y = startY + index * (buttonH + gap);
+        const selected = selection === index;
+
+        ctx.fillStyle = selected ? 'rgba(70, 130, 180, 0.9)' : 'rgba(25, 28, 33, 0.95)';
+        ctx.fillRect(centerX - buttonW / 2, y, buttonW, buttonH);
+
+        ctx.strokeStyle = selected ? '#9fd9ff' : '#58616a';
+        ctx.lineWidth = selected ? 3 : 1;
+        ctx.strokeRect(centerX - buttonW / 2, y, buttonW, buttonH);
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 22px sans-serif';
+        ctx.fillText(label, centerX, y + 38);
+    });
 
     ctx.textAlign = 'left';
 }

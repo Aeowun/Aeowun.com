@@ -96,7 +96,8 @@ export function createGameState() {
             transitioning: false,
             transitionPhase: 0,
             transitionTimer: 0,
-            menuSelection: 0
+            menuSelection: 0,
+            paused: false
         },
 
         otherPlayers: {},

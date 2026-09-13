@@ -23,7 +23,7 @@ export const NPC_DIALOGUE = {
     },
     "Sign": {
         "65,49": "DUNGEON ENTRANCE ->\nCAUTION: ENTER AT YOUR OWN RISK",
-        "75,75": "VILLAGE CENTER\n<- STORE | ELDER ->",
+        "82,77": "VILLAGE CENTER\n STORE -> NORTH | ELDERS HUT -> West ->",
         "default": "A wooden sign with weathered text."
     }
 };

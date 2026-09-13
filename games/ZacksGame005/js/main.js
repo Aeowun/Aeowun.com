@@ -29,7 +29,7 @@ import {
     joinWorld,
     refreshRooms
 } from './systems/multiplayer.js';
-import { getDungeonState, getLevelSpawn } from './systems/dungeon.js';
+import { getDungeonState, getLevelSpawn, resetDungeon, loadDungeonLevel } from './systems/dungeon.js';
 import { updateFeedback } from './systems/feedback.js';
 
 const canvas = document.getElementById('map');
@@ -52,7 +52,26 @@ async function handleMenuSelect() {
     const screen = gameState.ui.currentScreen;
     const selection = gameState.ui.menuSelection ?? 0;
 
+    if (screen === 'game') {
+        if (gameState.ui.paused) {
+            // RESUME
+            if (selection === 0) {
+                gameState.ui.paused = false;
+                return;
+            }
+            // QUIT TO MENU
+            if (selection === 1) {
+                gameState.ui.paused = false;
+                gameState.ui.currentScreen = 'main_menu';
+                gameState.ui.menuSelection = 0;
+                return;
+            }
+        }
+    }
+
     if (screen === 'main_menu') {
+        // Skip disabled button (Multiplayer)
+        if (selection === 2) return;
 
         // =========================
         // NEW GAME
@@ -170,8 +189,11 @@ async function handleMenuSelect() {
             gameState.player.hp = gameState.player.maxHP;
 
             if (gameState.currentWorld === 'dungeon') {
-                const dungeon = getDungeonState();
-                const spawn = getLevelSpawn(dungeon.level);
+                // Reset the dungeon state and rebuild the map on death
+                resetDungeon();
+                loadDungeonLevel();
+
+                const spawn = getLevelSpawn(1); // Respawn at the entrance
                 gameState.player.x = spawn.x;
                 gameState.player.y = spawn.y;
             } else {
@@ -269,7 +291,7 @@ function gameLoop(now) {
     const inGame =
         gameState.ui.currentScreen === 'game';
 
-    if (inGame) {
+    if (inGame && !gameState.ui.paused) {
         updateMovement(dt);
         updateCombat(dt);
 
@@ -294,9 +316,11 @@ function gameLoop(now) {
             dt;
     }
 
-    updateMultiplayer(dt);
-    updateStorageNotification(dt);
-    updateFeedback(dt);
+    if (!gameState.ui.paused) {
+        updateMultiplayer(dt);
+        updateStorageNotification(dt);
+        updateFeedback(dt);
+    }
 
     draw(
         ctx,

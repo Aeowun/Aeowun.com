@@ -18,9 +18,9 @@ export function setupKeyboard(
         if (screen === 'main_menu') {
             if (!event.repeat) {
                 if (key === 'arrowup' || key === 'w') {
-                    moveMenuSelection(-1, 3);
+                    moveMenuSelection(-1, 3, [2]);
                 } else if (key === 'arrowdown' || key === 's') {
-                    moveMenuSelection(1, 3);
+                    moveMenuSelection(1, 3, [2]);
                 } else if (key === 'enter') {
                     onMenuSelect?.();
                 }
@@ -79,6 +79,26 @@ export function setupKeyboard(
         // Gameplay
         // -----------------------------
         if (screen === 'game') {
+            if ((key === 'p' || key === 'escape') && !event.repeat) {
+                gameState.ui.paused = !gameState.ui.paused;
+                event.preventDefault();
+                return;
+            }
+
+            if (gameState.ui.paused) {
+                if (!event.repeat) {
+                    if (key === 'arrowup' || key === 'w') {
+                        moveMenuSelection(-1, 2); // Resume, Quit
+                    } else if (key === 'arrowdown' || key === 's') {
+                        moveMenuSelection(1, 2);
+                    } else if (key === 'enter') {
+                        onMenuSelect?.();
+                    }
+                }
+                event.preventDefault();
+                return;
+            }
+
             if (key === 'e' && !event.repeat) {
                 onInteract();
             }
@@ -110,14 +130,15 @@ export function setupKeyboard(
     });
 }
 
-function moveMenuSelection(direction, itemCount) {
+function moveMenuSelection(direction, itemCount, disabledIndices = []) {
     if (!Number.isInteger(gameState.ui.menuSelection)) {
         gameState.ui.menuSelection = 0;
     }
 
-    gameState.ui.menuSelection =
-        (gameState.ui.menuSelection +
-            direction +
-            itemCount) %
-        itemCount;
+    let next = gameState.ui.menuSelection;
+    do {
+        next = (next + direction + itemCount) % itemCount;
+    } while (disabledIndices.includes(next));
+
+    gameState.ui.menuSelection = next;
 }

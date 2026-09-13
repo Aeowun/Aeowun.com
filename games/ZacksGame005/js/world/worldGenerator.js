@@ -102,7 +102,7 @@ export function generateWorld() {
     setTile(65, 49, TILE_TYPES.Sign);
 
     // Sign in village center
-    setTile(75, 75, TILE_TYPES.Sign);
+    setTile(82 ,77 , TILE_TYPES.Sign);
 
     // Smart Chest Placements
     setTile(12, 10, TILE_TYPES.Chest); // Remote Forest Corner

@@ -112,7 +112,12 @@ export function updateCombat(dt) {
     player.attackTimer = Math.max(0, player.attackTimer - dt);
     player.attackCooldown = Math.max(0, player.attackCooldown - dt);
 
-    if (ui.dialogueOpen || ui.storeOpen) return;
+    if (ui.dialogueOpen || ui.storeOpen || ui.paused) return;
+
+    // Ensure dungeon state/boss activation is checked every frame
+    if (gameState.currentWorld === 'dungeon') {
+        getDungeonState();
+    }
 
     updateBoss(dt);
 
