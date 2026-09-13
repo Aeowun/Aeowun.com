@@ -1,0 +1,17 @@
+{
+  "name": "zacksgame005",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "room-registry": "node --env-file=.env server/crux-room-registry.mjs",
+    "dev:multiplayer": "node -e \"import('node:child_process').then(({spawn}) => { const a=spawn(process.platform==='win32'?'npm.cmd':'npm',['run','room-registry'],{stdio:'inherit'}); const b=spawn(process.platform==='win32'?'npm.cmd':'npm',['run','dev'],{stdio:'inherit'}); const stop=()=>{a.kill();b.kill();process.exit()}; process.on('SIGINT',stop); process.on('SIGTERM',stop); })\"",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5"
+  }
+}

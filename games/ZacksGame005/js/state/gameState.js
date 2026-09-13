@@ -1,0 +1,149 @@
+import { INITIAL_SEED } from '../config.js';
+
+export function createGameState() {
+    return {
+        seed: INITIAL_SEED,
+
+        player: {
+            x: 80.5,
+            y: 74.5,
+            radius: 9,
+            speed: 3.5,
+            dirX: 0,
+            dirY: 1,
+            facing: 'down',
+            hp: 5,
+            maxHP: 5,
+            animTime: 0,
+            moving: false,
+            attackTimer: 0,
+            attackCooldown: 0,
+            attackAngle: 0,
+            swordPickedUp: false,
+            steelSword: false,
+            coins: 0,
+            dungeonDiamonds: 0,
+            dungeonKeys: {}
+        },
+
+        currentWorld: 'overworld',
+
+        worlds: {
+            overworld: null,
+            dungeon: null
+        },
+
+        dungeonStartPending: false,
+
+        boss: null,
+
+        camera: {
+            x: 80.5,
+            y: 74.5
+        },
+
+        enemies: [
+            {
+                x: 65.5,
+                y: 62.5,
+                hp: 3,
+                maxHP: 3,
+                radius: 0.35,
+                speed: 1.35,
+                alive: true,
+                attackCooldown: 0,
+                animTime: 0,
+                hitFlash: 0,
+                spawnX: 65.5,
+                spawnY: 62.5,
+                targetX: 65.5,
+                targetY: 62.5,
+                wanderTimer: 0
+            }
+        ],
+
+        npcs: [
+            {
+                x: 78.5,
+                y: 79.5,
+                name: "Village Elder"
+            },
+            {
+                x: 89,
+                y: 70,
+                name: "Shopkeeper"
+            }
+        ],
+
+        sword: {
+            x: 82.2,
+            y: 74.5,
+            pickedUp: false
+        },
+
+        quest: {
+            state: "not_started",
+            rewardClaimed: false
+        },
+
+        ui: {
+            currentScreen: 'main_menu',
+            dialogueOpen: false,
+            activeNPC: null,
+            storeOpen: false,
+            storeMessage: "",
+            fadeAlpha: 0,
+            transitioning: false,
+            transitionPhase: 0,
+            transitionTimer: 0,
+            menuSelection: 0
+        },
+
+        otherPlayers: {},
+
+        multiplayer: {
+            id: null,
+            status: 'disconnected',
+            notification: '',
+            hostPeerId: null,
+            hostIdInput: '',
+            isHost: false,
+            roomId: null,
+            roomName: null,
+            availableRooms: []
+        },
+
+        storageNotification: {
+            text: '',
+            timer: 0
+        },
+
+        notifications: [],
+        billboards: [],
+
+        keys: {},
+        touch: {
+            active: false,
+            startX: 0,
+            startY: 0,
+            currentX: 0,
+            currentY: 0,
+            dx: 0,
+            dy: 0,
+            tapTime: 0,
+            isTap: false
+        }
+    };
+}
+
+export const gameState = createGameState();
+
+export function resetGameState() {
+    const freshState = createGameState();
+
+    for (const key of Object.keys(gameState)) {
+        delete gameState[key];
+    }
+
+    Object.assign(gameState, freshState);
+}

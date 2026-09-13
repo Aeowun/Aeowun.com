@@ -11,3 +11,22 @@ __pycache__/
 # Project Artifacts
 *.artifact.md
 walkthrough.artifact.md
+.artifacts/
+
+# Node
+node_modules/
+package-lock.json
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build
+dist/
+build/
