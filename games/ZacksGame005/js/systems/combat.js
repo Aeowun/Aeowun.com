@@ -5,6 +5,7 @@ import { playSFX } from './audio.js';
 import { broadcastImmediateAttack } from './multiplayer.js';
 import { damageBoss, getDungeonState } from './dungeon.js';
 import { addBillboard } from './feedback.js';
+import { updateQuestProgress } from './quests.js';
 
 export function startAttack() {
     const { player, ui, enemies, quest } = gameState;
@@ -21,21 +22,25 @@ export function startAttack() {
         console.error('Failed to broadcast attack:', e);
     }
 
+    const damage = player.steelSword ? 2 : 1;
+
     for (const enemy of enemies) {
         if (enemy.dungeonLevel != null && gameState.currentWorld !== 'dungeon') continue;
         if (enemy.dungeonLevel == null && gameState.currentWorld === 'dungeon') continue;
         if (!enemy.alive) continue;
 
         if (dist(player.x, player.y, enemy.x, enemy.y) < 2.4) {
-            enemy.hp -= 1;
+            enemy.hp -= damage;
             enemy.hitFlash = .18;
             playSFX('sfx_hit');
-            addBillboard("-1 Heart", enemy.x, enemy.y, "#ffaa00");
+            addBillboard(`-${damage} Heart`, enemy.x, enemy.y, "#ffaa00");
 
             if (enemy.hp <= 0) {
                 enemy.hp = 0;
                 enemy.alive = false;
-                if (quest.state === 'hunt' && enemy.dungeonLevel == null) quest.state = 'return';
+                if (enemy.dungeonLevel == null) {
+                    updateQuestProgress('KILL', { target: 'creature' });
+                }
             }
         }
     }
@@ -48,9 +53,9 @@ export function startAttack() {
 
         if (d < hitRange) {
             boss.hitFlash = .18;
-            damageBoss(1);
+            damageBoss(damage);
             playSFX('sfx_hit');
-            addBillboard("-1 Heart", boss.x, boss.y, "#ffcc55");
+            addBillboard(`-${damage} Heart`, boss.x, boss.y, "#ffcc55");
 
             if (state.boss.hp <= 0) {
                 boss.hp = 0;

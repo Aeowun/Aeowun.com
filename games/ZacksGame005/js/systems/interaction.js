@@ -150,25 +150,27 @@ export function interact() {
     const npc = getNearbyNPC();
     if (!npc || gameState.currentWorld !== 'overworld') return;
 
+    if (npc.name === 'Shopkeeper') {
+        toggleStore();
+        return;
+    }
+
+    // Handle Village Elder rewards before progressing quest state
+    if (npc.name === 'Village Elder') {
+        if (quest.state === 'return' && !quest.rewardClaimed) {
+            player.coins += 50;
+            // We don't set rewardClaimed here yet if we want to allow more rewards later,
+            // but for this specific step it's fine.
+            // Actually, return stage doesn't have a 'rewardClaimed' flag in quest state usually.
+        } else if (quest.state === 'dungeon_return' && !quest.rewardClaimed) {
+            player.coins += 100;
+            quest.rewardClaimed = true;
+        }
+    }
+
     updateQuestProgress('TALK', { npcName: npc.name });
 
     const dialogueData = NPC_DIALOGUE[npc.name];
-    if (dialogueData) {
-        const text = dialogueData[quest.state] || dialogueData.default;
-
-        if (npc.name === 'Village Elder') {
-            if (quest.state === 'return') {
-                quest.state = 'complete';
-                if (!quest.rewardClaimed) {
-                    player.coins += 50;
-                    quest.rewardClaimed = true;
-                }
-            } else if (quest.state === 'not_started') {
-                quest.state = player.swordPickedUp ? 'hunt' : 'sword';
-            }
-        }
-
-        ui.activeNPC = { name: npc.name, dialogue: text };
         ui.dialogueOpen = true;
         return;
     }

@@ -72,6 +72,15 @@ const QUEST_STAGES = [
     },
 
     {
+        id: 'dungeon_return',
+        type: 'talk',
+        npcName: 'Village Elder',
+        targetX: 78.5,
+        targetY: 79.5,
+        world: 'overworld'
+    },
+
+    {
         id: 'complete',
         type: 'complete'
     }
@@ -309,6 +318,19 @@ export function updateQuestProgress(
         stage.id === 'dungeon_boss'
     ) {
         if (eventData.target === 'boss') {
+            quest.state = 'dungeon_return';
+            return true;
+        }
+    }
+
+    /*
+     * TALK TO ELDER AFTER BOSS
+     */
+    if (
+        eventType === 'TALK' &&
+        stage.id === 'dungeon_return'
+    ) {
+        if (eventData.npcName === 'Village Elder') {
             quest.state = 'complete';
             return true;
         }

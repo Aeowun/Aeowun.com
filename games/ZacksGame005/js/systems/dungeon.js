@@ -1026,6 +1026,8 @@ function defeatBoss() {
         }
     );
 
+    setTile(60, 38, TILE_TYPES.Cave); // Visual exit hole
+
     setTile(63, 38, TILE_TYPES.Chest); // Reward chest 3 tiles away from fountain
 
     updateQuestProgress('KILL', { target: 'boss' });
