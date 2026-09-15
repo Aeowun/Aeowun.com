@@ -1,5 +1,6 @@
 import { W, H, TILE_TYPES, INITIAL_SEED } from '../config.js';
 import { map, inside, setTile, dist, fillRect } from './map.js';
+import { gameState } from '../state/gameState.js';
 
 let seed = INITIAL_SEED;
 
@@ -9,6 +10,29 @@ function random() {
     t = Math.imul(t ^ (t >>> 15), t | 1);
     t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+}
+
+function spawnOverworldEnemy(x, y, hp, type, speed) {
+    gameState.enemies.push({
+        x: x,
+        y: y,
+        hp: hp || 3,
+        maxHP: hp || 3,
+        radius: 0.35,
+        speed: speed || 1.35,
+        type: type || 'demon',
+        alive: true,
+        attackCooldown: 0,
+        animTime: 0,
+        hitFlash: 0,
+        attackMeter: 0,
+        spawnX: x,
+        spawnY: y,
+        targetX: x,
+        targetY: y,
+        wanderTimer: 0,
+        dungeonLevel: null // Overworld marker
+    });
 }
 
 function shape(x, y) {
@@ -176,6 +200,23 @@ export function generateWorld() {
     buildWatchtower(68, 97);
     buildFishingHut(68, 107);
     buildGraveyard(40, 79);
+
+    // Overworld Monster Spawning
+    // 1. Ghosts in the Hidden Graveyard
+    spawnOverworldEnemy(41, 80, 3, 'ghost', 1.1);
+    spawnOverworldEnemy(45, 82, 3, 'ghost', 1.1);
+    spawnOverworldEnemy(38, 83, 3, 'ghost', 1.1);
+
+    // 2. Bandits near the Bandit Camp
+    spawnOverworldEnemy(25, 75, 3, 'bandit', 1.4);
+    spawnOverworldEnemy(29, 78, 3, 'bandit', 1.4);
+    spawnOverworldEnemy(32, 74, 3, 'bandit', 1.4);
+
+    // 3. Wolves roaming the Whispering Woods & Remote Forest
+    spawnOverworldEnemy(20, 70, 3, 'wolf', 1.8);
+    spawnOverworldEnemy(22, 65, 3, 'wolf', 1.8);
+    spawnOverworldEnemy(15, 15, 3, 'wolf', 1.8);
+    spawnOverworldEnemy(10, 10, 3, 'wolf', 1.8);
 
     // Smart Chest Placements (Overriding some if needed, but keeping them for now)
     setTile(12, 10, TILE_TYPES.Chest); // Remote Forest Corner

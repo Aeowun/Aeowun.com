@@ -56,26 +56,7 @@ export function createGameState() {
             y: 74.5
         },
 
-        enemies: [
-            {
-                x: 65.5,
-                y: 62.5,
-                hp: 3,
-                maxHP: 3,
-                radius: 0.35,
-                speed: 1.35,
-                alive: true,
-                attackCooldown: 0,
-                animTime: 0,
-                hitFlash: 0,
-                attackMeter: 0,
-                spawnX: 65.5,
-                spawnY: 62.5,
-                targetX: 65.5,
-                targetY: 62.5,
-                wanderTimer: 0
-            }
-        ],
+        enemies: [],
 
         npcs: [
             {
