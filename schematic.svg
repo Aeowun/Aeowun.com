@@ -3,826 +3,1117 @@
      height="700"
      viewBox="0 0 1000 700">
 
-    <defs>
-        <!-- ============================================================
-             BACKGROUND
-        ============================================================ -->
-        <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#050508"/>
-            <stop offset="50%" stop-color="#090811"/>
-            <stop offset="100%" stop-color="#030305"/>
-        </linearGradient>
-
-        <radialGradient id="hubGlow" cx="50%" cy="50%" r="70%">
-            <stop offset="0%" stop-color="#9A6FC1" stop-opacity="0.26"/>
-            <stop offset="55%" stop-color="#6E4F91" stop-opacity="0.08"/>
-            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-        </radialGradient>
-
-        <linearGradient id="violetLine" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#9A6FC1" stop-opacity="0"/>
-            <stop offset="20%" stop-color="#9A6FC1" stop-opacity="0.8"/>
-            <stop offset="80%" stop-color="#9A6FC1" stop-opacity="0.8"/>
-            <stop offset="100%" stop-color="#9A6FC1" stop-opacity="0"/>
-        </linearGradient>
-
-        <linearGradient id="cyanLine" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#00D2F1" stop-opacity="0"/>
-            <stop offset="25%" stop-color="#00D2F1" stop-opacity="0.8"/>
-            <stop offset="75%" stop-color="#00D2F1" stop-opacity="0.8"/>
-            <stop offset="100%" stop-color="#00D2F1" stop-opacity="0"/>
-        </linearGradient>
-
-        <linearGradient id="amberLine" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#FFD000" stop-opacity="0"/>
-            <stop offset="25%" stop-color="#FFD000" stop-opacity="0.85"/>
-            <stop offset="75%" stop-color="#FFD000" stop-opacity="0.85"/>
-            <stop offset="100%" stop-color="#FFD000" stop-opacity="0"/>
-        </linearGradient>
-
-        <!-- ============================================================
-             GLOWS / FX
-        ============================================================ -->
-        <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="5" result="blur"/>
-            <feMerge>
-                <feMergeNode in="blur"/>
-                <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-        </filter>
-
-        <filter id="tinyGlow" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="1.5" result="blur"/>
-            <feMerge>
-                <feMergeNode in="blur"/>
-                <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-        </filter>
-
-        <!-- ============================================================
-             PATTERNS
-        ============================================================ -->
-        <pattern id="fineGrid"
-                 width="24"
-                 height="24"
-                 patternUnits="userSpaceOnUse">
-            <path d="M 24 0 L 0 0 0 24"
-                  fill="none"
-                  stroke="#8B7AA8"
-                  stroke-opacity="0.055"
-                  stroke-width="1"/>
-        </pattern>
-
-        <pattern id="microGrid"
-                 width="8"
-                 height="8"
-                 patternUnits="userSpaceOnUse">
-            <path d="M 8 0 L 0 0 0 8"
-                  fill="none"
-                  stroke="#FFFFFF"
-                  stroke-opacity="0.018"
-                  stroke-width="1"/>
-        </pattern>
-    </defs>
-
-    <!-- ================================================================
-         ROOT
-    ================================================================= -->
-    <rect width="1000" height="700" fill="url(#bgGradient)"/>
-    <rect width="1000" height="700" fill="url(#fineGrid)"/>
-    <rect width="1000" height="700" fill="url(#microGrid)"/>
-
-    <!-- ================================================================
-         GLOBAL FRAME
-    ================================================================= -->
-    <rect x="18" y="18"
-          width="964" height="664"
-          rx="8"
-          fill="none"
-          stroke="#24212D"
-          stroke-width="1.5"/>
-
-    <!-- Corner registration marks -->
-    <g stroke="#5D536F" stroke-width="1" opacity="0.6">
-        <path d="M18 42 V18 H42"/>
-        <path d="M958 18 H982 V42"/>
-        <path d="M18 658 V682 H42"/>
-        <path d="M958 682 H982 V658"/>
-    </g>
-
-    <!-- ================================================================
-         TOP HEADER
-    ================================================================= -->
-    <g transform="translate(38, 34)">
-
-        <text x="0" y="15"
-              fill="#8E80A7"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="10"
-              letter-spacing="2.5">
-            AEOWUN // SYSTEM SCHEMATIC
-        </text>
-
-        <text x="0" y="48"
-              fill="#F0EBF7"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="28"
-              font-weight="700"
-              letter-spacing="3"
-              filter="url(#tinyGlow)">
-            CONTROLLED COMPUTING
-        </text>
-
-        <text x="0" y="69"
-              fill="#756B83"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="10"
-              letter-spacing="1.2">
-            LOCAL-FIRST SYSTEMS // TOOLS // DEVELOPMENT // VERIFICATION
-        </text>
-
-        <!-- Header status -->
-        <g transform="translate(690, 0)">
-            <rect x="0" y="0"
-                  width="234"
-                  height="72"
-                  rx="5"
-                  fill="#090910"
-                  stroke="#292532"/>
-
-            <text x="14" y="18"
-                  fill="#6F657B"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8"
-                  letter-spacing="1.5">
-                SYSTEM STATUS
-            </text>
-
-            <circle cx="17" cy="39" r="4"
-                    fill="#00FF66"
-                    filter="url(#tinyGlow)">
-                <animate attributeName="opacity"
-                         values="0.35;1;0.35"
-                         dur="2.8s"
-                         repeatCount="indefinite"/>
-            </circle>
-
-            <text x="29" y="43"
-                  fill="#DAD3E4"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="10">
-                ACTIVE DEVELOPMENT
-            </text>
-
-            <text x="14" y="60"
-                  fill="#554D60"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8">
-                AUTH: Z_JOUBERT
-            </text>
-
-            <text x="224" y="60"
-                  text-anchor="end"
-                  fill="#554D60"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8">
-                LOCAL // OPEN
-            </text>
-        </g>
-    </g>
-
-    <line x1="38" y1="122"
-          x2="962" y2="122"
-          stroke="url(#violetLine)"
-          stroke-width="1"/>
-
-    <!-- ================================================================
-         LEFT IDENTITY PANEL
-    ================================================================= -->
-    <g transform="translate(38, 145)">
-
-        <rect x="0" y="0"
-              width="270"
-              height="182"
-              rx="6"
-              fill="#08080D"
-              stroke="#2B2635"/>
-
-        <rect x="0" y="0"
-              width="270"
-              height="30"
-              rx="6"
-              fill="#0E0C14"
-              stroke="#2B2635"/>
-
-        <rect x="0" y="24"
-              width="270"
-              height="6"
-              fill="#0E0C14"/>
-
-        <text x="14" y="20"
-              fill="#8E80A7"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="9"
-              letter-spacing="1.5">
-            WHOAMI / IDENTITY
-        </text>
-
-        <circle cx="10" cy="10" r="1.5" fill="#423B4D"/>
-        <circle cx="260" cy="10" r="1.5" fill="#423B4D"/>
-
-        <text x="18" y="60"
-              fill="#F0EBF7"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="17"
-              font-weight="700">
-            ZACKARY JOUBERT
-        </text>
-
-        <text x="18" y="82"
-              fill="#9A6FC1"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="9"
-              letter-spacing="1">
-            SYSTEMS MECHANIC
-        </text>
-
-        <line x1="18" y1="97"
-              x2="252" y2="97"
-              stroke="#292432"/>
-
-        <text x="18" y="119"
-              fill="#B1A8BB"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="10">
-            BUILD → TEST → VERIFY
-        </text>
-
-        <text x="18" y="139"
-              fill="#72687D"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="9">
-            SOFTWARE FROM REAL
-        </text>
-
-        <text x="18" y="154"
-              fill="#72687D"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="9">
-            SYSTEMS PROBLEMS.
-        </text>
-
-        <text x="18" y="170"
-              fill="#554D60"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="8">
-            [WRENCH_STATUS: ENGAGED]
-        </text>
-    </g>
-
-    <!-- ================================================================
-         DIAGNOSTIC FEED
-    ================================================================= -->
-    <g transform="translate(328, 145)">
-
-        <rect x="0" y="0"
-              width="634"
-              height="182"
-              rx="6"
-              fill="#08080D"
-              stroke="#2B2635"/>
-
-        <rect x="0" y="0"
-              width="634"
-              height="30"
-              rx="6"
-              fill="#0E0C14"/>
-
-        <rect x="0" y="24"
-              width="634"
-              height="6"
-              fill="#0E0C14"/>
-
-        <text x="14" y="20"
-              fill="#8E80A7"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="9"
-              letter-spacing="1.5">
-            DIAGNOSTIC_FEED.log
-        </text>
-
-        <text x="620" y="20"
-              text-anchor="end"
-              fill="#4F4758"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="8">
-            STREAM // LIVE
-        </text>
-
-        <!-- signal graph -->
-        <g transform="translate(18, 48)">
-            <rect x="0" y="0"
-                  width="598"
-                  height="90"
-                  rx="4"
-                  fill="#050509"
-                  stroke="#17141C"/>
-
-            <!-- graph guides -->
-            <g stroke="#2B2635"
-               stroke-width="1"
-               opacity="0.7">
-                <line x1="0" y1="22" x2="598" y2="22"/>
-                <line x1="0" y1="45" x2="598" y2="45"/>
-                <line x1="0" y1="68" x2="598" y2="68"/>
-                <line x1="120" y1="0" x2="120" y2="90"/>
-                <line x1="240" y1="0" x2="240" y2="90"/>
-                <line x1="360" y1="0" x2="360" y2="90"/>
-                <line x1="480" y1="0" x2="480" y2="90"/>
-            </g>
-
-            <!-- main causal path -->
-            <path d="M10 66
-                     C55 66, 65 34, 105 34
-                     S160 69, 205 57
-                     S270 21, 310 28
-                     S365 73, 410 58
-                     S480 26, 535 34
-                     S560 62, 588 48"
-                  fill="none"
-                  stroke="#9A6FC1"
-                  stroke-width="2"
-                  opacity="0.8"
-                  filter="url(#tinyGlow)"/>
-
-            <!-- moving probe -->
-            <circle r="3.5"
-                    fill="#FFD000"
-                    filter="url(#softGlow)">
-                <animateMotion dur="6s"
-                               repeatCount="indefinite"
-                               path="M10 66
-                                    C55 66, 65 34, 105 34
-                                    S160 69, 205 57
-                                    S270 21, 310 28
-                                    S365 73, 410 58
-                                    S480 26, 535 34
-                                    S560 62, 588 48"/>
-            </circle>
-
-            <!-- event pulse -->
-            <circle cx="310" cy="28"
-                    r="4"
-                    fill="none"
-                    stroke="#00D2F1"
-                    stroke-width="1.5">
-                <animate attributeName="r"
-                         values="4;12;4"
-                         dur="2.4s"
-                         repeatCount="indefinite"/>
-                <animate attributeName="opacity"
-                         values="0.8;0;0.8"
-                         dur="2.4s"
-                         repeatCount="indefinite"/>
-            </circle>
-        </g>
-
-        <g transform="translate(18, 152)">
-            <text x="0" y="0"
-                  fill="#4D4656"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8">
-                [AEOWUN]
-            </text>
-
-            <text x="63" y="0"
-                  fill="#00D2F1"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8">
-                VERIFY_SOURCE
-            </text>
-
-            <text x="180" y="0"
-                  fill="#FFD000"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8">
-                CHECK_STATE
-            </text>
-
-            <text x="289" y="0"
-                  fill="#9A6FC1"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8">
-                ENFORCE_BOUNDARY
-            </text>
-
-            <text x="446" y="0"
-                  fill="#00FF66"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8">
-                OUTPUT_TRUST
-            </text>
-
-            <circle cx="590" cy="-3"
-                    r="3"
-                    fill="#00FF66"
-                    filter="url(#tinyGlow)"/>
-        </g>
-    </g>
-
-    <!-- ================================================================
-         SYSTEM MAP
-    ================================================================= -->
-    <g transform="translate(38, 350)">
-
-        <text x="0" y="0"
-              fill="#71677D"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="9"
-              letter-spacing="2">
-            SYSTEM MAP
-        </text>
-
-        <line x1="110" y1="-4"
-              x2="924" y2="-4"
-              stroke="#201C27"
-              stroke-width="1"/>
-
-        <!-- central spine -->
-        <line x1="462" y1="20"
-              x2="462" y2="205"
-              stroke="#9A6FC1"
-              stroke-opacity="0.18"
-              stroke-width="1"/>
-
-        <!-- central hub -->
-        <g transform="translate(332, 30)">
-            <ellipse cx="130" cy="88"
-                     rx="130"
-                     ry="88"
-                     fill="url(#hubGlow)"/>
-
-            <rect x="0" y="28"
-                  width="260"
-                  height="118"
-                  rx="8"
-                  fill="#09080E"
-                  stroke="#493957"
-                  stroke-width="1.5"/>
-
-            <rect x="0" y="28"
-                  width="260"
-                  height="3"
-                  fill="#9A6FC1"
-                  opacity="0.8"/>
-
-            <text x="130" y="72"
-                  text-anchor="middle"
-                  fill="#F2ECF8"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="24"
-                  font-weight="700"
-                  letter-spacing="4"
-                  filter="url(#tinyGlow)">
-                AEOWUN
-            </text>
-
-            <text x="130" y="94"
-                  text-anchor="middle"
-                  fill="#8C8199"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="9"
-                  letter-spacing="2">
-                CONTROL LAYER
-            </text>
-
-            <line x1="38" y1="106"
-                  x2="222" y2="106"
-                  stroke="#292433"/>
-
-            <text x="130" y="125"
-                  text-anchor="middle"
-                  fill="#A89DB3"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="9">
-                LOCAL // EXPLICIT // VERIFIED
-            </text>
-        </g>
-
-        <!-- connectors -->
-        <g fill="none" stroke-width="1.2">
-            <path d="M332 89 H284 V57 H208"
-                  stroke="#9A6FC1"
-                  stroke-opacity="0.7"/>
-
-            <path d="M332 117 H250 V140 H208"
-                  stroke="#00D2F1"
-                  stroke-opacity="0.7"/>
-
-            <path d="M592 89 H640 V57 H716"
-                  stroke="#FFD000"
-                  stroke-opacity="0.7"/>
-
-            <path d="M592 117 H674 V140 H716"
-                  stroke="#FF4B54"
-                  stroke-opacity="0.7"/>
-
-            <path d="M462 176 V212"
-                  stroke="#00FF66"
-                  stroke-opacity="0.55"/>
-        </g>
-
-        <!-- left nodes -->
-        <g transform="translate(0, 28)">
-            <rect x="0" y="0"
-                  width="208"
-                  height="58"
-                  rx="6"
-                  fill="#08080D"
-                  stroke="#30283A"/>
-
-            <rect x="0" y="0"
-                  width="4"
-                  height="58"
-                  rx="2"
-                  fill="#9A6FC1"/>
-
-            <text x="18" y="23"
-                  fill="#E8E1EF"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="12"
-                  font-weight="700">
-                AEOWUN IDE
-            </text>
-
-            <text x="18" y="42"
-                  fill="#655D6D"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8">
-                DEVELOPMENT SHELL
-            </text>
-
-            <circle cx="190" cy="20"
-                    r="3"
-                    fill="#9A6FC1"
-                    filter="url(#tinyGlow)"/>
-        </g>
-
-        <g transform="translate(0, 112)">
-            <rect x="0" y="0"
-                  width="208"
-                  height="58"
-                  rx="6"
-                  fill="#08080D"
-                  stroke="#24323A"/>
-
-            <rect x="0" y="0"
-                  width="4"
-                  height="58"
-                  rx="2"
-                  fill="#00D2F1"/>
-
-            <text x="18" y="23"
-                  fill="#E8E1EF"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="12"
-                  font-weight="700">
-                FRIDGE
-            </text>
-
-            <text x="18" y="42"
-                  fill="#655D6D"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8">
-                MOBILE / DATA SYSTEM
-            </text>
-
-            <circle cx="190" cy="20"
-                    r="3"
-                    fill="#00D2F1"
-                    filter="url(#tinyGlow)"/>
-        </g>
-
-        <!-- right nodes -->
-        <g transform="translate(716, 28)">
-            <rect x="0" y="0"
-                  width="208"
-                  height="58"
-                  rx="6"
-                  fill="#08080D"
-                  stroke="#3A3425"/>
-
-            <rect x="0" y="0"
-                  width="4"
-                  height="58"
-                  rx="2"
-                  fill="#FFD000"/>
-
-            <text x="18" y="23"
-                  fill="#E8E1EF"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="12"
-                  font-weight="700">
-                DROP
-            </text>
-
-            <text x="18" y="42"
-                  fill="#655D6D"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8">
-                FILE / VAULT ENGINE
-            </text>
-
-            <circle cx="190" cy="20"
-                    r="3"
-                    fill="#FFD000"
-                    filter="url(#tinyGlow)"/>
-        </g>
-
-        <g transform="translate(716, 112)">
-            <rect x="0" y="0"
-                  width="208"
-                  height="58"
-                  rx="6"
-                  fill="#08080D"
-                  stroke="#3A272A"/>
-
-            <rect x="0" y="0"
-                  width="4"
-                  height="58"
-                  rx="2"
-                  fill="#FF4B54"/>
-
-            <text x="18" y="23"
-                  fill="#E8E1EF"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="12"
-                  font-weight="700">
-                AXEIS
-            </text>
-
-            <text x="18" y="42"
-                  fill="#655D6D"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8">
-                ADVERSARIAL TESTING
-            </text>
-
-            <circle cx="190" cy="20"
-                    r="3"
-                    fill="#FF4B54"
-                    filter="url(#tinyGlow)"/>
-        </g>
-
-        <!-- tiny central event -->
-        <g transform="translate(432, 220)">
-            <circle cx="30" cy="0" r="2.5"
-                    fill="#00FF66"
-                    filter="url(#tinyGlow)">
-                <animate attributeName="r"
-                         values="2.5;5;2.5"
-                         dur="2s"
-                         repeatCount="indefinite"/>
-            </circle>
-
-            <text x="42" y="4"
-                  fill="#4F4858"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8"
-                  letter-spacing="1">
-                TRUST PATH
-            </text>
-        </g>
-    </g>
-
-    <!-- ================================================================
-         BOTTOM VERIFICATION PANEL
-    ================================================================= -->
-    <g transform="translate(38, 590)">
-
-        <rect x="0" y="0"
-              width="924"
-              height="64"
-              rx="6"
-              fill="#08080D"
-              stroke="#2A2632"/>
-
-        <!-- left label -->
-        <text x="16" y="22"
-              fill="#8E80A7"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="9"
-              letter-spacing="1.5">
-            VERIFICATION
-        </text>
-
-        <text x="16" y="42"
-              fill="#57505F"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="8">
-            EVIDENCE OVER CLAIMS
-        </text>
-
-        <!-- signal -->
-        <g transform="translate(210, 16)">
-            <line x1="0" y1="16"
-                  x2="390" y2="16"
-                  stroke="#2E2935"
-                  stroke-width="1"/>
-
-            <path d="M0 16
-                     H72
-                     L84 4
-                     L96 28
-                     L108 16
-                     H184
-                     L196 8
-                     L208 24
-                     L220 16
-                     H292
-                     L304 11
-                     L316 21
-                     L328 16
-                     H390"
-                  fill="none"
-                  stroke="#9A6FC1"
-                  stroke-width="1.5"/>
-
-            <circle cy="16"
-                    r="3"
-                    fill="#FFD000"
-                    filter="url(#tinyGlow)">
-                <animate attributeName="cx"
-                         values="0;390"
-                         dur="5s"
-                         repeatCount="indefinite"/>
-            </circle>
-        </g>
-
-        <!-- verification states -->
-        <g transform="translate(622, 11)">
-
-            <circle cx="10" cy="10"
-                    r="4"
-                    fill="#00FF66"
-                    filter="url(#tinyGlow)"/>
-            <text x="22" y="14"
-                  fill="#AFA6B8"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8">
-                SOURCE
-            </text>
-
-            <circle cx="116" cy="10"
-                    r="4"
-                    fill="#00FF66"
-                    filter="url(#tinyGlow)"/>
-            <text x="128" y="14"
-                  fill="#AFA6B8"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8">
-                EXECUTION
-            </text>
-
-            <circle cx="235" cy="10"
-                    r="4"
-                    fill="#00FF66"
-                    filter="url(#tinyGlow)"/>
-            <text x="247" y="14"
-                  fill="#AFA6B8"
-                  font-family="Fira Code, Courier New, monospace"
-                  font-size="8">
-                RESULT
-            </text>
-        </g>
-
-        <text x="622" y="45"
-              fill="#00FF66"
-              font-family="Fira Code, Courier New, monospace"
-              font-size="9"
-              letter-spacing="1">
-            VERIFIED // LOCAL // CONTROLLED
-        </text>
-    </g>
-
-    <!-- ================================================================
-         FOOTER
-    ================================================================= -->
-    <text x="38" y="675"
-          fill="#4B4552"
+  <defs>
+
+    <!-- ============================================================
+         PALETTE / BACKGROUND
+    ============================================================ -->
+
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#070707"/>
+      <stop offset="55%"  stop-color="#0B0A09"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+
+    <radialGradient id="viewportGlow" cx="50%" cy="52%" r="65%">
+      <stop offset="0%"   stop-color="#D96B2B" stop-opacity="0.08"/>
+      <stop offset="55%"  stop-color="#A84520" stop-opacity="0.025"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="amberFade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#E69F47" stop-opacity="0"/>
+      <stop offset="18%"  stop-color="#E69F47" stop-opacity="0.85"/>
+      <stop offset="82%"  stop-color="#E69F47" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#E69F47" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="redFade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#B83B2D" stop-opacity="0"/>
+      <stop offset="20%"  stop-color="#B83B2D" stop-opacity="0.75"/>
+      <stop offset="80%"  stop-color="#B83B2D" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#B83B2D" stop-opacity="0"/>
+    </linearGradient>
+
+    <pattern id="grid24"
+             width="24"
+             height="24"
+             patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24"
+            fill="none"
+            stroke="#FFFFFF"
+            stroke-opacity="0.035"
+            stroke-width="1"/>
+    </pattern>
+
+    <pattern id="grid8"
+             width="8"
+             height="8"
+             patternUnits="userSpaceOnUse">
+      <path d="M8 0H0V8"
+            fill="none"
+            stroke="#FFFFFF"
+            stroke-opacity="0.012"
+            stroke-width="1"/>
+    </pattern>
+
+    <!-- ============================================================
+         FILTERS
+    ============================================================ -->
+
+    <filter id="amberGlow"
+            x="-100%" y="-100%"
+            width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3"
+                      result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow"
+            x="-100%" y="-100%"
+            width="300%" height="300%">
+      <feGaussianBlur stdDeviation="7"
+                      result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+  </defs>
+
+
+  <!-- ================================================================
+       BACKGROUND
+  ================================================================= -->
+
+  <rect width="1000"
+        height="700"
+        fill="url(#bg)"/>
+
+  <rect width="1000"
+        height="700"
+        fill="url(#grid24)"/>
+
+  <rect width="1000"
+        height="700"
+        fill="url(#grid8)"/>
+
+
+  <!-- ================================================================
+       OUTER FRAME
+  ================================================================= -->
+
+  <rect x="18"
+        y="18"
+        width="964"
+        height="664"
+        rx="7"
+        fill="none"
+        stroke="#2A2724"
+        stroke-width="1.5"/>
+
+  <g stroke="#6C5B4B"
+     stroke-width="1"
+     opacity="0.65">
+
+    <path d="M18 42V18H42"/>
+    <path d="M958 18H982V42"/>
+    <path d="M18 658V682H42"/>
+    <path d="M958 682H982V658"/>
+
+  </g>
+
+
+  <!-- ================================================================
+       HEADER
+  ================================================================= -->
+
+  <g transform="translate(38,34)">
+
+    <text x="0"
+          y="13"
+          fill="#8E8177"
           font-family="Fira Code, Courier New, monospace"
-          font-size="7.5"
-          letter-spacing="1">
-        AEOWUN // SYSTEM SCHEMATIC // BUILD_TO_VERIFY // Z_JOUBERT
+          font-size="9"
+          letter-spacing="2">
+      AEOWUN // ENGINEERING
     </text>
 
-    <text x="962" y="675"
+    <text x="0"
+          y="45"
+          fill="#EEE8E0"
+          font-family="Fira Code, Courier New, monospace"
+          font-size="28"
+          font-weight="700"
+          letter-spacing="2.2">
+      AEOENGINE
+    </text>
+
+    <text x="0"
+          y="65"
+          fill="#6E665F"
+          font-family="Fira Code, Courier New, monospace"
+          font-size="9"
+          letter-spacing="1.1">
+      VOXEL ENGINE // EDITOR // RUNTIME
+    </text>
+
+
+    <!-- Build/status block -->
+
+    <g transform="translate(700,0)">
+
+      <rect x="0"
+            y="0"
+            width="224"
+            height="68"
+            rx="5"
+            fill="#090909"
+            stroke="#2C2927"/>
+
+      <text x="13"
+            y="17"
+            fill="#70675F"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="8"
+            letter-spacing="1.3">
+        RUNTIME STATE
+      </text>
+
+      <circle cx="16"
+              cy="37"
+              r="3.5"
+              fill="#E69F47"
+              filter="url(#amberGlow)">
+        <animate attributeName="opacity"
+                 values="0.35;1;0.35"
+                 dur="2.6s"
+                 repeatCount="indefinite"/>
+      </circle>
+
+      <text x="28"
+            y="40"
+            fill="#C5BDB5"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="9">
+        EDITOR / READY
+      </text>
+
+      <text x="13"
+            y="57"
+            fill="#514B46"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="8">
+        OPENGL // EGUI // WGPU-STYLE LAYERS
+      </text>
+
+    </g>
+
+  </g>
+
+
+  <line x1="38"
+        y1="121"
+        x2="962"
+        y2="121"
+        stroke="url(#amberFade)"
+        stroke-width="1"/>
+
+
+  <!-- ================================================================
+       LEFT: WORLD / EDITOR TREE
+  ================================================================= -->
+
+  <g transform="translate(38,143)">
+
+    <rect x="0"
+          y="0"
+          width="218"
+          height="345"
+          rx="5"
+          fill="#080808"
+          stroke="#282522"/>
+
+    <rect x="0"
+          y="0"
+          width="218"
+          height="29"
+          rx="5"
+          fill="#0E0D0C"
+          stroke="#292623"/>
+
+    <rect x="0"
+          y="23"
+          width="218"
+          height="6"
+          fill="#0E0D0C"/>
+
+    <text x="13"
+          y="19"
+          fill="#8E8177"
+          font-family="Fira Code, Courier New, monospace"
+          font-size="8.5"
+          letter-spacing="1.4">
+      WORLD
+    </text>
+
+    <!-- tree -->
+
+    <g font-family="Fira Code, Courier New, monospace"
+       font-size="9">
+
+      <text x="14" y="53"
+            fill="#D4CCC4">
+        WORLD
+      </text>
+
+      <text x="27" y="77"
+            fill="#9A9189">
+        ├─ BLOCKS
+      </text>
+
+      <text x="41" y="99"
+            fill="#6D665F">
+        ├─ STATIC
+      </text>
+
+      <text x="41" y="119"
+            fill="#6D665F">
+        └─ DYNAMIC
+      </text>
+
+      <text x="27" y="145"
+            fill="#9A9189">
+        ├─ ENTITIES
+      </text>
+
+      <text x="41" y="167"
+            fill="#6D665F">
+        ├─ PLAYER
+      </text>
+
+      <text x="41" y="187"
+            fill="#6D665F">
+        └─ SCENE
+      </text>
+
+      <text x="27" y="213"
+            fill="#9A9189">
+        ├─ LIGHTS
+      </text>
+
+      <text x="27" y="239"
+            fill="#9A9189">
+        └─ SCRIPTS
+      </text>
+
+
+      <line x1="14"
+            y1="265"
+            x2="202"
+            y2="265"
+            stroke="#24211F"/>
+
+
+      <text x="14" y="288"
+            fill="#5D5650">
+        WORLD.DAT
+      </text>
+
+      <text x="14" y="307"
+            fill="#5D5650">
+        CAMERA.DAT
+      </text>
+
+      <text x="14" y="326"
+            fill="#5D5650">
+        PROJECT STATE
+      </text>
+
+    </g>
+
+
+    <!-- active marker -->
+
+    <rect x="11"
+          y="48"
+          width="3"
+          height="12"
+          fill="#E69F47"
+          filter="url(#amberGlow)"/>
+
+  </g>
+
+
+  <!-- ================================================================
+       CENTER: VOXEL VIEWPORT
+  ================================================================= -->
+
+  <g transform="translate(272,143)">
+
+    <rect x="0"
+          y="0"
+          width="454"
+          height="345"
+          rx="5"
+          fill="#060606"
+          stroke="#302B27"/>
+
+    <rect x="1"
+          y="1"
+          width="452"
+          height="31"
+          rx="5"
+          fill="#0D0C0B"/>
+
+    <text x="13"
+          y="20"
+          fill="#8E8177"
+          font-family="Fira Code, Courier New, monospace"
+          font-size="8.5"
+          letter-spacing="1.3">
+      VIEWPORT
+    </text>
+
+    <text x="441"
+          y="20"
           text-anchor="end"
-          fill="#4B4552"
+          fill="#4B4540"
           font-family="Fira Code, Courier New, monospace"
-          font-size="7.5"
-          letter-spacing="1">
-        SCHEMATIC_REV // 02
+          font-size="8">
+      EDIT MODE
     </text>
+
+
+    <!-- viewport glow -->
+
+    <rect x="1"
+          y="32"
+          width="452"
+          height="312"
+          fill="url(#viewportGlow)"/>
+
+
+    <!-- Perspective grid -->
+
+    <g transform="translate(28,55)"
+       stroke="#4A4039"
+       stroke-width="1"
+       opacity="0.65">
+
+      <path d="M20 230L198 105L390 228"/>
+      <path d="M55 230L205 124L356 230"/>
+      <path d="M95 230L211 143L320 230"/>
+      <path d="M132 230L217 160L283 230"/>
+
+      <path d="M20 230H390"/>
+      <path d="M40 214H371"/>
+      <path d="M64 198H347"/>
+      <path d="M89 182H322"/>
+      <path d="M114 166H297"/>
+      <path d="M139 150H272"/>
+
+    </g>
+
+
+    <!-- ============================================================
+         VOXEL BLOCK GROUP
+    ============================================================ -->
+
+    <g transform="translate(155,118)">
+
+      <!-- back block -->
+
+      <g opacity="0.62">
+
+        <path d="M66 16L118 0L169 17L117 34Z"
+              fill="#6C5547"
+              stroke="#A16B4D"/>
+
+        <path d="M66 16V78L117 96V34Z"
+              fill="#443934"
+              stroke="#7D5B48"/>
+
+        <path d="M117 34V96L169 78V17Z"
+              fill="#59453A"
+              stroke="#936245"/>
+
+      </g>
+
+
+      <!-- main block -->
+
+      <g>
+
+        <path d="M14 65L67 47L121 65L67 84Z"
+              fill="#8F6A51"
+              stroke="#E69F47"
+              stroke-width="1.2"/>
+
+        <path d="M14 65V128L67 148V84Z"
+              fill="#4D3B34"
+              stroke="#A25E38"/>
+
+        <path d="M67 84V148L121 127V65Z"
+              fill="#694A3A"
+              stroke="#B36A43"/>
+
+        <!-- seams -->
+
+        <path d="M41 55L94 74"
+              stroke="#C58A59"
+              stroke-opacity="0.4"/>
+
+        <path d="M41 78L41 134"
+              stroke="#8D5F45"
+              stroke-opacity="0.4"/>
+
+        <path d="M94 75V138"
+              stroke="#D3834A"
+              stroke-opacity="0.35"/>
+
+      </g>
+
+
+      <!-- selected cell -->
+
+      <g>
+
+        <path d="M121 65L169 47L221 65L169 84Z"
+              fill="#312823"
+              stroke="#E69F47"
+              stroke-width="1.3"/>
+
+        <path d="M121 65V113L169 132V84Z"
+              fill="#211B18"
+              stroke="#B9643B"/>
+
+        <path d="M169 84V132L221 113V65Z"
+              fill="#2A211D"
+              stroke="#D17342"/>
+
+        <circle cx="169"
+                cy="88"
+                r="4"
+                fill="#E69F47"
+                filter="url(#amberGlow)">
+          <animate attributeName="opacity"
+                   values="0.35;1;0.35"
+                   dur="2s"
+                   repeatCount="indefinite"/>
+        </circle>
+
+      </g>
+
+    </g>
+
+
+    <!-- gizmo -->
+
+    <g transform="translate(200,240)"
+       stroke-width="2">
+
+      <line x1="0" y1="0"
+            x2="47" y2="-16"
+            stroke="#E69F47"/>
+
+      <line x1="0" y1="0"
+            x2="-32" y2="-22"
+            stroke="#B83B2D"/>
+
+      <line x1="0" y1="0"
+            x2="0" y2="44"
+            stroke="#B8A28C"/>
+
+      <circle cx="0"
+              cy="0"
+              r="4"
+              fill="#E69F47"
+              stroke="none"
+              filter="url(#amberGlow)"/>
+
+    </g>
+
+
+    <!-- viewport status -->
+
+    <text x="16"
+          y="328"
+          fill="#514A44"
+          font-family="Fira Code, Courier New, monospace"
+          font-size="7.5">
+      GRID // BLOCK EDIT // SELECTED CELL // CAMERA ACTIVE
+    </text>
+
+  </g>
+
+
+  <!-- ================================================================
+       RIGHT: INSPECTOR
+  ================================================================= -->
+
+  <g transform="translate(742,143)">
+
+    <rect x="0"
+          y="0"
+          width="220"
+          height="345"
+          rx="5"
+          fill="#080808"
+          stroke="#282522"/>
+
+    <rect x="0"
+          y="0"
+          width="220"
+          height="29"
+          rx="5"
+          fill="#0E0D0C"/>
+
+    <text x="13"
+          y="19"
+          fill="#8E8177"
+          font-family="Fira Code, Courier New, monospace"
+          font-size="8.5"
+          letter-spacing="1.4">
+      PROPERTIES
+    </text>
+
+
+    <g font-family="Fira Code, Courier New, monospace">
+
+      <text x="13"
+            y="55"
+            fill="#E69F47"
+            font-size="10">
+        BLOCK
+      </text>
+
+      <text x="13"
+            y="74"
+            fill="#5D5650"
+            font-size="8">
+        SELECTED CELL
+      </text>
+
+
+      <line x1="13"
+            y1="88"
+            x2="207"
+            y2="88"
+            stroke="#292522"/>
+
+
+      <text x="13"
+            y="109"
+            fill="#6D665F"
+            font-size="8">
+        TYPE
+      </text>
+
+      <text x="207"
+            y="109"
+            text-anchor="end"
+            fill="#C1B7AE"
+            font-size="8.5">
+        BLOCK
+      </text>
+
+
+      <text x="13"
+            y="131"
+            fill="#6D665F"
+            font-size="8">
+        TEXTURE
+      </text>
+
+      <text x="207"
+            y="131"
+            text-anchor="end"
+            fill="#C1B7AE"
+            font-size="8.5">
+        brick
+      </text>
+
+
+      <text x="13"
+            y="153"
+            fill="#6D665F"
+            font-size="8">
+        SOLID
+      </text>
+
+      <text x="207"
+            y="153"
+            text-anchor="end"
+            fill="#E69F47"
+            font-size="8.5">
+        TRUE
+      </text>
+
+
+      <text x="13"
+            y="175"
+            fill="#6D665F"
+            font-size="8">
+        ANCHORED
+      </text>
+
+      <text x="207"
+            y="175"
+            text-anchor="end"
+            fill="#C1B7AE"
+            font-size="8.5">
+        FALSE
+      </text>
+
+
+      <line x1="13"
+            y1="191"
+            x2="207"
+            y2="191"
+            stroke="#292522"/>
+
+
+      <text x="13"
+            y="213"
+            fill="#6D665F"
+            font-size="8">
+        POSITION
+      </text>
+
+      <text x="207"
+            y="213"
+            text-anchor="end"
+            fill="#887E75"
+            font-size="8">
+        X  /  Y  /  Z
+      </text>
+
+
+      <text x="13"
+            y="235"
+            fill="#6D665F"
+            font-size="8">
+        PHYSICS
+      </text>
+
+      <text x="207"
+            y="235"
+            text-anchor="end"
+            fill="#887E75"
+            font-size="8">
+        DYNAMIC
+      </text>
+
+
+      <text x="13"
+            y="257"
+            fill="#6D665F"
+            font-size="8">
+        STATE
+      </text>
+
+      <text x="207"
+            y="257"
+            text-anchor="end"
+            fill="#E69F47"
+            font-size="8">
+        ACTIVE
+      </text>
+
+
+      <line x1="13"
+            y1="274"
+            x2="207"
+            y2="274"
+            stroke="#292522"/>
+
+
+      <text x="13"
+            y="297"
+            fill="#5D5650"
+            font-size="7.5">
+        WORLD PERSISTENCE
+      </text>
+
+      <text x="13"
+            y="316"
+            fill="#5D5650"
+            font-size="7.5">
+        CAMERA PERSISTENCE
+      </text>
+
+      <text x="13"
+            y="335"
+            fill="#5D5650"
+            font-size="7.5">
+        ENTITY STATE
+      </text>
+
+    </g>
+
+  </g>
+
+
+  <!-- ================================================================
+       LOWER ARCHITECTURE STRIP
+  ================================================================= -->
+
+  <g transform="translate(38,510)">
+
+    <text x="0"
+          y="0"
+          fill="#746B64"
+          font-family="Fira Code, Courier New, monospace"
+          font-size="8.5"
+          letter-spacing="1.7">
+      ENGINE SYSTEMS
+    </text>
+
+    <line x1="118"
+          y1="-3"
+          x2="924"
+          y2="-3"
+          stroke="#292521"/>
+
+
+    <!-- System boxes -->
+
+    <g transform="translate(0,19)">
+
+      <!-- EDITOR -->
+
+      <rect x="0"
+            y="0"
+            width="170"
+            height="56"
+            rx="5"
+            fill="#090909"
+            stroke="#3A3029"/>
+
+      <rect x="0"
+            y="0"
+            width="3"
+            height="56"
+            fill="#E69F47"/>
+
+      <text x="15"
+            y="22"
+            fill="#DED6CE"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="10"
+            font-weight="700">
+        EDITOR
+      </text>
+
+      <text x="15"
+            y="40"
+            fill="#655D56"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="7.5">
+        WORLD / PROPERTIES / TOOLS
+      </text>
+
+
+      <!-- RENDERER -->
+
+      <rect x="186"
+            y="0"
+            width="170"
+            height="56"
+            rx="5"
+            fill="#090909"
+            stroke="#352D28"/>
+
+      <rect x="186"
+            y="0"
+            width="3"
+            height="56"
+            fill="#B8653C"/>
+
+      <text x="201"
+            y="22"
+            fill="#DED6CE"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="10"
+            font-weight="700">
+        RENDERER
+      </text>
+
+      <text x="201"
+            y="40"
+            fill="#655D56"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="7.5">
+        OPENGL / MESH / TEXTURE
+      </text>
+
+
+      <!-- PHYSICS -->
+
+      <rect x="372"
+            y="0"
+            width="170"
+            height="56"
+            rx="5"
+            fill="#090909"
+            stroke="#372A25"/>
+
+      <rect x="372"
+            y="0"
+            width="3"
+            height="56"
+            fill="#A84A31"/>
+
+      <text x="387"
+            y="22"
+            fill="#DED6CE"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="10"
+            font-weight="700">
+        PHYSICS
+      </text>
+
+      <text x="387"
+            y="40"
+            fill="#655D56"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="7.5">
+        COLLISION / BODIES / SLEEP
+      </text>
+
+
+      <!-- SCRIPTING -->
+
+      <rect x="558"
+            y="0"
+            width="170"
+            height="56"
+            rx="5"
+            fill="#090909"
+            stroke="#392E28"/>
+
+      <rect x="558"
+            y="0"
+            width="3"
+            height="56"
+            fill="#C27A42"/>
+
+      <text x="573"
+            y="22"
+            fill="#DED6CE"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="10"
+            font-weight="700">
+        AEO-SCRIPT
+      </text>
+
+      <text x="573"
+            y="40"
+            fill="#655D56"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="7.5">
+        AST / RUNTIME / FIBERS
+      </text>
+
+
+      <!-- ENTITIES -->
+
+      <rect x="744"
+            y="0"
+            width="180"
+            height="56"
+            rx="5"
+            fill="#090909"
+            stroke="#342C28"/>
+
+      <rect x="744"
+            y="0"
+            width="3"
+            height="56"
+            fill="#85523A"/>
+
+      <text x="759"
+            y="22"
+            fill="#DED6CE"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="10"
+            font-weight="700">
+        ENTITIES
+      </text>
+
+      <text x="759"
+            y="40"
+            fill="#655D56"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="7.5">
+        RUNTIME STATE / SCENE
+      </text>
+
+    </g>
+
+  </g>
+
+
+  <!-- ================================================================
+       BOTTOM DIAGNOSTICS
+  ================================================================= -->
+
+  <g transform="translate(38,604)">
+
+    <rect x="0"
+          y="0"
+          width="924"
+          height="49"
+          rx="5"
+          fill="#080808"
+          stroke="#282522"/>
+
+
+    <!-- status indicators -->
+
+    <g transform="translate(15,16)">
+
+      <circle cx="4"
+              cy="8"
+              r="3"
+              fill="#E69F47"
+              filter="url(#amberGlow)"/>
+
+      <text x="15"
+            y="11"
+            fill="#82786F"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="7.5">
+        EDITOR
+      </text>
+
+
+      <circle cx="90"
+              cy="8"
+              r="3"
+              fill="#B83B2D"/>
+
+      <text x="101"
+            y="11"
+            fill="#82786F"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="7.5">
+        PHYSICS
+      </text>
+
+
+      <circle cx="175"
+              cy="8"
+              r="3"
+              fill="#B8653C"/>
+
+      <text x="186"
+            y="11"
+            fill="#82786F"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="7.5">
+        RENDER
+      </text>
+
+
+      <circle cx="264"
+              cy="8"
+              r="3"
+              fill="#C27A42"/>
+
+      <text x="275"
+            y="11"
+            fill="#82786F"
+            font-family="Fira Code, Courier New, monospace"
+            font-size="7.5">
+        SCRIPT
+      </text>
+
+    </g>
+
+
+    <!-- central diagnostic signal -->
+
+    <g transform="translate(362,15)">
+
+      <line x1="0"
+            y1="9"
+            x2="310"
+            y2="9"
+            stroke="#312B27"/>
+
+      <path d="M0 9
+               H32
+               L42 3
+               L51 15
+               L61 9
+               H117
+               L127 6
+               L137 12
+               L147 9
+               H198
+               L208 2
+               L218 16
+               L228 9
+               H310"
+            fill="none"
+            stroke="#E69F47"
+            stroke-width="1.3"/>
+
+      <circle cy="9"
+              r="2.8"
+              fill="#E69F47"
+              filter="url(#amberGlow)">
+        <animate attributeName="cx"
+                 values="0;310"
+                 dur="4.8s"
+                 repeatCount="indefinite"/>
+      </circle>
+
+    </g>
+
+
+    <!-- state -->
+
+    <text x="912"
+          y="28"
+          text-anchor="end"
+          fill="#615851"
+          font-family="Fira Code, Courier New, monospace"
+          font-size="7.5">
+      WORLD.DAT // CAMERA // RUNTIME STATE
+    </text>
+
+  </g>
+
+
+  <!-- ================================================================
+       FOOTER
+  ================================================================= -->
+
+  <text x="38"
+        y="675"
+        fill="#4F4842"
+        font-family="Fira Code, Courier New, monospace"
+        font-size="7.2"
+        letter-spacing="1">
+    AEOENGINE // AEOWUN // ENGINEERING WORKSTATION
+  </text>
+
+  <text x="962"
+        y="675"
+        text-anchor="end"
+        fill="#4F4842"
+        font-family="Fira Code, Courier New, monospace"
+        font-size="7.2"
+        letter-spacing="1">
+    EDITOR / WORLD / RUNTIME
+  </text>
 
 </svg>
+
