@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEOWUN // TUTORIALS // RUNTIME CELL</title>
+  <link rel="canonical" href="https://www.aeowun.com/docs/tutorials/runtime-cell/">
+  <meta name="description" content="Learn how to instantiate new voxel cells dynamically during simulation using the built-in cell namespace.">
+  <link rel="stylesheet" href="../../../style.css">
+</head>
+<body class="canonical-page">
+
+  <div id="void-bg"></div>
+  <div id="technical-grid"></div>
+
+  <!-- Header -->
+  <header class="aeowun-header">
+    <div class="header-inner container">
+      <a href="/" class="brand" aria-label="AEOWUN home">
+        <span class="brand-name mono">AEOWUN</span>
+      </a>
+
+      <nav class="home-nav" aria-label="Primary navigation">
+        <a href="/aeoengine/" class="home-nav-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="home-nav-link mono">AEOSCRIPT</a>
+        <a href="/docs/" class="home-nav-link mono active">DOCS</a>
+        <a href="/games/" class="home-nav-link mono">GAMES</a>
+        <a href="/software/" class="home-nav-link mono">SOFTWARE</a>
+        <a href="/support/" class="home-nav-link mono">SUPPORT</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="home-nav-link mono">GITHUB</a>
+      </nav>
+
+      <div class="home-header-actions">
+        <a href="/docs/" class="primary-button mono">DOCUMENTATION</a>
+
+        <button class="nav-hamburger mono" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Rail -->
+  <div class="nav-rail" id="nav-rail" aria-hidden="true">
+    <div class="rail-backdrop" id="rail-close"></div>
+
+    <div class="rail-content">
+      <div class="rail-header">
+        <span class="mono rail-menu-label">MENU</span>
+        <button class="close-rail mono" id="rail-close-btn" type="button">[ CLOSE ]</button>
+      </div>
+
+      <nav class="rail-links" aria-label="Mobile navigation">
+        <span class="rail-label mono">AEOWUN</span>
+
+        <a href="/aeoengine/" class="rail-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="rail-link mono">AEOSCRIPT</a>
+        <a href="/docs/" class="rail-link mono active">DOCS</a>
+        <a href="/games/" class="rail-link mono">GAMES</a>
+        <a href="/software/" class="rail-link mono">SOFTWARE &amp; TOOLS</a>
+
+        <div class="rail-divider"></div>
+
+        <a href="/support/" class="rail-link mono">SUPPORT</a>
+        <a href="/privacy/" class="rail-link mono">PRIVACY</a>
+        <a href="/security/" class="rail-link mono">SECURITY</a>
+
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="rail-link mono">GITHUB</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <section class="canonical-hero">
+      <div class="brand-label mono">AEOWUN &gt; DOCS &gt; TUTORIALS &gt; RUNTIME CELL</div>
+      <h1 class="canonical-title mono">RUNTIME CELL</h1>
+      <p class="canonical-lead">
+        Learn how to instantiate new voxel cells dynamically during simulation using the built-in cell namespace.
+      </p>
+    </section>
+
+    <section class="home-section">
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">GOAL</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          This tutorial will guide you through instantiating fresh voxel assets programmatically during simulation via script handles, rather than authoring them manually ahead of time inside the editor grid layout.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">PREREQUISITES</h2>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li style="position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text);">
+            <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> <a href="/docs/reference/" class="text-link">API Reference Hub</a> &mdash; Specifications regarding <a href="/aeoscript/api/cell/" class="text-link">Cell Handles</a> and runtime allocation.
+          </li>
+          <li style="position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text);">
+            <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> <a href="/aeoscript/runtime-state/" class="text-link">Authored vs Runtime State</a> &mdash; Understanding how the engine manages data.
+          </li>
+          <li style="position: relative; padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; color: var(--text);">
+            <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> <a href="../interactive-object/" class="text-link">Tutorial 3: Interactive Object</a> &mdash; Deep understanding of asynchronous event behaviors.
+          </li>
+        </ul>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">WHAT YOU WILL BUILD</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          You will write a dynamic spawning script file that programmatically allocates a glowing green block at a designated 3D coordinate vector exactly when the user clicks Play mode.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 16px;">STEP-BY-STEP INSTRUCTIONS</h2>
+        <ol style="padding-left: 20px; color: var(--text); font-size: 0.95rem; line-height: 1.8;">
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Create the Spawning Script File:</strong> In your Asset Browser pane, create a new asset file inside the <code>scripts/</code> directory named <code>spawner.aeo</code>.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Intercept the Initialization Callback:</strong> Open the text area for <code>spawner.aeo</code> and write the structural <code>fn on_ready()</code> method wrapper block.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Allocate a Fresh Object Instance:</strong> Invoke the built-in system namespace creation constructor by writing <code>const spawned_block = cell.new("Block")</code>.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Define Spatial and Aesthetic Properties:</strong> Position your new element by declaring a three-element spatial vector: <code>spawned_block.position = [5, 3, 5]</code>. Paint it bright green using an RGB color array: <code>spawned_block.color = [0, 1, 0]</code>.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Attach to a Core Anchor:</strong> Select any static block within your viewport area, slide into the properties sheet on the right, and link the script binding slot to <code>spawner.aeo</code>.</li>
+          <li style="margin-bottom: 0;"><strong style="color: var(--text-bright);">Run and Confirm Allocation:</strong> Trigger live simulation with <code>F5</code>. Look closely at coordinate position <code>[5, 3, 5]</code>. A brand new lime green block has appeared that did not exist in your editor layout sheet. Click <code>Escape</code> to stop play testing.</li>
+        </ol>
+      </div>
+
+      <div class="script-code-panel" style="margin: 24px 0;">
+        <div class="script-code-header">
+          <span class="mono">SPAWNER.AEO</span>
+          <span class="mono">AEOSCRIPT</span>
+        </div>
+        <pre><code>// spawner.aeo - Programmatic runtime cell instantiation
+fn on_ready() {
+    // Instantiate a volatile play-mode-only block
+    const spawned_block = cell.new("Block")
+
+    // Configure runtime parameters
+    spawned_block.position = [5, 3, 5]
+    spawned_block.color = [0, 1, 0]
+}</code></pre>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">EXPLANATION</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          AeoEngine splits memory layout data into <a href="/aeoscript/runtime-state/" class="text-link">Authored State and Runtime State</a>. Built-in elements added via the editor palette are baked directly into your permanent project save data on disk. Conversely, calling <code>cell.new("Block")</code> instructs the memory manager to allocate a dynamic, volatile cell container within the active play session cache. These objects are never serialized to your source files and vanish cleanly without leaving loose references when you exit simulation mode.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">RESULT</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          Upon clicking Play, a completely new green voxel block generates automatically at coordinate location <code>[5, 3, 5]</code>, floating precisely according to your vector overrides.
+        </p>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; padding: 20px 0;">
+        <a href="../interactive-object/" class="text-link mono">&larr; PREV: INTERACTIVE OBJECT</a>
+        <a href="../first-game/" class="text-link mono">NEXT: FIRST GAME &rarr;</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="aeowun-footer home-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a href="/" class="footer-brand-name mono">AEOWUN</a>
+        <p>
+          A small, actively developed software project built around
+          AeoEngine, AeoScript, and the games and tools made with them.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">PRODUCT</h2>
+        <a href="/aeoengine/">AeoEngine</a>
+        <a href="/aeoscript/">AeoScript</a>
+        <a href="/games/">Games</a>
+        <a href="/software/">Software &amp; Tools</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">LEARN</h2>
+        <a href="/docs/">Documentation</a>
+        <a href="/docs/tutorials/">Tutorials</a>
+        <a href="/docs/reference/">API Reference</a>
+        <a href="/docs/troubleshooting/">Troubleshooting</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">AEOWUN</h2>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/security/">Security</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="mono">© 2026 AEOWUN.</span>
+      <span class="mono">BUILT IN PUBLIC.</span>
+    </div>
+  </footer>
+
+  <script src="../../../app.js"></script>
+</body>
+</html>

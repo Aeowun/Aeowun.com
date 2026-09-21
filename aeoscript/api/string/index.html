@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEOWUN // AEOSCRIPT // API // STRING</title>
+  <link rel="canonical" href="https://www.aeowun.com/aeoscript/api/string/">
+  <meta name="description" content="AeoScript String API reference. Unicode-aware text manipulation functions including split, reverse, and case transformation.">
+  <link rel="stylesheet" href="../../../style.css">
+</head>
+<body class="canonical-page">
+
+  <div id="void-bg"></div>
+  <div id="technical-grid"></div>
+
+  <!-- Header -->
+  <header class="aeowun-header">
+    <div class="header-inner container">
+      <a href="/" class="brand" aria-label="AEOWUN home">
+        <span class="brand-name mono">AEOWUN</span>
+      </a>
+
+      <nav class="home-nav" aria-label="Primary navigation">
+        <a href="/aeoengine/" class="home-nav-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="home-nav-link mono active">AEOSCRIPT</a>
+        <a href="/docs/" class="home-nav-link mono">DOCS</a>
+        <a href="/games/" class="home-nav-link mono">GAMES</a>
+        <a href="/software/" class="home-nav-link mono">SOFTWARE</a>
+        <a href="/support/" class="home-nav-link mono">SUPPORT</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="home-nav-link mono">GITHUB</a>
+      </nav>
+
+      <div class="home-header-actions">
+        <a href="/docs/" class="primary-button mono">DOCUMENTATION</a>
+
+        <button class="nav-hamburger mono" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Rail -->
+  <div class="nav-rail" id="nav-rail" aria-hidden="true">
+    <div class="rail-backdrop" id="rail-close"></div>
+
+    <div class="rail-content">
+      <div class="rail-header">
+        <span class="mono rail-menu-label">MENU</span>
+        <button class="close-rail mono" id="rail-close-btn" type="button">[ CLOSE ]</button>
+      </div>
+
+      <nav class="rail-links" aria-label="Mobile navigation">
+        <span class="rail-label mono">AEOWUN</span>
+
+        <a href="/aeoengine/" class="rail-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="rail-link mono active">AEOSCRIPT</a>
+        <a href="/docs/" class="rail-link mono">DOCS</a>
+        <a href="/games/" class="rail-link mono">GAMES</a>
+        <a href="/software/" class="rail-link mono">SOFTWARE &amp; TOOLS</a>
+
+        <div class="rail-divider"></div>
+
+        <a href="/support/" class="rail-link mono">SUPPORT</a>
+        <a href="/privacy/" class="rail-link mono">PRIVACY</a>
+        <a href="/security/" class="rail-link mono">SECURITY</a>
+
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="rail-link mono">GITHUB</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <section class="canonical-hero">
+      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; API &gt; STRING</div>
+      <h1 class="canonical-title mono">STRING API</h1>
+      <p class="canonical-lead">
+        Reference interface for Unicode-aware string operations.
+      </p>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">AEOSCRIPT // API</div>
+          <h2 class="home-section-title mono">OVERVIEW</h2>
+        </div>
+      </div>
+      <p style="font-size: 1rem; line-height: 1.7; color: var(--text); max-width: 800px;">
+        The <code>string</code> namespace provides functions for manipulating text. In AeoScript, strings are treated as sequences of Unicode scalar values rather than raw UTF-8 bytes, ensuring consistent behavior for international text and special characters.
+      </p>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">STRING METHODS</div>
+          <h2 class="home-section-title mono">SPECIFICATION</h2>
+        </div>
+      </div>
+
+      <div class="canonical-card" style="padding: 0; overflow: hidden; margin-bottom: 30px;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+          <thead>
+            <tr style="background: rgba(255,255,255,0.05); border-bottom: 1px solid var(--border);">
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-orange); text-transform: uppercase; letter-spacing: 0.15em;">Method</th>
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em;">Parameters</th>
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em;">Returns</th>
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em;">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>string.len(s)</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);"><code>s: string</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>number</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Returns the number of Unicode scalar values.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>string.lower(s)</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);"><code>s: string</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>string</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Returns a lowercase copy of <code>s</code>.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>string.upper(s)</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);"><code>s: string</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>string</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Returns an uppercase copy of <code>s</code>.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>string.reverse(s)</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);"><code>s: string</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>string</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Returns <code>s</code> in reverse order.</td>
+            </tr>
+            <tr>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>string.split(s, [sep])</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);"><code>s, [sep]</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>basket</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Splits string into a basket of substrings.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">USAGE</div>
+          <h2 class="home-section-title mono">EXAMPLE</h2>
+        </div>
+      </div>
+
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">STRING MANIPULATION</span>
+          <span class="mono">EXAMPLE</span>
+        </div>
+        <pre><code>const msg = "AeoScript"
+debug.log(string.len(msg)) // Outputs 9
+
+const parts = string.split(msg, "S")
+debug.log(parts[0]) // Outputs "Aeo"</code></pre>
+      </div>
+
+      <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
+        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
+          <strong style="color: var(--text-bright);">NOTE:</strong> If the separator is omitted or empty, <code>string.split</code> returns a basket of individual Unicode scalar values.
+        </p>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="canonical-card" style="padding: 28px;">
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">BEHAVIOR / NOTES</h3>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
+          <strong style="color: var(--text-bright);">Unicode Scalars:</strong> String length and indexing operate on scalars. For example, <code>string.len("é")</code> returns <code>1</code>, even though it may be represented by multiple bytes in UTF-8.
+        </p>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
+          <strong style="color: var(--text-bright);">Immutability:</strong> Strings in AeoScript are immutable. All namespace functions return new strings rather than modifying the original.
+        </p>
+      </div>
+    </section>
+
+    <div style="display: flex; justify-content: space-between; padding: 40px 0;">
+      <a href="../math/" class="text-link mono">&larr; PREV: MATH API</a>
+      <a href="../" class="text-link mono">BACK TO API HUB &rarr;</a>
+    </div>
+
+    <section class="home-section" style="border-bottom: none;">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">EXPLORE MORE</div>
+          <h2 class="home-section-title mono">RELATED LINKS</h2>
+        </div>
+      </div>
+      <div class="canonical-grid">
+        <a href="../../strings/" class="canonical-path-card">
+          <strong>STRINGS OVERVIEW</strong>
+          <span>String concept overview</span>
+        </a>
+        <a href="../basket/" class="canonical-path-card">
+          <strong>BASKET API</strong>
+          <span>Sequence collections API</span>
+        </a>
+        <a href="../math/" class="canonical-path-card">
+          <strong>MATH API</strong>
+          <span>Math functions API</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="aeowun-footer home-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a href="/" class="footer-brand-name mono">AEOWUN</a>
+        <p>
+          A small, actively developed software project built around
+          AeoEngine, AeoScript, and the games and tools made with them.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">PRODUCT</h2>
+        <a href="/aeoengine/">AeoEngine</a>
+        <a href="/aeoscript/">AeoScript</a>
+        <a href="/games/">Games</a>
+        <a href="/software/">Software &amp; Tools</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">LEARN</h2>
+        <a href="/docs/">Documentation</a>
+        <a href="/docs/tutorials/">Tutorials</a>
+        <a href="/docs/reference/">API Reference</a>
+        <a href="/docs/troubleshooting/">Troubleshooting</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">AEOWUN</h2>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/security/">Security</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="mono">© 2026 AEOWUN.</span>
+      <span class="mono">BUILT IN PUBLIC.</span>
+    </div>
+  </footer>
+
+  <script src="../../../app.js"></script>
+</body>
+</html>

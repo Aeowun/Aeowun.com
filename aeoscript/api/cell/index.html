@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEOWUN // AEOSCRIPT // API // CELL</title>
+  <link rel="canonical" href="https://www.aeowun.com/aeoscript/api/cell/">
+  <meta name="description" content="AeoScript Cell API reference. Learn to interact with authored World Cells, modify runtime properties, and manage persistent Cell IDs.">
+  <link rel="stylesheet" href="../../../style.css">
+</head>
+<body class="canonical-page">
+
+  <div id="void-bg"></div>
+  <div id="technical-grid"></div>
+
+  <!-- Header -->
+  <header class="aeowun-header">
+    <div class="header-inner container">
+      <a href="/" class="brand" aria-label="AEOWUN home">
+        <span class="brand-name mono">AEOWUN</span>
+      </a>
+
+      <nav class="home-nav" aria-label="Primary navigation">
+        <a href="/aeoengine/" class="home-nav-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="home-nav-link mono active">AEOSCRIPT</a>
+        <a href="/docs/" class="home-nav-link mono">DOCS</a>
+        <a href="/games/" class="home-nav-link mono">GAMES</a>
+        <a href="/software/" class="home-nav-link mono">SOFTWARE</a>
+        <a href="/support/" class="home-nav-link mono">SUPPORT</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="home-nav-link mono">GITHUB</a>
+      </nav>
+
+      <div class="home-header-actions">
+        <a href="/docs/" class="primary-button mono">DOCUMENTATION</a>
+
+        <button class="nav-hamburger mono" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Rail -->
+  <div class="nav-rail" id="nav-rail" aria-hidden="true">
+    <div class="rail-backdrop" id="rail-close"></div>
+
+    <div class="rail-content">
+      <div class="rail-header">
+        <span class="mono rail-menu-label">MENU</span>
+        <button class="close-rail mono" id="rail-close-btn" type="button">[ CLOSE ]</button>
+      </div>
+
+      <nav class="rail-links" aria-label="Mobile navigation">
+        <span class="rail-label mono">AEOWUN</span>
+
+        <a href="/aeoengine/" class="rail-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="rail-link mono active">AEOSCRIPT</a>
+        <a href="/docs/" class="rail-link mono">DOCS</a>
+        <a href="/games/" class="rail-link mono">GAMES</a>
+        <a href="/software/" class="rail-link mono">SOFTWARE &amp; TOOLS</a>
+
+        <div class="rail-divider"></div>
+
+        <a href="/support/" class="rail-link mono">SUPPORT</a>
+        <a href="/privacy/" class="rail-link mono">PRIVACY</a>
+        <a href="/security/" class="rail-link mono">SECURITY</a>
+
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="rail-link mono">GITHUB</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <section class="canonical-hero">
+      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; API &gt; CELL</div>
+      <h1 class="canonical-title mono">CELL HANDLE</h1>
+      <p class="canonical-lead">
+        Reference interface for authored World Cells.
+      </p>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">AEOSCRIPT // API</div>
+          <h2 class="home-section-title mono">OVERVIEW</h2>
+        </div>
+      </div>
+      <p style="font-size: 1rem; line-height: 1.7; color: var(--text); max-width: 800px;">
+        A <a href="../../cells/" class="text-link"><code>Cell</code> handle</a> refers to an authored World Cell, such as a Block, Light, or Trigger. Property modifications made to a Cell handle during Play mode are treated as <a href="../../runtime-properties/" class="text-link">runtime overrides</a>; they do not modify the persistent <a href="/aeoengine/projects/" class="text-link">authored World data</a>.
+      </p>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">CELL PROPERTIES</div>
+          <h2 class="home-section-title mono">SPECIFICATION</h2>
+        </div>
+      </div>
+
+      <div class="canonical-card" style="padding: 0; overflow: hidden; margin-bottom: 30px;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+          <thead>
+            <tr style="background: rgba(255,255,255,0.05); border-bottom: 1px solid var(--border);">
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-orange); text-transform: uppercase; letter-spacing: 0.15em;">Property</th>
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em;">Type</th>
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em;">Access</th>
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em;">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>.id</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>number</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read-only</td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Persistent numeric ID of the authored Cell.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>.name</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>string</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read-only</td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Human-readable authored identity. Not unique.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>.cellType</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>string</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read-only</td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">The class name of the Cell (e.g., "Block").</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>.visible</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>bool</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read/Write</td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Controls whether the Cell is rendered.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>.solid</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>bool</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read/Write</td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Controls collision participation.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>.anchored</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>bool</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read/Write</td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Static vs dynamic physics state.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>.color</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>basket</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read/Write</td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">RGB color array [r, g, b].</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>.offset</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>basket</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read/Write</td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Visual offset [x, y, z] from authored position.</td>
+            </tr>
+            <tr>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>.position</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>basket</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read-only</td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Effective runtime world position [x, y, z].</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">USAGE</div>
+          <h2 class="home-section-title mono">EXAMPLE</h2>
+        </div>
+      </div>
+
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">CELL PROPERTIES</span>
+          <span class="mono">EXAMPLE</span>
+        </div>
+        <pre><code>const door = find("MainDoor")[0]
+
+if door {
+  door.visible = false
+  door.solid = false
+  debug.log("Door opened: ", door.id)
+}</code></pre>
+      </div>
+
+      <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
+        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
+          <strong style="color: var(--text-bright);">NOTE:</strong> Property assignments like <code>visible = false</code> are runtime overrides. The authored state remains unchanged once Play mode ends.
+        </p>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="canonical-card" style="padding: 28px;">
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">BEHAVIOR / NOTES</h3>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
+          <strong style="color: var(--text-bright);">Reference Stability:</strong> Cell handles remain valid for the duration of the Play session. However, if an engine API explicitly destroys an authored object, the handle becomes stale.
+        </p>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
+          <strong style="color: var(--text-bright);">Authored vs Runtime:</strong> Always use the unique <code>.id</code> for logic that must target a specific instance, as <code>.name</code> is not guaranteed to be unique across the World.
+        </p>
+      </div>
+    </section>
+
+    <div style="display: flex; justify-content: space-between; padding: 40px 0;">
+      <a href="../basket/" class="text-link mono">&larr; PREV: BASKET API</a>
+      <a href="../entity/" class="text-link mono">NEXT: ENTITY API &rarr;</a>
+    </div>
+
+    <section class="home-section" style="border-bottom: none;">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">EXPLORE MORE</div>
+          <h2 class="home-section-title mono">RELATED LINKS</h2>
+        </div>
+      </div>
+      <div class="canonical-grid">
+        <a href="../../cells/" class="canonical-path-card">
+          <strong>CELLS OVERVIEW</strong>
+          <span>Authored cell reference concepts</span>
+        </a>
+        <a href="../../runtime-properties/" class="canonical-path-card">
+          <strong>RUNTIME OVERRIDES</strong>
+          <span>Property override model</span>
+        </a>
+        <a href="../entity/" class="canonical-path-card">
+          <strong>ENTITY HANDLES</strong>
+          <span>Live runtime entity handles</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="aeowun-footer home-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a href="/" class="footer-brand-name mono">AEOWUN</a>
+        <p>
+          A small, actively developed software project built around
+          AeoEngine, AeoScript, and the games and tools made with them.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">PRODUCT</h2>
+        <a href="/aeoengine/">AeoEngine</a>
+        <a href="/aeoscript/">AeoScript</a>
+        <a href="/games/">Games</a>
+        <a href="/software/">Software &amp; Tools</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">LEARN</h2>
+        <a href="/docs/">Documentation</a>
+        <a href="/docs/tutorials/">Tutorials</a>
+        <a href="/docs/reference/">API Reference</a>
+        <a href="/docs/troubleshooting/">Troubleshooting</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">AEOWUN</h2>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/security/">Security</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="mono">© 2026 AEOWUN.</span>
+      <span class="mono">BUILT IN PUBLIC.</span>
+    </div>
+  </footer>
+
+  <script src="../../../app.js"></script>
+</body>
+</html>

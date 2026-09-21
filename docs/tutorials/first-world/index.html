@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEOWUN // TUTORIALS // FIRST WORLD</title>
+  <link rel="canonical" href="https://www.aeowun.com/docs/tutorials/first-world/">
+  <meta name="description" content="Learn the basics of AeoEngine editor navigation, building geometry, placing lights, and playing your world.">
+  <link rel="stylesheet" href="../../../style.css">
+</head>
+<body class="canonical-page">
+
+  <div id="void-bg"></div>
+  <div id="technical-grid"></div>
+
+  <!-- Header -->
+  <header class="aeowun-header">
+    <div class="header-inner container">
+      <a href="/" class="brand" aria-label="AEOWUN home">
+        <span class="brand-name mono">AEOWUN</span>
+      </a>
+
+      <nav class="home-nav" aria-label="Primary navigation">
+        <a href="/aeoengine/" class="home-nav-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="home-nav-link mono">AEOSCRIPT</a>
+        <a href="/docs/" class="home-nav-link mono active">DOCS</a>
+        <a href="/games/" class="home-nav-link mono">GAMES</a>
+        <a href="/software/" class="home-nav-link mono">SOFTWARE</a>
+        <a href="/support/" class="home-nav-link mono">SUPPORT</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="home-nav-link mono">GITHUB</a>
+      </nav>
+
+      <div class="home-header-actions">
+        <a href="/docs/" class="primary-button mono">DOCUMENTATION</a>
+
+        <button class="nav-hamburger mono" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Rail -->
+  <div class="nav-rail" id="nav-rail" aria-hidden="true">
+    <div class="rail-backdrop" id="rail-close"></div>
+
+    <div class="rail-content">
+      <div class="rail-header">
+        <span class="mono rail-menu-label">MENU</span>
+        <button class="close-rail mono" id="rail-close-btn" type="button">[ CLOSE ]</button>
+      </div>
+
+      <nav class="rail-links" aria-label="Mobile navigation">
+        <span class="rail-label mono">AEOWUN</span>
+
+        <a href="/aeoengine/" class="rail-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="rail-link mono">AEOSCRIPT</a>
+        <a href="/docs/" class="rail-link mono active">DOCS</a>
+        <a href="/games/" class="rail-link mono">GAMES</a>
+        <a href="/software/" class="rail-link mono">SOFTWARE &amp; TOOLS</a>
+
+        <div class="rail-divider"></div>
+
+        <a href="/support/" class="rail-link mono">SUPPORT</a>
+        <a href="/privacy/" class="rail-link mono">PRIVACY</a>
+        <a href="/security/" class="rail-link mono">SECURITY</a>
+
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="rail-link mono">GITHUB</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <section class="canonical-hero">
+      <div class="brand-label mono">AEOWUN &gt; DOCS &gt; TUTORIALS &gt; FIRST WORLD</div>
+      <h1 class="canonical-title mono">FIRST WORLD</h1>
+      <p class="canonical-lead">
+        Learn the basics of AeoEngine editor navigation, building geometry, placing lights, and playing your world.
+      </p>
+    </section>
+
+    <section class="home-section">
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">GOAL</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          This tutorial will guide you through the fundamental workflows of the AeoEngine Voxel Editor. You will learn how to navigate the 3D viewport, construct voxel layouts, add environmental lighting, and simulate the world in Play mode.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">PREREQUISITES</h2>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li style="position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text);">
+            <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> <a href="/aeoengine/" class="text-link">AeoEngine Core Overview</a> &mdash; Understanding the architecture of the engine.
+          </li>
+          <li style="position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text);">
+            <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> <a href="/aeoengine/getting-started/" class="text-link">Getting Started</a> &mdash; Setting up your environment.
+          </li>
+          <li style="position: relative; padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; color: var(--text);">
+            <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> <a href="/docs/" class="text-link">Documentation Hub</a> &mdash; Technical background of the AEOWUN workspace.
+          </li>
+        </ul>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">WHAT YOU WILL BUILD</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          You will construct a clean, physical stage featuring a solid brick floor, an elevated platform, and an ambient light bulb actor that illuminates the scene dynamically during simulation.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 16px;">STEP-BY-STEP INSTRUCTIONS</h2>
+        <ol style="padding-left: 20px; color: var(--text); font-size: 0.95rem; line-height: 1.8;">
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Launch AeoEngine and Create a Project:</strong> Open AeoEngine, choose "New Project" from the startup dialog, name your project <code>FirstWorld</code>, and select a folder location.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Master Editor Navigation:</strong> Click inside the 3D Viewport. Hold the Right Mouse Button (RMB) and move your mouse to look around. Use the <code>W</code>, <code>A</code>, <code>S</code>, and <code>D</code> keys while holding RMB to fly through the empty void.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Build a Solid Floor:</strong> Select the <code>Block</code> tool from the left toolbar panel. Ensure the texture brush is set to <code>brick.png</code>. Left-click and drag across the grid origin to build a 10x10 voxel floor.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Add an Elevated Platform:</strong> Move your brush onto the center of the newly constructed floor. Single left-click a few times to stack blocks vertically, creating a small 2x2 pedestal.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Place a Light Source:</strong> Open the "Actor Palette" panel on the right side of the editor window. Drag a <code>Light</code> component into the viewport and place it directly above your elevated platform pedestal.</li>
+          <li style="margin-bottom: 0;"><strong style="color: var(--text-bright);">Test in Play Mode:</strong> Press the <strong style="color: var(--text-bright);">Play</strong> button located at the top center of the editor toolbar (or hit <code>F5</code>). The editor grid disappears, physics engines activate, and your environment is rendered with live directional lighting. Press <code>Escape</code> to stop simulation and return to Editor mode.</li>
+        </ol>
+      </div>
+
+      <div class="script-code-panel" style="margin: 24px 0;">
+        <div class="script-code-header">
+          <span class="mono">STRUCTURAL DATA MODEL</span>
+          <span class="mono">JSON</span>
+        </div>
+        <pre><code>{
+  "world": {
+    "cells": [
+      { "type": "Block", "position": [0, 0, 0], "texture": "brick.png" },
+      { "type": "Light", "position": [5, 4, 5], "color": [1.0, 1.0, 1.0] }
+    ]
+  }
+}</code></pre>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">EXPLANATION</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          In this workflow, your primary interactions use the AeoEngine Voxel Pipeline. When you paint voxels, the engine populates an uncompressed cell coordinate map. Adding the <code>Light</code> actor dynamically injects an illumination matrix into the rendering loop. Upon transitioning to Play mode via <code>F5</code>, the engine performs a complete isolated copy of the authored scene data into a volatile runtime cache, ensuring that play tests never destructively mutate your master source file.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">RESULT</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          Upon clicking Play, you should see a crisp, illuminated grid of brick blocks casting shadow volumes onto the void beneath. The light bulb glows intensely, demonstrating live ray casting across your voxel pedestals.
+        </p>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; padding: 20px 0;">
+        <a href="../" class="text-link mono">&larr; BACK TO TUTORIALS</a>
+        <a href="../first-script/" class="text-link mono">NEXT: FIRST SCRIPT &rarr;</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="aeowun-footer home-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a href="/" class="footer-brand-name mono">AEOWUN</a>
+        <p>
+          A small, actively developed software project built around
+          AeoEngine, AeoScript, and the games and tools made with them.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">PRODUCT</h2>
+        <a href="/aeoengine/">AeoEngine</a>
+        <a href="/aeoscript/">AeoScript</a>
+        <a href="/games/">Games</a>
+        <a href="/software/">Software &amp; Tools</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">LEARN</h2>
+        <a href="/docs/">Documentation</a>
+        <a href="/docs/tutorials/">Tutorials</a>
+        <a href="/docs/reference/">API Reference</a>
+        <a href="/docs/troubleshooting/">Troubleshooting</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">AEOWUN</h2>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/security/">Security</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="mono">© 2026 AEOWUN.</span>
+      <span class="mono">BUILT IN PUBLIC.</span>
+    </div>
+  </footer>
+
+  <script src="../../../app.js"></script>
+</body>
+</html>

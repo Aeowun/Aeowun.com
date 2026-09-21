@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEOWUN // AEOSCRIPT // MATH</title>
+  <link rel="canonical" href="https://www.aeowun.com/aeoscript/math/">
+  <meta name="description" content="Deterministic math operations in AeoScript. Learn about clamp, lerp, trigonometry, and random number generation for stable simulation.">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="canonical-page">
+
+  <div id="void-bg"></div>
+  <div id="technical-grid"></div>
+
+  <!-- Header -->
+  <header class="aeowun-header">
+    <div class="header-inner container">
+      <a href="/" class="brand" aria-label="AEOWUN home">
+        <span class="brand-name mono">AEOWUN</span>
+      </a>
+
+      <nav class="home-nav" aria-label="Primary navigation">
+        <a href="/aeoengine/" class="home-nav-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="home-nav-link mono active">AEOSCRIPT</a>
+        <a href="/docs/" class="home-nav-link mono">DOCS</a>
+        <a href="/games/" class="home-nav-link mono">GAMES</a>
+        <a href="/software/" class="home-nav-link mono">SOFTWARE</a>
+        <a href="/support/" class="home-nav-link mono">SUPPORT</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="home-nav-link mono">GITHUB</a>
+      </nav>
+
+      <div class="home-header-actions">
+        <a href="/docs/" class="primary-button mono">DOCUMENTATION</a>
+
+        <button class="nav-hamburger mono" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Rail -->
+  <div class="nav-rail" id="nav-rail" aria-hidden="true">
+    <div class="rail-backdrop" id="rail-close"></div>
+
+    <div class="rail-content">
+      <div class="rail-header">
+        <span class="mono rail-menu-label">MENU</span>
+        <button class="close-rail mono" id="rail-close-btn" type="button">[ CLOSE ]</button>
+      </div>
+
+      <nav class="rail-links" aria-label="Mobile navigation">
+        <span class="rail-label mono">AEOWUN</span>
+
+        <a href="/aeoengine/" class="rail-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="rail-link mono active">AEOSCRIPT</a>
+        <a href="/docs/" class="rail-link mono">DOCS</a>
+        <a href="/games/" class="rail-link mono">GAMES</a>
+        <a href="/software/" class="rail-link mono">SOFTWARE &amp; TOOLS</a>
+
+        <div class="rail-divider"></div>
+
+        <a href="/support/" class="rail-link mono">SUPPORT</a>
+        <a href="/privacy/" class="rail-link mono">PRIVACY</a>
+        <a href="/security/" class="rail-link mono">SECURITY</a>
+
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="rail-link mono">GITHUB</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <section class="canonical-hero">
+      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; MATH</div>
+      <h1 class="canonical-title mono">MATH</h1>
+      <p class="canonical-lead">
+        Utilizing deterministic mathematical functions for gameplay logic.
+      </p>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">AEOSCRIPT // FUNDAMENTALS</div>
+          <h2 class="home-section-title mono">OVERVIEW</h2>
+        </div>
+      </div>
+
+      <div class="canonical-grid">
+        <article class="canonical-card" style="padding: 28px;">
+          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
+          <ul style="list-style: none; margin-bottom: 25px;">
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Basic operations (abs, min, max, clamp)
+            </li>
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Trigonometry (sin, cos, tan)
+            </li>
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Random number generation
+            </li>
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Rounding and square roots
+            </li>
+          </ul>
+        </article>
+
+        <article class="canonical-card" style="padding: 28px;">
+          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
+          <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
+            The <a href="../api/math/" class="text-link"><code>math</code> namespace</a> provides a set of deterministic mathematical operations. Determinism is critical for synchronized gameplay and predictable physics interactions. The library covers everything from basic rounding to complex trigonometric functions and bounded random number generation.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">SYNTAX / WORKFLOW</div>
+          <h2 class="home-section-title mono">EXAMPLES</h2>
+        </div>
+      </div>
+
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">MATH FUNCTIONS</span>
+          <span class="mono">SYNTAX</span>
+        </div>
+        <pre><code>val = math.abs(-10)
+clamped = math.clamp(health, 0, 100)
+roll = math.random(1, 6)</code></pre>
+      </div>
+
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">RANDOM &amp; CLAMPING</span>
+          <span class="mono">EXAMPLE</span>
+        </div>
+        <pre><code>const velocity = 5.7
+const speed = math.clamp(velocity, 0, 10)
+
+const roll = math.random(1, 20)
+
+if roll == 20 {
+  debug.log("Critical Success!")
+}</code></pre>
+      </div>
+
+      <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
+        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
+          <strong style="color: var(--text-bright);">EXPLANATION:</strong> This script uses <code>math.clamp</code> to ensure a velocity stays within bounds and <code>math.random(min, max)</code> to generate an inclusive integer for a d20 roll simulation.
+        </p>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="canonical-card" style="padding: 28px;">
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
+          <code>math.random()</code> without arguments returns a float in the range <code>[0.0, 1.0)</code>.
+        </p>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
+          <code>math.random(min, max)</code> returns an integer in the <strong>inclusive</strong> range <code>[min, max]</code>.
+        </p>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
+          Angles for trigonometric functions are in radians.
+        </p>
+      </div>
+    </section>
+
+    <div style="display: flex; justify-content: space-between; padding: 40px 0;">
+      <a href="../strings/" class="text-link mono">&larr; PREV: STRINGS</a>
+      <a href="../waiting/" class="text-link mono">NEXT: WAITING &rarr;</a>
+    </div>
+
+    <section class="home-section" style="border-bottom: none;">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">EXPLORE MORE</div>
+          <h2 class="home-section-title mono">RELATED LINKS</h2>
+        </div>
+      </div>
+      <div class="canonical-grid">
+        <a href="../operators/" class="canonical-path-card">
+          <strong>OPERATORS</strong>
+          <span>Arithmetic and logical operators</span>
+        </a>
+        <a href="../types/" class="canonical-path-card">
+          <strong>NUMBERS</strong>
+          <span>60Hz fixed floating-point values</span>
+        </a>
+        <a href="../control-flow/" class="canonical-path-card">
+          <strong>LOGIC &amp; CONDITIONALS</strong>
+          <span>Conditionals and decision logic</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="aeowun-footer home-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a href="/" class="footer-brand-name mono">AEOWUN</a>
+        <p>
+          A small, actively developed software project built around
+          AeoEngine, AeoScript, and the games and tools made with them.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">PRODUCT</h2>
+        <a href="/aeoengine/">AeoEngine</a>
+        <a href="/aeoscript/">AeoScript</a>
+        <a href="/games/">Games</a>
+        <a href="/software/">Software &amp; Tools</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">LEARN</h2>
+        <a href="/docs/">Documentation</a>
+        <a href="/docs/tutorials/">Tutorials</a>
+        <a href="/docs/reference/">API Reference</a>
+        <a href="/docs/troubleshooting/">Troubleshooting</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">AEOWUN</h2>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/security/">Security</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="mono">© 2026 AEOWUN.</span>
+      <span class="mono">BUILT IN PUBLIC.</span>
+    </div>
+  </footer>
+
+  <script src="../../app.js"></script>
+</body>
+</html>

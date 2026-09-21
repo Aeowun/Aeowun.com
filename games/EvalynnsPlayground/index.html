@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1, user-scalable=no" />
+    <title>Evalynn's Playground</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #000;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      #game-container {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        inset: 0;
+      }
+      #hud {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 10;
+        color: white;
+      }
+      .debug-panel {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-family: monospace;
+      }
+      .interact-prompt {
+        position: absolute;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 0, 0.9);
+        color: black;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 18px;
+        display: none;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      }
+      .inventory-bar {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(16, 26, 56, 0.9);
+        border: 2px solid #55e6ff;
+        padding: 10px 20px;
+        border-radius: 15px;
+        display: flex;
+        gap: 15px;
+        pointer-events: auto;
+      }
+      .joystick {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 135px;
+        height: 135px;
+        border-radius: 50%;
+        background: #ffffff22;
+        border: 3px solid #ffffff66;
+        pointer-events: auto;
+        touch-action: none;
+        z-index: 100;
+        display: none; /* Only visible on touch */
+      }
+      .stick {
+        position: absolute;
+        left: 38px;
+        top: 38px;
+        width: 59px;
+        height: 59px;
+        border-radius: 50%;
+        background: #73dcff;
+        border: 3px solid white;
+        pointer-events: none;
+      }
+      @media (max-width: 700px) {
+        .joystick {
+          width: 100px;
+          height: 100px;
+          left: max(15px, env(safe-area-inset-left));
+          bottom: max(15px, env(safe-area-inset-bottom));
+        }
+        .stick {
+          left: 28px;
+          top: 28px;
+          width: 44px;
+          height: 44px;
+        }
+      }
+      .inventory-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        font-size: 12px;
+      }
+      .item-count {
+        font-weight: bold;
+        color: #55e6ff;
+      }
+      .controls-hint {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        text-align: right;
+        font-size: 12px;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 8px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-container"></div>
+
+    <div id="hud">
+      <div id="top-bar" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px;">
+        <div id="button-count" style="background: rgba(16, 26, 56, 0.9); border: 2px solid #ffeb3b; padding: 5px 15px; border-radius: 10px; color: #ffeb3b; font-weight: bold; font-size: 18px;">Buttons: 0</div>
+        <div id="day-count" style="background: rgba(16, 26, 56, 0.9); border: 2px solid #55e6ff; padding: 5px 15px; border-radius: 10px; color: white; font-size: 18px;">Day: 1</div>
+      </div>
+
+      <div id="quest-log" style="position: absolute; top: 70px; right: 10px; background: rgba(0, 0, 0, 0.7); padding: 15px; border-radius: 10px; border-left: 4px solid #ffeb3b; min-width: 200px; pointer-events: auto;">
+        <div style="font-weight: bold; color: #ffeb3b; margin-bottom: 8px; border-bottom: 1px solid #555;">Active Quests</div>
+        <div id="quest-list" style="font-size: 14px; line-height: 1.4;">None</div>
+      </div>
+
+      <div id="onboarding-overlay" style="position: absolute; top: 70px; left: 10px; background: rgba(233, 30, 99, 0.85); padding: 15px; border-radius: 10px; border-right: 4px solid white; max-width: 250px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.5); pointer-events: none;">
+        <div style="font-weight: bold; margin-bottom: 5px;">Goal</div>
+        <div id="onboarding-text" style="font-size: 14px;"></div>
+      </div>
+
+      <div id="controls-hint" class="controls-hint">
+        [WASD] Move<br>
+        [E] Interact<br>
+        [P] Placement Mode
+      </div>
+      <div id="interact-prompt" class="interact-prompt"></div>
+
+      <div id="dialogue-box" class="dialogue-box" style="display: none; position: absolute; bottom: 100px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 20px; border-radius: 10px; width: 80%; border: 2px solid white; pointer-events: auto;">
+        <div id="dialogue-speaker" style="font-weight: bold; margin-bottom: 5px; color: #ffeb3b;"></div>
+        <div id="dialogue-text"></div>
+        <div style="text-align: right; font-size: 10px; margin-top: 10px;">Press [E] or Click to Continue</div>
+      </div>
+
+      <div id="shop-box" class="shop-box" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(16, 26, 56, 0.95); color: white; padding: 30px; border-radius: 20px; border: 3px solid #55e6ff; pointer-events: auto; min-width: 300px;">
+        <h2 id="shop-name" style="margin-top: 0; color: #55e6ff;">General Store</h2>
+        <div id="shop-items" style="margin-bottom: 20px;"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div id="shop-currency" style="color: #ffeb3b; font-weight: bold;">Buttons: 100</div>
+            <button onclick="document.getElementById('shop-box').style.display='none'" style="padding: 5px 15px; border-radius: 5px; cursor: pointer;">Close</button>
+        </div>
+      </div>
+
+      <div id="inventory-bar" class="inventory-bar">
+        Inventory Empty
+      </div>
+
+      <div id="joystick" class="joystick">
+        <div id="stick" class="stick"></div>
+      </div>
+
+      <div id="rename-modal" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(233, 30, 99, 0.95); color: white; padding: 25px; border-radius: 15px; border: 3px solid white; pointer-events: auto; min-width: 250px; text-align: center; z-index: 1000;">
+        <h3 style="margin-top: 0;">Rename Baby</h3>
+        <input type="text" id="rename-input" style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-bottom: 15px; font-size: 16px;">
+        <div style="display: flex; gap: 10px; justify-content: center;">
+          <button id="rename-confirm" style="padding: 8px 20px; border-radius: 5px; cursor: pointer; background: #4caf50; color: white; border: none; font-weight: bold;">Save</button>
+          <button onclick="document.getElementById('rename-modal').style.display='none'" style="padding: 8px 20px; border-radius: 5px; cursor: pointer; background: #f44336; color: white; border: none;">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

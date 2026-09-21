@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEOWUN // TUTORIALS // FIRST SCRIPT</title>
+  <link rel="canonical" href="https://www.aeowun.com/docs/tutorials/first-script/">
+  <meta name="description" content="Learn how to create an .aeo file, attach it to a voxel block, and log diagnostic output on initialization.">
+  <link rel="stylesheet" href="../../../style.css">
+</head>
+<body class="canonical-page">
+
+  <div id="void-bg"></div>
+  <div id="technical-grid"></div>
+
+  <!-- Header -->
+  <header class="aeowun-header">
+    <div class="header-inner container">
+      <a href="/" class="brand" aria-label="AEOWUN home">
+        <span class="brand-name mono">AEOWUN</span>
+      </a>
+
+      <nav class="home-nav" aria-label="Primary navigation">
+        <a href="/aeoengine/" class="home-nav-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="home-nav-link mono">AEOSCRIPT</a>
+        <a href="/docs/" class="home-nav-link mono active">DOCS</a>
+        <a href="/games/" class="home-nav-link mono">GAMES</a>
+        <a href="/software/" class="home-nav-link mono">SOFTWARE</a>
+        <a href="/support/" class="home-nav-link mono">SUPPORT</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="home-nav-link mono">GITHUB</a>
+      </nav>
+
+      <div class="home-header-actions">
+        <a href="/docs/" class="primary-button mono">DOCUMENTATION</a>
+
+        <button class="nav-hamburger mono" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Rail -->
+  <div class="nav-rail" id="nav-rail" aria-hidden="true">
+    <div class="rail-backdrop" id="rail-close"></div>
+
+    <div class="rail-content">
+      <div class="rail-header">
+        <span class="mono rail-menu-label">MENU</span>
+        <button class="close-rail mono" id="rail-close-btn" type="button">[ CLOSE ]</button>
+      </div>
+
+      <nav class="rail-links" aria-label="Mobile navigation">
+        <span class="rail-label mono">AEOWUN</span>
+
+        <a href="/aeoengine/" class="rail-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="rail-link mono">AEOSCRIPT</a>
+        <a href="/docs/" class="rail-link mono active">DOCS</a>
+        <a href="/games/" class="rail-link mono">GAMES</a>
+        <a href="/software/" class="rail-link mono">SOFTWARE &amp; TOOLS</a>
+
+        <div class="rail-divider"></div>
+
+        <a href="/support/" class="rail-link mono">SUPPORT</a>
+        <a href="/privacy/" class="rail-link mono">PRIVACY</a>
+        <a href="/security/" class="rail-link mono">SECURITY</a>
+
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="rail-link mono">GITHUB</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <section class="canonical-hero">
+      <div class="brand-label mono">AEOWUN &gt; DOCS &gt; TUTORIALS &gt; FIRST SCRIPT</div>
+      <h1 class="canonical-title mono">FIRST SCRIPT</h1>
+      <p class="canonical-lead">
+        Learn how to create an .aeo file, attach it to a voxel block, and log diagnostic output on initialization.
+      </p>
+    </section>
+
+    <section class="home-section">
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">GOAL</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          This tutorial will guide you through creating your very first standalone AeoScript source file, attaching it to an authored voxel block using the editor layout tools, and intercepting the game lifecycle initialization sequence to print output messages.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">PREREQUISITES</h2>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li style="position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text);">
+            <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> <a href="/aeoscript/" class="text-link">AeoScript Overview</a> &mdash; Core paradigms of the language.
+          </li>
+          <li style="position: relative; padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; color: var(--text);">
+            <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> <a href="../first-world/" class="text-link">Tutorial 1: First World</a> &mdash; Basic scene management and workspace handling.
+          </li>
+        </ul>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">WHAT YOU WILL BUILD</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          You will write an <code>init_test.aeo</code> script file, bind it to a block instance via the editor properties inspector, and log an authenticated initialization verification signature into the engine console terminal upon simulation startup.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 16px;">STEP-BY-STEP INSTRUCTIONS</h2>
+        <ol style="padding-left: 20px; color: var(--text); font-size: 0.95rem; line-height: 1.8;">
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Open Your Existing Project:</strong> Open AeoEngine and load the <code>FirstWorld</code> project you created in the previous guide.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Create the Script File:</strong> In the editor Asset Browser panel, right-click inside the <code>scripts/</code> folder, select <strong style="color: var(--text-bright);">New File</strong>, name it <code>init_test.aeo</code>, and press Enter. Double-click the file to open the internal editor text panel.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Implement the Ready Hook:</strong> Type the custom script structure to bind into the initial hook. We will declare an explicit <code>fn on_ready()</code> callback that invokes the logging namespace.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Select an Editor Target:</strong> Click the selection arrow tool in the left toolbar, then click on one of the blocks in your 3D floor map to highlight it.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Bind the Script Component:</strong> Look at the <strong style="color: var(--text-bright);">Properties Panel</strong> on the right side of the editor. Find the "Script Binding" field, click the ellipsis (<code>...</code>) button, choose your newly created <code>init_test.aeo</code> from the project assets directory, and hit Apply.</li>
+          <li style="margin-bottom: 0;"><strong style="color: var(--text-bright);">Execute and Monitor Diagnostics:</strong> Open the Console pane by clicking <code>View &gt; Panels &gt; Diagnostic Console</code> at the top menu bar. Press <code>F5</code> to start Play mode. Monitor the terminal panel to locate your logged text output. Click <code>Escape</code> to stop simulation.</li>
+        </ol>
+      </div>
+
+      <div class="script-code-panel" style="margin: 24px 0;">
+        <div class="script-code-header">
+          <span class="mono">INIT_TEST.AEO</span>
+          <span class="mono">AEOSCRIPT</span>
+        </div>
+        <pre><code>// init_test.aeo - AeoScript lifecycle entry binding test
+fn on_ready() {
+    debug.log("AeoScript environment successfully initialized on Block handle!")
+}</code></pre>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">EXPLANATION</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          In this architecture, AeoScript source text is parsed into an abstract syntax tree and cached by the engine compiler. The <code>fn on_ready()</code> declaration acts as a distinct engine lifecycle callback hook. When the virtual machine instantiates live cells upon entering Play mode, it scans attached script bindings and automatically spawns a dedicated fiber context to execute <code>on_ready()</code> exactly once, allowing you to invoke <code>debug.log()</code> safely.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">RESULT</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          When the environment finishes loading after hitting <code>F5</code>, a glowing cyan line will appear within the Diagnostic Console pane displaying the text message: <code>AeoScript environment successfully initialized on Block handle!</code>
+        </p>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; padding: 20px 0;">
+        <a href="../first-world/" class="text-link mono">&larr; PREV: FIRST WORLD</a>
+        <a href="../interactive-object/" class="text-link mono">NEXT: INTERACTIVE OBJECT &rarr;</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="aeowun-footer home-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a href="/" class="footer-brand-name mono">AEOWUN</a>
+        <p>
+          A small, actively developed software project built around
+          AeoEngine, AeoScript, and the games and tools made with them.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">PRODUCT</h2>
+        <a href="/aeoengine/">AeoEngine</a>
+        <a href="/aeoscript/">AeoScript</a>
+        <a href="/games/">Games</a>
+        <a href="/software/">Software &amp; Tools</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">LEARN</h2>
+        <a href="/docs/">Documentation</a>
+        <a href="/docs/tutorials/">Tutorials</a>
+        <a href="/docs/reference/">API Reference</a>
+        <a href="/docs/troubleshooting/">Troubleshooting</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">AEOWUN</h2>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/security/">Security</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="mono">© 2026 AEOWUN.</span>
+      <span class="mono">BUILT IN PUBLIC.</span>
+    </div>
+  </footer>
+
+  <script src="../../../app.js"></script>
+</body>
+</html>

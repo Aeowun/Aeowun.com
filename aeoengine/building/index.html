@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEOWUN // AEOENGINE // VOXEL BUILDING MODES</title>
+  <link rel="canonical" href="https://www.aeowun.com/aeoengine/building/">
+  <meta name="description" content="Master voxel building in AeoEngine. Learn about Plane and Top-Block building modes, face-aware snapping, and geometric sculpting tools.">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="canonical-page aeo-page">
+
+  <div id="void-bg"></div>
+  <div id="technical-grid"></div>
+  <div id="showroom-aura"></div>
+
+  <!-- Header -->
+  <header class="aeowun-header">
+    <div class="header-inner container">
+      <a href="/" class="brand" aria-label="AEOWUN home">
+        <span class="brand-name mono">AEOWUN</span>
+      </a>
+
+      <nav class="home-nav" aria-label="Primary navigation">
+        <a href="/aeoengine/" class="home-nav-link mono active">AEOENGINE</a>
+        <a href="/aeoscript/" class="home-nav-link mono">AEOSCRIPT</a>
+        <a href="/docs/" class="home-nav-link mono">DOCS</a>
+        <a href="/games/" class="home-nav-link mono">GAMES</a>
+        <a href="/software/" class="home-nav-link mono">SOFTWARE</a>
+        <a href="/support/" class="home-nav-link mono">SUPPORT</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="home-nav-link mono">GITHUB</a>
+      </nav>
+
+      <div class="home-header-actions">
+        <a href="/docs/" class="primary-button mono">DOCUMENTATION</a>
+
+        <button class="nav-hamburger mono" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Rail -->
+  <div class="nav-rail" id="nav-rail" aria-hidden="true">
+    <div class="rail-backdrop" id="rail-close"></div>
+
+    <div class="rail-content">
+      <div class="rail-header">
+        <span class="mono rail-menu-label">MENU</span>
+        <button class="close-rail mono" id="rail-close-btn" type="button">[ CLOSE ]</button>
+      </div>
+
+      <nav class="rail-links" aria-label="Mobile navigation">
+        <span class="rail-label mono">AEOWUN</span>
+
+        <a href="/aeoengine/" class="rail-link mono active">AEOENGINE</a>
+        <a href="/aeoscript/" class="rail-link mono">AEOSCRIPT</a>
+        <a href="/docs/" class="rail-link mono">DOCS</a>
+        <a href="/games/" class="rail-link mono">GAMES</a>
+        <a href="/software/" class="rail-link mono">SOFTWARE &amp; TOOLS</a>
+
+        <div class="rail-divider"></div>
+
+        <a href="/support/" class="rail-link mono">SUPPORT</a>
+        <a href="/privacy/" class="rail-link mono">PRIVACY</a>
+        <a href="/security/" class="rail-link mono">SECURITY</a>
+
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="rail-link mono">GITHUB</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <section class="canonical-hero">
+      <div class="brand-label mono">AEOWUN &gt; AEOENGINE &gt; BUILDING</div>
+      <h1 class="canonical-title mono">VOXEL BUILDING MODES</h1>
+      <p class="canonical-lead">
+        Construct geometric layouts efficiently using integrated Plane and Top-Block building operations.
+      </p>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">AEOENGINE // FUNDAMENTALS</div>
+          <h2 class="home-section-title mono">OVERVIEW</h2>
+        </div>
+      </div>
+
+      <div class="canonical-grid">
+        <article class="canonical-card" style="padding: 28px;">
+          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
+          <ul style="list-style: none; margin-bottom: 25px;">
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Toggling abstract workspace grid height boundaries in Plane mode
+            </li>
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Leveraging face-aware target snapping in Top-Block mode
+            </li>
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Configuring paint values via persistent color pickers
+            </li>
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Utilizing drag, line, and overwrite build mechanisms
+            </li>
+          </ul>
+        </article>
+
+        <article class="canonical-card" style="padding: 28px;">
+          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
+          <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
+            Building geometry in AeoEngine utilizes contextual workspace brushes. Rather than clicking singular points exclusively, authors can stretch lines or planes with real-time ghost previews. The editor captures configured Block parameters (ColorRGB, TextureID) and maps them cleanly into the global grid persistence file.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">WORKFLOW / CAPABILITIES</div>
+          <h2 class="home-section-title mono">PAINTING MATRIX</h2>
+        </div>
+      </div>
+
+      <p style="font-size: 1rem; line-height: 1.8; color: var(--text); margin-bottom: 20px;">
+        Brushes adapt dynamically based on selection modes. Overwriting existing layout components is handled through explicit shortcut states. Core behaviors include:
+      </p>
+
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">VOXEL PAINTING</span>
+          <span class="mono">MATRIX</span>
+        </div>
+        <pre><code>Voxel Painting Matrix:
+- Plane Mode: Bounds brush creation strictly along a horizontal height baseline.
+- Top-Block Mode: Targets visible voxel faces, providing automated vertical stacking.
+- Shift + Build: Forces immediate property overwrite onto existing voxel indices.
+- Ghost Preview: Draws wireframe bounds prior to committing construction buffers.</code></pre>
+      </div>
+
+      <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
+        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
+          <strong style="color: var(--text-bright);">EXPLANATION:</strong> Drag operations support swift geometric sculpting. Color parameters are configured via precise numeric ColorRGB inputs or an integrated visual Color Picker widget, loading directly into persistent cell files.
+        </p>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="canonical-card" style="padding: 28px;">
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
+          <strong style="color: var(--text-bright);">Terminology:</strong> Legacy records are unified under the universal Block cell definition.
+        </p>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
+          <strong style="color: var(--text-bright);">Undo Support:</strong> Full history tracing covers drag build, single stamp, brush erase, and cell delete operations.
+        </p>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
+          <strong style="color: var(--text-bright);">Mesh Rendering Limits:</strong> Complex geometric calculations like greedy face meshing and culling are planned enhancements to optimize draw calls.
+        </p>
+      </div>
+    </section>
+
+    <div style="display: flex; justify-content: space-between; padding: 40px 0;">
+      <a href="../hierarchy/" class="text-link mono">&larr; PREV: HIERARCHY &amp; SELECTION</a>
+      <a href="../lighting/" class="text-link mono">NEXT: LIGHTING SYSTEMS &rarr;</a>
+    </div>
+
+    <section class="home-section" style="border-bottom: none;">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">EXPLORE MORE</div>
+          <h2 class="home-section-title mono">RELATED LINKS</h2>
+        </div>
+      </div>
+      <div class="canonical-grid">
+        <a href="../hierarchy/" class="canonical-path-card">
+          <strong>HIERARCHY &amp; SELECTION</strong>
+          <span>World hierarchy graph and multi-selection</span>
+        </a>
+        <a href="../lighting/" class="canonical-path-card">
+          <strong>LIGHTING SYSTEMS</strong>
+          <span>Authored light cell placement</span>
+        </a>
+        <a href="/aeoscript/runtime-properties/" class="canonical-path-card">
+          <strong>AEOSCRIPT PROPERTIES</strong>
+          <span>Dynamic runtime property overrides</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="aeowun-footer home-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a href="/" class="footer-brand-name mono">AEOWUN</a>
+        <p>
+          A small, actively developed software project built around
+          AeoEngine, AeoScript, and the games and tools made with them.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">PRODUCT</h2>
+        <a href="/aeoengine/">AeoEngine</a>
+        <a href="/aeoscript/">AeoScript</a>
+        <a href="/games/">Games</a>
+        <a href="/software/">Software &amp; Tools</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">LEARN</h2>
+        <a href="/docs/">Documentation</a>
+        <a href="/docs/tutorials/">Tutorials</a>
+        <a href="/docs/reference/">API Reference</a>
+        <a href="/docs/troubleshooting/">Troubleshooting</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">AEOWUN</h2>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/security/">Security</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="mono">© 2026 AEOWUN.</span>
+      <span class="mono">BUILT IN PUBLIC.</span>
+    </div>
+  </footer>
+
+  <script src="../../app.js"></script>
+</body>
+</html>

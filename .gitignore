@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# IDEs
+../Aeowun.comBK/.idea/
+.vscode/
+
+# Project Artifacts
+*.artifact.md
+walkthrough.artifact.md
+.artifacts/
+
+# Node
+node_modules/
+package-lock.json
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build
+dist/
+build/

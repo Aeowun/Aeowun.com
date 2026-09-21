@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEOWUN // AEOSCRIPT // RUNTIME STATE</title>
+  <link rel="canonical" href="https://www.aeowun.com/aeoscript/runtime-state/">
+  <meta name="description" content="Understanding runtime state in AeoEngine. Learn how temporary Play-mode changes are managed and discarded when the simulation stops.">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="canonical-page">
+
+  <div id="void-bg"></div>
+  <div id="technical-grid"></div>
+
+  <!-- Header -->
+  <header class="aeowun-header">
+    <div class="header-inner container">
+      <a href="/" class="brand" aria-label="AEOWUN home">
+        <span class="brand-name mono">AEOWUN</span>
+      </a>
+
+      <nav class="home-nav" aria-label="Primary navigation">
+        <a href="/aeoengine/" class="home-nav-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="home-nav-link mono active">AEOSCRIPT</a>
+        <a href="/docs/" class="home-nav-link mono">DOCS</a>
+        <a href="/games/" class="home-nav-link mono">GAMES</a>
+        <a href="/software/" class="home-nav-link mono">SOFTWARE</a>
+        <a href="/support/" class="home-nav-link mono">SUPPORT</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="home-nav-link mono">GITHUB</a>
+      </nav>
+
+      <div class="home-header-actions">
+        <a href="/docs/" class="primary-button mono">DOCUMENTATION</a>
+
+        <button class="nav-hamburger mono" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Rail -->
+  <div class="nav-rail" id="nav-rail" aria-hidden="true">
+    <div class="rail-backdrop" id="rail-close"></div>
+
+    <div class="rail-content">
+      <div class="rail-header">
+        <span class="mono rail-menu-label">MENU</span>
+        <button class="close-rail mono" id="rail-close-btn" type="button">[ CLOSE ]</button>
+      </div>
+
+      <nav class="rail-links" aria-label="Mobile navigation">
+        <span class="rail-label mono">AEOWUN</span>
+
+        <a href="/aeoengine/" class="rail-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="rail-link mono active">AEOSCRIPT</a>
+        <a href="/docs/" class="rail-link mono">DOCS</a>
+        <a href="/games/" class="rail-link mono">GAMES</a>
+        <a href="/software/" class="rail-link mono">SOFTWARE &amp; TOOLS</a>
+
+        <div class="rail-divider"></div>
+
+        <a href="/support/" class="rail-link mono">SUPPORT</a>
+        <a href="/privacy/" class="rail-link mono">PRIVACY</a>
+        <a href="/security/" class="rail-link mono">SECURITY</a>
+
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="rail-link mono">GITHUB</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <section class="canonical-hero">
+      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; RUNTIME STATE</div>
+      <h1 class="canonical-title mono">RUNTIME STATE MODEL</h1>
+      <p class="canonical-lead">
+        Separation of persistent authored data from temporary execution state.
+      </p>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">AEOSCRIPT // ENGINE</div>
+          <h2 class="home-section-title mono">OVERVIEW</h2>
+        </div>
+      </div>
+
+      <div class="canonical-grid">
+        <article class="canonical-card" style="padding: 28px;">
+          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
+          <ul style="list-style: none; margin-bottom: 25px;">
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Authored vs Runtime state categories
+            </li>
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Persistent script instance fields
+            </li>
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Resumable fiber execution state
+            </li>
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Lifecycle synchronization and persistence
+            </li>
+          </ul>
+        </article>
+
+        <article class="canonical-card" style="padding: 28px;">
+          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
+          <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
+            AeoScript distinguishes between <strong>Authored State</strong> (persisted World data) and <strong>Runtime State</strong> (temporary data used during <a href="/aeoengine/" class="text-link">Play mode</a>). While scripts are defined in authored files, their execution state—including <a href="../waiting/" class="text-link">fiber call stacks</a>, local variables, and persistent <a href="../entities/" class="text-link">entity fields</a>—lives entirely within the runtime VM and is discarded when Play mode ends.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">SYNTAX / WORKFLOW</div>
+          <h2 class="home-section-title mono">EXAMPLES</h2>
+        </div>
+      </div>
+
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">STATE DEFINITION</span>
+          <span class="mono">PERSISTENT FIELDS</span>
+        </div>
+        <pre><code>// Authored: position, name, bindings
+// Runtime: physics position, overrides, fiber state
+
+entity Counter {
+  ticks: number = 0 // Persistent runtime field
+}</code></pre>
+      </div>
+
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">STATE LIFECYCLE</span>
+          <span class="mono">EXAMPLE</span>
+        </div>
+        <pre><code>entity Tracker {
+  count: number = 0
+
+  fn update(dt) {
+    count += 1 // Persistent between updates
+    local temp = count * 2 // Discarded after update
+  }
+}</code></pre>
+      </div>
+
+      <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
+        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
+          <strong style="color: var(--text-bright);">EXPLANATION:</strong> <code>count</code> is part of the persistent <code>ScriptInstance</code> for this specific entity. It survives across frames. <code>temp</code> is a local variable stored in the active fiber's stack and is discarded once the function completes.
+        </p>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="canonical-card" style="padding: 28px;">
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
+          Persistent fields are synchronized back to the owning entity after every lifecycle execution.
+        </p>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
+          Fiber state (call stack, local scopes) is preserved only while a fiber is yielded (waiting).
+        </p>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
+          The authored World remains unchanged; all script state is temporary to the Play session.
+        </p>
+      </div>
+    </section>
+
+    <div style="display: flex; justify-content: space-between; padding: 40px 0;">
+      <a href="../runtime-properties/" class="text-link mono">&larr; PREV: RUNTIME PROPERTIES</a>
+      <a href="../bindings/" class="text-link mono">NEXT: BINDINGS &rarr;</a>
+    </div>
+
+    <section class="home-section" style="border-bottom: none;">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">EXPLORE MORE</div>
+          <h2 class="home-section-title mono">RELATED LINKS</h2>
+        </div>
+      </div>
+      <div class="canonical-grid">
+        <a href="../runtime-properties/" class="canonical-path-card">
+          <strong>RUNTIME OVERRIDES</strong>
+          <span>Temporary property shifts</span>
+        </a>
+        <a href="../waiting/" class="canonical-path-card">
+          <strong>FIBERS &amp; YIELDING</strong>
+          <span>Resumable thread execution</span>
+        </a>
+        <a href="../variables/" class="canonical-path-card">
+          <strong>VARIABLES &amp; STATE</strong>
+          <span>State mutability and scope</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="aeowun-footer home-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a href="/" class="footer-brand-name mono">AEOWUN</a>
+        <p>
+          A small, actively developed software project built around
+          AeoEngine, AeoScript, and the games and tools made with them.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">PRODUCT</h2>
+        <a href="/aeoengine/">AeoEngine</a>
+        <a href="/aeoscript/">AeoScript</a>
+        <a href="/games/">Games</a>
+        <a href="/software/">Software &amp; Tools</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">LEARN</h2>
+        <a href="/docs/">Documentation</a>
+        <a href="/docs/tutorials/">Tutorials</a>
+        <a href="/docs/reference/">API Reference</a>
+        <a href="/docs/troubleshooting/">Troubleshooting</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">AEOWUN</h2>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/security/">Security</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="mono">© 2026 AEOWUN.</span>
+      <span class="mono">BUILT IN PUBLIC.</span>
+    </div>
+  </footer>
+
+  <script src="../../app.js"></script>
+</body>
+</html>

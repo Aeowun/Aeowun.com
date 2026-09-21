@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEOWUN // TROUBLESHOOTING</title>
+  <link rel="canonical" href="https://www.aeowun.com/docs/troubleshooting/">
+  <meta name="description" content="Solutions for common engine problems, script errors, and development workflow issues in the AEOWUN environment.">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="canonical-page">
+
+  <div id="void-bg"></div>
+  <div id="technical-grid"></div>
+
+  <!-- Header -->
+  <header class="aeowun-header">
+    <div class="header-inner container">
+      <a href="/" class="brand" aria-label="AEOWUN home">
+        <span class="brand-name mono">AEOWUN</span>
+      </a>
+
+      <nav class="home-nav" aria-label="Primary navigation">
+        <a href="/aeoengine/" class="home-nav-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="home-nav-link mono">AEOSCRIPT</a>
+        <a href="/docs/" class="home-nav-link mono active">DOCS</a>
+        <a href="/games/" class="home-nav-link mono">GAMES</a>
+        <a href="/software/" class="home-nav-link mono">SOFTWARE</a>
+        <a href="/support/" class="home-nav-link mono">SUPPORT</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="home-nav-link mono">GITHUB</a>
+      </nav>
+
+      <div class="home-header-actions">
+        <a href="/docs/" class="primary-button mono">DOCUMENTATION</a>
+
+        <button class="nav-hamburger mono" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Rail -->
+  <div class="nav-rail" id="nav-rail" aria-hidden="true">
+    <div class="rail-backdrop" id="rail-close"></div>
+
+    <div class="rail-content">
+      <div class="rail-header">
+        <span class="mono rail-menu-label">MENU</span>
+        <button class="close-rail mono" id="rail-close-btn" type="button">[ CLOSE ]</button>
+      </div>
+
+      <nav class="rail-links" aria-label="Mobile navigation">
+        <span class="rail-label mono">AEOWUN</span>
+
+        <a href="/aeoengine/" class="rail-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="rail-link mono">AEOSCRIPT</a>
+        <a href="/docs/" class="rail-link mono active">DOCS</a>
+        <a href="/games/" class="rail-link mono">GAMES</a>
+        <a href="/software/" class="rail-link mono">SOFTWARE &amp; TOOLS</a>
+
+        <div class="rail-divider"></div>
+
+        <a href="/support/" class="rail-link mono">SUPPORT</a>
+        <a href="/privacy/" class="rail-link mono">PRIVACY</a>
+        <a href="/security/" class="rail-link mono">SECURITY</a>
+
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="rail-link mono">GITHUB</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <section class="canonical-hero">
+      <div class="brand-label mono">AEOWUN &gt; DOCS &gt; TROUBLESHOOTING</div>
+      <h1 class="canonical-title mono">TROUBLESHOOTING</h1>
+      <p class="canonical-lead">
+        Solutions for common engine problems, script errors, and development workflow issues.
+      </p>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">AEOWUN // SUPPORT</div>
+          <h2 class="home-section-title mono">COMMON ISSUES</h2>
+        </div>
+      </div>
+
+      <div class="canonical-grid">
+        <a href="/docs/troubleshooting/aeoscript-errors/" class="canonical-path-card">
+          <strong>AEOSCRIPT ERRORS</strong>
+          <span>Detailed reference for common runtime errors like budget exhaustion and invalid handles.</span>
+        </a>
+        <a href="/aeoscript/bindings/" class="canonical-path-card">
+          <strong>BINDING FAILURES</strong>
+          <span>Fixing issues where scripts fail to attach to authored World Cells via numeric IDs.</span>
+        </a>
+        <a href="/aeoscript/waiting/" class="canonical-path-card">
+          <strong>LIFECYCLE HALTS</strong>
+          <span>Troubleshooting fibers that fail to resume or synchronize state after cooperative yields.</span>
+        </a>
+        <a href="/aeoscript/diagnostics/" class="canonical-path-card">
+          <strong>PERFORMANCE JANK</strong>
+          <span>Identifying runaway scripts and optimizing fiber execution budgets for stable framerates.</span>
+        </a>
+        <a href="/aeoscript/runtime-properties/" class="canonical-path-card">
+          <strong>WORLD SYNC</strong>
+          <span>Resolving conflicts between authored World data and runtime property overrides.</span>
+        </a>
+        <a href="/aeoengine/physics/" class="canonical-path-card">
+          <strong>PHYSICS GLITCHES</strong>
+          <span>Debugging anchored states, solid overrides, and dynamic Entity collisions.</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="home-section" style="border-bottom: none;">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">AEOWUN</div>
+          <h2 class="home-section-title mono">RELATED DOCUMENTATION</h2>
+        </div>
+      </div>
+
+      <div class="canonical-grid">
+        <a href="/docs/" class="canonical-path-card">
+          <strong>DOCUMENTATION HUB</strong>
+          <span>Back to main documentation</span>
+        </a>
+        <a href="/docs/reference/" class="canonical-path-card">
+          <strong>REFERENCE HUB</strong>
+          <span>API and system specifications</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="aeowun-footer home-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a href="/" class="footer-brand-name mono">AEOWUN</a>
+        <p>
+          A small, actively developed software project built around
+          AeoEngine, AeoScript, and the games and tools made with them.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">PRODUCT</h2>
+        <a href="/aeoengine/">AeoEngine</a>
+        <a href="/aeoscript/">AeoScript</a>
+        <a href="/games/">Games</a>
+        <a href="/software/">Software &amp; Tools</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">LEARN</h2>
+        <a href="/docs/">Documentation</a>
+        <a href="/docs/tutorials/">Tutorials</a>
+        <a href="/docs/reference/">API Reference</a>
+        <a href="/docs/troubleshooting/">Troubleshooting</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">AEOWUN</h2>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/security/">Security</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="mono">© 2026 AEOWUN.</span>
+      <span class="mono">BUILT IN PUBLIC.</span>
+    </div>
+  </footer>
+
+  <script src="../../app.js"></script>
+</body>
+</html>

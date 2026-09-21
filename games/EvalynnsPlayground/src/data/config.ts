@@ -1,0 +1,5 @@
+export const CONFIG = {
+    TILE_SIZE: 32,
+    INTERACTION_RADIUS: 48,
+    PLAYER_SPEED: 160,
+};

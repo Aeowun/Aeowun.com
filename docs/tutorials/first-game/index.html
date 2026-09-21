@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEOWUN // TUTORIALS // FIRST GAME</title>
+  <link rel="canonical" href="https://www.aeowun.com/docs/tutorials/first-game/">
+  <meta name="description" content="Combine spawning, position overrides, and temporal loops into a unified, playable voxel game architecture.">
+  <link rel="stylesheet" href="../../../style.css">
+</head>
+<body class="canonical-page">
+
+  <div id="void-bg"></div>
+  <div id="technical-grid"></div>
+
+  <!-- Header -->
+  <header class="aeowun-header">
+    <div class="header-inner container">
+      <a href="/" class="brand" aria-label="AEOWUN home">
+        <span class="brand-name mono">AEOWUN</span>
+      </a>
+
+      <nav class="home-nav" aria-label="Primary navigation">
+        <a href="/aeoengine/" class="home-nav-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="home-nav-link mono">AEOSCRIPT</a>
+        <a href="/docs/" class="home-nav-link mono active">DOCS</a>
+        <a href="/games/" class="home-nav-link mono">GAMES</a>
+        <a href="/software/" class="home-nav-link mono">SOFTWARE</a>
+        <a href="/support/" class="home-nav-link mono">SUPPORT</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="home-nav-link mono">GITHUB</a>
+      </nav>
+
+      <div class="home-header-actions">
+        <a href="/docs/" class="primary-button mono">DOCUMENTATION</a>
+
+        <button class="nav-hamburger mono" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Rail -->
+  <div class="nav-rail" id="nav-rail" aria-hidden="true">
+    <div class="rail-backdrop" id="rail-close"></div>
+
+    <div class="rail-content">
+      <div class="rail-header">
+        <span class="mono rail-menu-label">MENU</span>
+        <button class="close-rail mono" id="rail-close-btn" type="button">[ CLOSE ]</button>
+      </div>
+
+      <nav class="rail-links" aria-label="Mobile navigation">
+        <span class="rail-label mono">AEOWUN</span>
+
+        <a href="/aeoengine/" class="rail-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="rail-link mono">AEOSCRIPT</a>
+        <a href="/docs/" class="rail-link mono active">DOCS</a>
+        <a href="/games/" class="rail-link mono">GAMES</a>
+        <a href="/software/" class="rail-link mono">SOFTWARE &amp; TOOLS</a>
+
+        <div class="rail-divider"></div>
+
+        <a href="/support/" class="rail-link mono">SUPPORT</a>
+        <a href="/privacy/" class="rail-link mono">PRIVACY</a>
+        <a href="/security/" class="rail-link mono">SECURITY</a>
+
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="rail-link mono">GITHUB</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <section class="canonical-hero">
+      <div class="brand-label mono">AEOWUN &gt; DOCS &gt; TUTORIALS &gt; FIRST GAME</div>
+      <h1 class="canonical-title mono">FIRST GAME</h1>
+      <p class="canonical-lead">
+        Combine spawning, position overrides, and temporal loops into a unified, playable voxel game architecture.
+      </p>
+    </section>
+
+    <section class="home-section">
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">GOAL</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          This tutorial will combine everything you have learned so far. You will orchestrate object spawning, live spatial position overrides, and cooperative loop mechanics to build an active, moving platform hazard stage sequence.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">PREREQUISITES</h2>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li style="position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text);">
+            <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> <a href="../runtime-cell/" class="text-link">Tutorial 4: Runtime Cell</a> &mdash; Spawning containers via program execution scripts.
+          </li>
+          <li style="position: relative; padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; color: var(--text);">
+            <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> <a href="../interactive-object/" class="text-link">Tutorial 3: Interactive Object</a> &mdash; Fiber suspension hooks and visibility structures.
+          </li>
+        </ul>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">WHAT YOU WILL BUILD</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          You will write a complete script block that dynamically registers a high-contrast orange hazard elevator element at simulation start, and cycles its structural world coordinate position up and down indefinitely every second.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 16px;">STEP-BY-STEP INSTRUCTIONS</h2>
+        <ol style="padding-left: 20px; color: var(--text); font-size: 0.95rem; line-height: 1.8;">
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Initialize the Game Asset File:</strong> Within your open editor session, create a new source asset file inside <code>scripts/</code> labeled <code>moving_hazard.aeo</code>.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Establish the Core Lifecycle Entry:</strong> Declare the base <code>fn on_ready()</code> initializer statement block inside your editor text viewer.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Instantiate the Interactive Hazard:</strong> Call the constructor routine to generate a dynamic voxel structure: <code>const platform = cell.new("Block")</code>. Give it a distinct orange hue: <code>platform.color = [1, 0.5, 0]</code>.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Formulate the Infinite Translation Loop:</strong> Insert a <code>while true</code> block directly under the allocation code to keep the fiber executing across frames.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Override Spatial Coordinates with Yields:</strong> Inside the loop, assign the lower position vector: <code>platform.position = [5, 2, 5]</code> and yield for one second: <code>wait(1.0)</code>. Next, override it to the upper position: <code>platform.position = [5, 5, 5]</code> and add another <code>wait(1.0)</code> yield state.</li>
+          <li style="margin-bottom: 0;"><strong style="color: var(--text-bright);">Bind and Launch:</strong> Bind your master script component to any base floor block anchor in the 3D viewport. Trigger full execution by clicking Play or tapping <code>F5</code>. Watch the dynamic orange elevator transition smoothly between layers. Press <code>Escape</code> to stop play testing.</li>
+        </ol>
+      </div>
+
+      <div class="script-code-panel" style="margin: 24px 0;">
+        <div class="script-code-header">
+          <span class="mono">MOVING_HAZARD.AEO</span>
+          <span class="mono">AEOSCRIPT</span>
+        </div>
+        <pre><code>// moving_hazard.aeo - Spawning and coordinate translation loop
+fn on_ready() {
+    // 1. Allocate dynamic runtime block
+    const platform = cell.new("Block")
+    platform.color = [1, 0.5, 0]
+
+    // 2. Continuously translate spatial positions
+    while true {
+        platform.position = [5, 2, 5]
+        wait(1.0)
+
+        platform.position = [5, 5, 5]
+        wait(1.0)
+    }
+}</code></pre>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">EXPLANATION</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          This script showcases the absolute integration between AeoScript's <a href="/aeoscript/waiting/" class="text-link">asynchronous fiber scheduler</a> and AeoEngine's runtime memory pipeline. By invoking <code>platform.position = [...]</code>, the script triggers an atomic spatial rewrite within the voxel translation grid during Play mode. Since the operations run inside a lightweight cooperative fiber thread, the sequential code reads as a synchronous script while operating completely in parallel with physics, rendering, and input loops.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">RESULT</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          As soon as simulation begins, a glowing orange platform cell spawns cleanly and immediately starts shifting between vertical heights <code>2</code> and <code>5</code> exactly every one second, creating a functional, interactive mechanics stage block.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">WHAT'S NEXT</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          Congratulations! You have successfully mastered the AEOWUN tutorial series. From here, you can dive deeper into complete class references, string manipulation formulas, and complex math logic: <a href="/docs/reference/" class="text-link">Go to API Reference Overview &rarr;</a>
+        </p>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; padding: 20px 0;">
+        <a href="../runtime-cell/" class="text-link mono">&larr; PREV: RUNTIME CELL</a>
+        <a href="/docs/reference/" class="text-link mono">API REFERENCE OVERVIEW &rarr;</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="aeowun-footer home-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a href="/" class="footer-brand-name mono">AEOWUN</a>
+        <p>
+          A small, actively developed software project built around
+          AeoEngine, AeoScript, and the games and tools made with them.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">PRODUCT</h2>
+        <a href="/aeoengine/">AeoEngine</a>
+        <a href="/aeoscript/">AeoScript</a>
+        <a href="/games/">Games</a>
+        <a href="/software/">Software &amp; Tools</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">LEARN</h2>
+        <a href="/docs/">Documentation</a>
+        <a href="/docs/tutorials/">Tutorials</a>
+        <a href="/docs/reference/">API Reference</a>
+        <a href="/docs/troubleshooting/">Troubleshooting</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">AEOWUN</h2>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/security/">Security</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="mono">© 2026 AEOWUN.</span>
+      <span class="mono">BUILT IN PUBLIC.</span>
+    </div>
+  </footer>
+
+  <script src="../../../app.js"></script>
+</body>
+</html>

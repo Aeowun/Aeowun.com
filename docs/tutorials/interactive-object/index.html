@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEOWUN // TUTORIALS // INTERACTIVE OBJECT</title>
+  <link rel="canonical" href="https://www.aeowun.com/docs/tutorials/interactive-object/">
+  <meta name="description" content="Learn how to manipulate cell visibility and leverage cooperative fibers with wait states to script dynamic temporal behaviors.">
+  <link rel="stylesheet" href="../../../style.css">
+</head>
+<body class="canonical-page">
+
+  <div id="void-bg"></div>
+  <div id="technical-grid"></div>
+
+  <!-- Header -->
+  <header class="aeowun-header">
+    <div class="header-inner container">
+      <a href="/" class="brand" aria-label="AEOWUN home">
+        <span class="brand-name mono">AEOWUN</span>
+      </a>
+
+      <nav class="home-nav" aria-label="Primary navigation">
+        <a href="/aeoengine/" class="home-nav-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="home-nav-link mono">AEOSCRIPT</a>
+        <a href="/docs/" class="home-nav-link mono active">DOCS</a>
+        <a href="/games/" class="home-nav-link mono">GAMES</a>
+        <a href="/software/" class="home-nav-link mono">SOFTWARE</a>
+        <a href="/support/" class="home-nav-link mono">SUPPORT</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="home-nav-link mono">GITHUB</a>
+      </nav>
+
+      <div class="home-header-actions">
+        <a href="/docs/" class="primary-button mono">DOCUMENTATION</a>
+
+        <button class="nav-hamburger mono" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Rail -->
+  <div class="nav-rail" id="nav-rail" aria-hidden="true">
+    <div class="rail-backdrop" id="rail-close"></div>
+
+    <div class="rail-content">
+      <div class="rail-header">
+        <span class="mono rail-menu-label">MENU</span>
+        <button class="close-rail mono" id="rail-close-btn" type="button">[ CLOSE ]</button>
+      </div>
+
+      <nav class="rail-links" aria-label="Mobile navigation">
+        <span class="rail-label mono">AEOWUN</span>
+
+        <a href="/aeoengine/" class="rail-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="rail-link mono">AEOSCRIPT</a>
+        <a href="/docs/" class="rail-link mono active">DOCS</a>
+        <a href="/games/" class="rail-link mono">GAMES</a>
+        <a href="/software/" class="rail-link mono">SOFTWARE &amp; TOOLS</a>
+
+        <div class="rail-divider"></div>
+
+        <a href="/support/" class="rail-link mono">SUPPORT</a>
+        <a href="/privacy/" class="rail-link mono">PRIVACY</a>
+        <a href="/security/" class="rail-link mono">SECURITY</a>
+
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener" class="rail-link mono">GITHUB</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <section class="canonical-hero">
+      <div class="brand-label mono">AEOWUN &gt; DOCS &gt; TUTORIALS &gt; INTERACTIVE OBJECT</div>
+      <h1 class="canonical-title mono">INTERACTIVE OBJECT</h1>
+      <p class="canonical-lead">
+        Learn how to manipulate cell visibility and leverage cooperative fibers with wait states to script dynamic temporal behaviors.
+      </p>
+    </section>
+
+    <section class="home-section">
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">GOAL</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          This tutorial demonstrates how to implement automated temporal behaviors on voxel blocks. You will learn to control cell properties asynchronously over time using cooperative script fibers and non-blocking wait operations.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">PREREQUISITES</h2>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li style="position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text);">
+            <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> <a href="/aeoscript/" class="text-link">AeoScript Specification</a> &mdash; Specifically the sections on <a href="/aeoscript/waiting/" class="text-link">Fibers and Cooperative Yielding</a>.
+          </li>
+          <li style="position: relative; padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; color: var(--text);">
+            <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> <a href="../first-script/" class="text-link">Tutorial 2: First Script</a> &mdash; Managing script files and <a href="/aeoscript/bindings/" class="text-link">binding objects</a> via the Properties layout.
+          </li>
+        </ul>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">WHAT YOU WILL BUILD</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          You will implement a script that loops indefinitely, causing an authored block actor to transition cleanly between invisible and visible states at 0.25-second intervals, producing a smooth "flash" visual behavior.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 16px;">STEP-BY-STEP INSTRUCTIONS</h2>
+        <ol style="padding-left: 20px; color: var(--text); font-size: 0.95rem; line-height: 1.8;">
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Create the Flash Script File:</strong> Within your active project, navigate to the Asset Browser, right-click your <code>scripts/</code> directory, choose <strong style="color: var(--text-bright);">New File</strong>, and name it <code>flash_behavior.aeo</code>.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Implement a Loop in the Initialization Hook:</strong> Double-click the file to open the code area. Define the <code>fn on_ready()</code> function. Inside this function, insert a continuous <code>while true</code> control statement.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Manipulate Visibility Overrides:</strong> Inside the loop block, assign <code>visible = false</code> to turn off rendering. Follow this immediately with a <code>wait(0.25)</code> yield call.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Restore Visibility:</strong> Set <code>visible = true</code> to toggle the render state back on, and add another <code>wait(0.25)</code> yield statement to hold the frame configuration.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Bind the Script to a Target:</strong> Click on your elevated pedestal block in the viewport. Go to the Properties Panel, select the Script Binding selector, map it to <code>flash_behavior.aeo</code>, and hit apply.</li>
+          <li style="margin-bottom: 0;"><strong style="color: var(--text-bright);">Observe the Asynchronous Execution:</strong> Run Play mode by hitting <code>F5</code>. Watch the designated block flash in and out of existence continuously while you fly around the stage. Press <code>Escape</code> to close the runtime cache session.</li>
+        </ol>
+      </div>
+
+      <div class="script-code-panel" style="margin: 24px 0;">
+        <div class="script-code-header">
+          <span class="mono">FLASH_BEHAVIOR.AEO</span>
+          <span class="mono">AEOSCRIPT</span>
+        </div>
+        <pre><code>// flash_behavior.aeo - Non-blocking visibility oscillation
+fn on_ready() {
+    while true {
+        visible = false
+        wait(0.25)
+        visible = true
+        wait(0.25)
+    }
+}</code></pre>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">EXPLANATION</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          Traditional script runtimes block the main application thread when executing sleep operations. AeoScript avoids this through <a href="/aeoscript/waiting/" class="text-link">Cooperative Fibers</a>. When <code>wait(0.25)</code> is reached, the virtual machine freezes the block's current call stack, local instruction pointers, and loop variables, returning control to the main game engine loop. After 0.25 seconds have elapsed, the scheduler wakes the fiber, resuming precisely where it paused without executing the initialization sequence again.
+        </p>
+      </div>
+
+      <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
+        <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">RESULT</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+          In Play mode, the designated pedestal block cleanly disappears and reappears exactly 4 times per second, acting as an interactive hazard or indicator light without dragging down framerates or blocking physical collision queries.
+        </p>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; padding: 20px 0;">
+        <a href="../first-script/" class="text-link mono">&larr; PREV: FIRST SCRIPT</a>
+        <a href="../runtime-cell/" class="text-link mono">NEXT: RUNTIME CELL &rarr;</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="aeowun-footer home-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a href="/" class="footer-brand-name mono">AEOWUN</a>
+        <p>
+          A small, actively developed software project built around
+          AeoEngine, AeoScript, and the games and tools made with them.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">PRODUCT</h2>
+        <a href="/aeoengine/">AeoEngine</a>
+        <a href="/aeoscript/">AeoScript</a>
+        <a href="/games/">Games</a>
+        <a href="/software/">Software &amp; Tools</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">LEARN</h2>
+        <a href="/docs/">Documentation</a>
+        <a href="/docs/tutorials/">Tutorials</a>
+        <a href="/docs/reference/">API Reference</a>
+        <a href="/docs/troubleshooting/">Troubleshooting</a>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="mono">AEOWUN</h2>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/security/">Security</a>
+        <a href="https://github.com/Aeowun" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="mono">© 2026 AEOWUN.</span>
+      <span class="mono">BUILT IN PUBLIC.</span>
+    </div>
+  </footer>
+
+  <script src="../../../app.js"></script>
+</body>
+</html>
