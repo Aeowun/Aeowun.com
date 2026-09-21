@@ -5,7 +5,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     initializeEnvironment();
-    initializeSceneController();
     initializeAmbientField();
     initializePointerTracking();
     initializeNavRail();
@@ -70,65 +69,6 @@ function initializePointerTracking() {
         document.documentElement.style.setProperty("--mouse-x", `${(e.clientX / window.innerWidth) * 100}%`);
         document.documentElement.style.setProperty("--mouse-y", `${(e.clientY / window.innerHeight) * 100}%`);
     });
-}
-
-/**
- * SCENE CONTROLLER
- * Legacy scene stage support where #scene-stage is present
- */
-function initializeSceneController() {
-    const scenes = document.querySelectorAll('.scene');
-    if (scenes.length === 0) return;
-
-    if (window.innerWidth <= 900) {
-        scenes.forEach(s => s.classList.add('active'));
-        return;
-    }
-
-    let currentSceneIndex = 0;
-    let isTransitioning = false;
-    const transitionDuration = 1200;
-
-    function goToScene(index) {
-        if (index < 0 || index >= scenes.length || isTransitioning) return;
-        if (index === currentSceneIndex) return;
-
-        isTransitioning = true;
-
-        scenes[currentSceneIndex].classList.remove('active');
-        currentSceneIndex = index;
-
-        setTimeout(() => {
-            scenes[currentSceneIndex].classList.add('active');
-            setTimeout(() => {
-                isTransitioning = false;
-            }, transitionDuration);
-        }, 50);
-    }
-
-    window.addEventListener('wheel', (e) => {
-        if (Math.abs(e.deltaY) < 10) return;
-        if (e.deltaY > 0) goToScene(currentSceneIndex + 1);
-        else goToScene(currentSceneIndex - 1);
-    }, { passive: true });
-
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowDown' || e.key === 'PageDown') goToScene(currentSceneIndex + 1);
-        if (e.key === 'ArrowUp' || e.key === 'PageUp') goToScene(currentSceneIndex - 1);
-    });
-
-    let touchStartY = 0;
-    window.addEventListener('touchstart', (e) => touchStartY = e.touches[0].clientY);
-    window.addEventListener('touchend', (e) => {
-        const touchEndY = e.changedTouches[0].clientY;
-        const delta = touchStartY - touchEndY;
-        if (Math.abs(delta) > 50) {
-            if (delta > 0) goToScene(currentSceneIndex + 1);
-            else goToScene(currentSceneIndex - 1);
-        }
-    });
-
-    scenes[0].classList.add('active');
 }
 
 /**
