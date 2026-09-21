@@ -6,8 +6,10 @@
     <title>AEOWUN // TOOLS THAT KEEP YOU IN CONTROL</title>
     <meta name="description" content="AEOWUN is an independent software project building local-first systems that keep you in control.">
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
       "@type": "Person",
       "@id": "https://www.aeowun.com/#zack-joubert",
       "name": "Zack Joubert",
@@ -31,12 +33,8 @@
       "worksFor": {
         "@id": "https://www.aeowun.com/#aeowun"
       }
-    }
-    </script>
-    
-    <script type="application/ld+json">
+    },
     {
-      "@context": "https://schema.org",
       "@type": "Organization",
       "@id": "https://www.aeowun.com/#aeowun",
       "name": "AEOWUN",
@@ -45,11 +43,80 @@
       "founder": {
         "@id": "https://www.aeowun.com/#zack-joubert"
       },
+      "brand": {
+        "@id": "https://www.aeowun.com/#aeowun-brand"
+      },
+      "owns": [
+        {
+          "@id": "https://www.aeowun.com/#aeopin"
+        },
+        {
+          "@id": "https://www.aeowun.com/#checkmaker"
+        },
+        {
+          "@id": "https://www.aeowun.com/#aeowun-ide"
+        },
+        {
+          "@id": "https://www.aeowun.com/#magy"
+        }
+      ],
       "sameAs": [
         "https://github.com/Aeowun"
       ]
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://www.aeowun.com/#aeowun-brand",
+      "name": "AEOWUN",
+      "url": "https://www.aeowun.com/"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.aeowun.com/#aeopin",
+      "name": "Aeopin",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Windows",
+      "url": "https://www.aeowun.com/aeopin/",
+      "creator": {
+        "@id": "https://www.aeowun.com/#zack-joubert"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.aeowun.com/#checkmaker",
+      "name": "CheckMaker",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows",
+      "url": "https://www.aeowun.com/checkmaker/",
+      "creator": {
+        "@id": "https://www.aeowun.com/#zack-joubert"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.aeowun.com/#aeowun-ide",
+      "name": "AEOWUN IDE",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows",
+      "url": "https://www.aeowun.com/ide/",
+      "creator": {
+        "@id": "https://www.aeowun.com/#zack-joubert"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.aeowun.com/#magy",
+      "name": "MAGY",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows",
+      "url": "https://www.aeowun.com/magy/",
+      "creator": {
+        "@id": "https://www.aeowun.com/#zack-joubert"
+      }
     }
-    </script>
+  ]
+}
+</script>
 
 
     <link rel="stylesheet" href="style.css">
