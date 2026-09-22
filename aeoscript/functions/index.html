@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AEOWUN // AEOSCRIPT // FUNCTIONS</title>
-  <link rel="canonical" href="https://www.aeowun.com/aeoscript/functions/">
+  <link rel="canonical" href="https://aeowun.com/aeoscript/functions/">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // FUNCTIONS">
+  <meta property="og:description" content="Master AeoScript functions. Learn about parameters, return types, and how functions drive logic within entities and top-level scripts.">
+  <meta property="og:url" content="https://aeowun.com/aeoscript/functions/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // FUNCTIONS">
+  <meta name="twitter:description" content="Master AeoScript functions. Learn about parameters, return types, and how functions drive logic within entities and top-level scripts.">
   <meta name="description" content="Master AeoScript functions. Learn about parameters, return types, and how functions drive logic within entities and top-level scripts.">
   <link rel="stylesheet" href="../../style.css">
 </head>
@@ -95,7 +102,10 @@
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
           <ul style="list-style: none; margin-bottom: 25px;">
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Declaring functions with <code>fn</code>
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Declaring functions with <code>fn</code> and anonymous <code>fn()</code>
+            </li>
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Understanding the <code>self</code> keyword in dynamic methods
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
               <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Accepting parameters and specifying types
@@ -132,7 +142,7 @@
           <span class="mono">SYNTAX</span>
         </div>
         <pre><code>fn name(p: type): return_type { ... }
-result = name(value) // Standard call
+const anonymous = fn(p) { ... }
 object:method() // Method-style call</code></pre>
       </div>
 
@@ -146,7 +156,12 @@ object:method() // Method-style call</code></pre>
 }
 
 final_dmg = calculate_damage(25, 10)
-debug.log("Damage: " + final_dmg)</code></pre>
+
+const door = cell.get(101)
+door.open = fn() {
+  self.visible = false
+}
+door:open()</code></pre>
       </div>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">

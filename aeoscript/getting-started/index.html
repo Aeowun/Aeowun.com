@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AEOWUN // AEOSCRIPT // GETTING STARTED</title>
-  <link rel="canonical" href="https://www.aeowun.com/aeoscript/getting-started/">
+  <link rel="canonical" href="https://aeowun.com/aeoscript/getting-started/">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // GETTING STARTED">
+  <meta property="og:description" content="Begin your journey with AeoScript. Learn about script structure, top-level execution, and how to use the debug console in AeoEngine.">
+  <meta property="og:url" content="https://aeowun.com/aeoscript/getting-started/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // GETTING STARTED">
+  <meta name="twitter:description" content="Begin your journey with AeoScript. Learn about script structure, top-level execution, and how to use the debug console in AeoEngine.">
   <meta name="description" content="Begin your journey with AeoScript. Learn about script structure, top-level execution, and how to use the debug console in AeoEngine.">
   <link rel="stylesheet" href="../../style.css">
 </head>
@@ -112,7 +119,7 @@
         <article class="canonical-card" style="padding: 28px;">
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
           <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            An AeoScript source file is a sequence of top-level declarations and executable statements. Top-level statements execute exactly once when the world loads, allowing for system initialization and global configuration. Detailed behavior is documented in the <a href="../syntax/" class="text-link">Syntax</a> guide.
+            An AeoScript source file is a sequence of top-level declarations and executable statements. When a script is active, top-level statements run through a top-level runtime fiber and may suspend with <code>wait()</code>. Declarations do not execute merely because they are parsed. Detailed behavior is documented in the <a href="../syntax/" class="text-link">Syntax</a> guide.
           </p>
         </article>
       </div>

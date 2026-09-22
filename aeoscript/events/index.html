@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AEOWUN // AEOSCRIPT // EVENTS</title>
-  <link rel="canonical" href="https://www.aeowun.com/aeoscript/events/">
+  <link rel="canonical" href="https://aeowun.com/aeoscript/events/">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // EVENTS">
+  <meta property="og:description" content="Handling events in AeoScript. Learn to respond to engine triggers, player actions, and lifecycle state changes using event handlers.">
+  <meta property="og:url" content="https://aeowun.com/aeoscript/events/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // EVENTS">
+  <meta name="twitter:description" content="Handling events in AeoScript. Learn to respond to engine triggers, player actions, and lifecycle state changes using event handlers.">
   <meta name="description" content="Handling events in AeoScript. Learn to respond to engine triggers, player actions, and lifecycle state changes using event handlers.">
   <link rel="stylesheet" href="../../style.css">
 </head>
@@ -95,7 +102,7 @@
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
           <ul style="list-style: none; margin-bottom: 25px;">
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Handling engine lifecycle hooks (on_ready, update)
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Handling engine lifecycle hooks (on_ready, update, on_touch)
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
               <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Registering custom event handlers with <code>on</code>
@@ -133,6 +140,7 @@
         </div>
         <pre><code>fn on_ready() { ... }
 fn update(dt: number) { ... }
+fn on_touch(cell: Cell) { ... }
 on EventName(params) { ... }</code></pre>
       </div>
 
@@ -148,6 +156,11 @@ on EventName(params) { ... }</code></pre>
 fn update(dt) {
   rotation += 90 * dt
   cell.offset = [0, math.sin(time), 0]
+}
+
+fn on_touch(c) {
+  debug.log("Voxel touched by player!")
+  c.visible = false
 }</code></pre>
       </div>
 

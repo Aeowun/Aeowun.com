@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AEOWUN // AEOSCRIPT // API</title>
-  <link rel="canonical" href="https://www.aeowun.com/aeoscript/api/">
+  <link rel="canonical" href="https://aeowun.com/aeoscript/api/">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // API">
+  <meta property="og:description" content="AeoScript API hub. Explore global functions, standard library namespaces, and engine handle specifications for AeoEngine development.">
+  <meta property="og:url" content="https://aeowun.com/aeoscript/api/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // API">
+  <meta name="twitter:description" content="AeoScript API hub. Explore global functions, standard library namespaces, and engine handle specifications for AeoEngine development.">
   <meta name="description" content="AeoScript API hub. Explore global functions, standard library namespaces, and engine handle specifications for AeoEngine development.">
   <link rel="stylesheet" href="../../style.css">
 </head>
@@ -123,9 +130,21 @@
               <td style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-light);"><code>getAllCellsOfClass(class)</code></td>
               <td style="padding: 16px 20px; font-size: 0.88rem; color: var(--text);">Returns a <a href="../baskets/" class="text-link">basket</a> of all Cells matching the specified class type (e.g., "Block").</td>
             </tr>
-            <tr>
+            <tr style="border-bottom: 1px solid var(--border);">
               <td style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-light);"><code>wait(seconds)</code></td>
               <td style="padding: 16px 20px; font-size: 0.88rem; color: var(--text);">Suspends fiber execution for the specified duration. See <a href="../waiting/" class="text-link">Waiting</a>.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-light);"><code>on_touch(cell)</code></td>
+              <td style="padding: 16px 20px; font-size: 0.88rem; color: var(--text);">Lifecycle hook called when a character contacts the object. See <a href="../events/" class="text-link">Events</a>.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-light);"><code>cell.get(id)</code></td>
+              <td style="padding: 16px 20px; font-size: 0.88rem; color: var(--text);">Returns a handle for an authored or runtime Cell by ID. See <a href="cell/" class="text-link">Cell API</a>.</td>
+            </tr>
+            <tr>
+              <td style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-light);"><code>entity.get(id)</code></td>
+              <td style="padding: 16px 20px; font-size: 0.88rem; color: var(--text);">Returns a handle for a live Entity by ID. See <a href="entity/" class="text-link">Entity API</a>.</td>
             </tr>
           </tbody>
         </table>

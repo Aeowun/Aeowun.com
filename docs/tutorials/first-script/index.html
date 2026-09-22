@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AEOWUN // TUTORIALS // FIRST SCRIPT</title>
-  <link rel="canonical" href="https://www.aeowun.com/docs/tutorials/first-script/">
+  <link rel="canonical" href="https://aeowun.com/docs/tutorials/first-script/">
+  <meta property="og:title" content="AEOWUN // TUTORIALS // FIRST SCRIPT">
+  <meta property="og:description" content="Learn how to create an .aeo file, attach it to a voxel block, and log diagnostic output on initialization.">
+  <meta property="og:url" content="https://aeowun.com/docs/tutorials/first-script/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AEOWUN // TUTORIALS // FIRST SCRIPT">
+  <meta name="twitter:description" content="Learn how to create an .aeo file, attach it to a voxel block, and log diagnostic output on initialization.">
   <meta name="description" content="Learn how to create an .aeo file, attach it to a voxel block, and log diagnostic output on initialization.">
   <link rel="stylesheet" href="../../../style.css">
 </head>
@@ -113,11 +120,11 @@
         <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 16px;">STEP-BY-STEP INSTRUCTIONS</h2>
         <ol style="padding-left: 20px; color: var(--text); font-size: 0.95rem; line-height: 1.8;">
           <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Open Your Existing Project:</strong> Open AeoEngine and load the <code>FirstWorld</code> project you created in the previous guide.</li>
-          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Create the Script File:</strong> In the editor Asset Browser panel, right-click inside the <code>scripts/</code> folder, select <strong style="color: var(--text-bright);">New File</strong>, name it <code>init_test.aeo</code>, and press Enter. Double-click the file to open the internal editor text panel.</li>
-          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Implement the Ready Hook:</strong> Type the custom script structure to bind into the initial hook. We will declare an explicit <code>fn on_ready()</code> callback that invokes the logging namespace.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Create the Script File:</strong> Create <code>scripts/init_test.aeo</code> in the Script Workspace.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Implement the Ready Hook:</strong> Declare <code>on_ready()</code> inside the entity declaration that matches the selected Cell identity.</li>
           <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Select an Editor Target:</strong> Click the selection arrow tool in the left toolbar, then click on one of the blocks in your 3D floor map to highlight it.</li>
-          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Bind the Script Component:</strong> Look at the <strong style="color: var(--text-bright);">Properties Panel</strong> on the right side of the editor. Find the "Script Binding" field, click the ellipsis (<code>...</code>) button, choose your newly created <code>init_test.aeo</code> from the project assets directory, and hit Apply.</li>
-          <li style="margin-bottom: 0;"><strong style="color: var(--text-bright);">Execute and Monitor Diagnostics:</strong> Open the Console pane by clicking <code>View &gt; Panels &gt; Diagnostic Console</code> at the top menu bar. Press <code>F5</code> to start Play mode. Monitor the terminal panel to locate your logged text output. Click <code>Escape</code> to stop simulation.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Bind the Script:</strong> Set the Cell Identity to <code>FirstScriptBlock</code>, then attach <code>init_test.aeo</code> to that Cell in the Properties panel.</li>
+          <li style="margin-bottom: 0;"><strong style="color: var(--text-bright);">Execute and Monitor Diagnostics:</strong> Press Play and verify the message in PRINT OUTPUT.</li>
         </ol>
       </div>
 
@@ -126,23 +133,24 @@
           <span class="mono">INIT_TEST.AEO</span>
           <span class="mono">AEOSCRIPT</span>
         </div>
-        <pre><code>// init_test.aeo - AeoScript lifecycle entry binding test
-fn on_ready() {
-    debug.log("AeoScript environment successfully initialized on Block handle!")
+<pre><code>entity FirstScriptBlock {
+    fn on_ready() {
+        debug.log("AeoScript initialized on FirstScriptBlock.")
+    }
 }</code></pre>
       </div>
 
       <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
         <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">EXPLANATION</h2>
         <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
-          In this architecture, AeoScript source text is parsed into an abstract syntax tree and cached by the engine compiler. The <code>fn on_ready()</code> declaration acts as a distinct engine lifecycle callback hook. When the virtual machine instantiates live cells upon entering Play mode, it scans attached script bindings and automatically spawns a dedicated fiber context to execute <code>on_ready()</code> exactly once, allowing you to invoke <code>debug.log()</code> safely.
+          A lifecycle hook belongs to the matching bound entity declaration. When Play starts, the runtime instantiates that binding and invokes <code>on_ready()</code> for the matching Cell.
         </p>
       </div>
 
       <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
         <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">RESULT</h2>
         <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
-          When the environment finishes loading after hitting <code>F5</code>, a glowing cyan line will appear within the Diagnostic Console pane displaying the text message: <code>AeoScript environment successfully initialized on Block handle!</code>
+          When the environment finishes loading, PRINT OUTPUT displays: <code>AeoScript initialized on FirstScriptBlock.</code>
         </p>
       </div>
 

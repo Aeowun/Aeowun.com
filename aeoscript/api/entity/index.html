@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AEOWUN // AEOSCRIPT // API // ENTITY</title>
-  <link rel="canonical" href="https://www.aeowun.com/aeoscript/api/entity/">
+  <link rel="canonical" href="https://aeowun.com/aeoscript/api/entity/">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // API // ENTITY">
+  <meta property="og:description" content="AeoScript Entity API reference. Learn to track and manage live runtime objects like Players and NPCs during simulation.">
+  <meta property="og:url" content="https://aeowun.com/aeoscript/api/entity/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // API // ENTITY">
+  <meta name="twitter:description" content="AeoScript Entity API reference. Learn to track and manage live runtime objects like Players and NPCs during simulation.">
   <meta name="description" content="AeoScript Entity API reference. Learn to track and manage live runtime objects like Players and NPCs during simulation.">
   <link rel="stylesheet" href="../../../style.css">
 </head>
@@ -114,12 +121,6 @@
           </thead>
           <tbody>
             <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>.id</code></td>
-              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>number</code></td>
-              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read-only</td>
-              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Unique runtime Entity ID.</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>.name</code></td>
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>string</code></td>
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read-only</td>
@@ -130,6 +131,37 @@
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>basket</code></td>
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read-only</td>
               <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Current world position [x, y, z].</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">ENTITY FUNCTIONS</div>
+          <h2 class="home-section-title mono">ENTITY NAMESPACE</h2>
+        </div>
+      </div>
+
+      <div class="canonical-card" style="padding: 0; overflow: hidden; margin-bottom: 30px;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+          <thead>
+            <tr style="background: rgba(255,255,255,0.05); border-bottom: 1px solid var(--border);">
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-orange); text-transform: uppercase; letter-spacing: 0.15em;">Method</th>
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em;">Returns</th>
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em;">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>entity.get(id)</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>Entity?</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Returns a handle to a specific Entity by ID.</td>
+            </tr>
+            <tr>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>entity.exists(id)</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>bool</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Checks if an Entity with that ID exists.</td>
             </tr>
           </tbody>
         </table>

@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AEOWUN // AEOSCRIPT // CONTROL FLOW</title>
-  <link rel="canonical" href="https://www.aeowun.com/aeoscript/control-flow/">
+  <link rel="canonical" href="https://aeowun.com/aeoscript/control-flow/">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // CONTROL FLOW">
+  <meta property="og:description" content="Learn control flow in AeoScript. Guide to if statements, while loops, and for loops for managing complex gameplay scenarios.">
+  <meta property="og:url" content="https://aeowun.com/aeoscript/control-flow/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // CONTROL FLOW">
+  <meta name="twitter:description" content="Learn control flow in AeoScript. Guide to if statements, while loops, and for loops for managing complex gameplay scenarios.">
   <meta name="description" content="Learn control flow in AeoScript. Guide to if statements, while loops, and for loops for managing complex gameplay scenarios.">
   <link rel="stylesheet" href="../../style.css">
 </head>
@@ -145,7 +152,7 @@ for item in collection { ... }</code></pre>
 
 for enemy in enemies {
   if enemy.health &lt;= 0 {
-    enemy:destroy()
+    enemy:translate(1, 0, 0)
   } else {
     enemy.color = [1, 0, 0]
   }

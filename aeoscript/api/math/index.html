@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AEOWUN // AEOSCRIPT // API // MATH</title>
-  <link rel="canonical" href="https://www.aeowun.com/aeoscript/api/math/">
+  <link rel="canonical" href="https://aeowun.com/aeoscript/api/math/">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // API // MATH">
+  <meta property="og:description" content="AeoScript Math API reference. Deterministic mathematical functions for consistent gameplay simulation across all hardware.">
+  <meta property="og:url" content="https://aeowun.com/aeoscript/api/math/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // API // MATH">
+  <meta name="twitter:description" content="AeoScript Math API reference. Deterministic mathematical functions for consistent gameplay simulation across all hardware.">
   <meta name="description" content="AeoScript Math API reference. Deterministic mathematical functions for consistent gameplay simulation across all hardware.">
   <link rel="stylesheet" href="../../../style.css">
 </head>
@@ -90,7 +97,7 @@
         </div>
       </div>
       <p style="font-size: 1rem; line-height: 1.7; color: var(--text); max-width: 800px;">
-        The <code>math</code> namespace provides a suite of deterministic mathematical functions. These ensure consistent simulation behavior across different platforms and hardware by avoiding floating-point drift in critical gameplay logic.
+        The <code>math</code> namespace provides numeric, trigonometric, interpolation, conversion, and pseudo-random-value utilities.
       </p>
     </section>
 
@@ -120,16 +127,16 @@
               <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Returns the absolute value of <code>x</code>.</td>
             </tr>
             <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>math.min(...)</code></td>
-              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);"><code>numbers</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>math.min(a, b)</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);"><code>a: number, b: number</code></td>
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>number</code></td>
-              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Returns the smallest numeric argument.</td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Returns the smaller of exactly two numeric arguments.</td>
             </tr>
             <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>math.max(...)</code></td>
-              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);"><code>numbers</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>math.max(a, b)</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);"><code>a: number, b: number</code></td>
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>number</code></td>
-              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Returns the largest numeric argument.</td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Returns the larger of exactly two numeric arguments.</td>
             </tr>
             <tr style="border-bottom: 1px solid var(--border);">
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>math.floor(x)</code></td>
@@ -197,11 +204,17 @@
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>number</code></td>
               <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Converts degrees to radians.</td>
             </tr>
-            <tr>
+            <tr style="border-bottom: 1px solid var(--border);">
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>math.rad_to_deg(r)</code></td>
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);"><code>r: number</code></td>
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>number</code></td>
               <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Converts radians to degrees.</td>
+            </tr>
+            <tr>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>math.random([min, max])</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);"><code>optional</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>number</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Returns random float [0, 1) or integer [min, max].</td>
             </tr>
           </tbody>
         </table>

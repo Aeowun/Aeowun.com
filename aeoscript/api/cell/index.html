@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AEOWUN // AEOSCRIPT // API // CELL</title>
-  <link rel="canonical" href="https://www.aeowun.com/aeoscript/api/cell/">
+  <link rel="canonical" href="https://aeowun.com/aeoscript/api/cell/">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // API // CELL">
+  <meta property="og:description" content="AeoScript Cell API reference. Learn to interact with authored World Cells, modify runtime properties, and manage persistent Cell IDs.">
+  <meta property="og:url" content="https://aeowun.com/aeoscript/api/cell/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // API // CELL">
+  <meta name="twitter:description" content="AeoScript Cell API reference. Learn to interact with authored World Cells, modify runtime properties, and manage persistent Cell IDs.">
   <meta name="description" content="AeoScript Cell API reference. Learn to interact with authored World Cells, modify runtime properties, and manage persistent Cell IDs.">
   <link rel="stylesheet" href="../../../style.css">
 </head>
@@ -161,11 +168,53 @@
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read/Write</td>
               <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Visual offset [x, y, z] from authored position.</td>
             </tr>
-            <tr>
+            <tr style="border-bottom: 1px solid var(--border);">
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>.position</code></td>
               <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>basket</code></td>
-              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read-only</td>
-              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Effective runtime world position [x, y, z].</td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read / Write (runtime Cells)</td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Readable on Cell handles and assignable on runtime Cell handles as [x, y, z].</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>.attributes</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>map</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Read / Write (index)</td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Interface to authored and runtime attributes. Setting a key to <code>nil</code> removes the override.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">CELL FUNCTIONS</div>
+          <h2 class="home-section-title mono">CELL NAMESPACE</h2>
+        </div>
+      </div>
+
+      <div class="canonical-card" style="padding: 0; overflow: hidden; margin-bottom: 30px;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+          <thead>
+            <tr style="background: rgba(255,255,255,0.05); border-bottom: 1px solid var(--border);">
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-orange); text-transform: uppercase; letter-spacing: 0.15em;">Method</th>
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em;">Returns</th>
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em;">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>cell.new(type)</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>Cell</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Creates a new runtime-only Cell (e.g., "Block"). Never persisted.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>cell.get(id)</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>Cell?</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Returns a handle to a specific Cell by ID.</td>
+            </tr>
+            <tr>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>cell.exists(id)</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>bool</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Checks if a Cell with that ID exists.</td>
             </tr>
           </tbody>
         </table>
@@ -185,7 +234,10 @@
           <span class="mono">CELL PROPERTIES</span>
           <span class="mono">EXAMPLE</span>
         </div>
-        <pre><code>const door = find("MainDoor")[0]
+        <pre><code>const block = cell.new("Block")
+block.position = [-5, 18, 1]
+
+const door = find("MainDoor")[0]
 
 if door {
   door.visible = false

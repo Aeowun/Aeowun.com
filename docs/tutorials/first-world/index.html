@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AEOWUN // TUTORIALS // FIRST WORLD</title>
-  <link rel="canonical" href="https://www.aeowun.com/docs/tutorials/first-world/">
+  <link rel="canonical" href="https://aeowun.com/docs/tutorials/first-world/">
+  <meta property="og:title" content="AEOWUN // TUTORIALS // FIRST WORLD">
+  <meta property="og:description" content="Learn the basics of AeoEngine editor navigation, building geometry, placing lights, and playing your world.">
+  <meta property="og:url" content="https://aeowun.com/docs/tutorials/first-world/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AEOWUN // TUTORIALS // FIRST WORLD">
+  <meta name="twitter:description" content="Learn the basics of AeoEngine editor navigation, building geometry, placing lights, and playing your world.">
   <meta name="description" content="Learn the basics of AeoEngine editor navigation, building geometry, placing lights, and playing your world.">
   <link rel="stylesheet" href="../../../style.css">
 </head>
@@ -108,7 +115,7 @@
       <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
         <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">WHAT YOU WILL BUILD</h2>
         <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
-          You will construct a clean, physical stage featuring a solid brick floor, an elevated platform, and an ambient light bulb actor that illuminates the scene dynamically during simulation.
+          You will construct a clean, physical stage featuring a solid brick floor, an elevated platform, and a Light cell that illuminates the scene during simulation.
         </p>
       </div>
 
@@ -116,11 +123,11 @@
         <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 16px;">STEP-BY-STEP INSTRUCTIONS</h2>
         <ol style="padding-left: 20px; color: var(--text); font-size: 0.95rem; line-height: 1.8;">
           <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Launch AeoEngine and Create a Project:</strong> Open AeoEngine, choose "New Project" from the startup dialog, name your project <code>FirstWorld</code>, and select a folder location.</li>
-          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Master Editor Navigation:</strong> Click inside the 3D Viewport. Hold the Right Mouse Button (RMB) and move your mouse to look around. Use the <code>W</code>, <code>A</code>, <code>S</code>, and <code>D</code> keys while holding RMB to fly through the empty void.</li>
-          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Build a Solid Floor:</strong> Select the <code>Block</code> tool from the left toolbar panel. Ensure the texture brush is set to <code>brick.png</code>. Left-click and drag across the grid origin to build a 10x10 voxel floor.</li>
-          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Add an Elevated Platform:</strong> Move your brush onto the center of the newly constructed floor. Single left-click a few times to stack blocks vertically, creating a small 2x2 pedestal.</li>
-          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Place a Light Source:</strong> Open the "Actor Palette" panel on the right side of the editor window. Drag a <code>Light</code> component into the viewport and place it directly above your elevated platform pedestal.</li>
-          <li style="margin-bottom: 0;"><strong style="color: var(--text-bright);">Test in Play Mode:</strong> Press the <strong style="color: var(--text-bright);">Play</strong> button located at the top center of the editor toolbar (or hit <code>F5</code>). The editor grid disappears, physics engines activate, and your environment is rendered with live directional lighting. Press <code>Escape</code> to stop simulation and return to Editor mode.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Master Editor Navigation:</strong> In the viewport, hold the Right Mouse Button (RMB) to enter free-move mode and move the mouse to aim the camera. While holding RMB, use <code>W</code> to move forward, <code>S</code> to move backward, <code>A</code> to move left, and <code>D</code> to move right. Hold the Middle Mouse Button (MMB) to orbit around the current editor target; move the mouse left, right, up, or down to orbit.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Build a Solid Floor:</strong> Select <code>Build</code>. Open <code>Block: Block ▼</code> and choose <code>Cube</code>. Open <code>Rendering ▼</code>, set <code>Texture:</code> to <code>brick</code>, then left-click and drag across the grid to create a 10x10 floor.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Add an Elevated Platform:</strong> Keep <code>Build</code> and <code>Cube</code> selected. Point at the top of the floor, then left-click and drag a 2x2 area to build the platform one cell above it.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: var(--text-bright);">Place a Light:</strong> With <code>Build</code> selected, open the <code>Block: Block ▼</code> type menu and choose <code>Light</code>. Point at the top of the platform and left-click in the viewport to place the Light cell above it.</li>
+          <li style="margin-bottom: 0;"><strong style="color: var(--text-bright);">Test in Play Mode:</strong> Press Play to start the simulation. Runtime simulation changes do not replace the authored World data.</li>
         </ol>
       </div>
 
@@ -132,7 +139,7 @@
         <pre><code>{
   "world": {
     "cells": [
-      { "type": "Block", "position": [0, 0, 0], "texture": "brick.png" },
+      { "type": "Block", "position": [0, 0, 0], "texture": "brick" },
       { "type": "Light", "position": [5, 4, 5], "color": [1.0, 1.0, 1.0] }
     ]
   }
@@ -142,14 +149,14 @@
       <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
         <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">EXPLANATION</h2>
         <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
-          In this workflow, your primary interactions use the AeoEngine Voxel Pipeline. When you paint voxels, the engine populates an uncompressed cell coordinate map. Adding the <code>Light</code> actor dynamically injects an illumination matrix into the rendering loop. Upon transitioning to Play mode via <code>F5</code>, the engine performs a complete isolated copy of the authored scene data into a volatile runtime cache, ensuring that play tests never destructively mutate your master source file.
+          In this workflow, your primary interactions use the AeoEngine Voxel Pipeline. When you paint voxels, the engine populates an uncompressed cell coordinate map. Adding a <code>Light</code> cell provides authored lighting for the world. Upon transitioning to Play mode via <code>F5</code>, the engine performs a complete isolated copy of the authored scene data into a volatile runtime cache, ensuring that play tests never destructively mutate your master source file.
         </p>
       </div>
 
       <div class="canonical-card" style="padding: 28px; margin-bottom: 24px;">
         <h2 class="mono" style="font-size: 1rem; color: var(--text-bright); margin-bottom: 12px;">RESULT</h2>
         <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
-          Upon clicking Play, you should see a crisp, illuminated grid of brick blocks casting shadow volumes onto the void beneath. The light bulb glows intensely, demonstrating live ray casting across your voxel pedestals.
+          In Play mode, you should see the brick floor and elevated platform illuminated by the Light cell above them.
         </p>
       </div>
 

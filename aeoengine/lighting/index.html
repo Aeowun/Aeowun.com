@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AEOWUN // AEOENGINE // LIGHTING SYSTEMS</title>
-  <link rel="canonical" href="https://www.aeowun.com/aeoengine/lighting/">
+  <link rel="canonical" href="https://aeowun.com/aeoengine/lighting/">
+  <meta property="og:title" content="AEOWUN // AEOENGINE // LIGHTING SYSTEMS">
+  <meta property="og:description" content="Explore lighting in AeoEngine. Learn to place authored Light cells, configure directional and point lighting, and manage emissive parameters.">
+  <meta property="og:url" content="https://aeowun.com/aeoengine/lighting/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AEOWUN // AEOENGINE // LIGHTING SYSTEMS">
+  <meta name="twitter:description" content="Explore lighting in AeoEngine. Learn to place authored Light cells, configure directional and point lighting, and manage emissive parameters.">
   <meta name="description" content="Explore lighting in AeoEngine. Learn to place authored Light cells, configure directional and point lighting, and manage emissive parameters.">
   <link rel="stylesheet" href="../../style.css">
 </head>
@@ -139,6 +146,7 @@
         <pre><code>Authored Cell Specialization:
 - Solid Block Cell: Employs physics geometry collision boundaries and texture mapping.
 - Emissive Light Cell: Emits point/directional lighting streams; excluded from collision passes.
+- Sky Environment: Configurable background cubemap (4:3 horizontal cross) with built-in presets.
 - Ghost Preview: Displays dedicated wireframe indicators showing illumination bounds.</code></pre>
       </div>
 
@@ -157,6 +165,9 @@
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
           <strong style="color: var(--text-bright);">Persistence Models:</strong> Light cell definitions, positions, and active color parameters share the identical serialization pipeline utilized by architectural blocks.
+        </p>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
+          <strong style="color: var(--text-bright);">Sky Environment:</strong> Native OpenGL cubemap support with presets like <code>Temperate</code>, <code>Snowy</code>, and <code>Mars</code> for instant atmospheric shifts.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
           <strong style="color: var(--text-bright);">Runtime Overrides:</strong> Scripts can mutate active light colors or visibility parameters mid-simulation without corrupting authored baselines.

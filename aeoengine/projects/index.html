@@ -4,8 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AEOWUN // AEOENGINE // PROJECT MANAGEMENT</title>
-  <link rel="canonical" href="https://www.aeowun.com/aeoengine/projects/">
-  <meta name="description" content="Manage project workspaces in AeoEngine. Learn about .world map persistence, asset directory structures, and PNG texture importing pipelines.">
+  <link rel="canonical" href="https://aeowun.com/aeoengine/projects/">
+  <meta property="og:title" content="AEOWUN // AEOENGINE // PROJECT MANAGEMENT">
+  <meta property="og:description" content="Manage project workspaces in AeoEngine. Learn about world.dat persistence, asset directory structures, and PNG texture importing pipelines.">
+  <meta property="og:url" content="https://aeowun.com/aeoengine/projects/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AEOWUN // AEOENGINE // PROJECT MANAGEMENT">
+  <meta name="twitter:description" content="Manage project workspaces in AeoEngine. Learn about world.dat persistence, asset directory structures, and PNG texture importing pipelines.">
+  <meta name="description" content="Manage project workspaces in AeoEngine. Learn about world.dat persistence, asset directory structures, and PNG texture importing pipelines.">
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="canonical-page">
@@ -113,7 +120,7 @@
         <article class="canonical-card" style="padding: 28px;">
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
           <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            AeoEngine maintains a strict separation between persistent authored world configurations and simulation state. Project structures bundle <code>.world</code> maps along with a dedicated, isolated <code>.assets/textures/</code> asset directory to ensure that scene files and resources remain cohesive across workspace restarts.
+            AeoEngine maintains a strict separation between persistent authored world configurations and simulation state. Project structures use <code>world.dat</code> with a dedicated <code>.assets/textures/</code> asset directory to keep scene files and resources cohesive across workspace restarts.
           </p>
         </article>
       </div>
@@ -137,7 +144,7 @@
           <span class="mono">PROJECT</span>
         </div>
         <pre><code>Project Directory Layout:
-├── MyProject.world             # Authored voxel and entity layout configuration
+├── world.dat                   # Authored World data
 └── .assets/
     └── textures/               # Project-owned texture files
         ├── wall_brick.png      # Imported asset
