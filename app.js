@@ -5,7 +5,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     initializeEnvironment();
-    initializeAmbientField();
     initializePointerTracking();
     initializeNavRail();
 });
