@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AEOWUN // AEOSCRIPT // VARIABLES</title>
+  <title>AEOWUN // AEOSCRIPT // VALUES &amp; VARIABLES</title>
   <link rel="canonical" href="https://aeowun.com/aeoscript/variables/">
-  <meta property="og:title" content="AEOWUN // AEOSCRIPT // VARIABLES">
-  <meta property="og:description" content="Learn how to declare and use variables and constants in AeoScript. Understand scoping, mutability, and naming conventions.">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // VALUES &amp; VARIABLES">
+  <meta property="og:description" content="Learn how to store health, gold, and scores in AeoScript variables and constants.">
   <meta property="og:url" content="https://aeowun.com/aeoscript/variables/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // VARIABLES">
-  <meta name="twitter:description" content="Learn how to declare and use variables and constants in AeoScript. Understand scoping, mutability, and naming conventions.">
-  <meta name="description" content="Learn how to declare and use variables and constants in AeoScript. Understand scoping, mutability, and naming conventions.">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // VALUES &amp; VARIABLES">
+  <meta name="twitter:description" content="Learn how to store health, gold, and scores in AeoScript variables and constants.">
+  <meta name="description" content="Learn how to store health, gold, and scores in AeoScript variables and constants.">
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="canonical-page">
@@ -82,129 +82,115 @@
   <main class="container">
 
     <section class="canonical-hero">
-      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; VARIABLES</div>
-      <h1 class="canonical-title mono">VARIABLES &amp; CONSTANTS</h1>
+      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; LESSON 2</div>
+      <h1 class="canonical-title mono">VALUES &amp; VARIABLES</h1>
       <p class="canonical-lead">
-        Storing and managing data using mutable variables and immutable constants.
+        Store and change game information like health, gold, and player state.
       </p>
     </section>
 
+    <!-- 1. WHAT YOU'RE MAKING -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">AEOSCRIPT // FUNDAMENTALS</div>
-          <h2 class="home-section-title mono">OVERVIEW</h2>
+          <div class="brand-label mono">LESSON 2</div>
+          <h2 class="home-section-title mono">1. WHAT YOU'RE MAKING</h2>
+        </div>
+      </div>
+      <p style="font-size: 1rem; line-height: 1.8; color: var(--text);">
+        Games need to remember things: how much health the player has, how many coins they collected, and whether the game is over. In this lesson, you'll create variables to hold player stats and update them when something happens.
+      </p>
+    </section>
+
+    <!-- 2. SMALL WORKING EXAMPLE -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">CODE</div>
+          <h2 class="home-section-title mono">2. WORKING EXAMPLE</h2>
         </div>
       </div>
 
-      <div class="canonical-grid">
-        <article class="canonical-card" style="padding: 28px;">
-          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
-          <ul style="list-style: none; margin-bottom: 25px;">
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Declaring variables and constants
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Using <code>const</code> for immutability
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Type inference vs. explicit typing
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Scope and persistent state
-            </li>
-          </ul>
-        </article>
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">AEOFILE</span>
+          <span class="mono">PLAYER_STATE.AEO</span>
+        </div>
+        <pre><code>// const defines a value that shouldn't change
+const max_health = 100
 
-        <article class="canonical-card" style="padding: 28px;">
-          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
-          <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            Variables are mutable by default and can store any <a href="../types/" class="text-link">AeoScript type</a>. Constants, declared with <code>const</code>, prevent re-assignment to the identifier. For reference-backed types like <a href="../baskets/" class="text-link">baskets</a> and <a href="../maps/" class="text-link">maps</a>, <code>const</code> does not prevent internal mutation.
-          </p>
-        </article>
+// Variables store numbers, text, and booleans
+health = max_health
+gold = 0
+game_over = false
+
+// Updating a variable when gold is picked up
+gold += 10
+
+debug.log("Health: " + health + " / " + max_health)
+debug.log("Gold: " + gold)</code></pre>
       </div>
     </section>
 
+    <!-- 3. EXPLAIN WHAT EACH IMPORTANT LINE DOES -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">SYNTAX / WORKFLOW</div>
-          <h2 class="home-section-title mono">EXAMPLES</h2>
+          <div class="brand-label mono">BREAKDOWN</div>
+          <h2 class="home-section-title mono">3. LINE-BY-LINE BREAKDOWN</h2>
         </div>
       </div>
 
-      <div class="script-code-panel" style="margin: 20px 0;">
-        <div class="script-code-header">
-          <span class="mono">DECLARATION</span>
-          <span class="mono">SYNTAX</span>
-        </div>
-        <pre><code>identifier = value // Mutable variable
-const name = value // Constant binding
-health: number = 100 // Explicitly typed variable</code></pre>
+      <div class="canonical-card" style="padding: 24px;">
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
+          <strong style="color: var(--text-bright);">`const max_health = 100`</strong>: Uses <code>const</code> to lock in the maximum health value so it won't be changed accidentally.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
+          <strong style="color: var(--text-bright);">`health = max_health`</strong>: Sets the starting health to 100.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
+          <strong style="color: var(--text-bright);">`gold += 10`</strong>: Adds 10 to the current `gold` variable. It's a shortcut for `gold = gold + 10`.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 0;">
+          <strong style="color: var(--text-bright);">`"Health: " + health`</strong>: Uses `+` to join text strings and numbers together into one line.
+        </p>
       </div>
+    </section>
 
-      <div class="script-code-panel" style="margin: 20px 0;">
-        <div class="script-code-header">
-          <span class="mono">CONSTANTS</span>
-          <span class="mono">EXAMPLE</span>
+    <!-- 4. LET THE READER CHANGE SOMETHING -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">TRY IT YOURSELF</div>
+          <h2 class="home-section-title mono">4. TRY CHANGING SOMETHING</h2>
         </div>
-        <pre><code>health = 100
-const MAX_HEALTH = 100
-
-health -= 10
-
-// MAX_HEALTH = 120 // ERROR: Cannot reassign constant</code></pre>
       </div>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
-        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
-          <strong style="color: var(--text-bright);">EXPLANATION:</strong> <code>health</code> is a mutable variable that can be decremented, while <code>MAX_HEALTH</code> is a constant that provides a safe, unchanging baseline for logic.
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text); margin: 0;">
+          Try changing `const max_health = 100` to `200` or changing `gold += 10` to `gold += 50`. Run your script and see how the numbers update in the output console!
         </p>
       </div>
     </section>
 
+    <!-- 5. COMMON BEGINNER MISTAKE -->
     <section class="home-section">
       <div class="canonical-card" style="padding: 28px;">
-        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">5. COMMON BEGINNER MISTAKE</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          A variable must provide either a type annotation or an initializer.
-        </p>
-        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          For reference-backed collections (baskets/maps), <code>const</code> only prevents reassigning the variable itself, not mutating the collection's contents.
+          <strong style="color: var(--text-bright);">Trying to Reassign a `const`:</strong> If you write `const max_health = 100` and later try `max_health = 150`, AeoEngine will stop with an error because `const` values are locked!
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          Use <code>basket.freeze()</code> when a collection itself must become truly immutable.
+          <strong style="color: var(--text-bright);">Misspelling Variable Names:</strong> AeoScript is case-sensitive. `health` and `Health` are treated as two completely different variables!
         </p>
       </div>
     </section>
 
+    <!-- 6. WHAT TO LEARN NEXT -->
     <div style="display: flex; justify-content: space-between; padding: 40px 0;">
-      <a href="../syntax/" class="text-link mono">&larr; PREV: SYNTAX</a>
-      <a href="../types/" class="text-link mono">NEXT: TYPES &rarr;</a>
+      <a href="../getting-started/" class="text-link mono">&larr; PREV: YOUR FIRST SCRIPT</a>
+      <a href="../control-flow/" class="text-link mono">6. NEXT: CONDITIONS &amp; LOOPS &rarr;</a>
     </div>
-
-    <section class="home-section" style="border-bottom: none;">
-      <div class="section-heading-row">
-        <div>
-          <div class="brand-label mono">EXPLORE MORE</div>
-          <h2 class="home-section-title mono">RELATED LINKS</h2>
-        </div>
-      </div>
-      <div class="canonical-grid">
-        <a href="../types/" class="canonical-path-card">
-          <strong>TYPE SYSTEM</strong>
-          <span>Primitives and handle definitions</span>
-        </a>
-        <a href="../baskets/" class="canonical-path-card">
-          <strong>BASKETS</strong>
-          <span>Sequence collections &amp; references</span>
-        </a>
-        <a href="../operators/" class="canonical-path-card">
-          <strong>OPERATORS</strong>
-          <span>Arithmetic and assignment expressions</span>
-        </a>
-      </div>
-    </section>
 
   </main>
 

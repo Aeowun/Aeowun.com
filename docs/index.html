@@ -6,13 +6,13 @@
   <title>AEOWUN // DOCUMENTATION</title>
   <link rel="canonical" href="https://aeowun.com/docs/">
   <meta property="og:title" content="AEOWUN // DOCUMENTATION">
-  <meta property="og:description" content="The complete guide to building worlds, scripting behavior, and managing systems with AEOWUN technologies.">
+  <meta property="og:description" content="The complete guide to building worlds, scripting behavior, and making games with AeoEngine and AeoScript.">
   <meta property="og:url" content="https://aeowun.com/docs/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AEOWUN // DOCUMENTATION">
-  <meta name="twitter:description" content="The complete guide to building worlds, scripting behavior, and managing systems with AEOWUN technologies.">
-  <meta name="description" content="The complete guide to building worlds, scripting behavior, and managing systems with AEOWUN technologies.">
+  <meta name="twitter:description" content="The complete guide to building worlds, scripting behavior, and making games with AeoEngine and AeoScript.">
+  <meta name="description" content="The complete guide to building worlds, scripting behavior, and making games with AeoEngine and AeoScript.">
   <link rel="stylesheet" href="../style.css">
 </head>
 <body class="canonical-page">
@@ -83,60 +83,231 @@
 
     <section class="canonical-hero">
       <div class="brand-label mono">AEOWUN &gt; DOCS</div>
-      <h1 class="canonical-title mono">DOCUMENTATION</h1>
+      <h1 class="canonical-title mono">DOCUMENTATION HUB</h1>
       <p class="canonical-lead">
-        The complete guide to building worlds, scripting behavior, and managing systems with AEOWUN technologies.
+        Learn how to build 3D worlds, write gameplay logic with AeoScript, and shape your own games in AeoEngine.
       </p>
     </section>
 
+    <!-- 1. GETTING STARTED -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">CORE SYSTEMS</div>
-          <h2 class="home-section-title mono">DOCUMENTATION HUB</h2>
+          <div class="brand-label mono">START HERE</div>
+          <h2 class="home-section-title mono">GETTING STARTED</h2>
         </div>
       </div>
 
       <div class="canonical-grid">
-        <a href="/aeoengine/" class="canonical-path-card">
-          <strong>AEOENGINE</strong>
-          <span>Voxel engine and editor for building authored worlds and running them with physics and lighting.</span>
+        <a href="/aeoengine/getting-started/" class="canonical-path-card">
+          <strong>MAKE YOUR FIRST WORLD</strong>
+          <span>Learn the basics of placing blocks and building a 3D environment in AeoEngine.</span>
         </a>
-        <a href="/aeoscript/" class="canonical-path-card">
-          <strong>AEOSCRIPT</strong>
-          <span>Gameplay scripting language featuring resumable fibers, persistent state, and deep engine integration.</span>
+        <a href="/aeoscript/getting-started/" class="canonical-path-card">
+          <strong>YOUR FIRST AEOSCRIPT</strong>
+          <span>Write your first game script, attach it to a World item, and see it run.</span>
         </a>
         <a href="/docs/tutorials/" class="canonical-path-card">
-          <strong>TUTORIALS</strong>
-          <span>Step-by-step guides for building your first world, writing your first script, and creating a game.</span>
-        </a>
-        <a href="/docs/reference/" class="canonical-path-card">
-          <strong>REFERENCE</strong>
-          <span>Complete API documentation for AeoScript, Cell systems, Entity handles, and standard libraries.</span>
-        </a>
-        <a href="/docs/troubleshooting/" class="canonical-path-card">
-          <strong>TROUBLESHOOTING</strong>
-          <span>Solutions for common engine problems, script errors, and development workflow issues.</span>
+          <strong>TUTORIALS &amp; GUIDES</strong>
+          <span>Step-by-step projects for building doors, traps, coins, and player controls.</span>
         </a>
       </div>
     </section>
 
-    <section class="home-section" style="border-bottom: none;">
+    <!-- 2. LEARN AEOSCRIPT -->
+    <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">EXTERNAL</div>
-          <h2 class="home-section-title mono">RELATED RESOURCES</h2>
+          <div class="brand-label mono">GAMEPLAY LOGIC</div>
+          <h2 class="home-section-title mono">LEARN AEOSCRIPT</h2>
         </div>
       </div>
 
       <div class="canonical-grid">
+        <a href="/aeoscript/variables/" class="canonical-path-card">
+          <strong>VALUES &amp; VARIABLES</strong>
+          <span>Numbers, text, choices, and storing game information.</span>
+        </a>
+        <a href="/aeoscript/control-flow/" class="canonical-path-card">
+          <strong>CONDITIONS &amp; LOOPS</strong>
+          <span>Make decisions with if statements and repeat actions with loops.</span>
+        </a>
+        <a href="/aeoscript/functions/" class="canonical-path-card">
+          <strong>FUNCTIONS &amp; CALLBACKS</strong>
+          <span>Package reusable game behavior and store function actions.</span>
+        </a>
+        <a href="/aeoscript/waiting/" class="canonical-path-card">
+          <strong>WAITING &amp; TIMERS</strong>
+          <span>Pause execution with wait() for delayed actions and patrols.</span>
+        </a>
+        <a href="/aeoscript/events/" class="canonical-path-card">
+          <strong>SCRIPT EVENTS</strong>
+          <span>React to player collisions, triggers, and custom game events.</span>
+        </a>
+        <a href="/aeoscript/find/" class="canonical-path-card">
+          <strong>FINDING THINGS</strong>
+          <span>Locate doors, coins, enemies, and blocks in your World.</span>
+        </a>
+        <a href="/aeoscript/cells/" class="canonical-path-card">
+          <strong>WORKING WITH WORLD ITEMS</strong>
+          <span>Cell handles, world references, and cell lookup.</span>
+        </a>
+        <a href="/aeoscript/runtime-properties/" class="canonical-path-card">
+          <strong>RUNTIME PROPERTIES</strong>
+          <span>Change visibility, colors, solidity, and offsets during play.</span>
+        </a>
+        <a href="/aeoscript/attributes/" class="canonical-path-card">
+          <strong>CUSTOM DATA</strong>
+          <span>Store custom variables on cells with cell.attributes.</span>
+        </a>
+        <a href="/aeoscript/diagnostics/" class="canonical-path-card">
+          <strong>DEBUGGING YOUR GAME</strong>
+          <span>Use debug.log() and the console panel to fix issues fast.</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- GAMEPLAY SYSTEMS -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">SYSTEMS &amp; CONTROLS</div>
+          <h2 class="home-section-title mono">GAMEPLAY SYSTEMS</h2>
+        </div>
+      </div>
+
+      <div class="canonical-grid">
+        <a href="/aeoscript/input/" class="canonical-path-card">
+          <strong>INPUT &amp; MOUSE</strong>
+          <span>Movement vectors, jump keys, and mouse cursor locking.</span>
+        </a>
+        <a href="/aeoscript/ui/" class="canonical-path-card">
+          <strong>BUILDING GAME UI</strong>
+          <span>Health bars, score displays, panels, and interactive buttons.</span>
+        </a>
+        <a href="/aeoscript/audio/" class="canonical-path-card">
+          <strong>SOUND &amp; AUDIO</strong>
+          <span>AudioEmitters, 3D sound playback, looping, and volume control.</span>
+        </a>
+        <a href="/aeoscript/script-control/" class="canonical-path-card">
+          <strong>SCRIPT CONTROL</strong>
+          <span>Enable and disable scripts dynamically during play.</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- DEVELOPMENT & TESTING -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">TOOLS &amp; DIAGNOSTICS</div>
+          <h2 class="home-section-title mono">DEVELOPMENT &amp; TESTING</h2>
+        </div>
+      </div>
+
+      <div class="canonical-grid">
+        <a href="/aeoscript/diagnostics/" class="canonical-path-card">
+          <strong>DEBUGGING YOUR GAME</strong>
+          <span>Use debug.log() and the console panel to fix issues fast.</span>
+        </a>
+        <a href="/aeoscript/script-control/" class="canonical-path-card">
+          <strong>IN-GAME TESTING</strong>
+          <span>Automated testing assertions with test.complete().</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 3. BUILD YOUR WORLD -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">WORLD DESIGN</div>
+          <h2 class="home-section-title mono">BUILD YOUR WORLD</h2>
+        </div>
+      </div>
+
+      <div class="canonical-grid">
+        <a href="/aeoengine/building/" class="canonical-path-card">
+          <strong>BUILDING TOOLS</strong>
+          <span>Plane mode, Top-Block mode, line, plane, selection, and erase tools.</span>
+        </a>
+        <a href="/aeoengine/hierarchy/" class="canonical-path-card">
+          <strong>WORLD HIERARCHY</strong>
+          <span>Organize blocks, lights, and items in your scene tree.</span>
+        </a>
+        <a href="/aeoengine/lighting/" class="canonical-path-card">
+          <strong>SKY &amp; ENVIRONMENT</strong>
+          <span>Directional lighting and sky presets (Temperate, Tropical, Desert, Snowy, Mars).</span>
+        </a>
+        <a href="/aeoengine/characters/" class="canonical-path-card">
+          <strong>CHARACTERS &amp; CONTROLLERS</strong>
+          <span>Spawn Points, player movement, gravity, jumping, and cameras.</span>
+        </a>
+        <a href="/aeoengine/physics/" class="canonical-path-card">
+          <strong>PHYSICS &amp; SIMULATION</strong>
+          <span>Rigid body collision, solid objects, and dynamic movement.</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 4. AEOSCRIPT REFERENCE -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">LANGUAGE REFERENCE</div>
+          <h2 class="home-section-title mono">AEOSCRIPT REFERENCE</h2>
+        </div>
+      </div>
+
+      <div class="canonical-grid">
+        <a href="/aeoscript/syntax/" class="canonical-path-card">
+          <strong>SYNTAX &amp; GRAMMAR</strong>
+          <span>Concise reference for language syntax and assignment rules.</span>
+        </a>
+        <a href="/aeoscript/types/" class="canonical-path-card">
+          <strong>VALUES &amp; TYPES</strong>
+          <span>Numbers, strings, booleans, nil, handles, and type indexing.</span>
+        </a>
+        <a href="/aeoscript/math/" class="canonical-path-card">
+          <strong>MATH FUNCTIONS</strong>
+          <span>abs, min, max, sqrt, clamp, lerp, and random numbers.</span>
+        </a>
+        <a href="/aeoscript/baskets/" class="canonical-path-card">
+          <strong>BASKETS (LISTS)</strong>
+          <span>Create, insert, remove, sort, and manage ordered sequences.</span>
+        </a>
+        <a href="/aeoscript/strings/" class="canonical-path-card">
+          <strong>STRING UTILITIES</strong>
+          <span>Length, uppercase, lowercase, reverse, and text splitting.</span>
+        </a>
+        <a href="/aeoscript/maps/" class="canonical-path-card">
+          <strong>MAPS (KEY/VALUE)</strong>
+          <span>Store key/value pairs, nested maps, and property lookup.</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 5. DEVELOPER REFERENCE -->
+    <section class="home-section" style="border-bottom: none;">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">ADVANCED / ENGINE INTERNALS</div>
+          <h2 class="home-section-title mono">DEVELOPER REFERENCE</h2>
+        </div>
+      </div>
+
+      <div class="canonical-grid">
+        <a href="/docs/reference/" class="canonical-path-card">
+          <strong>ENGINE ARCHITECTURE</strong>
+          <span>Technical specs for engine layers, VM fibers, AST, host bridge, and persistence.</span>
+        </a>
+        <a href="/docs/troubleshooting/" class="canonical-path-card">
+          <strong>TROUBLESHOOTING</strong>
+          <span>Solutions for build issues, script errors, and performance notes.</span>
+        </a>
         <a href="https://github.com/Aeowun/AeoEngine" target="_blank" rel="noopener" class="canonical-path-card">
           <strong>GITHUB REPOSITORY</strong>
-          <span>Source code &amp; build instructions</span>
-        </a>
-        <a href="https://github.com/Aeowun/AeoEngine/blob/main/CHANGELOG.md" target="_blank" rel="noopener" class="canonical-path-card">
-          <strong>CHANGELOG</strong>
-          <span>Latest updates &amp; development history</span>
+          <span>Source code, issues, and C++ / Rust engine codebase.</span>
         </a>
       </div>
     </section>

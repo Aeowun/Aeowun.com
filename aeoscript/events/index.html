@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AEOWUN // AEOSCRIPT // EVENTS</title>
+  <title>AEOWUN // AEOSCRIPT // SCRIPT EVENTS</title>
   <link rel="canonical" href="https://aeowun.com/aeoscript/events/">
-  <meta property="og:title" content="AEOWUN // AEOSCRIPT // EVENTS">
-  <meta property="og:description" content="Handling events in AeoScript. Learn to respond to engine triggers, player actions, and lifecycle state changes using event handlers.">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // SCRIPT EVENTS">
+  <meta property="og:description" content="Learn how to handle touches, fire custom events, and connect game systems in AeoScript.">
   <meta property="og:url" content="https://aeowun.com/aeoscript/events/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // EVENTS">
-  <meta name="twitter:description" content="Handling events in AeoScript. Learn to respond to engine triggers, player actions, and lifecycle state changes using event handlers.">
-  <meta name="description" content="Handling events in AeoScript. Learn to respond to engine triggers, player actions, and lifecycle state changes using event handlers.">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // SCRIPT EVENTS">
+  <meta name="twitter:description" content="Learn how to handle touches, fire custom events, and connect game systems in AeoScript.">
+  <meta name="description" content="Learn how to handle touches, fire custom events, and connect game systems in AeoScript.">
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="canonical-page">
@@ -82,137 +82,120 @@
   <main class="container">
 
     <section class="canonical-hero">
-      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; EVENTS</div>
-      <h1 class="canonical-title mono">EVENTS &amp; LIFECYCLE</h1>
+      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; LESSON 7</div>
+      <h1 class="canonical-title mono">SCRIPT EVENTS &amp; TOUCHES</h1>
       <p class="canonical-lead">
-        Responding to engine signals and hook into the standard gameplay lifecycle.
+        Detect player collisions with on_touch and send game signals across scripts using event.fire().
       </p>
     </section>
 
+    <!-- 1. WHAT YOU'RE MAKING -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">AEOSCRIPT // ENGINE</div>
-          <h2 class="home-section-title mono">OVERVIEW</h2>
+          <div class="brand-label mono">LESSON 7</div>
+          <h2 class="home-section-title mono">1. WHAT YOU'RE MAKING</h2>
         </div>
       </div>
-
-      <div class="canonical-grid">
-        <article class="canonical-card" style="padding: 28px;">
-          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
-          <ul style="list-style: none; margin-bottom: 25px;">
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Handling engine lifecycle hooks (on_ready, update, on_touch)
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Registering custom event handlers with <code>on</code>
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Working with delta time in <code>update(dt)</code>
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Lifecycle state persistence
-            </li>
-          </ul>
-        </article>
-
-        <article class="canonical-card" style="padding: 28px;">
-          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
-          <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            AeoScript integrates deeply with the AeoEngine lifecycle. Scripts can respond to per-frame updates (<a href="../events/" class="text-link"><code>update</code></a>), initialization signals (<a href="../events/" class="text-link"><code>on_ready</code></a>), and specific gameplay events dispatched by the engine. This allows for reactive logic that stays synchronized with the world state.
-          </p>
-        </article>
-      </div>
+      <p style="font-size: 1rem; line-height: 1.8; color: var(--text);">
+        In game making, objects talk to each other through events. A trap doesn't manage player health directly — when stepped on, it fires an <code>"on_damage"</code> event! Another script (the Player Manager) receives that event and reduces player health.
+      </p>
     </section>
 
+    <!-- 2. SMALL WORKING EXAMPLE -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">SYNTAX / WORKFLOW</div>
-          <h2 class="home-section-title mono">EXAMPLES</h2>
+          <div class="brand-label mono">CODE</div>
+          <h2 class="home-section-title mono">2. WORKING EXAMPLE</h2>
         </div>
       </div>
 
       <div class="script-code-panel" style="margin: 20px 0;">
         <div class="script-code-header">
-          <span class="mono">EVENT HANDLERS</span>
-          <span class="mono">SYNTAX</span>
+          <span class="mono">TRAP SCRIPT</span>
+          <span class="mono">TRAPS.AEO</span>
         </div>
-        <pre><code>fn on_ready() { ... }
-fn update(dt: number) { ... }
-fn on_touch(cell: Cell) { ... }
-on EventName(params) { ... }</code></pre>
-      </div>
+        <pre><code>const traps = find("Trap")
 
-      <div class="script-code-panel" style="margin: 20px 0;">
-        <div class="script-code-header">
-          <span class="mono">UPDATE HOOK</span>
-          <span class="mono">EXAMPLE</span>
-        </div>
-        <pre><code>on PlayerSpawned(player: Entity) {
-  debug.log("A new player has arrived!")
-}
-
-fn update(dt) {
-  rotation += 90 * dt
-  cell.offset = [0, math.sin(time), 0]
-}
-
-fn on_touch(c) {
-  debug.log("Voxel touched by player!")
-  c.visible = false
+for trap in traps {
+  trap.on_touch = fn(c) {
+    debug.log("Trap touched by:", c.id)
+    event.fire("on_hurt")
+    event.fire("on_damage", 10)
+  }
 }</code></pre>
       </div>
 
-      <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
-        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
-          <strong style="color: var(--text-bright);">EXPLANATION:</strong> This script uses an event handler to log player arrivals and the <code>update</code> hook to apply a continuous rotation and bobbing effect using frame delta time (<code>dt</code>).
-        </p>
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">PLAYER MANAGER</span>
+          <span class="mono">EVENT LISTENER</span>
+        </div>
+        <pre><code>// Listen for the on_damage event anywhere in the game
+on on_damage(amount) {
+  health = math.max(0, health - amount)
+  event.fire("on_health_changed", health, max_health)
+}</code></pre>
       </div>
     </section>
 
+    <!-- 3. EXPLAIN WHAT EACH IMPORTANT LINE DOES -->
     <section class="home-section">
-      <div class="canonical-card" style="padding: 28px;">
-        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
-        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <code>update(dt)</code> receives the elapsed time since the last frame in seconds.
-        </p>
-        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          Event registrations happen when the script is loaded.
-        </p>
-        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          Lifecycle state persists between executions, allowing script fields to be modified and observed across frames.
-        </p>
-      </div>
-    </section>
-
-    <div style="display: flex; justify-content: space-between; padding: 40px 0;">
-      <a href="../entities/" class="text-link mono">&larr; PREV: ENTITIES</a>
-      <a href="../baskets/" class="text-link mono">NEXT: BASKETS &rarr;</a>
-    </div>
-
-    <section class="home-section" style="border-bottom: none;">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">EXPLORE MORE</div>
-          <h2 class="home-section-title mono">RELATED LINKS</h2>
+          <div class="brand-label mono">BREAKDOWN</div>
+          <h2 class="home-section-title mono">3. LINE-BY-LINE BREAKDOWN</h2>
         </div>
       </div>
-      <div class="canonical-grid">
-        <a href="../entities/" class="canonical-path-card">
-          <strong>ENTITIES</strong>
-          <span>Entity declarations and members</span>
-        </a>
-        <a href="../waiting/" class="canonical-path-card">
-          <strong>WAITING &amp; TIMING</strong>
-          <span>Fiber scheduling with wait()</span>
-        </a>
-        <a href="../control-flow/" class="canonical-path-card">
-          <strong>CONTROL FLOW</strong>
-          <span>Conditionals and loops</span>
-        </a>
+
+      <div class="canonical-card" style="padding: 24px;">
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
+          <strong style="color: var(--text-bright);">`trap.on_touch = fn(c)`</strong>: Runs automatically whenever a character contacts the trap block. `c` is the handle of the object that touched it.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
+          <strong style="color: var(--text-bright);">`event.fire("on_damage", 10)`</strong>: Broadcasts the `"on_damage"` event with `10` damage across the whole game.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 0;">
+          <strong style="color: var(--text-bright);">`on on_damage(amount)`</strong>: Receives the event in your Player Manager script and subtracts the damage amount!
+        </p>
       </div>
     </section>
+
+    <!-- 4. LET THE READER CHANGE SOMETHING -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">TRY IT YOURSELF</div>
+          <h2 class="home-section-title mono">4. TRY CHANGING SOMETHING</h2>
+        </div>
+      </div>
+
+      <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text); margin: 0;">
+          Try changing `event.fire("on_damage", 10)` to `25` on a lava block script. Walk into the lava in AeoEngine to see a quarter of your health bar vanish instantly!
+        </p>
+      </div>
+    </section>
+
+    <!-- 5. COMMON BEGINNER MISTAKE -->
+    <section class="home-section">
+      <div class="canonical-card" style="padding: 28px;">
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">5. COMMON BEGINNER MISTAKE</h3>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
+          <strong style="color: var(--text-bright);">Event Name Mismatch:</strong> `event.fire("on_damage")` and `on on_damage()` must use the exact same spelling. If you write `event.fire("damage")`, `on on_damage()` will never trigger!
+        </p>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
+          <strong style="color: var(--text-bright);">Forgetting Arguments:</strong> If an event fires with a number (`10`), your listener must accept that parameter (`on on_damage(amount)`).
+        </p>
+      </div>
+    </section>
+
+    <!-- 6. WHAT TO LEARN NEXT -->
+    <div style="display: flex; justify-content: space-between; padding: 40px 0;">
+      <a href="../cells/" class="text-link mono">&larr; PREV: WORKING WITH WORLD ITEMS</a>
+      <a href="../waiting/" class="text-link mono">6. NEXT: WAITING &amp; TIMERS &rarr;</a>
+    </div>
 
   </main>
 

@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AEOWUN // AEOSCRIPT // YOUR FIRST SCRIPT</title>
-  <link rel="canonical" href="https://aeowun.com/aeoscript/getting-started/">
-  <meta property="og:title" content="AEOWUN // AEOSCRIPT // YOUR FIRST SCRIPT">
-  <meta property="og:description" content="Learn how to write your first AeoScript, attach it to your world, and see text print to the output console.">
-  <meta property="og:url" content="https://aeowun.com/aeoscript/getting-started/">
+  <title>AEOWUN // AEOSCRIPT // BUILDING GAME UI</title>
+  <link rel="canonical" href="https://aeowun.com/aeoscript/ui/">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // BUILDING GAME UI">
+  <meta property="og:description" content="Learn how to build health displays, score counters, HUD panels, and buttons with AeoScript.">
+  <meta property="og:url" content="https://aeowun.com/aeoscript/ui/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // YOUR FIRST SCRIPT">
-  <meta name="twitter:description" content="Learn how to write your first AeoScript, attach it to your world, and see text print to the output console.">
-  <meta name="description" content="Learn how to write your first AeoScript, attach it to your world, and see text print to the output console.">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // BUILDING GAME UI">
+  <meta name="twitter:description" content="Learn how to build health displays, score counters, HUD panels, and buttons with AeoScript.">
+  <meta name="description" content="Learn how to build health displays, score counters, HUD panels, and buttons with AeoScript.">
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="canonical-page">
@@ -82,10 +82,10 @@
   <main class="container">
 
     <section class="canonical-hero">
-      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; LESSON 1</div>
-      <h1 class="canonical-title mono">YOUR FIRST SCRIPT</h1>
+      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; LESSON 9</div>
+      <h1 class="canonical-title mono">BUILDING GAME UI</h1>
       <p class="canonical-lead">
-        Write your first lines of game code and see them run inside AeoEngine.
+        Create health displays, gold counters, panels, and game-over screens with AeoScript.
       </p>
     </section>
 
@@ -93,12 +93,12 @@
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">LESSON 1</div>
+          <div class="brand-label mono">LESSON 9</div>
           <h2 class="home-section-title mono">1. WHAT YOU'RE MAKING</h2>
         </div>
       </div>
       <p style="font-size: 1rem; line-height: 1.8; color: var(--text);">
-        You are going to create a startup script for your game world. When you press <strong>Play</strong>, AeoEngine reads your script file from top to bottom and prints messages to the output window so you know your game is ready!
+        Players need to see their health, gold, and score on screen while playing. In this lesson, you'll create a HUD (Heads-Up Display) with UI panels and text elements that update when game events fire!
       </p>
     </section>
 
@@ -114,12 +114,32 @@
       <div class="script-code-panel" style="margin: 20px 0;">
         <div class="script-code-header">
           <span class="mono">AEOFILE</span>
-          <span class="mono">STARTUP.AEO</span>
+          <span class="mono">HUD_DEMO.AEO</span>
         </div>
-        <pre><code>// This is a comment — AeoEngine ignores lines starting with //
-debug.log("Loading game World...")
-debug.log("Hello from my game!")
-debug.log("Game is ready to play!")</code></pre>
+        <pre><code>// Create UI elements
+const hud_panel = ui.new("Panel")
+const health_text = ui.new("Text")
+const gold_text = ui.new("Text")
+
+hud_panel.size = [220, 76]
+hud_panel.color = [0.05, 0.05, 0.05, 0.80]
+
+health_text.color = [1.0, 1.0, 1.0, 1.0]
+gold_text.color = [1.0, 0.85, 0.25, 1.0]
+
+health_text.text = "HEALTH: 100 / 100"
+gold_text.text = "GOLD: 0"
+
+// Listen for health changes from the Player Manager
+on on_health_changed(current, maximum) {
+  health_text.text = "HEALTH: " + current + " / " + maximum
+}
+
+// Listen for gold changes when coins are collected
+on on_gold_changed(total_gold) {
+  gold_text.text = "GOLD: "
+  gold_text.text += total_gold
+}</code></pre>
       </div>
     </section>
 
@@ -134,13 +154,13 @@ debug.log("Game is ready to play!")</code></pre>
 
       <div class="canonical-card" style="padding: 24px;">
         <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
-          <strong style="color: var(--text-bright);">Line 1 (`// ...`)</strong>: Lines starting with two slashes `//` are comments. They are notes for yourself and do not run in the game.
+          <strong style="color: var(--text-bright);">`ui.new("Panel")` / `ui.new("Text")`</strong>: Creates a new UI object on the player's screen.
         </p>
         <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
-          <strong style="color: var(--text-bright);">Line 2 (`debug.log(...)`)</strong>: Tells AeoEngine to print the message `"Loading game World..."` into the output panel at the bottom of the editor.
+          <strong style="color: var(--text-bright);">`hud_panel.color = [r, g, b, a]`</strong>: Sets the panel color with Red, Green, Blue, and Alpha (transparency).
         </p>
         <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 0;">
-          <strong style="color: var(--text-bright);">Lines 3 &amp; 4</strong>: Print two more messages line-by-line in the order they appear.
+          <strong style="color: var(--text-bright);">`gold_text.text += total_gold`</strong>: Appends the new gold number directly onto the string `"GOLD: "`.
         </p>
       </div>
     </section>
@@ -156,7 +176,7 @@ debug.log("Game is ready to play!")</code></pre>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
         <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text); margin: 0;">
-          Try replacing `"Hello from my game!"` with your own message, like `"Welcome to my 3D Dungeon!"`. Click **Play** at the top of AeoEngine and look at the **Output** tab at the bottom to see your new text!
+          Try positioning your HUD at the top right of the screen using `const viewport = ui.get_viewport_size()` and setting `hud_panel.position = [viewport[0] - 240, 20]`!
         </p>
       </div>
     </section>
@@ -166,18 +186,18 @@ debug.log("Game is ready to play!")</code></pre>
       <div class="canonical-card" style="padding: 28px;">
         <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">5. COMMON BEGINNER MISTAKE</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Missing Quotes:</strong> Text inside <code>debug.log()</code> must be wrapped in matching quotation marks like <code>"Hello"</code>. Writing <code>debug.log(Hello)</code> will cause a script error because the engine looks for a variable named <code>Hello</code>.
+          <strong style="color: var(--text-bright);">Setting `text` on a `Panel`:</strong> `Panel` elements do not have text! Assign `.text` to `Text` or `Button` elements instead.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Unlinked Script:</strong> Remember to attach your script file in the World or Cell Properties Panel, or it won't run when you press Play!
+          <strong style="color: var(--text-bright);">Color Values:</strong> Color values in AeoEngine range from `0.0` to `1.0` (not 0 to 255). Pure white is `[1.0, 1.0, 1.0, 1.0]`.
         </p>
       </div>
     </section>
 
     <!-- 6. WHAT TO LEARN NEXT -->
     <div style="display: flex; justify-content: space-between; padding: 40px 0;">
-      <a href="../" class="text-link mono">&larr; BACK TO HUB</a>
-      <a href="../variables/" class="text-link mono">6. NEXT: VALUES AND VARIABLES &rarr;</a>
+      <a href="../waiting/" class="text-link mono">&larr; PREV: WAITING &amp; TIMERS</a>
+      <a href="../audio/" class="text-link mono">6. NEXT: SOUND &amp; AUDIO &rarr;</a>
     </div>
 
   </main>

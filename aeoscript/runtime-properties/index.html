@@ -6,13 +6,13 @@
   <title>AEOWUN // AEOSCRIPT // RUNTIME PROPERTIES</title>
   <link rel="canonical" href="https://aeowun.com/aeoscript/runtime-properties/">
   <meta property="og:title" content="AEOWUN // AEOSCRIPT // RUNTIME PROPERTIES">
-  <meta property="og:description" content="Modify the running world with AeoScript runtime properties. Learn to override visibility, collision, and color without affecting authored data.">
+  <meta property="og:description" content="Modify Cell properties dynamically during Play mode with AeoScript. Learn how visibility, solidity, anchoring, color, and offset work as runtime overrides.">
   <meta property="og:url" content="https://aeowun.com/aeoscript/runtime-properties/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // RUNTIME PROPERTIES">
-  <meta name="twitter:description" content="Modify the running world with AeoScript runtime properties. Learn to override visibility, collision, and color without affecting authored data.">
-  <meta name="description" content="Modify the running world with AeoScript runtime properties. Learn to override visibility, collision, and color without affecting authored data.">
+  <meta name="twitter:description" content="Modify Cell properties dynamically during Play mode with AeoScript. Learn how visibility, solidity, anchoring, color, and offset work as runtime overrides.">
+  <meta name="description" content="Modify Cell properties dynamically during Play mode with AeoScript. Learn how visibility, solidity, anchoring, color, and offset work as runtime overrides.">
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="canonical-page">
@@ -83,9 +83,9 @@
 
     <section class="canonical-hero">
       <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; RUNTIME PROPERTIES</div>
-      <h1 class="canonical-title mono">RUNTIME OVERRIDES</h1>
+      <h1 class="canonical-title mono">RUNTIME PROPERTIES</h1>
       <p class="canonical-lead">
-        Modifying World objects during Play mode without affecting authored source data.
+        Modifying Cell visibility, solidity, color, offset, and physics properties during gameplay.
       </p>
     </section>
 
@@ -102,16 +102,16 @@
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
           <ul style="list-style: none; margin-bottom: 25px;">
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Understanding the "Runtime Override" model
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Controlling Cell visibility with <code>cell.visible = false</code>
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Modifying visible, solid, and anchored properties
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Toggling collision participation with <code>cell.solid = false</code>
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Overriding Cell attributes dynamically
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Changing static vs dynamic physics with <code>cell.anchored</code>
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Restoring authored state by clearing overrides
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Modifying visual color and offsets during live gameplay
             </li>
           </ul>
         </article>
@@ -119,7 +119,7 @@
         <article class="canonical-card" style="padding: 28px;">
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
           <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            AeoScript operates on a <strong>Runtime Override</strong> model. When a script modifies a property of a <a href="../cells/" class="text-link">Cell</a>, the engine creates a temporary override that exists only for the duration of the current Play session. This ensures that gameplay logic can freely manipulate the world without risk of corrupting the underlying <a href="/aeoengine/projects/" class="text-link">authored World data</a>.
+            In AeoEngine, scripts can modify Cell properties while the game is running. These changes affect the active play session as <strong>runtime overrides</strong>. Because they exist only during Play mode, stopping the game restores your original authored World intact.
           </p>
         </article>
       </div>
@@ -128,63 +128,115 @@
     <section class="home-section">
       <div class="section-heading-row">
         <div>
+          <div class="brand-label mono">PROPERTIES SPECIFICATION</div>
+          <h2 class="home-section-title mono">SUPPORTED CELL PROPERTIES</h2>
+        </div>
+      </div>
+
+      <div class="canonical-card" style="padding: 0; overflow: hidden; margin-bottom: 30px;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+          <thead>
+            <tr style="background: rgba(255,255,255,0.05); border-bottom: 1px solid var(--border);">
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-orange); text-transform: uppercase; letter-spacing: 0.15em;">Property</th>
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em;">Type</th>
+              <th style="padding: 16px 20px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em;">Gameplay Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>cell.visible</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>bool</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Hide secret doors, vanish collected coins, or reveal hidden traps.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>cell.solid</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>bool</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Allow or block characters from walking through a doorway or bridge.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>cell.anchored</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>bool</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Unanchor a block to make it fall with physics when triggered.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>cell.color</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>basket</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Change RGB color `[r, g, b]` when activated or damaged.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>cell.offset</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>basket</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Smooth visual offset `[x, y, z]` for floating or bobbing animations.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>cell.position</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>basket</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Move runtime-created cells directly in 3D space.</td>
+            </tr>
+            <tr>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-light);"><code>cell.name</code></td>
+              <td style="padding: 14px 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-orange);"><code>string</code></td>
+              <td style="padding: 14px 20px; font-size: 0.85rem; color: var(--text);">Update human-readable instance name during play.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
           <div class="brand-label mono">SYNTAX / WORKFLOW</div>
-          <h2 class="home-section-title mono">EXAMPLES</h2>
+          <h2 class="home-section-title mono">DOOR OPENING EXAMPLE</h2>
         </div>
       </div>
 
       <div class="script-code-panel" style="margin: 20px 0;">
         <div class="script-code-header">
-          <span class="mono">PROPERTY OVERRIDES</span>
-          <span class="mono">SYNTAX</span>
-        </div>
-        <pre><code>cell.visible = false // Temporary runtime change
-cell.attributes["health"] = 50 // Attribute override
-cell.attributes["health"] = nil // Restore authored value</code></pre>
-      </div>
-
-      <div class="script-code-panel" style="margin: 20px 0;">
-        <div class="script-code-header">
-          <span class="mono">STATE MODIFICATION</span>
+          <span class="mono">DOOR SCRIPT</span>
           <span class="mono">EXAMPLE</span>
         </div>
-        <pre><code>fn hide_object(target: Cell) {
-  target.visible = false
-  target.solid = false
-  target.anchored = true
+        <pre><code>const door = find("MainDoor")[0]
+
+fn open_door() {
+  if door {
+    door.visible = false
+    door.solid = false
+    debug.log("Door opened!")
+  }
 }
 
-fn damage(target: Cell, amount: number) {
-  const current = target.attributes["hp"]
-  target.attributes["hp"] = current - amount
+fn close_door() {
+  if door {
+    door.visible = true
+    door.solid = true
+    debug.log("Door closed!")
+  }
 }</code></pre>
       </div>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
         <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
-          <strong style="color: var(--text-bright);">EXPLANATION:</strong> Changes to <code>visible</code> or <code>attributes</code> create temporary runtime overrides. When Play mode ends, these overrides are discarded, and the authored World remains in its original state.
+          <strong style="color: var(--text-bright);">EXPLANATION:</strong> When <code>open_door()</code> is called, setting <code>door.visible = false</code> hides the door graphics and <code>door.solid = false</code> turns off physical collision so the player can walk through.
         </p>
       </div>
     </section>
 
     <section class="home-section">
       <div class="canonical-card" style="padding: 28px;">
-        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / TIPS</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          Effective property reads return the override value if it exists, otherwise the authored baseline.
-        </p>
-        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          Assigning <code>nil</code> to an attribute override removes it entirely.
+          <strong style="color: var(--text-bright);">Play Session Scope:</strong> Runtime property changes last while the game is running and reset when Play mode stops.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          Runtime overrides are not persisted to disk; use them for gameplay feedback and temporary state changes.
+          <strong style="color: var(--text-bright);">Custom Attributes:</strong> For storing arbitrary variables (like health or gold) on a Cell, see <a href="../attributes/" class="text-link">Custom Attributes &amp; Data</a>.
         </p>
       </div>
     </section>
 
     <div style="display: flex; justify-content: space-between; padding: 40px 0;">
-      <a href="../identity/" class="text-link mono">&larr; PREV: IDENTITY</a>
-      <a href="../runtime-state/" class="text-link mono">NEXT: RUNTIME STATE &rarr;</a>
+      <a href="../cells/" class="text-link mono">&larr; PREV: WORKING WITH WORLD ITEMS</a>
+      <a href="../attributes/" class="text-link mono">NEXT: CUSTOM DATA &rarr;</a>
     </div>
 
     <section class="home-section" style="border-bottom: none;">
@@ -195,17 +247,17 @@ fn damage(target: Cell, amount: number) {
         </div>
       </div>
       <div class="canonical-grid">
-        <a href="../runtime-state/" class="canonical-path-card">
-          <strong>RUNTIME STATE MODEL</strong>
-          <span>Play-mode vs authored state</span>
-        </a>
         <a href="../cells/" class="canonical-path-card">
-          <strong>CELL HANDLES</strong>
-          <span>Engine handles and properties</span>
+          <strong>WORKING WITH WORLD ITEMS</strong>
+          <span>Cell handles and properties</span>
+        </a>
+        <a href="../attributes/" class="canonical-path-card">
+          <strong>CUSTOM DATA</strong>
+          <span>Attaching cell.attributes</span>
         </a>
         <a href="../editor/" class="canonical-path-card">
-          <strong>EDITOR WORKFLOW</strong>
-          <span>Authoring vs play mode</span>
+          <strong>CREATING THINGS DURING PLAY</strong>
+          <span>Dynamic spawning and deletion</span>
         </a>
       </div>
     </section>

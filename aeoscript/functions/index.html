@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AEOWUN // AEOSCRIPT // FUNCTIONS</title>
+  <title>AEOWUN // AEOSCRIPT // FUNCTIONS &amp; CALLBACKS</title>
   <link rel="canonical" href="https://aeowun.com/aeoscript/functions/">
-  <meta property="og:title" content="AEOWUN // AEOSCRIPT // FUNCTIONS">
-  <meta property="og:description" content="Master AeoScript functions. Learn about parameters, return types, and how functions drive logic within entities and top-level scripts.">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // FUNCTIONS &amp; CALLBACKS">
+  <meta property="og:description" content="Learn how to package reusable game code into functions and use callbacks in AeoScript.">
   <meta property="og:url" content="https://aeowun.com/aeoscript/functions/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // FUNCTIONS">
-  <meta name="twitter:description" content="Master AeoScript functions. Learn about parameters, return types, and how functions drive logic within entities and top-level scripts.">
-  <meta name="description" content="Master AeoScript functions. Learn about parameters, return types, and how functions drive logic within entities and top-level scripts.">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // FUNCTIONS &amp; CALLBACKS">
+  <meta name="twitter:description" content="Learn how to package reusable game code into functions and use callbacks in AeoScript.">
+  <meta name="description" content="Learn how to package reusable game code into functions and use callbacks in AeoScript.">
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="canonical-page">
@@ -82,137 +82,114 @@
   <main class="container">
 
     <section class="canonical-hero">
-      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; FUNCTIONS</div>
-      <h1 class="canonical-title mono">FUNCTIONS</h1>
+      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; LESSON 4</div>
+      <h1 class="canonical-title mono">FUNCTIONS &amp; CALLBACKS</h1>
       <p class="canonical-lead">
-        Encapsulating reusable logic into named blocks with parameters and return values.
+        Package reusable gameplay code into named functions and create callback actions.
       </p>
     </section>
 
+    <!-- 1. WHAT YOU'RE MAKING -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">AEOSCRIPT // FUNDAMENTALS</div>
-          <h2 class="home-section-title mono">OVERVIEW</h2>
+          <div class="brand-label mono">LESSON 4</div>
+          <h2 class="home-section-title mono">1. WHAT YOU'RE MAKING</h2>
+        </div>
+      </div>
+      <p style="font-size: 1rem; line-height: 1.8; color: var(--text);">
+        A function is a named block of reusable code. Instead of writing the same lines over and over, you write a function once and call it whenever you need to heal a player, open a door, or update a HUD!
+      </p>
+    </section>
+
+    <!-- 2. SMALL WORKING EXAMPLE -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">CODE</div>
+          <h2 class="home-section-title mono">2. WORKING EXAMPLE</h2>
         </div>
       </div>
 
-      <div class="canonical-grid">
-        <article class="canonical-card" style="padding: 28px;">
-          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
-          <ul style="list-style: none; margin-bottom: 25px;">
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Declaring functions with <code>fn</code> and anonymous <code>fn()</code>
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Understanding the <code>self</code> keyword in dynamic methods
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Accepting parameters and specifying types
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Returning values to the caller
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Calling functions and method-call syntax
-            </li>
-          </ul>
-        </article>
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">AEOFILE</span>
+          <span class="mono">FUNCTIONS.AEO</span>
+        </div>
+        <pre><code>const coins = find("Coin")
 
-        <article class="canonical-card" style="padding: 28px;">
-          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
-          <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            Functions are the primary unit of logic in AeoScript. They can be declared at the top level or within <a href="../entities/" class="text-link">entities</a>. Functions support recursion, parameters, and return types, and their local state is fully preserved when execution yields via <a href="../waiting/" class="text-link"><code>wait()</code></a>.
-          </p>
-        </article>
+// Reusable function to calculate score bonus
+fn add_score(current_score, bonus) {
+  return current_score + bonus
+}
+
+// Assigning a callback function when a coin is touched
+for coin in coins {
+  coin.on_touch = fn(c) {
+    debug.log("Coin collected by object:", c.id)
+    coin.visible = false
+    coin.solid = false
+  }
+}</code></pre>
       </div>
     </section>
 
+    <!-- 3. EXPLAIN WHAT EACH IMPORTANT LINE DOES -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">SYNTAX / WORKFLOW</div>
-          <h2 class="home-section-title mono">EXAMPLES</h2>
+          <div class="brand-label mono">BREAKDOWN</div>
+          <h2 class="home-section-title mono">3. LINE-BY-LINE BREAKDOWN</h2>
         </div>
       </div>
 
-      <div class="script-code-panel" style="margin: 20px 0;">
-        <div class="script-code-header">
-          <span class="mono">FUNCTION DECLARATION</span>
-          <span class="mono">SYNTAX</span>
-        </div>
-        <pre><code>fn name(p: type): return_type { ... }
-const anonymous = fn(p) { ... }
-object:method() // Method-style call</code></pre>
+      <div class="canonical-card" style="padding: 24px;">
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
+          <strong style="color: var(--text-bright);">`fn add_score(current_score, bonus)`</strong>: Defines a function named `add_score` that accepts two inputs (parameters).
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
+          <strong style="color: var(--text-bright);">`return ...`</strong>: Sends the calculated result back to whoever called the function.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 0;">
+          <strong style="color: var(--text-bright);">`coin.on_touch = fn(c) { ... }`</strong>: Assigns an anonymous function (callback) to `on_touch`. AeoEngine automatically runs this function whenever the player touches the coin!
+        </p>
       </div>
+    </section>
 
-      <div class="script-code-panel" style="margin: 20px 0;">
-        <div class="script-code-header">
-          <span class="mono">DAMAGE CALCULATION</span>
-          <span class="mono">EXAMPLE</span>
+    <!-- 4. LET THE READER CHANGE SOMETHING -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">TRY IT YOURSELF</div>
+          <h2 class="home-section-title mono">4. TRY CHANGING SOMETHING</h2>
         </div>
-        <pre><code>fn calculate_damage(atk: number, def: number): number {
-  return math.max(1, atk - def)
-}
-
-final_dmg = calculate_damage(25, 10)
-
-const door = cell.get(101)
-door.open = fn() {
-  self.visible = false
-}
-door:open()</code></pre>
       </div>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
-        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
-          <strong style="color: var(--text-bright);">EXPLANATION:</strong> This function takes two numbers, calculates their difference, and ensures a minimum return value of 1. The result is then stored and logged.
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text); margin: 0;">
+          Try adding `debug.log("Score bonus:", add_score(100, 25))` to your script. Run it in AeoEngine and check the output window to see `125` printed!
         </p>
       </div>
     </section>
 
+    <!-- 5. COMMON BEGINNER MISTAKE -->
     <section class="home-section">
       <div class="canonical-card" style="padding: 28px;">
-        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">5. COMMON BEGINNER MISTAKE</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          Functions may omit a return type if they do not return a value.
-        </p>
-        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          Parameters can be explicitly typed or inferred if types are omitted.
+          <strong style="color: var(--text-bright);">Forgetting Parentheses `()`:</strong> To call a function, you must include parentheses like `add_score(10, 5)`. Writing just `add_score` refers to the function itself without executing it!
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          Method calls use the colon <code>:</code> syntax, which is often used for engine object interactions.
+          <strong style="color: var(--text-bright);">Forgetting `return`:</strong> If your function calculates a value but forgets `return`, it will return `nil` instead of your result.
         </p>
       </div>
     </section>
 
+    <!-- 6. WHAT TO LEARN NEXT -->
     <div style="display: flex; justify-content: space-between; padding: 40px 0;">
-      <a href="../control-flow/" class="text-link mono">&larr; PREV: CONTROL FLOW</a>
-      <a href="../entities/" class="text-link mono">NEXT: ENTITIES &rarr;</a>
+      <a href="../control-flow/" class="text-link mono">&larr; PREV: CONDITIONS &amp; LOOPS</a>
+      <a href="../find/" class="text-link mono">6. NEXT: FINDING THINGS &rarr;</a>
     </div>
-
-    <section class="home-section" style="border-bottom: none;">
-      <div class="section-heading-row">
-        <div>
-          <div class="brand-label mono">EXPLORE MORE</div>
-          <h2 class="home-section-title mono">RELATED LINKS</h2>
-        </div>
-      </div>
-      <div class="canonical-grid">
-        <a href="../entities/" class="canonical-path-card">
-          <strong>ENTITIES &amp; MEMBERS</strong>
-          <span>Scripted entity definitions</span>
-        </a>
-        <a href="../waiting/" class="canonical-path-card">
-          <strong>FIBERS &amp; YIELDING</strong>
-          <span>Asynchronous yielding with wait()</span>
-        </a>
-        <a href="../math/" class="canonical-path-card">
-          <strong>MATH LIBRARY</strong>
-          <span>Built-in math namespace</span>
-        </a>
-      </div>
-    </section>
 
   </main>
 

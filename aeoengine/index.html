@@ -6,13 +6,13 @@
   <title>AEOWUN // AEOENGINE</title>
   <link rel="canonical" href="https://aeowun.com/aeoengine/">
   <meta property="og:title" content="AEOWUN // AEOENGINE">
-  <meta property="og:description" content="AeoEngine is the game engine built around AeoScript by AEOWUN.">
+  <meta property="og:description" content="AeoEngine is a 3D voxel engine and editor for building worlds, managing characters, and making games.">
   <meta property="og:url" content="https://aeowun.com/aeoengine/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AEOWUN // AEOENGINE">
-  <meta name="twitter:description" content="AeoEngine is the game engine built around AeoScript by AEOWUN.">
-  <meta name="description" content="AeoEngine is the game engine built around AeoScript by AEOWUN.">
+  <meta name="twitter:description" content="AeoEngine is a 3D voxel engine and editor for building worlds, managing characters, and making games.">
+  <meta name="description" content="AeoEngine is a 3D voxel engine and editor for building worlds, managing characters, and making games.">
   <link rel="stylesheet" href="../style.css">
 </head>
 <body class="canonical-page aeo-page">
@@ -35,7 +35,7 @@
         <a href="/games/" class="home-nav-link mono">GAMES</a>
         <a href="/software/" class="home-nav-link mono">SOFTWARE</a>
         <a href="/support/" class="home-nav-link mono">SUPPORT</a>
-        <a href="https://github.com/Aeowun/AeoEngine/issues/new" target="_blank" rel="noopener" class="home-nav-link mono">GITHUB</a>
+        <a href="https://github.com/Aeowun/AeoEngine" target="_blank" rel="noopener" class="home-nav-link mono">GITHUB</a>
       </nav>
 
       <div class="home-header-actions">
@@ -75,7 +75,7 @@
         <a href="/privacy/" class="rail-link mono">PRIVACY</a>
         <a href="/security/" class="rail-link mono">SECURITY</a>
 
-        <a href="https://github.com/Aeowun/AeoEngine/issues/new" target="_blank" rel="noopener" class="rail-link mono">GITHUB</a>
+        <a href="https://github.com/Aeowun/AeoEngine" target="_blank" rel="noopener" class="rail-link mono">GITHUB</a>
       </nav>
     </div>
   </div>
@@ -86,114 +86,84 @@
       <div class="brand-label mono">AEOWUN &gt; DOCS &gt; AEOENGINE</div>
       <h1 class="canonical-title mono">AEOENGINE</h1>
       <p class="canonical-lead">
+        Build 3D voxel worlds, place lights and characters, and write gameplay scripts inside one engine environment.
       </p>
       <div class="canonical-actions">
-        <a class="primary-button mono" href="/aeoscript/">AEOSCRIPT</a>
-        <a class="secondary-button mono" href="/docs/tutorials/">TUTORIALS</a>
-        <a class="secondary-button mono" href="https://github.com/Aeowun/AeoEngine/issues/new" target="_blank" rel="noopener">GITHUB</a>
+        <a class="primary-button mono" href="getting-started/">FIRST WORLD</a>
+        <a class="secondary-button mono" href="/aeoscript/">AEOSCRIPT</a>
+        <a class="secondary-button mono" href="https://github.com/Aeowun/AeoEngine" target="_blank" rel="noopener">GITHUB</a>
       </div>
     </section>
 
+    <!-- OVERVIEW -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">START HERE</div>
-          <h2 class="home-section-title mono">OVERVIEW</h2>
+          <div class="brand-label mono">WHAT IS AEOENGINE?</div>
+          <h2 class="home-section-title mono">THE GAME CREATION WORKFLOW</h2>
         </div>
       </div>
       <div class="canonical-grid">
         <article class="canonical-card" style="padding: 28px;">
-          <h3 class="mono" style="color: var(--text-bright); margin-bottom: 12px; font-size: 1.1rem;">WHAT IS IT?</h3>
+          <h3 class="mono" style="color: var(--text-bright); margin-bottom: 12px; font-size: 1.1rem;">BUILD YOUR WORLD</h3>
           <p style="color: var(--text); line-height: 1.6; font-size: 0.9rem;">
-            AeoEngine lets you build worlds in the editor and jump into Play mode to see them in action. Changes made while playing are <a href="/aeoscript/runtime-state/" class="text-link">temporary</a>, so the world you're building stays intact.          </p>
+            Place blocks, lights, spawn points, and custom objects using intuition-first 3D building tools directly in the editor.
+          </p>
         </article>
         <article class="canonical-card" style="padding: 28px;">
-          <h3 class="mono" style="color: var(--text-bright); margin-bottom: 12px; font-size: 1.1rem;">THE WORKFLOW</h3>
+          <h3 class="mono" style="color: var(--text-bright); margin-bottom: 12px; font-size: 1.1rem;">RUN &amp; TEST</h3>
           <p style="color: var(--text); line-height: 1.6; font-size: 0.9rem;">
-            AeoEngine is built around a simple cycle: <strong>BUILD</strong> the <a href="projects/" class="text-link">world</a>, <strong>RUN</strong> the <a href="physics/" class="text-link">simulation</a>, <strong>SCRIPT</strong> gameplay with <a href="/aeoscript/" class="text-link">AeoScript</a>, <strong>TEST</strong> what happens, and <strong>IMPROVE</strong> what you make.
+            Press Play to test your world immediately with physics, player movement, dynamic lighting, and cameras.
           </p>
         </article>
       </div>
     </section>
 
+    <!-- CORE FEATURES -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">WORKING WITH AEOENGINE</div>
-          <h2 class="home-section-title mono">PATHS</h2>
-        </div>
-      </div>
-      <div class="canonical-grid">
-        <a class="canonical-path-card" href="editor/">
-          <strong>EDITOR</strong>
-          <span>Build, organize, and texture your world.</span>
-        </a>
-        <a class="canonical-path-card" href="physics/">
-          <strong>RUNTIME</strong>
-          <span>Simulate physics, character movement, and lighting with AeoScript control.</span>
-        </a>
-        <a class="canonical-path-card" href="/aeoscript/">
-          <strong>AEOSCRIPT</strong>
-          <span>Create gameplay interactions with persistent Cell-ID bindings, cooperative fibers, and runtime overrides.</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="home-section">
-      <div class="section-heading-row">
-        <div>
-          <div class="brand-label mono">FUNDAMENTALS</div>
-          <h2 class="home-section-title mono">LEARN</h2>
+          <div class="brand-label mono">ENGINE FEATURES</div>
+          <h2 class="home-section-title mono">ENGINE GUIDES</h2>
         </div>
       </div>
       <div class="canonical-grid">
         <a class="canonical-path-card" href="getting-started/">
-          <strong>GETTING STARTED</strong>
-          <span>Prerequisites and first steps</span>
-        </a>
-        <a class="canonical-path-card" href="projects/">
-          <strong>PROJECTS</strong>
-          <span>Map persistence and assets</span>
-        </a>
-        <a class="canonical-path-card" href="hierarchy/">
-          <strong>HIERARCHY</strong>
-          <span>World tree and selection</span>
+          <strong>MAKE YOUR FIRST WORLD</strong>
+          <span>Start building in 3D with AeoEngine</span>
         </a>
         <a class="canonical-path-card" href="building/">
-          <strong>BUILDING</strong>
-          <span>Voxel construction modes</span>
-        </a>
-        <a class="canonical-path-card" href="lighting/">
-          <strong>LIGHTING</strong>
-          <span>Authored light actors</span>
-        </a>
-        <a class="canonical-path-card" href="physics/">
-          <strong>PHYSICS</strong>
-          <span>Fixed-timestep simulation</span>
+          <strong>BUILDING TOOLS</strong>
+          <span>Plane mode, Top-Block, Build, Erase, line/plane tools, selection</span>
         </a>
         <a class="canonical-path-card" href="characters/">
-          <strong>CHARACTERS</strong>
-          <span>Movement and animation</span>
+          <strong>CHARACTERS &amp; CONTROLLERS</strong>
+          <span>Spawn Points, player movement, gravity, jumping, collision, controllers</span>
         </a>
         <a class="canonical-path-card" href="camera/">
-          <strong>CAMERA</strong>
-          <span>Gameplay follow behavior</span>
+          <strong>GAMEPLAY CAMERAS</strong>
+          <span>Third-person, first-person, and top-down camera styles</span>
+        </a>
+        <a class="canonical-path-card" href="lighting/">
+          <strong>SKY &amp; ENVIRONMENT</strong>
+          <span>Lighting controls and sky presets (Temperate, Tropical, Desert, Snowy, Mars)</span>
+        </a>
+        <a class="canonical-path-card" href="physics/">
+          <strong>PHYSICS &amp; SIMULATION</strong>
+          <span>Voxel collision, rigid bodies, solid blocks, and movement</span>
+        </a>
+        <a class="canonical-path-card" href="hierarchy/">
+          <strong>WORLD HIERARCHY</strong>
+          <span>Manage your scene tree, selection, and focus</span>
+        </a>
+        <a class="canonical-path-card" href="editor/">
+          <strong>EDITOR TOOLS</strong>
+          <span>Properties panel, script editor, and debugging views</span>
         </a>
       </div>
     </section>
 
-    <section class="home-section">
-      <div class="section-heading-row">
-        <div>
-          <div class="brand-label mono">CURRENT FOCUS</div>
-          <h2 class="home-section-title mono">AEOWUN</h2>
-        </div>
-      </div>
-      <p style="color: var(--text); line-height: 1.7; font-size: 0.95rem; max-width: 800px;">
-        AeoEngine is currently in development. Development history and current progress are tracked in the <a href="https://github.com/Aeowun/AeoEngine" class="text-link">project repository</a>.
-      </p>
-    </section>
-
+    <!-- RELATED LINKS -->
     <section class="home-section" style="border-bottom: none;">
       <div class="section-heading-row">
         <div>
@@ -204,19 +174,19 @@
       <div class="canonical-grid">
         <a class="canonical-path-card" href="/docs/">
           <strong>DOCUMENTATION HUB</strong>
-          <span>Back to main documentation</span>
+          <span>Back to main documentation hub</span>
         </a>
         <a class="canonical-path-card" href="/aeoscript/">
           <strong>AEOSCRIPT</strong>
-          <span>Language features and examples</span>
+          <span>Learn gameplay scripting</span>
         </a>
-        <a class="canonical-path-card" href="/docs/tutorials/first-world/">
-          <strong>FIRST WORLD</strong>
-          <span>Voxel Editor introduction</span>
+        <a class="canonical-path-card" href="/docs/tutorials/">
+          <strong>TUTORIALS</strong>
+          <span>Step-by-step game projects</span>
         </a>
         <a class="canonical-path-card" href="/docs/troubleshooting/">
           <strong>TROUBLESHOOTING</strong>
-          <span>Common engine problems</span>
+          <span>Common fixes and engine notes</span>
         </a>
       </div>
     </section>
@@ -254,7 +224,7 @@
         <a href="/support/">Support</a>
         <a href="/privacy/">Privacy</a>
         <a href="/security/">Security</a>
-        <a href="https://github.com/Aeowun/AeoEngine/issues/new" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/Aeowun/AeoEngine" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
 

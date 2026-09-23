@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AEOWUN // AEOSCRIPT // CONTROL FLOW</title>
+  <title>AEOWUN // AEOSCRIPT // CONDITIONS &amp; LOOPS</title>
   <link rel="canonical" href="https://aeowun.com/aeoscript/control-flow/">
-  <meta property="og:title" content="AEOWUN // AEOSCRIPT // CONTROL FLOW">
-  <meta property="og:description" content="Learn control flow in AeoScript. Guide to if statements, while loops, and for loops for managing complex gameplay scenarios.">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // CONDITIONS &amp; LOOPS">
+  <meta property="og:description" content="Learn how to make game decisions with if statements and repeat actions with loops in AeoScript.">
   <meta property="og:url" content="https://aeowun.com/aeoscript/control-flow/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // CONTROL FLOW">
-  <meta name="twitter:description" content="Learn control flow in AeoScript. Guide to if statements, while loops, and for loops for managing complex gameplay scenarios.">
-  <meta name="description" content="Learn control flow in AeoScript. Guide to if statements, while loops, and for loops for managing complex gameplay scenarios.">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // CONDITIONS &amp; LOOPS">
+  <meta name="twitter:description" content="Learn how to make game decisions with if statements and repeat actions with loops in AeoScript.">
+  <meta name="description" content="Learn how to make game decisions with if statements and repeat actions with loops in AeoScript.">
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="canonical-page">
@@ -82,133 +82,117 @@
   <main class="container">
 
     <section class="canonical-hero">
-      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; CONTROL FLOW</div>
-      <h1 class="canonical-title mono">CONTROL FLOW</h1>
+      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; LESSON 3</div>
+      <h1 class="canonical-title mono">CONDITIONS &amp; LOOPS</h1>
       <p class="canonical-lead">
-        Directing the execution of code using conditional logic and iteration.
+        Make game decisions with if statements and repeat actions across multiple objects with loops.
       </p>
     </section>
 
+    <!-- 1. WHAT YOU'RE MAKING -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">AEOSCRIPT // FUNDAMENTALS</div>
-          <h2 class="home-section-title mono">OVERVIEW</h2>
+          <div class="brand-label mono">LESSON 3</div>
+          <h2 class="home-section-title mono">1. WHAT YOU'RE MAKING</h2>
+        </div>
+      </div>
+      <p style="font-size: 1rem; line-height: 1.8; color: var(--text);">
+        Games need to make choices: <em>"If player health reaches 0, trigger Game Over"</em> or <em>"For every coin in the level, make it collectible."</em> In this lesson, you'll learn `if` conditions and `for` loops.
+      </p>
+    </section>
+
+    <!-- 2. SMALL WORKING EXAMPLE -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">CODE</div>
+          <h2 class="home-section-title mono">2. WORKING EXAMPLE</h2>
         </div>
       </div>
 
-      <div class="canonical-grid">
-        <article class="canonical-card" style="padding: 28px;">
-          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
-          <ul style="list-style: none; margin-bottom: 25px;">
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Conditional logic with <code>if</code>, <code>else if</code>, and <code>else</code>
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Indefinite iteration using <code>while</code> loops
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Collection iteration with <code>for-in</code>
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Yielding inside loops with <code>wait()</code>
-            </li>
-          </ul>
-        </article>
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">AEOFILE</span>
+          <span class="mono">GAME_DECISIONS.AEO</span>
+        </div>
+        <pre><code>health = 0
+game_over = false
 
-        <article class="canonical-card" style="padding: 28px;">
-          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
-          <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            Control flow structures allow scripts to respond to dynamic game states. AeoScript's loops and conditionals are "fiber-safe," meaning they can be suspended using <a href="../waiting/" class="text-link"><code>wait()</code></a> and will resume exactly where they left off without losing loop state or local variables.
-          </p>
-        </article>
+// Checking player health
+if health &lt;= 0 {
+  game_over = true
+  debug.log("Game Over! Respawning...")
+} else {
+  debug.log("Player is still alive!")
+}
+
+// Loop through all coins placed in the World
+const coins = find("Coin")
+
+for coin in coins {
+  coin.visible = true
+  coin.solid = true
+}</code></pre>
       </div>
     </section>
 
+    <!-- 3. EXPLAIN WHAT EACH IMPORTANT LINE DOES -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">SYNTAX / WORKFLOW</div>
-          <h2 class="home-section-title mono">EXAMPLES</h2>
+          <div class="brand-label mono">BREAKDOWN</div>
+          <h2 class="home-section-title mono">3. LINE-BY-LINE BREAKDOWN</h2>
         </div>
       </div>
 
-      <div class="script-code-panel" style="margin: 20px 0;">
-        <div class="script-code-header">
-          <span class="mono">CONDITIONALS &amp; LOOPS</span>
-          <span class="mono">SYNTAX</span>
-        </div>
-        <pre><code>if condition { ... } else { ... }
-while condition { ... }
-for item in collection { ... }</code></pre>
+      <div class="canonical-card" style="padding: 24px;">
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
+          <strong style="color: var(--text-bright);">`if health <= 0`</strong>: Asks AeoEngine if `health` has dropped to 0 or less. If true, it runs the code inside the `{}` block.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
+          <strong style="color: var(--text-bright);">`else`</strong>: Runs if the condition was false (when the player has more than 0 health).
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 0;">
+          <strong style="color: var(--text-bright);">`for coin in coins`</strong>: Repeats the enclosed instructions for every single coin found in your 3D level.
+        </p>
       </div>
+    </section>
 
-      <div class="script-code-panel" style="margin: 20px 0;">
-        <div class="script-code-header">
-          <span class="mono">ITERATION &amp; WAITING</span>
-          <span class="mono">EXAMPLE</span>
+    <!-- 4. LET THE READER CHANGE SOMETHING -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">TRY IT YOURSELF</div>
+          <h2 class="home-section-title mono">4. TRY CHANGING SOMETHING</h2>
         </div>
-        <pre><code>const enemies = find("Orc")
-
-for enemy in enemies {
-  if enemy.health &lt;= 0 {
-    enemy:translate(1, 0, 0)
-  } else {
-    enemy.color = [1, 0, 0]
-  }
-  wait(0.1) // Yield after each enemy processing
-}</code></pre>
       </div>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
-        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
-          <strong style="color: var(--text-bright);">EXPLANATION:</strong> This script iterates through a basket of enemies, destroying those with no health and highlighting survivors. The <code>wait(0.1)</code> inside the loop ensures the processing doesn't block the engine for a single frame.
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text); margin: 0;">
+          Try changing `health = 0` to `health = 50`. Run your script again and see how the `else` block runs instead, printing `"Player is still alive!"`!
         </p>
       </div>
     </section>
 
+    <!-- 5. COMMON BEGINNER MISTAKE -->
     <section class="home-section">
       <div class="canonical-card" style="padding: 28px;">
-        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">5. COMMON BEGINNER MISTAKE</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          The <code>for</code> loop iterates over Baskets, which are ordered sequences.
-        </p>
-        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          All control flow blocks must be enclosed in curly braces <code>{}</code>.
+          <strong style="color: var(--text-bright);">Forgetting Curly Braces `{}`:</strong> In AeoScript, all `if` blocks and `for` loops require opening and closing curly braces `{}`.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          Loop state is preserved during fibers, making complex timed sequences easy to write.
+          <strong style="color: var(--text-bright);">Confusing `=` and `==`:</strong> Use `=` to set a variable (`health = 100`). Use `==` to check if two things are equal (`if health == 100`).
         </p>
       </div>
     </section>
 
+    <!-- 6. WHAT TO LEARN NEXT -->
     <div style="display: flex; justify-content: space-between; padding: 40px 0;">
-      <a href="../operators/" class="text-link mono">&larr; PREV: OPERATORS</a>
-      <a href="../functions/" class="text-link mono">NEXT: FUNCTIONS &rarr;</a>
+      <a href="../variables/" class="text-link mono">&larr; PREV: VALUES &amp; VARIABLES</a>
+      <a href="../functions/" class="text-link mono">6. NEXT: FUNCTIONS &rarr;</a>
     </div>
-
-    <section class="home-section" style="border-bottom: none;">
-      <div class="section-heading-row">
-        <div>
-          <div class="brand-label mono">EXPLORE MORE</div>
-          <h2 class="home-section-title mono">RELATED LINKS</h2>
-        </div>
-      </div>
-      <div class="canonical-grid">
-        <a href="../baskets/" class="canonical-path-card">
-          <strong>BASKETS</strong>
-          <span>Sequence collections</span>
-        </a>
-        <a href="../waiting/" class="canonical-path-card">
-          <strong>FIBERS &amp; WAITING</strong>
-          <span>Fiber yielding and loops</span>
-        </a>
-        <a href="../operators/" class="canonical-path-card">
-          <strong>RELATIONAL OPERATORS</strong>
-          <span>Comparison operators</span>
-        </a>
-      </div>
-    </section>
 
   </main>
 

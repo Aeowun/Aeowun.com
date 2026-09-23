@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AEOWUN // AEOSCRIPT // CELLS</title>
+  <title>AEOWUN // AEOSCRIPT // WORKING WITH WORLD ITEMS</title>
   <link rel="canonical" href="https://aeowun.com/aeoscript/cells/">
-  <meta property="og:title" content="AEOWUN // AEOSCRIPT // CELLS">
-  <meta property="og:description" content="Interact with authored World Cells in AeoScript. Learn about handles, Cell types, and the distinction between authored data and runtime state.">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // WORKING WITH WORLD ITEMS">
+  <meta property="og:description" content="Learn how to open doors, collect coins, and change object properties dynamically in AeoScript.">
   <meta property="og:url" content="https://aeowun.com/aeoscript/cells/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // CELLS">
-  <meta name="twitter:description" content="Interact with authored World Cells in AeoScript. Learn about handles, Cell types, and the distinction between authored data and runtime state.">
-  <meta name="description" content="Interact with authored World Cells in AeoScript. Learn about handles, Cell types, and the distinction between authored data and runtime state.">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // WORKING WITH WORLD ITEMS">
+  <meta name="twitter:description" content="Learn how to open doors, collect coins, and change object properties dynamically in AeoScript.">
+  <meta name="description" content="Learn how to open doors, collect coins, and change object properties dynamically in AeoScript.">
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="canonical-page">
@@ -82,131 +82,114 @@
   <main class="container">
 
     <section class="canonical-hero">
-      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; CELLS</div>
-      <h1 class="canonical-title mono">CELL HANDLES</h1>
+      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; LESSON 6</div>
+      <h1 class="canonical-title mono">WORKING WITH WORLD ITEMS</h1>
       <p class="canonical-lead">
-        Referencing and interacting with authored World objects through engine handles.
+        Open doors, hide coins, and toggle collision properties while your game is running.
       </p>
     </section>
 
+    <!-- 1. WHAT YOU'RE MAKING -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">AEOSCRIPT // ENGINE</div>
-          <h2 class="home-section-title mono">OVERVIEW</h2>
+          <div class="brand-label mono">LESSON 6</div>
+          <h2 class="home-section-title mono">1. WHAT YOU'RE MAKING</h2>
+        </div>
+      </div>
+      <p style="font-size: 1rem; line-height: 1.8; color: var(--text);">
+        Once you've found an item in your level, your script can change how it looks and behaves during Play mode! In this lesson, you'll open a door by hiding its graphics and letting the player walk through.
+      </p>
+    </section>
+
+    <!-- 2. SMALL WORKING EXAMPLE -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">CODE</div>
+          <h2 class="home-section-title mono">2. WORKING EXAMPLE</h2>
         </div>
       </div>
 
-      <div class="canonical-grid">
-        <article class="canonical-card" style="padding: 28px;">
-          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
-          <ul style="list-style: none; margin-bottom: 25px;">
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Understanding Cell handles as engine references
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Accessing persistent Cell IDs
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Inspecting authored Cell metadata
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Interacting with World objects safely
-            </li>
-          </ul>
-        </article>
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">AEOFILE</span>
+          <span class="mono">DOOR_CONTROL.AEO</span>
+        </div>
+        <pre><code>const doors = find("Doors")
 
-        <article class="canonical-card" style="padding: 28px;">
-          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
-          <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            A <code>Cell</code> handle is an opaque reference to an authored World object, such as a <a href="/aeoengine/building/" class="text-link">Block</a> or <a href="/aeoengine/lighting/" class="text-link">Light</a>. Handles allow scripts to interact with engine-managed memory without directly owning it. This ensures that object lifetime and memory safety remain the responsibility of <a href="/aeoengine/" class="text-link">AeoEngine</a>.
-          </p>
-        </article>
+// Open all doors in the level
+for door in doors {
+  door.visible = false
+  door.solid = false
+}
+
+// Wait 1 second before closing them again
+wait(1)
+
+for door in doors {
+  door.visible = true
+  door.solid = true
+}</code></pre>
       </div>
     </section>
 
+    <!-- 3. EXPLAIN WHAT EACH IMPORTANT LINE DOES -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">SYNTAX / WORKFLOW</div>
-          <h2 class="home-section-title mono">EXAMPLES</h2>
+          <div class="brand-label mono">BREAKDOWN</div>
+          <h2 class="home-section-title mono">3. LINE-BY-LINE BREAKDOWN</h2>
         </div>
       </div>
 
-      <div class="script-code-panel" style="margin: 20px 0;">
-        <div class="script-code-header">
-          <span class="mono">HANDLE PROPERTIES</span>
-          <span class="mono">SYNTAX</span>
-        </div>
-        <pre><code>handle.id // Persistent numeric ID
-handle.name // Authored identity name
-handle.cellType // "Block", "Light", etc.</code></pre>
+      <div class="canonical-card" style="padding: 24px;">
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
+          <strong style="color: var(--text-bright);">`door.visible = false`</strong>: Hides the 3D door block so it becomes invisible.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
+          <strong style="color: var(--text-bright);">`door.solid = false`</strong>: Turns off physical collision so characters can walk right through!
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 0;">
+          <strong style="color: var(--text-bright);">`wait(1)`</strong>: Keeps the doors open for exactly 1 second before closing them.
+        </p>
       </div>
+    </section>
 
-      <div class="script-code-panel" style="margin: 20px 0;">
-        <div class="script-code-header">
-          <span class="mono">CELL ACCESS</span>
-          <span class="mono">EXAMPLE</span>
+    <!-- 4. LET THE READER CHANGE SOMETHING -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">TRY IT YOURSELF</div>
+          <h2 class="home-section-title mono">4. TRY CHANGING SOMETHING</h2>
         </div>
-        <pre><code>const target: Cell = ...
-
-debug.log("Target Name:", target.name)
-debug.log("Target ID:", target.id)
-
-if target.cellType == "Light" {
-  target.visible = false
-}</code></pre>
       </div>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
-        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
-          <strong style="color: var(--text-bright);">EXPLANATION:</strong> Cell handles provide read-only access to authored metadata like <code>id</code> and <code>name</code>, and read/write access to runtime properties like <code>visible</code> for supported types.
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text); margin: 0;">
+          Try changing `wait(1)` to `wait(3)`. Run your game in AeoEngine to see the door stay open three times longer before locking shut!
         </p>
       </div>
     </section>
 
+    <!-- 5. COMMON BEGINNER MISTAKE -->
     <section class="home-section">
       <div class="canonical-card" style="padding: 28px;">
-        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">5. COMMON BEGINNER MISTAKE</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <a href="../identity/" class="text-link">Cell IDs</a> are persistent and survive renames or movement.
-        </p>
-        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          Handles may become stale if the underlying object is destroyed.
+          <strong style="color: var(--text-bright);">Forgetting `door.solid = false`:</strong> If you only set `door.visible = false`, the door will disappear visually, but players will still bump into an invisible wall!
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          Modifying a Cell through a handle creates a <a href="../runtime-properties/" class="text-link">runtime override</a>; it does not change the authored World file.
+          <strong style="color: var(--text-bright);">Play Mode Resets:</strong> Property changes made by scripts only last during Play mode. When you stop playing, your level restores its original saved state!
         </p>
       </div>
     </section>
 
+    <!-- 6. WHAT TO LEARN NEXT -->
     <div style="display: flex; justify-content: space-between; padding: 40px 0;">
-      <a href="../waiting/" class="text-link mono">&larr; PREV: FIBERS</a>
-      <a href="../engine-entities/" class="text-link mono">NEXT: ENGINE ENTITIES &rarr;</a>
+      <a href="../find/" class="text-link mono">&larr; PREV: FINDING THINGS</a>
+      <a href="../events/" class="text-link mono">6. NEXT: SCRIPT EVENTS &rarr;</a>
     </div>
-
-    <section class="home-section" style="border-bottom: none;">
-      <div class="section-heading-row">
-        <div>
-          <div class="brand-label mono">EXPLORE MORE</div>
-          <h2 class="home-section-title mono">RELATED LINKS</h2>
-        </div>
-      </div>
-      <div class="canonical-grid">
-        <a href="../identity/" class="canonical-path-card">
-          <strong>IDENTITY &amp; IDS</strong>
-          <span>IDs vs human-readable names</span>
-        </a>
-        <a href="../runtime-properties/" class="canonical-path-card">
-          <strong>RUNTIME OVERRIDES</strong>
-          <span>Temporary property shifts</span>
-        </a>
-        <a href="../find/" class="canonical-path-card">
-          <strong>FINDING OBJECTS</strong>
-          <span>Discovery and queries</span>
-        </a>
-      </div>
-    </section>
 
   </main>
 

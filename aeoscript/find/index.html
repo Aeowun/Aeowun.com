@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AEOWUN // AEOSCRIPT // FIND</title>
+  <title>AEOWUN // AEOSCRIPT // FINDING THINGS</title>
   <link rel="canonical" href="https://aeowun.com/aeoscript/find/">
-  <meta property="og:title" content="AEOWUN // AEOSCRIPT // FIND">
-  <meta property="og:description" content="Discover engine objects in AeoScript. Learn to use find() for name-based search and getAllCellsOfClass() for efficient world queries.">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // FINDING THINGS">
+  <meta property="og:description" content="Learn how to find doors, coins, traps, and players in your 3D level using AeoScript find().">
   <meta property="og:url" content="https://aeowun.com/aeoscript/find/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // FIND">
-  <meta name="twitter:description" content="Discover engine objects in AeoScript. Learn to use find() for name-based search and getAllCellsOfClass() for efficient world queries.">
-  <meta name="description" content="Discover engine objects in AeoScript. Learn to use find() for name-based search and getAllCellsOfClass() for efficient world queries.">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // FINDING THINGS">
+  <meta name="twitter:description" content="Learn how to find doors, coins, traps, and players in your 3D level using AeoScript find().">
+  <meta name="description" content="Learn how to find doors, coins, traps, and players in your 3D level using AeoScript find().">
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="canonical-page">
@@ -82,130 +82,105 @@
   <main class="container">
 
     <section class="canonical-hero">
-      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; FIND</div>
-      <h1 class="canonical-title mono">OBJECT DISCOVERY</h1>
+      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; LESSON 5</div>
+      <h1 class="canonical-title mono">FINDING THINGS</h1>
       <p class="canonical-lead">
-        Locating authored World Cells and runtime Entities through name-based queries.
+        Connect your scripts to objects placed in your 3D level using find().
       </p>
     </section>
 
+    <!-- 1. WHAT YOU'RE MAKING -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">AEOSCRIPT // ENGINE</div>
-          <h2 class="home-section-title mono">OVERVIEW</h2>
+          <div class="brand-label mono">LESSON 5</div>
+          <h2 class="home-section-title mono">1. WHAT YOU'RE MAKING</h2>
+        </div>
+      </div>
+      <p style="font-size: 1rem; line-height: 1.8; color: var(--text);">
+        Before a script can open a door or hide a coin, it needs to locate that item in your 3D World. In this lesson, you'll use `find("Name")` to locate objects by the names you gave them in the Editor!
+      </p>
+    </section>
+
+    <!-- 2. SMALL WORKING EXAMPLE -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">CODE</div>
+          <h2 class="home-section-title mono">2. WORKING EXAMPLE</h2>
         </div>
       </div>
 
-      <div class="canonical-grid">
-        <article class="canonical-card" style="padding: 28px;">
-          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
-          <ul style="list-style: none; margin-bottom: 25px;">
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Searching for objects with <code>find(name)</code>
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Querying authored Cells by class
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Handling multiple search results in a basket
-            </li>
-            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Integrating discovery into gameplay logic
-            </li>
-          </ul>
-        </article>
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">AEOFILE</span>
+          <span class="mono">FIND_OBJECTS.AEO</span>
+        </div>
+        <pre><code>// find() returns a list of all matching items in your World
+const player = find("Player")[0]
+const coins = find("Coin")
 
-        <article class="canonical-card" style="padding: 28px;">
-          <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
-          <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            Object discovery allows scripts to dynamically locate engine objects. The <a href="../api/#find" class="text-link"><code>find(name)</code></a> function searches for authored <a href="../cells/" class="text-link">World Cells</a> and runtime <a href="../engine-entities/" class="text-link">Entities</a> that match a human-readable identity. Because multiple objects can share the same name, discovery functions always return a collection of handles in a <a href="../baskets/" class="text-link">basket</a>.
-          </p>
-        </article>
+debug.log("Found player at position:", player.position)
+debug.log("Total coins in level:", basket.len(coins))</code></pre>
       </div>
     </section>
 
+    <!-- 3. EXPLAIN WHAT EACH IMPORTANT LINE DOES -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">SYNTAX / WORKFLOW</div>
-          <h2 class="home-section-title mono">EXAMPLES</h2>
+          <div class="brand-label mono">BREAKDOWN</div>
+          <h2 class="home-section-title mono">3. LINE-BY-LINE BREAKDOWN</h2>
         </div>
       </div>
 
-      <div class="script-code-panel" style="margin: 20px 0;">
-        <div class="script-code-header">
-          <span class="mono">DISCOVERY FUNCTIONS</span>
-          <span class="mono">SYNTAX</span>
-        </div>
-        <pre><code>find(identity_name) // Returns basket of handles
-getAllCellsOfClass(class_name) // Returns basket of authored Cells</code></pre>
+      <div class="canonical-card" style="padding: 24px;">
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
+          <strong style="color: var(--text-bright);">`find("Player")`</strong>: Searches your 3D world for objects named `"Player"`. It returns a list (basket) of matching items.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
+          <strong style="color: var(--text-bright);">`[0]`</strong>: Grabs the very first item from the search list.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 0;">
+          <strong style="color: var(--text-bright);">`find("Coin")`</strong>: Grabs all objects named `"Coin"` so you can loop through them.
+        </p>
       </div>
+    </section>
 
-      <div class="script-code-panel" style="margin: 20px 0;">
-        <div class="script-code-header">
-          <span class="mono">SEARCH &amp; ITERATE</span>
-          <span class="mono">EXAMPLE</span>
+    <!-- 4. LET THE READER CHANGE SOMETHING -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">TRY IT YOURSELF</div>
+          <h2 class="home-section-title mono">4. TRY CHANGING SOMETHING</h2>
         </div>
-        <pre><code>const walls = find("Wall")
-debug.log("Found", walls.len(), "walls.")
-
-for wall in walls {
-  wall.visible = false
-}
-
-const all_blocks = getAllCellsOfClass("Block")</code></pre>
       </div>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
-        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
-          <strong style="color: var(--text-bright);">EXPLANATION:</strong> <code>find("Wall")</code> returns a basket containing handles for every object named "Wall". The script can then iterate over this basket to modify each object, such as hiding all walls simultaneously.
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text); margin: 0;">
+          Select a block in your AeoEngine editor, rename it to `"SecretDoor"` in the Properties panel, and run `const door = find("SecretDoor")[0]`. Log its `door.id` to verify you found it!
         </p>
       </div>
     </section>
 
+    <!-- 5. COMMON BEGINNER MISTAKE -->
     <section class="home-section">
       <div class="canonical-card" style="padding: 28px;">
-        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">5. COMMON BEGINNER MISTAKE</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <code>find()</code> matches both authored identity names and runtime Entity names.
-        </p>
-        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          Searching by name is convenient but can be ambiguous; use unique <a href="../identity/" class="text-link">Cell IDs</a> for stable instance targeting.
+          <strong style="color: var(--text-bright);">Forgetting `[0]` on Single Objects:</strong> `find("Player")` returns a list. If you write `find("Player").position`, it will error. Write `find("Player")[0].position` to access the item inside the list!
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          Discovery functions are typically more expensive than direct handle access; cache results when possible.
+          <strong style="color: var(--text-bright);">Name Mismatch:</strong> If `find("Door")` returns `nil`, check the Editor Hierarchy to confirm the name is spelled identically.
         </p>
       </div>
     </section>
 
+    <!-- 6. WHAT TO LEARN NEXT -->
     <div style="display: flex; justify-content: space-between; padding: 40px 0;">
-      <a href="../engine-entities/" class="text-link mono">&larr; PREV: ENGINE ENTITIES</a>
-      <a href="../identity/" class="text-link mono">NEXT: IDENTITY &rarr;</a>
+      <a href="../functions/" class="text-link mono">&larr; PREV: FUNCTIONS</a>
+      <a href="../cells/" class="text-link mono">6. NEXT: WORKING WITH WORLD ITEMS &rarr;</a>
     </div>
-
-    <section class="home-section" style="border-bottom: none;">
-      <div class="section-heading-row">
-        <div>
-          <div class="brand-label mono">EXPLORE MORE</div>
-          <h2 class="home-section-title mono">RELATED LINKS</h2>
-        </div>
-      </div>
-      <div class="canonical-grid">
-        <a href="../cells/" class="canonical-path-card">
-          <strong>CELL HANDLES</strong>
-          <span>Authored cell handles</span>
-        </a>
-        <a href="../identity/" class="canonical-path-card">
-          <strong>IDENTITY VS ID</strong>
-          <span>Names vs persistent Cell IDs</span>
-        </a>
-        <a href="../baskets/" class="canonical-path-card">
-          <strong>WORKING WITH BASKETS</strong>
-          <span>Handling collection results</span>
-        </a>
-      </div>
-    </section>
 
   </main>
 

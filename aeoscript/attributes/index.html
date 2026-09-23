@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AEOWUN // AEOSCRIPT // USEFUL AEOSCRIPT TOOLS</title>
-  <link rel="canonical" href="https://aeowun.com/aeoscript/stdlib/">
-  <meta property="og:title" content="AEOWUN // AEOSCRIPT // USEFUL AEOSCRIPT TOOLS">
-  <meta property="og:description" content="Overview of useful AeoScript tools: math functions, basket collections, and string manipulation standard library namespaces.">
-  <meta property="og:url" content="https://aeowun.com/aeoscript/stdlib/">
+  <title>AEOWUN // AEOSCRIPT // CUSTOM DATA &amp; ATTRIBUTES</title>
+  <link rel="canonical" href="https://aeowun.com/aeoscript/attributes/">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // CUSTOM DATA &amp; ATTRIBUTES">
+  <meta property="og:description" content="Attach and modify custom attributes on Cells with AeoScript. Learn how to store health, gold, state, and custom game variables on World objects.">
+  <meta property="og:url" content="https://aeowun.com/aeoscript/attributes/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // USEFUL AEOSCRIPT TOOLS">
-  <meta name="twitter:description" content="Overview of useful AeoScript tools: math functions, basket collections, and string manipulation standard library namespaces.">
-  <meta name="description" content="Overview of useful AeoScript tools: math functions, basket collections, and string manipulation standard library namespaces.">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // CUSTOM DATA &amp; ATTRIBUTES">
+  <meta name="twitter:description" content="Attach and modify custom attributes on Cells with AeoScript. Learn how to store health, gold, state, and custom game variables on World objects.">
+  <meta name="description" content="Attach and modify custom attributes on Cells with AeoScript. Learn how to store health, gold, state, and custom game variables on World objects.">
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="canonical-page">
@@ -82,17 +82,17 @@
   <main class="container">
 
     <section class="canonical-hero">
-      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; STDLIB</div>
-      <h1 class="canonical-title mono">USEFUL AEOSCRIPT TOOLS</h1>
+      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; CUSTOM DATA</div>
+      <h1 class="canonical-title mono">CUSTOM ATTRIBUTES</h1>
       <p class="canonical-lead">
-        Built-in tools and standard library namespaces for math calculations, list management (baskets), and text processing.
+        Store custom game variables directly on World items using cell.attributes.
       </p>
     </section>
 
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">AEOSCRIPT // ENGINE</div>
+          <div class="brand-label mono">AEOSCRIPT // GAME DATA</div>
           <h2 class="home-section-title mono">OVERVIEW</h2>
         </div>
       </div>
@@ -102,16 +102,16 @@
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
           <ul style="list-style: none; margin-bottom: 25px;">
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Performing numeric math with <code>math</code>
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Storing custom variables on Cells with <code>cell.attributes["key"] = value</code>
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Managing lists of items with <code>basket</code>
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Reading and modifying attributes during Play mode
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Manipulating dialogue and text with <code>string</code>
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Authored initial attributes vs runtime overrides
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Using method routing style on baskets
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Reverting to original default values by assigning <code>nil</code>
             </li>
           </ul>
         </article>
@@ -119,51 +119,8 @@
         <article class="canonical-card" style="padding: 28px;">
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
           <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            AeoScript comes equipped with three main standard library toolsets built directly into the language: <a href="../math/" class="text-link"><code>math</code></a> for gameplay calculations, <a href="../baskets/" class="text-link"><code>basket</code></a> for organizing lists of game objects or inventory items, and <a href="../strings/" class="text-link"><code>string</code></a> for text formatting and dialogue. These namespaces operate deterministically inside the AeoScript runtime without requiring external imports.
+            Cells in AeoEngine can store custom key/value data called <strong>attributes</strong>. You can define initial attributes in the editor properties panel, and modify or attach new ones at runtime using <code>cell.attributes["key"] = value</code>. Assigning <code>nil</code> removes the runtime attribute and restores the Cell's original default value.
           </p>
-        </article>
-      </div>
-    </section>
-
-    <section class="home-section">
-      <div class="section-heading-row">
-        <div>
-          <div class="brand-label mono">TOOLNAMESPACES</div>
-          <h2 class="home-section-title mono">THE THREE TOOLSETS</h2>
-        </div>
-      </div>
-
-      <div class="canonical-grid">
-        <article class="canonical-card" style="padding: 24px;">
-          <h3 class="mono" style="font-size: 0.9rem; color: var(--accent-orange); margin-bottom: 12px;">1. MATH TOOLS</h3>
-          <p style="font-size: 0.9rem; color: var(--text); line-height: 1.6; margin-bottom: 15px;">
-            Functions for numeric bounds, trigonometry, interpolation, and random value generation.
-          </p>
-          <pre style="background: rgba(0, 0, 0, 0.3); padding: 12px; font-size: 0.82rem; color: var(--text-bright); border-radius: 2px;"><code>const hp = math.clamp(health, 0, 100)
-const roll = math.random(1, 20)</code></pre>
-          <a href="../math/" class="text-link mono" style="font-size: 0.8rem; display: inline-block; margin-top: 12px;">VIEW MATH REFERENCE &rarr;</a>
-        </article>
-
-        <article class="canonical-card" style="padding: 24px;">
-          <h3 class="mono" style="font-size: 0.9rem; color: var(--accent-orange); margin-bottom: 12px;">2. BASKET TOOLS</h3>
-          <p style="font-size: 0.9rem; color: var(--text); line-height: 1.6; margin-bottom: 15px;">
-            Utilities for managing ordered lists of items, inventory slots, or search query results.
-          </p>
-          <pre style="background: rgba(0, 0, 0, 0.3); padding: 12px; font-size: 0.82rem; color: var(--text-bright); border-radius: 2px;"><code>const inventory = ["Key", "Potion"]
-inventory.insert("Shield")
-inventory.sort()</code></pre>
-          <a href="../baskets/" class="text-link mono" style="font-size: 0.8rem; display: inline-block; margin-top: 12px;">VIEW BASKET REFERENCE &rarr;</a>
-        </article>
-
-        <article class="canonical-card" style="padding: 24px;">
-          <h3 class="mono" style="font-size: 0.9rem; color: var(--accent-orange); margin-bottom: 12px;">3. STRING TOOLS</h3>
-          <p style="font-size: 0.9rem; color: var(--text); line-height: 1.6; margin-bottom: 15px;">
-            Unicode-aware tools for text length, case conversions, reversing, and splitting strings.
-          </p>
-          <pre style="background: rgba(0, 0, 0, 0.3); padding: 12px; font-size: 0.82rem; color: var(--text-bright); border-radius: 2px;"><code>const msg = "Hero, Level, 5"
-const parts = string.split(msg, ", ")
-debug.log(string.upper(parts[0]))</code></pre>
-          <a href="../strings/" class="text-link mono" style="font-size: 0.8rem; display: inline-block; margin-top: 12px;">VIEW STRING REFERENCE &rarr;</a>
         </article>
       </div>
     </section>
@@ -172,48 +129,64 @@ debug.log(string.upper(parts[0]))</code></pre>
       <div class="section-heading-row">
         <div>
           <div class="brand-label mono">SYNTAX / WORKFLOW</div>
-          <h2 class="home-section-title mono">METHOD ROUTING</h2>
+          <h2 class="home-section-title mono">EXAMPLES</h2>
         </div>
       </div>
 
       <div class="script-code-panel" style="margin: 20px 0;">
         <div class="script-code-header">
-          <span class="mono">NAMESPACE VS METHOD STYLE</span>
+          <span class="mono">CELL ATTRIBUTES</span>
           <span class="mono">SYNTAX</span>
         </div>
-        <pre><code>// Direct namespace call
-basket.insert(inventory, 0, "Sword")
+        <pre><code>cell.attributes["health"] = 100 // Attach custom attribute
+current_hp = cell.attributes["health"] // Read custom attribute
+cell.attributes["health"] = nil // Remove attribute / restore default</code></pre>
+      </div>
 
-// Method-style routing (equivalent and cleaner)
-inventory.insert(0, "Sword")
-inventory.sort()</code></pre>
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">HEALTH &amp; STATE SYSTEM</span>
+          <span class="mono">EXAMPLE</span>
+        </div>
+        <pre><code>fn setup_chest(chest: Cell) {
+  chest.attributes["opened"] = false
+  chest.attributes["gold"] = 50
+}
+
+fn open_chest(chest: Cell) {
+  if chest.attributes["opened"] == false {
+    chest.attributes["opened"] = true
+    const gold = chest.attributes["gold"]
+    debug.log("Found gold: ", gold)
+  }
+}</code></pre>
       </div>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
         <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
-          <strong style="color: var(--text-bright);">EXPLANATION:</strong> For baskets, the AeoScript virtual machine automatically routes method calls like <code>items.sort()</code> to the <code>basket</code> namespace function, passing the target basket as the first argument automatically.
+          <strong style="color: var(--text-bright);">EXPLANATION:</strong> <code>cell.attributes["key"]</code> attaches custom game state directly to a Cell object, making it easy to create chest mechanics, health bars, or door keys without complex data structures.
         </p>
       </div>
     </section>
 
     <section class="home-section">
       <div class="canonical-card" style="padding: 28px;">
-        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / TIPS</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          Standard library tools execute inside the normal AeoScript runtime deterministically across platforms.
+          <strong style="color: var(--text-bright);">Authored Defaults:</strong> You can set initial attributes in the editor properties panel when selecting a block.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <code>string</code> operations treat characters as Unicode scalar values, keeping text safe for internationalization.
+          <strong style="color: var(--text-bright);">Runtime Override:</strong> Modifying <code>cell.attributes</code> during play overrides the authored value for the duration of the play session.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          Custom comparator functions for basket sorting are not currently supported; default sorting is ascending order.
+          <strong style="color: var(--text-bright);">Clearing Data:</strong> Assigning <code>nil</code> removes the runtime override and restores the original value.
         </p>
       </div>
     </section>
 
     <div style="display: flex; justify-content: space-between; padding: 40px 0;">
-      <a href="../bindings/" class="text-link mono">&larr; PREV: BINDINGS</a>
-      <a href="../math/" class="text-link mono">NEXT: MATH FUNCTIONS &rarr;</a>
+      <a href="../runtime-properties/" class="text-link mono">&larr; PREV: RUNTIME PROPERTIES</a>
+      <a href="../editor/" class="text-link mono">NEXT: CREATING THINGS DURING PLAY &rarr;</a>
     </div>
 
     <section class="home-section" style="border-bottom: none;">
@@ -224,17 +197,17 @@ inventory.sort()</code></pre>
         </div>
       </div>
       <div class="canonical-grid">
-        <a href="../math/" class="canonical-path-card">
-          <strong>MATH FUNCTIONS</strong>
-          <span>Math functions reference</span>
+        <a href="../runtime-properties/" class="canonical-path-card">
+          <strong>RUNTIME PROPERTIES</strong>
+          <span>Cell visibility, solid, color, and offset</span>
         </a>
-        <a href="../baskets/" class="canonical-path-card">
-          <strong>BASKETS REFERENCE</strong>
-          <span>Working with lists of things</span>
+        <a href="../cells/" class="canonical-path-card">
+          <strong>WORKING WITH WORLD ITEMS</strong>
+          <span>Cell handles and properties</span>
         </a>
-        <a href="../strings/" class="canonical-path-card">
-          <strong>STRINGS REFERENCE</strong>
-          <span>Text manipulation functions</span>
+        <a href="../editor/" class="canonical-path-card">
+          <strong>CREATING THINGS DURING PLAY</strong>
+          <span>Dynamic spawning and deletion</span>
         </a>
       </div>
     </section>

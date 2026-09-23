@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AEOWUN // AEOENGINE // LIGHTING SYSTEMS</title>
-  <link rel="canonical" href="https://aeowun.com/aeoengine/lighting/">
-  <meta property="og:title" content="AEOWUN // AEOENGINE // LIGHTING SYSTEMS">
-  <meta property="og:description" content="Explore lighting in AeoEngine. Learn to place authored Light cells, configure directional and point lighting, and manage emissive parameters.">
-  <meta property="og:url" content="https://aeowun.com/aeoengine/lighting/">
+  <title>AEOWUN // AEOSCRIPT // SCRIPT CONTROL &amp; TESTING</title>
+  <link rel="canonical" href="https://aeowun.com/aeoscript/script-control/">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // SCRIPT CONTROL &amp; TESTING">
+  <meta property="og:description" content="Enable and disable scripts dynamically at runtime and run automated in-game tests with AeoScript.">
+  <meta property="og:url" content="https://aeowun.com/aeoscript/script-control/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AEOWUN // AEOENGINE // LIGHTING SYSTEMS">
-  <meta name="twitter:description" content="Explore lighting in AeoEngine. Learn to place authored Light cells, configure directional and point lighting, and manage emissive parameters.">
-  <meta name="description" content="Explore lighting in AeoEngine. Learn to place authored Light cells, configure directional and point lighting, and manage emissive parameters.">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // SCRIPT CONTROL &amp; TESTING">
+  <meta name="twitter:description" content="Enable and disable scripts dynamically at runtime and run automated in-game tests with AeoScript.">
+  <meta name="description" content="Enable and disable scripts dynamically at runtime and run automated in-game tests with AeoScript.">
   <link rel="stylesheet" href="../../style.css">
 </head>
-<body class="canonical-page aeo-page">
+<body class="canonical-page">
 
   <div id="void-bg"></div>
   <div id="technical-grid"></div>
-  <div id="showroom-aura"></div>
 
   <!-- Header -->
   <header class="aeowun-header">
@@ -29,8 +28,8 @@
       </a>
 
       <nav class="home-nav" aria-label="Primary navigation">
-        <a href="/aeoengine/" class="home-nav-link mono active">AEOENGINE</a>
-        <a href="/aeoscript/" class="home-nav-link mono">AEOSCRIPT</a>
+        <a href="/aeoengine/" class="home-nav-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="home-nav-link mono active">AEOSCRIPT</a>
         <a href="/docs/" class="home-nav-link mono">DOCS</a>
         <a href="/games/" class="home-nav-link mono">GAMES</a>
         <a href="/software/" class="home-nav-link mono">SOFTWARE</a>
@@ -63,8 +62,8 @@
       <nav class="rail-links" aria-label="Mobile navigation">
         <span class="rail-label mono">AEOWUN</span>
 
-        <a href="/aeoengine/" class="rail-link mono active">AEOENGINE</a>
-        <a href="/aeoscript/" class="rail-link mono">AEOSCRIPT</a>
+        <a href="/aeoengine/" class="rail-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="rail-link mono active">AEOSCRIPT</a>
         <a href="/docs/" class="rail-link mono">DOCS</a>
         <a href="/games/" class="rail-link mono">GAMES</a>
         <a href="/software/" class="rail-link mono">SOFTWARE &amp; TOOLS</a>
@@ -83,17 +82,17 @@
   <main class="container">
 
     <section class="canonical-hero">
-      <div class="brand-label mono">AEOWUN &gt; AEOENGINE &gt; LIGHTING</div>
-      <h1 class="canonical-title mono">LIGHTING SYSTEMS</h1>
+      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; SCRIPT CONTROL &amp; TESTING</div>
+      <h1 class="canonical-title mono">SCRIPT CONTROL &amp; TESTING</h1>
       <p class="canonical-lead">
-        Configure authored Light cells and simulate precise directional and point lighting environments.
+        Turn scripts on and off dynamically during play and write automated in-game test suites.
       </p>
     </section>
 
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">AEOENGINE // FUNDAMENTALS</div>
+          <div class="brand-label mono">AEOSCRIPT // MANAGEMENT</div>
           <h2 class="home-section-title mono">OVERVIEW</h2>
         </div>
       </div>
@@ -103,16 +102,16 @@
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
           <ul style="list-style: none; margin-bottom: 25px;">
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Placing persistent authored Light cells in the grid
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Enabling scripts at runtime with <code>script.enable("scripts/trap.aeo")</code>
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Configuring point and directional emissive parameters
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Disabling scripts with <code>script.disable(path)</code>
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Utilizing dedicated lighting brush ghost previews
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Checking script status with <code>script.is_enabled(path)</code>
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Persisting world lighting configurations properly
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> In-game testing helpers: <code>test.complete</code>, <code>test.passed</code>, <code>test.summary</code>
             </li>
           </ul>
         </article>
@@ -120,7 +119,7 @@
         <article class="canonical-card" style="padding: 28px;">
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
           <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            Lighting in AeoEngine treats illumination elements as native authored scene data rather than purely runtime or transient effects. Light cells occupy dedicated grid nodes, allowing authors to save emissive properties directly inside world databases to maintain illumination consistency between editing and simulation cycles.
+            AeoEngine gives scripts runtime control over which other scripts are active. You can turn enemy AI on or off, enable puzzle mechanisms after a key is collected, or temporarily disable global events. Additionally, developer test scripts can report automated test outcomes using the <code>test</code> namespace.
           </p>
         </article>
       </div>
@@ -129,79 +128,68 @@
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">WORKFLOW / DATA TYPE</div>
-          <h2 class="home-section-title mono">SPECIALIZATION</h2>
+          <div class="brand-label mono">SYNTAX / WORKFLOW</div>
+          <h2 class="home-section-title mono">EXAMPLES</h2>
         </div>
       </div>
 
-      <p style="font-size: 1rem; line-height: 1.8; color: var(--text); margin-bottom: 20px;">
-        Light nodes are placed inside the environment using dedicated build options. During editor placement, the system generates custom preview identifiers. The cell attributes distinguish as follows:
-      </p>
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">SCRIPT CONTROL</span>
+          <span class="mono">SYNTAX</span>
+        </div>
+        <pre><code>script.enable("scripts/boss_ai.aeo")
+script.disable("scripts/trap.aeo")
+
+if script.is_enabled("scripts/boss_ai.aeo") {
+  debug.log("Boss AI is active!")
+}</code></pre>
+      </div>
 
       <div class="script-code-panel" style="margin: 20px 0;">
         <div class="script-code-header">
-          <span class="mono">AUTHORED CELL</span>
-          <span class="mono">SPECIALIZATION</span>
+          <span class="mono">IN-GAME TESTING</span>
+          <span class="mono">EXAMPLE</span>
         </div>
-        <pre><code>Authored Cell Specialization:
-- Solid Block Cell: Employs physics geometry collision boundaries and texture mapping.
-- Emissive Light Cell: Emits point/directional lighting streams; excluded from collision passes.
-- Sky Environment: Configurable background cubemap (4:3 horizontal cross) with built-in presets.
-- Ghost Preview: Displays dedicated wireframe indicators showing illumination bounds.</code></pre>
+        <pre><code>// Automated testing script helper
+test.complete("door_test", true)
+
+if test.passed("door_test") {
+  debug.log("Door test passed!")
+}
+
+debug.log("Test Summary: ", test.summary())</code></pre>
       </div>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
         <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
-          <strong style="color: var(--text-bright);">EXPLANATION:</strong> Since lights reside as formal grid components, they save seamlessly into world persistence arrays. Furthermore, light attributes can be adjusted dynamically during live gameplay via AeoScript property overrides.
+          <strong style="color: var(--text-bright);">EXPLANATION:</strong> Disabling a script prevents its lifecycle methods (`update`, `on_touch`) from running until re-enabled. The `test` helpers are used for in-engine automated testing suites.
         </p>
       </div>
     </section>
 
     <section class="home-section">
       <div class="canonical-card" style="padding: 28px;">
-        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">API SUMMARY</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Physics Filtering:</strong> The physics system automatically bypasses Light cells to prevent dynamic objects from colliding with light sources.
+          <code>script.enable(path)</code>: Enables the specified script file.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Persistence Models:</strong> Light cell definitions, positions, and active color parameters share the identical serialization pipeline utilized by architectural blocks.
+          <code>script.disable(path)</code>: Disables the specified script file.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Sky Environment:</strong> Built-in sky presets including <code>Temperate</code>, <code>Tropical</code>, <code>Desert</code>, <code>Snowy</code>, and <code>Mars</code>, plus custom project skybox asset support.
+          <code>script.is_enabled(path)</code>: Checks if a script path is currently active.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Runtime Overrides:</strong> Scripts can mutate active light colors or visibility parameters mid-simulation without corrupting authored baselines.
+          <code>test.complete(name, success)</code> / <code>test.summary()</code>: Integration test assertions.
         </p>
       </div>
     </section>
 
     <div style="display: flex; justify-content: space-between; padding: 40px 0;">
-      <a href="../building/" class="text-link mono">&larr; PREV: VOXEL BUILDING MODES</a>
-      <a href="../physics/" class="text-link mono">NEXT: RUNTIME PHYSICS &rarr;</a>
+      <a href="../audio/" class="text-link mono">&larr; PREV: SOUND &amp; AUDIO</a>
+      <a href="../" class="text-link mono">BACK TO HUB &rarr;</a>
     </div>
-
-    <section class="home-section" style="border-bottom: none;">
-      <div class="section-heading-row">
-        <div>
-          <div class="brand-label mono">EXPLORE MORE</div>
-          <h2 class="home-section-title mono">RELATED LINKS</h2>
-        </div>
-      </div>
-      <div class="canonical-grid">
-        <a href="../building/" class="canonical-path-card">
-          <strong>VOXEL BUILDING MODES</strong>
-          <span>Construction and painting tools</span>
-        </a>
-        <a href="../physics/" class="canonical-path-card">
-          <strong>RUNTIME PHYSICS SIMULATION</strong>
-          <span>Fixed-timestep rigid simulation</span>
-        </a>
-        <a href="/aeoscript/runtime-properties/" class="canonical-path-card">
-          <strong>AEOSCRIPT OVERRIDES</strong>
-          <span>Script-driven property overrides</span>
-        </a>
-      </div>
-    </section>
 
   </main>
 

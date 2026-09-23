@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AEOWUN // AEOENGINE // GETTING STARTED</title>
+  <title>AEOWUN // AEOENGINE // MAKE YOUR FIRST WORLD</title>
   <link rel="canonical" href="https://aeowun.com/aeoengine/getting-started/">
-  <meta property="og:title" content="AEOWUN // AEOENGINE // GETTING STARTED">
-  <meta property="og:description" content="Begin your journey with AeoEngine. Learn how to set up the Rust toolchain, compile the engine, and launch your first voxel project.">
+  <meta property="og:title" content="AEOWUN // AEOENGINE // MAKE YOUR FIRST WORLD">
+  <meta property="og:description" content="Step-by-step guide to making your first 3D voxel world in AeoEngine, from setting up your project to testing with characters and lighting in Play mode.">
   <meta property="og:url" content="https://aeowun.com/aeoengine/getting-started/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AEOWUN // AEOENGINE // GETTING STARTED">
-  <meta name="twitter:description" content="Begin your journey with AeoEngine. Learn how to set up the Rust toolchain, compile the engine, and launch your first voxel project.">
-  <meta name="description" content="Begin your journey with AeoEngine. Learn how to set up the Rust toolchain, compile the engine, and launch your first voxel project.">
+  <meta name="twitter:title" content="AEOWUN // AEOENGINE // MAKE YOUR FIRST WORLD">
+  <meta name="twitter:description" content="Step-by-step guide to making your first 3D voxel world in AeoEngine, from setting up your project to testing with characters and lighting in Play mode.">
+  <meta name="description" content="Step-by-step guide to making your first 3D voxel world in AeoEngine, from setting up your project to testing with characters and lighting in Play mode.">
   <link rel="stylesheet" href="../../style.css">
 </head>
-<body class="canonical-page">
+<body class="canonical-page aeo-page">
 
   <div id="void-bg"></div>
   <div id="technical-grid"></div>
@@ -84,9 +84,9 @@
 
     <section class="canonical-hero">
       <div class="brand-label mono">AEOWUN &gt; AEOENGINE &gt; GETTING STARTED</div>
-      <h1 class="canonical-title mono">GETTING STARTED</h1>
+      <h1 class="canonical-title mono">MAKE YOUR FIRST WORLD</h1>
       <p class="canonical-lead">
-        Set up the AeoEngine development environment and launch your first voxel workspace.
+        A step-by-step introduction to setting up AeoEngine, creating a project workspace, building geometry, and jumping into live Play mode.
       </p>
     </section>
 
@@ -103,16 +103,19 @@
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
           <ul style="list-style: none; margin-bottom: 25px;">
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> System requirements and environment check
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Compiling and launching the engine workspace with Cargo
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Building the engine from source via Cargo
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Creating a new project workspace and world file
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Launching the workspace home interface
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Sculpting floors and structures with voxel building tools
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Basic terminal-driven development flow
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Adding lighting, sky presets, and character spawn points
+            </li>
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Testing gameplay in real-time simulation mode
             </li>
           </ul>
         </article>
@@ -120,7 +123,7 @@
         <article class="canonical-card" style="padding: 28px;">
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
           <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            AeoEngine is built entirely on the Rust stable toolchain, enabling high-performance voxel rendering and simulation directly on Windows. The engine workspace operates with local project ownership, combining the 3D voxel editor and simulation runtime into a unified local environment.
+            AeoEngine combines an intuitive 3D voxel editor with a 60Hz physics runtime. Game developers can construct detailed environments, attach logic scripts, configure lighting and characters, and instantly enter Play mode to test game mechanics in a unified desktop interface.
           </p>
         </article>
       </div>
@@ -129,13 +132,13 @@
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">WORKFLOW / UTILITY</div>
-          <h2 class="home-section-title mono">BUILDING &amp; RUNNING</h2>
+          <div class="brand-label mono">STEP 1</div>
+          <h2 class="home-section-title mono">BUILD &amp; LAUNCH THE ENGINE</h2>
         </div>
       </div>
 
       <p style="font-size: 1rem; line-height: 1.8; color: var(--text); margin-bottom: 20px;">
-        To compile and initialize the workspace environment, navigate to your local workspace root and use the standard Rust package manager commands to trigger the compilation chain.
+        AeoEngine builds on the stable Rust toolchain. Open your terminal in the project directory and run Cargo to compile and start the editor interface.
       </p>
 
       <div class="script-code-panel" style="margin: 20px 0;">
@@ -143,31 +146,149 @@
           <span class="mono">TERMINAL</span>
           <span class="mono">CARGO</span>
         </div>
-        <pre><code><span class="code-comment"># Verify toolchain installation</span>
+        <pre><code><span class="code-comment"># Verify your Rust toolchain installation</span>
 rustc --version
 
-<span class="code-comment"># Compile and run the workspace application</span>
+<span class="code-comment"># Compile and launch AeoEngine workspace</span>
 cargo run</code></pre>
       </div>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
         <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
-          <strong style="color: var(--text-bright);">EXPLANATION:</strong> Executing <code>cargo run</code> builds the voxel world representation, editor viewport, asset management pipelines, and scripting runtime libraries. Once complete, it immediately launches the desktop interface.
+          <strong style="color: var(--text-bright);">NOTE:</strong> Executing <code>cargo run</code> initializes the editor viewport, asset management pipelines, and physics simulation engine.
+        </p>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">STEP 2</div>
+          <h2 class="home-section-title mono">CREATE A PROJECT WORKSPACE</h2>
+        </div>
+      </div>
+
+      <p style="font-size: 1rem; line-height: 1.8; color: var(--text); margin-bottom: 20px;">
+        Upon launching, you are presented with the Project Manager screen:
+      </p>
+
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">WORKFLOW</span>
+          <span class="mono">PROJECT CREATION</span>
+        </div>
+        <pre><code>1. Click 'New Project' on the home launcher.
+2. Enter a project name (e.g. "MyFirstWorld").
+3. AeoEngine generates a project directory containing:
+   ├── world.dat           # Scene persistence database
+   └── .assets/textures/   # Project texture folder
+4. Select the project and click 'Open Workspace'.</code></pre>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">STEP 3</div>
+          <h2 class="home-section-title mono">BUILD YOUR ENVIRONMENT</h2>
+        </div>
+      </div>
+
+      <p style="font-size: 1rem; line-height: 1.8; color: var(--text); margin-bottom: 20px;">
+        With the workspace open, use the building tools to construct your terrain and buildings:
+      </p>
+
+      <ul style="list-style: none; margin-bottom: 25px; color: var(--text); font-size: 0.95rem; line-height: 1.8;">
+        <li style="margin-bottom: 12px; position: relative; padding-left: 24px;">
+          <strong style="color: var(--text-bright); position: absolute; left: 0; color: var(--accent-orange);">1.</strong>
+          <strong>Lay Down a Floor:</strong> Switch to <code>Plane Mode</code>, pick a color or texture from the Palette panel, and click-drag across the ground grid to place a floor plane.
+        </li>
+        <li style="margin-bottom: 12px; position: relative; padding-left: 24px;">
+          <strong style="color: var(--text-bright); position: absolute; left: 0; color: var(--accent-orange);">2.</strong>
+          <strong>Build Walls:</strong> Switch to <code>Top-Block Mode</code> to snap new voxels directly onto existing block faces. Drag lines or planes to sculpt walls, structures, and steps.
+        </li>
+        <li style="margin-bottom: 12px; position: relative; padding-left: 24px;">
+          <strong style="color: var(--text-bright); position: absolute; left: 0; color: var(--accent-orange);">3.</strong>
+          <strong>Erase &amp; Modify:</strong> Use Erase mode to remove blocks, or multi-select blocks to adjust colors and textures in bulk. Mistake? Press <code>Ctrl + Z</code> to undo anytime.
+        </li>
+      </ul>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">STEP 4</div>
+          <h2 class="home-section-title mono">SET SKY, LIGHTS &amp; SPAWN POINT</h2>
+        </div>
+      </div>
+
+      <p style="font-size: 1rem; line-height: 1.8; color: var(--text); margin-bottom: 20px;">
+        Bring your world to life with environment settings and player entry points:
+      </p>
+
+      <div class="canonical-grid">
+        <article class="canonical-card" style="padding: 24px;">
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">SKY PRESETS</h3>
+          <p style="font-size: 0.9rem; color: var(--text); line-height: 1.6;">
+            Open the Environment panel and choose a sky preset like <code>Temperate</code>, <code>Tropical</code>, <code>Desert</code>, <code>Snowy</code>, or <code>Mars</code> to instantly change the atmosphere.
+          </p>
+        </article>
+        <article class="canonical-card" style="padding: 24px;">
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">AUTHORED LIGHTS</h3>
+          <p style="font-size: 0.9rem; color: var(--text); line-height: 1.6;">
+            Select the Light tool to place point light cells on walls or ground blocks. Customize light colors and intensity in the Properties panel.
+          </p>
+        </article>
+        <article class="canonical-card" style="padding: 24px;">
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">SPAWN POINT</h3>
+          <p style="font-size: 0.9rem; color: var(--text); line-height: 1.6;">
+            Select the Spawn Point tool and place a spawn cell on your floor. This marks where your character will spawn when entering Play mode.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">STEP 5</div>
+          <h2 class="home-section-title mono">TEST IN PLAY MODE</h2>
+        </div>
+      </div>
+
+      <p style="font-size: 1rem; line-height: 1.8; color: var(--text); margin-bottom: 20px;">
+        Click the <strong>PLAY</strong> button (or press <code>F5</code>) to start the real-time simulation:
+      </p>
+
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">PLAY MODE</span>
+          <span class="mono">CONTROLS</span>
+        </div>
+        <pre><code>- [WASD]      Move your character across the world
+- [Space]     Jump with physics collision and gravity
+- [Mouse]     Orbit the third-person gameplay camera
+- [Stop/Esc]  Exit Play mode and return to editing</code></pre>
+      </div>
+
+      <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
+        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
+          <strong style="color: var(--text-bright);">TEMPORARY STATE:</strong> Any changes or movements during Play mode are temporary runtime states. Pressing Stop cleanly resets the world back to your authored <code>world.dat</code> design.
         </p>
       </div>
     </section>
 
     <section class="home-section">
       <div class="canonical-card" style="padding: 28px;">
-        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">REQUIREMENTS &amp; SPECIFICATIONS</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Platform Requirement:</strong> Supported exclusively on Windows 10 or Windows 11.
+          <strong style="color: var(--text-bright);">Operating System:</strong> Windows 10 or Windows 11 (64-bit).
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Toolchain Requirement:</strong> Requires the latest stable Rust distribution.
+          <strong style="color: var(--text-bright);">Compiler Toolchain:</strong> Latest stable Rust distribution (`rustc` and `cargo`).
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Development Status:</strong> Current development is in the active 0.7.x phase, focusing on live application testing and workflow integration problems.
+          <strong style="color: var(--text-bright);">Graphics API:</strong> OpenGL 3.3+ compliant GPU drivers.
         </p>
       </div>
     </section>
@@ -187,15 +308,15 @@ cargo run</code></pre>
       <div class="canonical-grid">
         <a href="../projects/" class="canonical-path-card">
           <strong>PROJECT MANAGEMENT</strong>
-          <span>Map persistence and assets</span>
+          <span>Map persistence and asset folder management</span>
         </a>
-        <a href="../editor/" class="canonical-path-card">
-          <strong>EDITOR WORKSPACE</strong>
-          <span>Voxel world building interface</span>
+        <a href="../building/" class="canonical-path-card">
+          <strong>BUILDING A WORLD</strong>
+          <span>Voxel building modes, tools, and shortcuts</span>
         </a>
         <a href="/aeoscript/getting-started/" class="canonical-path-card">
           <strong>AEOSCRIPT GETTING STARTED</strong>
-          <span>Language fundamentals</span>
+          <span>Add custom game logic and behavior scripts</span>
         </a>
       </div>
     </section>

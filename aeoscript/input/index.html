@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AEOWUN // AEOENGINE // LIGHTING SYSTEMS</title>
-  <link rel="canonical" href="https://aeowun.com/aeoengine/lighting/">
-  <meta property="og:title" content="AEOWUN // AEOENGINE // LIGHTING SYSTEMS">
-  <meta property="og:description" content="Explore lighting in AeoEngine. Learn to place authored Light cells, configure directional and point lighting, and manage emissive parameters.">
-  <meta property="og:url" content="https://aeowun.com/aeoengine/lighting/">
+  <title>AEOWUN // AEOSCRIPT // INPUT &amp; MOUSE</title>
+  <link rel="canonical" href="https://aeowun.com/aeoscript/input/">
+  <meta property="og:title" content="AEOWUN // AEOSCRIPT // INPUT &amp; MOUSE">
+  <meta property="og:description" content="Control player input, movement vectors, jump buttons, and mouse cursor visibility and screen locking with AeoScript.">
+  <meta property="og:url" content="https://aeowun.com/aeoscript/input/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AEOWUN // AEOENGINE // LIGHTING SYSTEMS">
-  <meta name="twitter:description" content="Explore lighting in AeoEngine. Learn to place authored Light cells, configure directional and point lighting, and manage emissive parameters.">
-  <meta name="description" content="Explore lighting in AeoEngine. Learn to place authored Light cells, configure directional and point lighting, and manage emissive parameters.">
+  <meta name="twitter:title" content="AEOWUN // AEOSCRIPT // INPUT &amp; MOUSE">
+  <meta name="twitter:description" content="Control player input, movement vectors, jump buttons, and mouse cursor visibility and screen locking with AeoScript.">
+  <meta name="description" content="Control player input, movement vectors, jump buttons, and mouse cursor visibility and screen locking with AeoScript.">
   <link rel="stylesheet" href="../../style.css">
 </head>
-<body class="canonical-page aeo-page">
+<body class="canonical-page">
 
   <div id="void-bg"></div>
   <div id="technical-grid"></div>
-  <div id="showroom-aura"></div>
 
   <!-- Header -->
   <header class="aeowun-header">
@@ -29,8 +28,8 @@
       </a>
 
       <nav class="home-nav" aria-label="Primary navigation">
-        <a href="/aeoengine/" class="home-nav-link mono active">AEOENGINE</a>
-        <a href="/aeoscript/" class="home-nav-link mono">AEOSCRIPT</a>
+        <a href="/aeoengine/" class="home-nav-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="home-nav-link mono active">AEOSCRIPT</a>
         <a href="/docs/" class="home-nav-link mono">DOCS</a>
         <a href="/games/" class="home-nav-link mono">GAMES</a>
         <a href="/software/" class="home-nav-link mono">SOFTWARE</a>
@@ -63,8 +62,8 @@
       <nav class="rail-links" aria-label="Mobile navigation">
         <span class="rail-label mono">AEOWUN</span>
 
-        <a href="/aeoengine/" class="rail-link mono active">AEOENGINE</a>
-        <a href="/aeoscript/" class="rail-link mono">AEOSCRIPT</a>
+        <a href="/aeoengine/" class="rail-link mono">AEOENGINE</a>
+        <a href="/aeoscript/" class="rail-link mono active">AEOSCRIPT</a>
         <a href="/docs/" class="rail-link mono">DOCS</a>
         <a href="/games/" class="rail-link mono">GAMES</a>
         <a href="/software/" class="rail-link mono">SOFTWARE &amp; TOOLS</a>
@@ -83,17 +82,17 @@
   <main class="container">
 
     <section class="canonical-hero">
-      <div class="brand-label mono">AEOWUN &gt; AEOENGINE &gt; LIGHTING</div>
-      <h1 class="canonical-title mono">LIGHTING SYSTEMS</h1>
+      <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; INPUT &amp; MOUSE</div>
+      <h1 class="canonical-title mono">INPUT &amp; MOUSE APIS</h1>
       <p class="canonical-lead">
-        Configure authored Light cells and simulate precise directional and point lighting environments.
+        Query player movement input, jump requests, and control OS mouse cursor visibility and screen locking.
       </p>
     </section>
 
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">AEOENGINE // FUNDAMENTALS</div>
+          <div class="brand-label mono">AEOSCRIPT // GAMEPLAY</div>
           <h2 class="home-section-title mono">OVERVIEW</h2>
         </div>
       </div>
@@ -103,16 +102,16 @@
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
           <ul style="list-style: none; margin-bottom: 25px;">
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Placing persistent authored Light cells in the grid
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Querying directional movement vectors via <code>input.get_move_vector()</code>
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Configuring point and directional emissive parameters
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Detecting jump key presses with <code>input.is_jump_pressed()</code>
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Utilizing dedicated lighting brush ghost previews
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Accessing the mouse handle via <code>const mouse = get.mouse()</code>
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Persisting world lighting configurations properly
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Toggling cursor visibility and screen locking dynamically
             </li>
           </ul>
         </article>
@@ -120,7 +119,7 @@
         <article class="canonical-card" style="padding: 28px;">
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
           <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            Lighting in AeoEngine treats illumination elements as native authored scene data rather than purely runtime or transient effects. Light cells occupy dedicated grid nodes, allowing authors to save emissive properties directly inside world databases to maintain illumination consistency between editing and simulation cycles.
+            AeoScript provides simple, high-level input queries for player controllers and UI menus. The <code>input</code> namespace supplies 2D movement vectors and jump state. The <code>mouse</code> handle, obtained via <code>get.mouse()</code>, lets scripts toggle <code>mouse.setCursorVisible</code> and <code>mouse.setScreenLocked</code> at runtime independently of camera controllers. World settings establish initial Play-mode defaults, which scripts can override dynamically.
           </p>
         </article>
       </div>
@@ -129,79 +128,68 @@
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">WORKFLOW / DATA TYPE</div>
-          <h2 class="home-section-title mono">SPECIALIZATION</h2>
+          <div class="brand-label mono">SYNTAX / WORKFLOW</div>
+          <h2 class="home-section-title mono">EXAMPLES</h2>
         </div>
       </div>
 
-      <p style="font-size: 1rem; line-height: 1.8; color: var(--text); margin-bottom: 20px;">
-        Light nodes are placed inside the environment using dedicated build options. During editor placement, the system generates custom preview identifiers. The cell attributes distinguish as follows:
-      </p>
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">MOUSE CONTROL</span>
+          <span class="mono">SYNTAX</span>
+        </div>
+        <pre><code>const mouse = get.mouse()
+
+// Show cursor and unlock from window (e.g. for pause menu)
+mouse.setCursorVisible = true
+mouse.setScreenLocked = false</code></pre>
+      </div>
 
       <div class="script-code-panel" style="margin: 20px 0;">
         <div class="script-code-header">
-          <span class="mono">AUTHORED CELL</span>
-          <span class="mono">SPECIALIZATION</span>
+          <span class="mono">PLAYER INPUT</span>
+          <span class="mono">EXAMPLE</span>
         </div>
-        <pre><code>Authored Cell Specialization:
-- Solid Block Cell: Employs physics geometry collision boundaries and texture mapping.
-- Emissive Light Cell: Emits point/directional lighting streams; excluded from collision passes.
-- Sky Environment: Configurable background cubemap (4:3 horizontal cross) with built-in presets.
-- Ghost Preview: Displays dedicated wireframe indicators showing illumination bounds.</code></pre>
+        <pre><code>fn update(dt) {
+  const move = input.get_move_vector()
+  const move_x = move[0]
+  const move_z = move[1]
+
+  if input.is_jump_pressed() && player.is_grounded() {
+    player.apply_vertical_impulse(6.5)
+  }
+}</code></pre>
       </div>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
         <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
-          <strong style="color: var(--text-bright);">EXPLANATION:</strong> Since lights reside as formal grid components, they save seamlessly into world persistence arrays. Furthermore, light attributes can be adjusted dynamically during live gameplay via AeoScript property overrides.
+          <strong style="color: var(--text-bright);">EXPLANATION:</strong> <code>input.get_move_vector()</code> returns the current 2D movement input <code>[x, z]</code>. <code>get.mouse()</code> accesses the global mouse controller.
         </p>
       </div>
     </section>
 
     <section class="home-section">
       <div class="canonical-card" style="padding: 28px;">
-        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
+        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">API SUMMARY</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Physics Filtering:</strong> The physics system automatically bypasses Light cells to prevent dynamic objects from colliding with light sources.
+          <code>input.get_move_vector()</code>: Returns 2D movement basket <code>[vx, vz]</code>.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Persistence Models:</strong> Light cell definitions, positions, and active color parameters share the identical serialization pipeline utilized by architectural blocks.
+          <code>input.is_jump_pressed()</code>: Returns boolean indicating jump key status.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Sky Environment:</strong> Built-in sky presets including <code>Temperate</code>, <code>Tropical</code>, <code>Desert</code>, <code>Snowy</code>, and <code>Mars</code>, plus custom project skybox asset support.
+          <code>get.mouse()</code>: Returns the singleton Mouse handle (`id: 0`).
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Runtime Overrides:</strong> Scripts can mutate active light colors or visibility parameters mid-simulation without corrupting authored baselines.
+          <code>mouse.setCursorVisible</code> / <code>mouse.setScreenLocked</code>: Booleans controlling OS cursor visibility and window capture.
         </p>
       </div>
     </section>
 
     <div style="display: flex; justify-content: space-between; padding: 40px 0;">
-      <a href="../building/" class="text-link mono">&larr; PREV: VOXEL BUILDING MODES</a>
-      <a href="../physics/" class="text-link mono">NEXT: RUNTIME PHYSICS &rarr;</a>
+      <a href="../events/" class="text-link mono">&larr; PREV: SCRIPT EVENTS</a>
+      <a href="../ui/" class="text-link mono">NEXT: RUNTIME UI &rarr;</a>
     </div>
-
-    <section class="home-section" style="border-bottom: none;">
-      <div class="section-heading-row">
-        <div>
-          <div class="brand-label mono">EXPLORE MORE</div>
-          <h2 class="home-section-title mono">RELATED LINKS</h2>
-        </div>
-      </div>
-      <div class="canonical-grid">
-        <a href="../building/" class="canonical-path-card">
-          <strong>VOXEL BUILDING MODES</strong>
-          <span>Construction and painting tools</span>
-        </a>
-        <a href="../physics/" class="canonical-path-card">
-          <strong>RUNTIME PHYSICS SIMULATION</strong>
-          <span>Fixed-timestep rigid simulation</span>
-        </a>
-        <a href="/aeoscript/runtime-properties/" class="canonical-path-card">
-          <strong>AEOSCRIPT OVERRIDES</strong>
-          <span>Script-driven property overrides</span>
-        </a>
-      </div>
-    </section>
 
   </main>
 

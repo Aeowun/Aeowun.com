@@ -6,13 +6,13 @@
   <title>AEOWUN // AEOSCRIPT</title>
   <link rel="canonical" href="https://aeowun.com/aeoscript/">
   <meta property="og:title" content="AEOWUN // AEOSCRIPT">
-  <meta property="og:description" content="AeoScript is the scripting language used with AeoEngine. Learn the language and explore its API surface.">
+  <meta property="og:description" content="AeoScript is the gameplay scripting language for AeoEngine. Learn how to write code, respond to events, and control your 3D world.">
   <meta property="og:url" content="https://aeowun.com/aeoscript/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AEOWUN // AEOSCRIPT">
-  <meta name="twitter:description" content="AeoScript is the scripting language used with AeoEngine. Learn the language and explore its API surface.">
-  <meta name="description" content="AeoScript is the scripting language used with AeoEngine. Learn the language and explore its API surface.">
+  <meta name="twitter:description" content="AeoScript is the gameplay scripting language for AeoEngine. Learn how to write code, respond to events, and control your 3D world.">
+  <meta name="description" content="AeoScript is the gameplay scripting language for AeoEngine. Learn how to write code, respond to events, and control your 3D world.">
   <link rel="stylesheet" href="../style.css">
 </head>
 <body class="canonical-page script-page">
@@ -86,210 +86,240 @@
       <div class="brand-label mono">AEOWUN &gt; DOCS &gt; AEOSCRIPT</div>
       <h1 class="canonical-title mono">AEOSCRIPT</h1>
       <p class="canonical-lead">
-        A hand-designed gameplay scripting language for AeoEngine, with <a href="waiting/" class="text-link">resumable fibers</a>, <a href="runtime-state/" class="text-link">persistent state</a>, and <a href="cells/" class="text-link">engine integration</a>.
+        A clear, simple gameplay scripting language built for making games in AeoEngine.
       </p>
       <div class="canonical-actions">
-        <a class="primary-button mono" href="/docs/reference/">REFERENCE</a>
-        <a class="secondary-button mono" href="/docs/tutorials/">TUTORIALS</a>
+        <a class="primary-button mono" href="getting-started/">FIRST SCRIPT</a>
+        <a class="secondary-button mono" href="/docs/">DOCS HUB</a>
         <a class="secondary-button mono" href="https://github.com/Aeowun/AeoEngine" target="_blank" rel="noopener">GITHUB</a>
       </div>
     </section>
 
+    <!-- CORE CONCEPTS -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
           <div class="brand-label mono">CORE LANGUAGE</div>
-          <h2 class="home-section-title mono">LEARN</h2>
+          <h2 class="home-section-title mono">HOW AEOSCRIPT WORKS</h2>
         </div>
       </div>
       <div class="canonical-grid">
         <article class="canonical-card" style="padding: 28px;">
           <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">ENTITIES &amp; FUNCTIONS</h3>
           <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text); margin-bottom: 16px;">
-            AeoScript uses <code>entity</code> declarations to define scripted objects. Fields maintain persistent state between executions, and functions can be typed. Everything interacts with engine handles like <code>Cell</code> and <code>Entity</code>.
+            Define game objects using <code>entity</code>. Fields store data like health or speed, and functions run logic when called.
           </p>
           <div class="script-code-panel">
             <pre><code>entity Player {
-  health: number = 100
+  health = 100
 
-  fn take_damage(amount: number) {
+  fn take_damage(amount) {
     health = math.max(0, health - amount)
   }
-
-  fn get_health(): number {
-    return health
-  }
 }</code></pre>
           </div>
         </article>
 
         <article class="canonical-card" style="padding: 28px;">
-          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">RESUMABLE FIBERS</h3>
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">WAITING &amp; DELAYS</h3>
           <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text); margin-bottom: 16px;">
-            AeoScript uses cooperative fibers for yielding execution. The <code>wait(seconds)</code> operation suspends execution and resumes later, retaining the entire call stack, local variables, and loop state.
+            Pause script execution easily with <code>wait(seconds)</code>. The script remembers its exact place and continues later.
           </p>
           <div class="script-code-panel">
-            <pre><code>fn flash() {
-  visible = false
-  wait(0.25)
-  visible = true
+            <pre><code>fn flash_light() {
+  light.visible = false
+  wait(0.5)
+  light.visible = true
 }</code></pre>
           </div>
         </article>
 
         <article class="canonical-card" style="padding: 28px;">
-          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">TYPES &amp; COLLECTIONS</h3>
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">EVENTS &amp; INTERACTIONS</h3>
           <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text); margin-bottom: 16px;">
-            Basic types include <code>number</code>, <code>bool</code>, <code>string</code>, and <code>nil</code>. Collections like <code>basket</code> (sequences) and <code>map</code> (key/value) use reference semantics; <code>const</code> prevents reassignment but allows collection mutation.
+            React to player collisions, triggers, and game events with simple handlers like <code>on_touch(cell)</code> and <code>on EventName</code>.
           </p>
           <div class="script-code-panel">
-            <pre><code>const ids = [1, 2]
-ids[0] = 99
-
-const stats = { score: 10 }
-stats["score"] = stats["score"] + 5</code></pre>
+            <pre><code>fn on_touch(cell) {
+  debug.log("Player touched a coin!")
+  cell.visible = false
+}</code></pre>
           </div>
         </article>
 
         <article class="canonical-card" style="padding: 28px;">
-          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">CONTROL FLOW</h3>
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">LISTS &amp; MAPS</h3>
           <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text); margin-bottom: 16px;">
-            AeoScript supports standard <code>if</code>, <code>while</code>, and <code>for</code> loops. Top-level statements execute once on load, while lifecycle hooks like <code>on_ready()</code> and <code>update(dt)</code> drive ongoing entity behavior.
+            Store sequences of items in <code>baskets</code> (lists) and key/value data in <code>maps</code> to manage inventory and stats.
           </p>
           <div class="script-code-panel">
-            <pre><code>for item in collection {
-  item:action()
-}
-
-if health &lt;= 0 {
-  die()
-}</code></pre>
+            <pre><code>const inventory = ["Key", "Sword"]
+const stats = { hp: 100, gold: 25 }</code></pre>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- BEGINNER PATH -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">LANGUAGE GUIDE</div>
-          <h2 class="home-section-title mono">FUNDAMENTALS</h2>
+          <div class="brand-label mono">LEARN IN ORDER</div>
+          <h2 class="home-section-title mono">BEGINNER GUIDES</h2>
         </div>
       </div>
       <div class="canonical-grid">
         <a href="getting-started/" class="canonical-path-card">
-          <strong>GETTING STARTED</strong>
-          <span>Project structure and initialization</span>
-        </a>
-        <a href="syntax/" class="canonical-path-card">
-          <strong>SYNTAX</strong>
-          <span>Grammar and statement rules</span>
+          <strong>1. YOUR FIRST SCRIPT</strong>
+          <span>Write code and print messages to the console</span>
         </a>
         <a href="variables/" class="canonical-path-card">
-          <strong>VARIABLES</strong>
-          <span>Mutability and constants</span>
-        </a>
-        <a href="types/" class="canonical-path-card">
-          <strong>TYPES</strong>
-          <span>Primitives and handles</span>
-        </a>
-        <a href="functions/" class="canonical-path-card">
-          <strong>FUNCTIONS</strong>
-          <span>Logic and parameters</span>
+          <strong>2. VALUES &amp; VARIABLES</strong>
+          <span>Numbers, text, booleans, and const</span>
         </a>
         <a href="control-flow/" class="canonical-path-card">
-          <strong>CONTROL FLOW</strong>
-          <span>Conditionals and loops</span>
+          <strong>3. CONDITIONS &amp; LOOPS</strong>
+          <span>If statements, while loops, and for loops</span>
         </a>
-        <a href="baskets/" class="canonical-path-card">
-          <strong>BASKETS</strong>
-          <span>Sequence collections</span>
-        </a>
-        <a href="maps/" class="canonical-path-card">
-          <strong>MAPS</strong>
-          <span>Key/value collections</span>
+        <a href="functions/" class="canonical-path-card">
+          <strong>4. FUNCTIONS</strong>
+          <span>Reusable code blocks and callbacks</span>
         </a>
         <a href="waiting/" class="canonical-path-card">
-          <strong>WAITING</strong>
-          <span>Asynchronous fibers</span>
+          <strong>5. WAITING &amp; TIMERS</strong>
+          <span>Using wait() for delayed actions</span>
+        </a>
+        <a href="events/" class="canonical-path-card">
+          <strong>6. SCRIPT EVENTS</strong>
+          <span>Collisions, triggers, and custom signals</span>
+        </a>
+        <a href="runtime-state/" class="canonical-path-card">
+          <strong>7. KEEPING GAME STATE</strong>
+          <span>Remembering values across frames</span>
         </a>
       </div>
     </section>
 
+    <!-- WORLD INTERACTION -->
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">ENGINE INTEGRATION</div>
-          <h2 class="home-section-title mono">SYSTEMS</h2>
+          <div class="brand-label mono">WORLD &amp; GAMEPLAY</div>
+          <h2 class="home-section-title mono">CONTROLLING YOUR GAME</h2>
         </div>
       </div>
       <div class="canonical-grid">
-        <a href="cells/" class="canonical-path-card">
-          <strong>CELLS</strong>
-          <span>Authored object handles</span>
-        </a>
-        <a href="engine-entities/" class="canonical-path-card">
-          <strong>ENTITIES</strong>
-          <span>Live runtime references</span>
-        </a>
         <a href="find/" class="canonical-path-card">
-          <strong>FINDING OBJECTS</strong>
-          <span>Discovery and queries</span>
+          <strong>FINDING THINGS</strong>
+          <span>Find doors, coins, and enemies</span>
         </a>
         <a href="identity/" class="canonical-path-card">
-          <strong>IDENTITY</strong>
-          <span>IDs vs human names</span>
+          <strong>NAMES AND IDS</strong>
+          <span>Identifying specific game objects</span>
+        </a>
+        <a href="cells/" class="canonical-path-card">
+          <strong>WORKING WITH WORLD ITEMS</strong>
+          <span>Cell handles and world references</span>
+        </a>
+        <a href="engine-entities/" class="canonical-path-card">
+          <strong>MOVING GAME OBJECTS</strong>
+          <span>set_position() and translate()</span>
         </a>
         <a href="runtime-properties/" class="canonical-path-card">
-          <strong>OVERRIDES</strong>
-          <span>Temporary property shifts</span>
+          <strong>RUNTIME PROPERTIES</strong>
+          <span>Cell visibility, solid, color, and offset</span>
         </a>
-        <a href="runtime-state/" class="canonical-path-card">
-          <strong>STATE</strong>
-          <span>Play-mode behavior</span>
-        </a>
-        <a href="bindings/" class="canonical-path-card">
-          <strong>BINDINGS</strong>
-          <span>Attaching scripts to world</span>
-        </a>
-        <a href="stdlib/" class="canonical-path-card">
-          <strong>STDLIB</strong>
-          <span>Core utility namespaces</span>
-        </a>
-        <a href="diagnostics/" class="canonical-path-card">
-          <strong>DIAGNOSTICS</strong>
-          <span>Errors and diagnostics</span>
+        <a href="attributes/" class="canonical-path-card">
+          <strong>CUSTOM DATA</strong>
+          <span>Store custom attributes on world items</span>
         </a>
         <a href="editor/" class="canonical-path-card">
-          <strong>EDITOR</strong>
-          <span>Authoring workflow</span>
+          <strong>CREATING &amp; REMOVING</strong>
+          <span>Spawn and delete items during play</span>
         </a>
       </div>
     </section>
 
-    <section class="home-section" style="border-bottom: none;">
+    <!-- GAMEPLAY SYSTEMS -->
+    <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">RELATED DOCUMENTATION</div>
-          <h2 class="home-section-title mono">AEOWUN</h2>
+          <div class="brand-label mono">SYSTEMS &amp; CONTROLS</div>
+          <h2 class="home-section-title mono">GAMEPLAY SYSTEMS</h2>
         </div>
       </div>
       <div class="canonical-grid">
-        <a href="/docs/" class="canonical-path-card">
-          <strong>DOCUMENTATION HUB</strong>
-          <span>Back to main documentation</span>
+        <a href="input/" class="canonical-path-card">
+          <strong>INPUT &amp; MOUSE</strong>
+          <span>Movement vectors, jump keys, and mouse cursor locking</span>
         </a>
-        <a href="/aeoengine/" class="canonical-path-card">
-          <strong>AEOENGINE</strong>
-          <span>Engine overview and workflow</span>
+        <a href="ui/" class="canonical-path-card">
+          <strong>BUILDING GAME UI</strong>
+          <span>Health bars, score displays, panels, and buttons</span>
         </a>
-        <a href="/aeoscript/api/" class="canonical-path-card">
-          <strong>AEOSCRIPT API</strong>
-          <span>Detailed language reference</span>
+        <a href="audio/" class="canonical-path-card">
+          <strong>SOUND &amp; AUDIO</strong>
+          <span>AudioEmitters, 3D sound, looping, and volume control</span>
         </a>
-        <a href="/docs/tutorials/first-script/" class="canonical-path-card">
-          <strong>FIRST SCRIPT</strong>
-          <span>Guided introduction to scripting</span>
+        <a href="script-control/" class="canonical-path-card">
+          <strong>SCRIPT CONTROL</strong>
+          <span>Enable and disable scripts dynamically during play</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- DEVELOPMENT & TESTING -->
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">TOOLS &amp; DIAGNOSTICS</div>
+          <h2 class="home-section-title mono">DEVELOPMENT &amp; TESTING</h2>
+        </div>
+      </div>
+      <div class="canonical-grid">
+        <a href="diagnostics/" class="canonical-path-card">
+          <strong>DEBUGGING YOUR GAME</strong>
+          <span>Use debug.log() and inspect console diagnostics</span>
+        </a>
+        <a href="script-control/" class="canonical-path-card">
+          <strong>IN-GAME TESTING</strong>
+          <span>Automated testing assertions with test.complete()</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- LANGUAGE REFERENCE -->
+    <section class="home-section" style="border-bottom: none;">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">REFERENCE</div>
+          <h2 class="home-section-title mono">LANGUAGE REFERENCE</h2>
+        </div>
+      </div>
+      <div class="canonical-grid">
+        <a href="syntax/" class="canonical-path-card">
+          <strong>SYNTAX</strong>
+          <span>Grammar rules and statement syntax</span>
+        </a>
+        <a href="types/" class="canonical-path-card">
+          <strong>TYPES</strong>
+          <span>All supported values and handles</span>
+        </a>
+        <a href="math/" class="canonical-path-card">
+          <strong>MATH API</strong>
+          <span>Trig, clamp, lerp, and random</span>
+        </a>
+        <a href="baskets/" class="canonical-path-card">
+          <strong>BASKETS API</strong>
+          <span>List operations and methods</span>
+        </a>
+        <a href="strings/" class="canonical-path-card">
+          <strong>STRINGS API</strong>
+          <span>Text manipulation and formatting</span>
+        </a>
+        <a href="maps/" class="canonical-path-card">
+          <strong>MAPS API</strong>
+          <span>Key/value collections</span>
         </a>
       </div>
     </section>
@@ -332,9 +362,8 @@ if health &lt;= 0 {
     </div>
 
     <div class="container footer-bottom">
-      <span class="mono">� 2026 AEOWUN.</span>
-      <span class="mono">        SUPPORT SMALL TEAMS!
-</span>
+      <span class="mono">© 2026 AEOWUN.</span>
+      <span class="mono">BUILT IN PUBLIC.</span>
     </div>
   </footer>
 

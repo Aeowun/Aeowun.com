@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AEOWUN // REFERENCE</title>
+  <title>AEOWUN // DEVELOPER REFERENCE &amp; ENGINE INTERNALS</title>
   <link rel="canonical" href="https://aeowun.com/docs/reference/">
-  <meta property="og:title" content="AEOWUN // REFERENCE">
-  <meta property="og:description" content="Comprehensive API and system specifications for the AEOWUN development environment.">
+  <meta property="og:title" content="AEOWUN // DEVELOPER REFERENCE &amp; ENGINE INTERNALS">
+  <meta property="og:description" content="Technical specifications and internal architecture for AeoEngine runtime, VM fibers, AST, host bridge, physics, rendering, and persistence.">
   <meta property="og:url" content="https://aeowun.com/docs/reference/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AEOWUN // REFERENCE">
-  <meta name="twitter:description" content="Comprehensive API and system specifications for the AEOWUN development environment.">
-  <meta name="description" content="Comprehensive API and system specifications for the AEOWUN development environment.">
+  <meta name="twitter:title" content="AEOWUN // DEVELOPER REFERENCE &amp; ENGINE INTERNALS">
+  <meta name="twitter:description" content="Technical specifications and internal architecture for AeoEngine runtime, VM fibers, AST, host bridge, physics, rendering, and persistence.">
+  <meta name="description" content="Technical specifications and internal architecture for AeoEngine runtime, VM fibers, AST, host bridge, physics, rendering, and persistence.">
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="canonical-page">
@@ -83,44 +83,83 @@
 
     <section class="canonical-hero">
       <div class="brand-label mono">AEOWUN &gt; DOCS &gt; REFERENCE</div>
-      <h1 class="canonical-title mono">REFERENCE</h1>
+      <h1 class="canonical-title mono">DEVELOPER REFERENCE</h1>
       <p class="canonical-lead">
-        Comprehensive API and system specifications for the AEOWUN development environment.
+        Technical specifications and internal architecture details for contributors and engine developers.
       </p>
     </section>
 
     <section class="home-section">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">SPECS</div>
-          <h2 class="home-section-title mono">API SPECIFICATIONS</h2>
+          <div class="brand-label mono">ENGINE INTERNALS</div>
+          <h2 class="home-section-title mono">ARCHITECTURE OVERVIEW</h2>
+        </div>
+      </div>
+
+      <div class="canonical-grid">
+        <article class="canonical-card" style="padding: 28px;">
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">SCRIPT RUNTIME &amp; FIBERS</h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text);">
+            The AeoScript execution subsystem manages script fibers (<code>ScriptFiber</code>) through a cooperative scheduler. Suspensions via <code>wait()</code> yield fiber execution without blocking the main engine loop. Top-level statements run within a file-level instance while entity methods execute within allocated <code>ScriptInstance</code> environments.
+          </p>
+        </article>
+
+        <article class="canonical-card" style="padding: 28px;">
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">ENGINE HOST &amp; BRIDGE</h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text);">
+            Communication between AeoScript bytecode interpretation and native Rust engine systems occurs via the <code>EngineHost</code> trait and <code>ScriptHostBridge</code>. Handles carry Lightweight IDs (<code>HandleKind</code>, <code>u64</code>) resolved at runtime without transferring ownership.
+          </p>
+        </article>
+
+        <article class="canonical-card" style="padding: 28px;">
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">PHYSICS SIMULATION</h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text);">
+            AeoEngine's physics pipeline runs on a fixed-step loop. Dynamic rigid bodies and character controllers evaluate AABB and voxel static grid collisions independently from rendered frame deltas.
+          </p>
+        </article>
+
+        <article class="canonical-card" style="padding: 28px;">
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">PERSISTENCE &amp; OVERRIDES</h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text);">
+            The World subsystem maintains a clean firewall between authored spatial data and runtime Play-mode overrides. Play-mode mutations modify volatile runtime state maps, leaving the authored world serialization files untouched.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">API SPECIFICATIONS</div>
+          <h2 class="home-section-title mono">LOW-LEVEL REFERENCE</h2>
         </div>
       </div>
 
       <div class="canonical-grid">
         <a href="/aeoscript/api/" class="canonical-path-card">
-          <strong>AEOSCRIPT API</strong>
-          <span>Complete specification of global functions and core engine integration.</span>
+          <strong>AEOSCRIPT API SPEC</strong>
+          <span>Specification of host dispatch and global function evaluation.</span>
         </a>
         <a href="/aeoscript/api/cell/" class="canonical-path-card">
-          <strong>CELL API</strong>
-          <span>Reference for authored Cell properties and runtime overrides.</span>
+          <strong>CELL HANDLE SPEC</strong>
+          <span>Specification for Cell handles and runtime property overrides.</span>
         </a>
         <a href="/aeoscript/api/entity/" class="canonical-path-card">
-          <strong>ENTITY API</strong>
-          <span>Documentation for Entity handles, identities, and runtime state.</span>
+          <strong>ENTITY HANDLE SPEC</strong>
+          <span>Specification for Entity handles, identity indices, and positions.</span>
         </a>
         <a href="/aeoscript/api/math/" class="canonical-path-card">
-          <strong>MATH API</strong>
-          <span>Deterministic math functions, vectors, and random generation.</span>
+          <strong>MATH SPECIFICATION</strong>
+          <span>Deterministic math operations, trig, clamp, lerp, and PRNG behavior.</span>
         </a>
         <a href="/aeoscript/api/basket/" class="canonical-path-card">
-          <strong>BASKET API</strong>
-          <span>Reference for the basket collection type and sequence operations.</span>
+          <strong>BASKET SPECIFICATION</strong>
+          <span>Reference for basket collection type, sequence operations, and memory behavior.</span>
         </a>
         <a href="/aeoscript/api/string/" class="canonical-path-card">
-          <strong>STRING API</strong>
-          <span>Unicode-aware scalar manipulation and string operations.</span>
+          <strong>STRING SPECIFICATION</strong>
+          <span>Unicode-aware scalar manipulation, uppercase, lowercase, and text splitting.</span>
         </a>
       </div>
     </section>
@@ -128,19 +167,19 @@
     <section class="home-section" style="border-bottom: none;">
       <div class="section-heading-row">
         <div>
-          <div class="brand-label mono">AEOWUN</div>
-          <h2 class="home-section-title mono">RELATED DOCUMENTATION</h2>
+          <div class="brand-label mono">LEARNING PATH</div>
+          <h2 class="home-section-title mono">MAKING GAMES</h2>
         </div>
       </div>
 
       <div class="canonical-grid">
         <a href="/docs/" class="canonical-path-card">
           <strong>DOCUMENTATION HUB</strong>
-          <span>Back to main documentation</span>
+          <span>Back to beginner game-developer learning guides</span>
         </a>
-        <a href="/aeoscript/" class="canonical-path-card">
-          <strong>AEOSCRIPT OVERVIEW</strong>
-          <span>Language features and examples</span>
+        <a href="/aeoscript/getting-started/" class="canonical-path-card">
+          <strong>GETTING STARTED WITH AEOSCRIPT</strong>
+          <span>Start writing scripts for your game</span>
         </a>
       </div>
     </section>
