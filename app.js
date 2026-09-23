@@ -56,20 +56,6 @@ function initializeNavRail() {
     });
 }
 
-/**
- * POINTER TRACKING
- * Updates mouse aura CSS variables globally
- */
-function initializePointerTracking() {
-    window.addEventListener("mousemove", (e) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 40;
-        const y = (e.clientY / window.innerHeight - 0.5) * 40;
-        document.documentElement.style.setProperty("--pointer-x", `${x}px`);
-        document.documentElement.style.setProperty("--pointer-y", `${y}px`);
-        document.documentElement.style.setProperty("--mouse-x", `${(e.clientX / window.innerWidth) * 100}%`);
-        document.documentElement.style.setProperty("--mouse-y", `${(e.clientY / window.innerHeight) * 100}%`);
-    });
-}
 
 /**
  * ENVIRONMENT
@@ -112,54 +98,7 @@ function initializeEnvironment() {
 
         requestAnimationFrame(animate);
     }
-    animate();
+    // animate();
 }
 
-/**
- * AMBIENT FIELD
- * Floating Dust Particles Canvas
- */
-function initializeAmbientField() {
-    if (window.innerWidth <= 900) return;
 
-    const canvas = document.getElementById("ambient-canvas");
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    let width, height, particles = [];
-
-    function resize() {
-        width = window.innerWidth; height = window.innerHeight;
-        canvas.width = width * (window.devicePixelRatio || 1);
-        canvas.height = height * (window.devicePixelRatio || 1);
-        ctx.scale(window.devicePixelRatio || 1, window.devicePixelRatio || 1);
-        createParticles();
-    }
-
-    function createParticles() {
-        particles = [];
-        const count = Math.floor(width / 50);
-        for (let i = 0; i < count; i++) {
-            particles.push({
-                x: Math.random() * width, y: Math.random() * height,
-                r: Math.random() * 0.6 + 0.1,
-                vx: (Math.random() - 0.5) * 0.05, vy: (Math.random() - 0.5) * 0.05,
-                o: Math.random() * 0.3 + 0.1
-            });
-        }
-    }
-
-    function draw() {
-        ctx.clearRect(0, 0, width, height);
-        particles.forEach(p => {
-            p.x += p.vx; p.y += p.vy;
-            if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;
-            if (p.y < 0) p.y = height; if (p.y > height) p.y = 0;
-            ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${p.o})`; ctx.fill();
-        });
-        requestAnimationFrame(draw);
-    }
-
-    window.addEventListener("resize", resize);
-    resize(); draw();
-}

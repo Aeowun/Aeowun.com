@@ -10,7 +10,16 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 0;@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
 }
 
 html {
@@ -37,16 +46,7 @@ button:focus-visible {
     outline-offset: 4px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
+
 
 /* =========================================================
    SECTION 2: DESIGN TOKENS
@@ -1139,7 +1139,13 @@ button:focus-visible {
     color: var(--text-bright);
     letter-spacing: 0.2em;
 }
-
+.product-visual-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    background: var(--void);
+}
 .game-viewport {
     width: 100%;
     flex: 1;

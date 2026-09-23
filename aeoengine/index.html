@@ -86,7 +86,6 @@
       <div class="brand-label mono">AEOWUN &gt; DOCS &gt; AEOENGINE</div>
       <h1 class="canonical-title mono">AEOENGINE</h1>
       <p class="canonical-lead">
-        Voxel engine and editor for building authored worlds and running them with physics, lighting, characters, and gameplay scripts.
       </p>
       <div class="canonical-actions">
         <a class="primary-button mono" href="/aeoscript/">AEOSCRIPT</a>
@@ -99,20 +98,19 @@
       <div class="section-heading-row">
         <div>
           <div class="brand-label mono">START HERE</div>
-          <h2 class="home-section-title mono">AEOENGINE OVERVIEW</h2>
+          <h2 class="home-section-title mono">OVERVIEW</h2>
         </div>
       </div>
       <div class="canonical-grid">
         <article class="canonical-card" style="padding: 28px;">
           <h3 class="mono" style="color: var(--text-bright); margin-bottom: 12px; font-size: 1.1rem;">WHAT IS IT?</h3>
           <p style="color: var(--text); line-height: 1.6; font-size: 0.9rem;">
-            AeoEngine provides a grid-based editor for creating authored worlds and a simulation runtime for playing them. It maintains a strict conceptual separation: <a href="projects/" class="text-link">Authored World data</a> remains the persistent source of truth, while changes during Play mode are <a href="/aeoscript/runtime-state/" class="text-link">temporary runtime state</a>.
-          </p>
+            AeoEngine lets you build worlds in the editor and jump into Play mode to see them in action. Changes made while playing are <a href="/aeoscript/runtime-state/" class="text-link">temporary</a>, so the world you're building stays intact.          </p>
         </article>
         <article class="canonical-card" style="padding: 28px;">
           <h3 class="mono" style="color: var(--text-bright); margin-bottom: 12px; font-size: 1.1rem;">THE WORKFLOW</h3>
           <p style="color: var(--text); line-height: 1.6; font-size: 0.9rem;">
-            AeoEngine is designed around a continuous cycle: <strong>AUTHOR</strong> <a href="projects/" class="text-link">authored scenes</a>, <strong>BUILD</strong> the world, <strong>RUN</strong> the <a href="physics/" class="text-link">simulation</a>, <strong>SCRIPT</strong> <a href="/aeoscript/" class="text-link">AeoScript</a> gameplay logic, <strong>TEST</strong> the results, and <strong>IMPROVE</strong> the design.
+            AeoEngine is built around a simple cycle: <strong>BUILD</strong> the <a href="projects/" class="text-link">world</a>, <strong>RUN</strong> the <a href="physics/" class="text-link">simulation</a>, <strong>SCRIPT</strong> gameplay with <a href="/aeoscript/" class="text-link">AeoScript</a>, <strong>TEST</strong> what happens, and <strong>IMPROVE</strong> what you make.
           </p>
         </article>
       </div>
@@ -128,15 +126,15 @@
       <div class="canonical-grid">
         <a class="canonical-path-card" href="editor/">
           <strong>EDITOR</strong>
-          <span>Author worlds with hierarchy, multi-selection, Plane building modes, and project-owned texture assets.</span>
+          <span>Build, organize, and texture your world.</span>
         </a>
         <a class="canonical-path-card" href="physics/">
           <strong>RUNTIME</strong>
-          <span>Simulate physics, character movement, and lighting with dedicated gameplay camera and AeoScript control.</span>
+          <span>Simulate physics, character movement, and lighting with AeoScript control.</span>
         </a>
         <a class="canonical-path-card" href="/aeoscript/">
           <strong>AEOSCRIPT</strong>
-          <span>Implement interaction via persistent Cell-ID bindings, cooperative fibers, and runtime overrides.</span>
+          <span>Create gameplay interactions with persistent Cell-ID bindings, cooperative fibers, and runtime overrides.</span>
         </a>
       </div>
     </section>
@@ -192,7 +190,7 @@
         </div>
       </div>
       <p style="color: var(--text); line-height: 1.7; font-size: 0.95rem; max-width: 800px;">
-        The engine is currently being exercised through actual game development to expose and resolve problems in the editor-to-runtime workflow. Development history and current progress are tracked in the project repository.
+        AeoEngine is currently in development. Development history and current progress are tracked in the <a href="https://github.com/Aeowun/AeoEngine" class="text-link">project repository</a>.
       </p>
     </section>
 
