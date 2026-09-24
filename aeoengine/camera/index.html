@@ -6,13 +6,13 @@
   <title>AEOWUN // AEOENGINE // GAMEPLAY CAMERA CONTROLS</title>
   <link rel="canonical" href="https://aeowun.com/aeoengine/camera/">
   <meta property="og:title" content="AEOWUN // AEOENGINE // GAMEPLAY CAMERA CONTROLS">
-  <meta property="og:description" content="Configure gameplay camera behavior in AeoEngine. Learn about third-person follow states, orbit limits, and voxel obstruction handling.">
+  <meta property="og:description" content="Configure gameplay camera behavior in AeoEngine. Learn about the implemented third-person and first-person camera modes.">
   <meta property="og:url" content="https://aeowun.com/aeoengine/camera/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AEOWUN // AEOENGINE // GAMEPLAY CAMERA CONTROLS">
-  <meta name="twitter:description" content="Configure gameplay camera behavior in AeoEngine. Learn about third-person follow states, orbit limits, and voxel obstruction handling.">
-  <meta name="description" content="Configure gameplay camera behavior in AeoEngine. Learn about third-person follow states, orbit limits, and voxel obstruction handling.">
+  <meta name="twitter:description" content="Configure gameplay camera behavior in AeoEngine. Learn about the implemented third-person and first-person camera modes.">
+  <meta name="description" content="Configure gameplay camera behavior in AeoEngine. Learn about the implemented third-person and first-person camera modes.">
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="canonical-page">
@@ -85,7 +85,7 @@
       <div class="brand-label mono">AEOWUN &gt; AEOENGINE &gt; CAMERA</div>
       <h1 class="canonical-title mono">GAMEPLAY CAMERA</h1>
       <p class="canonical-lead">
-        Configure the third-person gameplay camera follow behavior and geometry obstruction handling.
+        Choose between the implemented third-person and first-person gameplay camera modes.
       </p>
     </section>
 
@@ -108,6 +108,9 @@
               <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Configuring mouse orbit behaviors and pitch limits
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Choosing between third-person follow/orbit and first-person mouse-look
+            </li>
+            <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
               <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Resolving camera collisions against solid voxel matrices
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
@@ -119,7 +122,7 @@
         <article class="canonical-card" style="padding: 28px;">
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
           <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            AeoEngine splits viewing architectures into distinct roles. Entering simulation mode passes rendering controls over to a custom <code>GameplayCamera</code> subsystem. This module follows dynamic targets smoothly, processing mouse orbit input vectors while casting geometry collision checks to prevent clipping through walls.
+            AeoEngine keeps the editor camera separate from the gameplay camera. In Play mode, projects can use a third-person camera that follows and orbits the character with voxel collision handling, or a first-person camera that follows the character with mouse-look.
           </p>
         </article>
       </div>
@@ -134,7 +137,7 @@
       </div>
 
       <p style="font-size: 1rem; line-height: 1.8; color: var(--text); margin-bottom: 20px;">
-        Camera tracking executes alongside character motion. Obstruction logic pushes the view camera forward dynamically when encountering solid assets. Core details include:
+        The selected gameplay camera runs separately from the editor camera. Its behavior depends on the camera mode selected for the project:
       </p>
 
       <div class="script-code-panel" style="margin: 20px 0;">
@@ -142,16 +145,16 @@
           <span class="mono">CAMERA BEHAVIOR</span>
           <span class="mono">PROFILE</span>
         </div>
-        <pre><code>Camera Behavior Profile:
-- Editor Mode: Flying view; camera coordinates persist across play transitions.
-- Play Mode: Orbiting follow camera; automatically locks onto active character targets.
-- Pitch Boundaries: Rigid limits gating extreme vertical tracking parameters.
-- Obstruction Mapping: Ray-casts detect solid blocks, preventing line-of-sight clipping.</code></pre>
+        <pre><code>Camera behavior
+
+- Editor: a flying camera; its state is saved before Play and restored after.
+- Third-person: follows and orbits the character; resolves collisions with voxels.
+- First-person: follows the character and uses mouse-look.</code></pre>
       </div>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
         <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
-          <strong style="color: var(--text-bright);">EXPLANATION:</strong> By decoupling camera systems, editor perspectives remain completely undisturbed by character locomotion during testing, guaranteeing that camera states recover cleanly on stop actions.
+          <strong style="color: var(--text-bright);">EXPLANATION:</strong> Because the editor and gameplay cameras are separate, testing a World does not overwrite the editor view you were using to build it.
         </p>
       </div>
     </section>
@@ -160,13 +163,13 @@
       <div class="canonical-card" style="padding: 28px;">
         <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / LIMITATIONS</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Obstruction Handling:</strong> Tracking casts ray intersection sweeps against the static voxel grid, modifying the follow offset dynamically if a solid block blocks view paths.
+          <strong style="color: var(--text-bright);">Third-Person Only:</strong> Voxel collision handling applies to the third-person follow/orbit view.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
           <strong style="color: var(--text-bright);">State Preservation:</strong> When stopping simulation, control restores to the editor camera exactly where it sat prior to activating Play mode.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Dependency Protection:</strong> Camera updates run on independent sub-ticks to safeguard system safety if character handles go missing.
+          <strong style="color: var(--text-bright);">Project Profiles:</strong> Projects can contain camera profiles in their <code>cameras</code> directory; World settings select the active profile.
         </p>
       </div>
     </section>

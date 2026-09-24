@@ -116,29 +116,16 @@
           <span class="mono">AEOFILE</span>
           <span class="mono">HUD_DEMO.AEO</span>
         </div>
-        <pre><code>// Create UI elements
+        <pre><code>// Create UI elements for this Play session
 const hud_panel = ui.new("Panel")
-const health_text = ui.new("Text")
-const gold_text = ui.new("Text")
+const message = ui.new("Text")
 
-hud_panel.size = [220, 76]
-hud_panel.color = [0.05, 0.05, 0.05, 0.80]
+hud_panel.visible = true
+message.text = "Find the coin!"
 
-health_text.color = [1.0, 1.0, 1.0, 1.0]
-gold_text.color = [1.0, 0.85, 0.25, 1.0]
-
-health_text.text = "HEALTH: 100 / 100"
-gold_text.text = "GOLD: 0"
-
-// Listen for health changes from the Player Manager
-on on_health_changed(current, maximum) {
-  health_text.text = "HEALTH: " + current + " / " + maximum
-}
-
-// Listen for gold changes when coins are collected
-on on_gold_changed(total_gold) {
-  gold_text.text = "GOLD: "
-  gold_text.text += total_gold
+// Update the text when another script fires this event
+on on_coin_collected() {
+  message.text = "Coin collected!"
 }</code></pre>
       </div>
     </section>
@@ -154,13 +141,13 @@ on on_gold_changed(total_gold) {
 
       <div class="canonical-card" style="padding: 24px;">
         <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
-          <strong style="color: var(--text-bright);">`ui.new("Panel")` / `ui.new("Text")`</strong>: Creates a new UI object on the player's screen.
+          <strong style="color: var(--text-bright);">`ui.new("Panel")` / `ui.new("Text")`</strong>: Creates a runtime UI element and returns its handle.
         </p>
         <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
-          <strong style="color: var(--text-bright);">`hud_panel.color = [r, g, b, a]`</strong>: Sets the panel color with Red, Green, Blue, and Alpha (transparency).
+          <strong style="color: var(--text-bright);">`message.text = "..."`</strong>: Changes the text shown by the Text element.
         </p>
         <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 0;">
-          <strong style="color: var(--text-bright);">`gold_text.text += total_gold`</strong>: Appends the new gold number directly onto the string `"GOLD: "`.
+          <strong style="color: var(--text-bright);">`on on_coin_collected()`</strong>: Responds when another script queues that named event with <code>event.fire("on_coin_collected")</code>.
         </p>
       </div>
     </section>
@@ -176,7 +163,7 @@ on on_gold_changed(total_gold) {
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
         <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text); margin: 0;">
-          Try positioning your HUD at the top right of the screen using `const viewport = ui.get_viewport_size()` and setting `hud_panel.position = [viewport[0] - 240, 20]`!
+          Try replacing <code>"Find the coin!"</code> with your own objective. Then fire <code>event.fire("on_coin_collected")</code> from another script to see the message update.
         </p>
       </div>
     </section>
@@ -186,10 +173,10 @@ on on_gold_changed(total_gold) {
       <div class="canonical-card" style="padding: 28px;">
         <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">5. COMMON BEGINNER MISTAKE</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Setting `text` on a `Panel`:</strong> `Panel` elements do not have text! Assign `.text` to `Text` or `Button` elements instead.
+          <strong style="color: var(--text-bright);">Using an unsupported element name:</strong> The implementation supports <code>Text</code>, <code>Button</code>, and <code>Panel</code>. Check capitalization when calling <code>ui.new(...)</code>.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Color Values:</strong> Color values in AeoEngine range from `0.0` to `1.0` (not 0 to 255). Pure white is `[1.0, 1.0, 1.0, 1.0]`.
+          <strong style="color: var(--text-bright);">Forgetting the handle:</strong> Keep the value returned by <code>ui.new(...)</code>; you need that handle to update or delete the runtime element later.
         </p>
       </div>
     </section>

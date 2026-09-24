@@ -108,10 +108,10 @@
               <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Reading and modifying attributes during Play mode
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Authored initial attributes vs runtime overrides
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Replacing and removing values during Play mode
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Reverting to original default values by assigning <code>nil</code>
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Removing an attribute by assigning <code>nil</code>
             </li>
           </ul>
         </article>
@@ -119,7 +119,7 @@
         <article class="canonical-card" style="padding: 28px;">
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
           <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            Cells in AeoEngine can store custom key/value data called <strong>attributes</strong>. You can define initial attributes in the editor properties panel, and modify or attach new ones at runtime using <code>cell.attributes["key"] = value</code>. Assigning <code>nil</code> removes the runtime attribute and restores the Cell's original default value.
+            Cells in AeoEngine can store custom key/value data called <strong>attributes</strong>. Attach or replace a value at runtime with <code>cell.attributes["key"] = value</code>. Assigning <code>nil</code> removes that attribute from the active play session.
           </p>
         </article>
       </div>
@@ -140,7 +140,7 @@
         </div>
         <pre><code>cell.attributes["health"] = 100 // Attach custom attribute
 current_hp = cell.attributes["health"] // Read custom attribute
-cell.attributes["health"] = nil // Remove attribute / restore default</code></pre>
+cell.attributes["health"] = nil // Remove attribute</code></pre>
       </div>
 
       <div class="script-code-panel" style="margin: 20px 0;">
@@ -173,13 +173,13 @@ fn open_chest(chest: Cell) {
       <div class="canonical-card" style="padding: 28px;">
         <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">COMMON NOTES / TIPS</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Authored Defaults:</strong> You can set initial attributes in the editor properties panel when selecting a block.
+          <strong style="color: var(--text-bright);">Flexible Values:</strong> An attribute can hold ordinary script values, such as a number, string, boolean, basket, map, or function.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Runtime Override:</strong> Modifying <code>cell.attributes</code> during play overrides the authored value for the duration of the play session.
+          <strong style="color: var(--text-bright);">Play Session Scope:</strong> Attributes attached during play belong to the active runtime state and do not change the authored Cell set.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Clearing Data:</strong> Assigning <code>nil</code> removes the runtime override and restores the original value.
+          <strong style="color: var(--text-bright);">Clearing Data:</strong> Assigning <code>nil</code> removes the attribute.
         </p>
       </div>
     </section>

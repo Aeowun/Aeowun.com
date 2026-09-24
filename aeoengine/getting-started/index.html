@@ -103,7 +103,7 @@
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">WHAT YOU'LL LEARN</h2>
           <ul style="list-style: none; margin-bottom: 25px;">
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Compiling and launching the engine workspace with Cargo
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Creating and opening a project in the editor
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
               <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Creating a new project workspace and world file
@@ -123,7 +123,7 @@
         <article class="canonical-card" style="padding: 28px;">
           <h2 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 20px; letter-spacing: 0.15em;">CORE CONCEPT</h2>
           <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text);">
-            AeoEngine combines an intuitive 3D voxel editor with a 60Hz physics runtime. Game developers can construct detailed environments, attach logic scripts, configure lighting and characters, and instantly enter Play mode to test game mechanics in a unified desktop interface.
+            AeoEngine combines a 3D voxel editor with a fixed-step physics runtime. You author a World, enter Play mode to try it, and return to the same authored World when the session ends.
           </p>
         </article>
       </div>
@@ -133,29 +133,29 @@
       <div class="section-heading-row">
         <div>
           <div class="brand-label mono">STEP 1</div>
-          <h2 class="home-section-title mono">BUILD &amp; LAUNCH THE ENGINE</h2>
+          <h2 class="home-section-title mono">OPEN AEOENGINE</h2>
         </div>
       </div>
 
       <p style="font-size: 1rem; line-height: 1.8; color: var(--text); margin-bottom: 20px;">
-        AeoEngine builds on the stable Rust toolchain. Open your terminal in the project directory and run Cargo to compile and start the editor interface.
+        Start AeoEngine and wait for the Project Manager. This beginner guide begins in the editor; you do not need to understand the engine source code to make a World.
       </p>
 
       <div class="script-code-panel" style="margin: 20px 0;">
         <div class="script-code-header">
-          <span class="mono">TERMINAL</span>
-          <span class="mono">CARGO</span>
+          <span class="mono">START HERE</span>
+          <span class="mono">PROJECT MANAGER</span>
         </div>
-        <pre><code><span class="code-comment"># Verify your Rust toolchain installation</span>
-rustc --version
-
-<span class="code-comment"># Compile and launch AeoEngine workspace</span>
-cargo run</code></pre>
+        <pre><code>Open AeoEngine
+  ↓
+Choose or create a project
+  ↓
+Open its workspace</code></pre>
       </div>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
         <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text); margin: 0;">
-          <strong style="color: var(--text-bright);">NOTE:</strong> Executing <code>cargo run</code> initializes the editor viewport, asset management pipelines, and physics simulation engine.
+          <strong style="color: var(--text-bright);">DEVELOPER NOTE:</strong> If you are building AeoEngine itself from source, use the build instructions in the <a href="https://github.com/Aeowun/AeoEngine" class="text-link">project repository</a>. That is a separate workflow from creating a game project.
         </p>
       </div>
     </section>
@@ -179,10 +179,8 @@ cargo run</code></pre>
         </div>
         <pre><code>1. Click 'New Project' on the home launcher.
 2. Enter a project name (e.g. "MyFirstWorld").
-3. AeoEngine generates a project directory containing:
-   ├── world.dat           # Scene persistence database
-   └── .assets/textures/   # Project texture folder
-4. Select the project and click 'Open Workspace'.</code></pre>
+3. Choose where to save the project.
+4. Select the project and open its workspace.</code></pre>
       </div>
     </section>
 
@@ -201,15 +199,15 @@ cargo run</code></pre>
       <ul style="list-style: none; margin-bottom: 25px; color: var(--text); font-size: 0.95rem; line-height: 1.8;">
         <li style="margin-bottom: 12px; position: relative; padding-left: 24px;">
           <strong style="color: var(--text-bright); position: absolute; left: 0; color: var(--accent-orange);">1.</strong>
-          <strong>Lay Down a Floor:</strong> Switch to <code>Plane Mode</code>, pick a color or texture from the Palette panel, and click-drag across the ground grid to place a floor plane.
+          <strong>Choose a Grid Plane:</strong> Select the XZ, YZ, or XY grid plane that matches the surface you want to build.
         </li>
         <li style="margin-bottom: 12px; position: relative; padding-left: 24px;">
           <strong style="color: var(--text-bright); position: absolute; left: 0; color: var(--accent-orange);">2.</strong>
-          <strong>Build Walls:</strong> Switch to <code>Top-Block Mode</code> to snap new voxels directly onto existing block faces. Drag lines or planes to sculpt walls, structures, and steps.
+          <strong>Build a Simple Shape:</strong> Use the Build tool to place Cells. Click to place one Cell, or drag to create a rectangular range. When building against a Cell, placement follows the face you selected; hold Shift to place in the selected Cell instead.
         </li>
         <li style="margin-bottom: 12px; position: relative; padding-left: 24px;">
           <strong style="color: var(--text-bright); position: absolute; left: 0; color: var(--accent-orange);">3.</strong>
-          <strong>Erase &amp; Modify:</strong> Use Erase mode to remove blocks, or multi-select blocks to adjust colors and textures in bulk. Mistake? Press <code>Ctrl + Z</code> to undo anytime.
+          <strong>Erase &amp; Modify:</strong> Use Erase to remove Cells and Select to inspect one or more Cells. Undo and redo restore authored world edits.
         </li>
       </ul>
     </section>
@@ -257,18 +255,18 @@ cargo run</code></pre>
       </div>
 
       <p style="font-size: 1rem; line-height: 1.8; color: var(--text); margin-bottom: 20px;">
-        Click the <strong>PLAY</strong> button (or press <code>F5</code>) to start the real-time simulation:
+        Choose <strong>Play</strong> to start a test session. The editor saves its camera state before Play and restores it when the session ends.
       </p>
 
       <div class="script-code-panel" style="margin: 20px 0;">
         <div class="script-code-header">
           <span class="mono">PLAY MODE</span>
-          <span class="mono">CONTROLS</span>
+          <span class="mono">WHAT CHANGES</span>
         </div>
-        <pre><code>- [WASD]      Move your character across the world
-- [Space]     Jump with physics collision and gravity
-- [Mouse]     Orbit the third-person gameplay camera
-- [Stop/Esc]  Exit Play mode and return to editing</code></pre>
+        <pre><code>- The active controller reads movement and jump input.
+- Your project can use a third-person or first-person gameplay camera.
+- World mouse settings set the initial cursor and screen-lock behavior.
+- Stop Play mode to return to editing.</code></pre>
       </div>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
@@ -282,13 +280,13 @@ cargo run</code></pre>
       <div class="canonical-card" style="padding: 28px;">
         <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">REQUIREMENTS &amp; SPECIFICATIONS</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Operating System:</strong> Windows 10 or Windows 11 (64-bit).
+          <strong style="color: var(--text-bright);">World Data:</strong> Authored Cells are stored sparsely at integer world coordinates and are saved with the project.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Compiler Toolchain:</strong> Latest stable Rust distribution (`rustc` and `cargo`).
+          <strong style="color: var(--text-bright);">Cell Types:</strong> The editor supports Blocks, FxBlocks, Players, NPCs, Lights, SpawnPoints, and AudioEmitters.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Graphics API:</strong> OpenGL 3.3+ compliant GPU drivers.
+          <strong style="color: var(--text-bright);">Documentation Scope:</strong> This page describes the AeoEngine 0.7.3 implementation snapshot.
         </p>
       </div>
     </section>

@@ -121,7 +121,6 @@ const door_sound = find("DoorSound")[0]
 
 // Start from a known stopped state
 door_sound.sound.stop()
-door_sound.sound.playing = false
 
 // Play the sound whenever the door_open event arrives
 on door_open() {
@@ -175,7 +174,7 @@ on door_open() {
       <div class="canonical-card" style="padding: 28px;">
         <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">5. COMMON BEGINNER MISTAKE</h3>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Using Colon Syntax `sound:play()`:</strong> In AeoScript, audio methods use dot syntax (`sound.play()`). Writing `sound:play()` will cause a syntax error!
+          <strong style="color: var(--text-bright);">Calling a method on the Cell instead of its Sound:</strong> <code>door_sound</code> is the Cell handle. Call <code>door_sound.sound.play()</code> after retrieving its Sound handle. AeoScript also supports colon method syntax where a method expects its receiver.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
           <strong style="color: var(--text-bright);">Unassigned Audio Path:</strong> Make sure your `AudioEmitter` block in the Editor has an audio file assigned in its Properties panel, or `play()` won't hear anything!

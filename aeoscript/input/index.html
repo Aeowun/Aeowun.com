@@ -105,7 +105,7 @@
               <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Querying directional movement vectors via <code>input.get_move_vector()</code>
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
-              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Detecting jump key presses with <code>input.is_jump_pressed()</code>
+              <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Detecting jump input with <code>input.is_jump_pressed()</code>
             </li>
             <li style="position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text);">
               <span style="position: absolute; left: 0; color: var(--accent-orange);">—</span> Accessing the mouse handle via <code>const mouse = get.mouse()</code>
@@ -175,10 +175,10 @@ mouse.setScreenLocked = false</code></pre>
           <code>input.get_move_vector()</code>: Returns 2D movement basket <code>[vx, vz]</code>.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <code>input.is_jump_pressed()</code>: Returns boolean indicating jump key status.
+          <code>input.is_jump_pressed()</code>: Returns the current jump-input state.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <code>get.mouse()</code>: Returns the singleton Mouse handle (`id: 0`).
+          <code>get.mouse()</code>: Returns the global Mouse handle.
         </p>
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
           <code>mouse.setCursorVisible</code> / <code>mouse.setScreenLocked</code>: Booleans controlling OS cursor visibility and window capture.
