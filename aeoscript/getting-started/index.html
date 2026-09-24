@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,9 +85,25 @@
     <section class="canonical-hero">
       <div class="brand-label mono">AEOWUN &gt; AEOSCRIPT &gt; LESSON 1</div>
       <h1 class="canonical-title mono">YOUR FIRST SCRIPT</h1>
-      <p class="canonical-lead">
-        Write your first lines of game code and see them run inside AeoEngine.
-      </p>
+
+      <div class="script-code-panel" style="margin: 20px 0;">
+        <div class="script-code-header">
+          <span class="mono">AEOENGINE</span>
+          <span class="mono">SCRIPT EDITOR</span>
+        </div>
+
+        <div style="padding: 20px 24px;">
+          <div class="mono" style="color: var(--text-bright); margin-bottom: 10px;">
+            GETTING STARTED:
+          </div>
+
+          <p class="canonical-lead" style="margin: 0;">
+            1. Open your AeoEngine project and click the <strong>'SCRIPTS'</strong> button located in the top left of the editor.<br>
+            2. Create a new script by clicking <strong>'New script'</strong> and name it <code>hello_world</code>.<br>
+            3. Press <strong>Enter</strong>.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- 1. WHAT YOU'RE MAKING -->
@@ -94,11 +111,13 @@
       <div class="section-heading-row">
         <div>
           <div class="brand-label mono">LESSON 1</div>
-          <h2 class="home-section-title mono">1. WHAT YOU'RE MAKING</h2>
+          <h2 class="home-section-title mono">1. HELLO WORLD</h2>
         </div>
       </div>
+
       <p style="font-size: 1rem; line-height: 1.8; color: var(--text);">
-        You are going to create a startup script for your game world. When you press <strong>Play</strong>, AeoEngine reads your script file from top to bottom and prints messages to the output window so you know your game is ready!
+        You are going to create a startup script for your game world. When you press <strong>Play</strong>,
+        AeoEngine runs your script and prints the message to the output window so you can see that your script is working.
       </p>
     </section>
 
@@ -107,7 +126,7 @@
       <div class="section-heading-row">
         <div>
           <div class="brand-label mono">CODE</div>
-          <h2 class="home-section-title mono">2. WORKING EXAMPLE</h2>
+          <h2 class="home-section-title mono">2. EXAMPLE</h2>
         </div>
       </div>
 
@@ -116,10 +135,9 @@
           <span class="mono">AEOFILE</span>
           <span class="mono">STARTUP.AEO</span>
         </div>
+
         <pre><code>// This is a comment — AeoEngine ignores lines starting with //
-debug.log("Loading game World...")
-debug.log("Hello from my game!")
-debug.log("Game is ready to play!")</code></pre>
+debug.log("Hello, World!")</code></pre>
       </div>
     </section>
 
@@ -134,13 +152,13 @@ debug.log("Game is ready to play!")</code></pre>
 
       <div class="canonical-card" style="padding: 24px;">
         <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
-          <strong style="color: var(--text-bright);">Line 1 (`// ...`)</strong>: Lines starting with two slashes `//` are comments. They are notes for yourself and do not run in the game.
+          <strong style="color: var(--text-bright);">Line 1 (<code>// ...</code>)</strong>:
+          Lines starting with two slashes <code>//</code> are comments. They are notes for yourself and do not run in the game.
         </p>
-        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 12px;">
-          <strong style="color: var(--text-bright);">Line 2 (`debug.log(...)`)</strong>: Tells AeoEngine to print the message `"Loading game World..."` into the output panel at the bottom of the editor.
-        </p>
+
         <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text); margin-bottom: 0;">
-          <strong style="color: var(--text-bright);">Lines 3 &amp; 4</strong>: Print two more messages line-by-line in the order they appear.
+          <strong style="color: var(--text-bright);">Line 2 (<code>debug.log(...)</code>)</strong>:
+          Tells AeoEngine to print the message <code>"Hello, World!"</code> into the output panel at the bottom of the editor.
         </p>
       </div>
     </section>
@@ -156,21 +174,51 @@ debug.log("Game is ready to play!")</code></pre>
 
       <div style="background: rgba(228, 91, 36, 0.04); border-left: 3px solid var(--accent-orange); padding: 20px 25px; margin: 25px 0; border-radius: 2px;">
         <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text); margin: 0;">
-          Try replacing `"Hello from my game!"` with your own message, like `"Welcome to my 3D Dungeon!"`. Click **Play** at the top of AeoEngine and look at the **Output** tab at the bottom to see your new text!
+          Try replacing the text inside the quotation marks with your own message.
+          Click <strong>Play</strong> at the top of AeoEngine and look at the <strong>Output</strong> tab at the bottom to see your new text.
         </p>
       </div>
     </section>
 
-    <!-- 5. COMMON BEGINNER MISTAKE -->
+    <!-- 5. COMMON BEGINNER MISTAKES -->
     <section class="home-section">
+      <div class="section-heading-row">
+        <div>
+          <div class="brand-label mono">DEBUGGING</div>
+          <h2 class="home-section-title mono">5. COMMON BEGINNER MISTAKES</h2>
+        </div>
+      </div>
+
       <div class="canonical-card" style="padding: 28px;">
-        <h3 class="mono" style="font-size: 0.75rem; color: var(--text-bright); margin-bottom: 16px; letter-spacing: 0.15em;">5. COMMON BEGINNER MISTAKE</h3>
-        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Missing Quotes:</strong> Text inside <code>debug.log()</code> must be wrapped in matching quotation marks like <code>"Hello"</code>. Writing <code>debug.log(Hello)</code> will cause a script error because the engine looks for a variable named <code>Hello</code>.
+
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 18px; line-height: 1.6;">
+          <strong style="color: var(--text-bright);">Missing Quotes:</strong>
+          Text inside <code>debug.log()</code> must be wrapped in matching quotation marks like <code>"Hello"</code>.
+          Writing <code>debug.log(Hello)</code> makes AeoScript look for a value named <code>Hello</code> instead of treating it as text.
         </p>
+
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 18px; line-height: 1.6;">
+          <strong style="color: var(--text-bright);">Unlinked Script:</strong>
+          Make sure the script is attached to the appropriate world or cell so AeoEngine knows where it should run.
+        </p>
+
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 18px; line-height: 1.6;">
+          <strong style="color: var(--text-bright);">Misspelled Names:</strong>
+          Code names must match exactly. For example, <code>debug.log()</code> is different from <code>debug.logg()</code>.
+        </p>
+
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 18px; line-height: 1.6;">
+          <strong style="color: var(--text-bright);">Missing Parentheses:</strong>
+          Make sure every opening <code>(</code> has a matching closing <code>)</code>.
+          For example, <code>debug.log("Hello")</code> is complete, while <code>debug.log("Hello"</code> is not.
+        </p>
+
         <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6;">
-          <strong style="color: var(--text-bright);">Unlinked Script:</strong> Remember to attach your script file in the World or Cell Properties Panel, or it won't run when you press Play!
+          <strong style="color: var(--text-bright);">Ignoring the Error:</strong>
+          When something does not work, read the error message first.
+          It can often tell you what went wrong and where AeoEngine found the problem.
         </p>
+
       </div>
     </section>
 
@@ -226,3 +274,4 @@ debug.log("Game is ready to play!")</code></pre>
   <script src="../../app.js"></script>
 </body>
 </html>
+```

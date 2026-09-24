@@ -249,7 +249,7 @@
           <span class="capability-copy">
             <strong class="mono">VOXEL BLOCKS</strong>
             <span>
-              Build the world, one piece at a time
+              Build voxel worlds with editor tools for placing, shaping, and changing blocks.
             </span>
           </span>
         </a>
@@ -260,7 +260,7 @@
           <span class="capability-copy">
             <strong class="mono">AEOSCRIPT</strong>
             <span>
-              Bring your world to life with AeoEngines easy to learn AeoScript
+              Write gameplay logic with AeoScript, a scripting language built for AeoEngine.
             </span>
           </span>
         </a>
@@ -271,7 +271,7 @@
           <span class="capability-copy">
             <strong class="mono">BUILT-IN EDITOR</strong>
             <span>
-              Create, edit, run, and iterate without leaving AeoEngine.
+              Build worlds, edit AeoScript, and run games without leaving AeoEngine.
             </span>
           </span>
         </a>
@@ -280,9 +280,9 @@
           <span class="capability-icon" aria-hidden="true">›_</span>
 
           <span class="capability-copy">
-            <strong class="mono">DOCUMENTED</strong>
+            <strong class="mono">DOCUMENTATION HUB</strong>
             <span>
-              Learn the engine and language directly on AEOWUN.com [WIP]
+              Learn AeoEngine and AeoScript through the documentation on AEOWUN.com. [WIP]
             </span>
           </span>
         </a>
@@ -306,7 +306,7 @@
           </div>
 
           <a href="/aeoengine/" class="text-link mono">
-            FULL ENGINE OVERVIEW →
+            AeoEngine →
           </a>
 
         </div>
@@ -327,8 +327,7 @@
               <h3 class="mono">BUILD WORLDS</h3>
 
               <p>
-                Put the pieces together however you want.
-                Shape the world around your ideas.
+                Place and shape voxel blocks to build the world in the editor.
               </p>
 
               <a href="/aeoengine/building/" class="text-link mono">
@@ -352,7 +351,7 @@
               <h3 class="mono">ADD GAMEPLAY</h3>
 
               <p>
-                Use AeoScript to control game logic, object behavior, properties, and events.
+                Use AeoScript to control game logic, objects, properties, and events.
               </p>
 
               <a href="/aeoscript/getting-started/" class="text-link mono">
@@ -376,7 +375,7 @@
               <h3 class="mono">SIMULATE &amp; INTERACT</h3>
 
               <p>
-                Bring your world to life with physics, dynamic bodies, characters, collision, and interaction.
+                  Test physics and interaction with dynamic bodies, characters, and collision.
               </p>
 
               <a href="/aeoengine/physics/" class="text-link mono">
@@ -400,8 +399,7 @@
               <h3 class="mono">LIGHT &amp; RENDER</h3>
 
               <p>
-                Work with directional lighting while
-                shaping the look of an authored world.
+                Add directional lighting and see how it changes the world in the editor and Play mode.
               </p>
 
               <a href="/aeoengine/lighting/" class="text-link mono">
@@ -425,7 +423,7 @@
               <h3 class="mono">TEST &amp; PLAY</h3>
 
               <p>
-                Run, test, inspect
+                  Run the world in Play mode to test gameplay, physics, and interactions. Your IMAGINATION is the LIMIT!
               </p>
 
               <a href="/aeoengine/getting-started/" class="text-link mono">
@@ -442,8 +440,8 @@
     </section>
 
     <!-- =======================================================
-         AEOSCRIPT
-    ======================================================== -->
+        AEOSCRIPT
+    ======================================================= -->
     <section class="home-section home-script">
 
       <div class="container">
@@ -459,7 +457,7 @@
 
             <p class="script-feature-copy">
               AeoScript is the scripting language used by AeoEngine
-              to define gameplay behavior and interact with the world.
+              to define gameplay logic and interact with the world.
             </p>
 
             <a href="/aeoscript/" class="secondary-button mono">
@@ -469,21 +467,32 @@
 
           <div class="script-code-panel" aria-label="AeoScript example">
             <div class="script-code-header">
-              <span class="mono">PLAYER.AEOSCRIPT</span>
+              
               <span class="mono">EXAMPLE</span>
             </div>
 
-            <pre><code><span class="code-keyword">entity</span> Player {
-  health: <span class="code-type">number</span> = 100
+            <pre><code><span class="code-comment">
+    <span class="mono">enemy_damage.aeo</span>
+    </span>
 
-  <span class="code-keyword">fn</span> take_damage(amount: <span class="code-type">number</span>) {
-    health = math.max(0, health - amount)
-  }
+    <span class="code-keyword">on</span> on_damage(amount) {
+      <span class="code-keyword">const</span> player = get_entity(<span class="code-string">"Player"</span>)
 
-  <span class="code-keyword">fn</span> update(dt) {
-    <span class="code-comment">// gameplay logic lives here</span>
-  }
-}</code></pre>
+      <span class="code-keyword">if</span> !player.is_valid() || !player.alive {
+        <span class="code-keyword">return</span>
+      }
+
+      player.damage(amount)
+
+      event.fire(
+        <span class="code-string">"player_damaged"</span>,
+        amount
+      )
+
+      <span class="code-keyword">if</span> !player.alive {
+        event.fire(<span class="code-string">"player_defeated"</span>)
+      }
+    }</code></pre>
           </div>
 
           <div class="script-feature-link">
@@ -501,8 +510,8 @@
     </section>
 
     <!-- =======================================================
-         LATEST UPDATES
-    ======================================================== -->
+        LATEST UPDATES
+    ======================================================= -->
     <section class="home-section home-updates">
 
       <div class="container">
@@ -526,27 +535,30 @@
             <span class="update-card-index mono">01</span>
             <h3 class="mono">AEOENGINE</h3>
             <p>
-              Ongoing editor, runtime, physics, lighting, and world-building work.
+              The engine is in active development, with recent work across
+              world building, the editor, physics, rendering, and runtime systems.
             </p>
-            <a href="/aeoengine/" class="text-link mono">OPEN ENGINE DOCS →</a>
+            <a href="/aeoengine/" class="text-link mono">EXPLORE AEOENGINE →</a>
           </article>
 
           <article class="update-card">
             <span class="update-card-index mono">02</span>
             <h3 class="mono">AEOSCRIPT</h3>
             <p>
-              Language, runtime behavior, APIs, and documentation are evolving with the engine.
+              AeoScript is expanding alongside the engine with gameplay logic,
+              runtime entities, input, events, UI, audio, and engine APIs.
             </p>
-            <a href="/aeoscript/" class="text-link mono">OPEN LANGUAGE DOCS →</a>
+            <a href="/aeoscript/" class="text-link mono">EXPLORE AEOSCRIPT →</a>
           </article>
 
           <article class="update-card">
             <span class="update-card-index mono">03</span>
             <h3 class="mono">DOCUMENTATION</h3>
             <p>
-              AEOWUN is building a complete documentation system so users can learn without leaving the site.
+              Documentation is being updated alongside the engine and language
+              as new systems are implemented and released.
             </p>
-            <a href="/docs/" class="text-link mono">OPEN DOCUMENTATION →</a>
+            <a href="/docs/" class="text-link mono">EXPLORE DOCUMENTATION →</a>
           </article>
 
         </div>
@@ -555,51 +567,7 @@
 
     </section>
 
-    <!-- =======================================================
-         WIP / BUILT IN PUBLIC
-    ======================================================== -->
-    <section class="home-section home-public">
 
-      <div class="container">
-
-        <div class="public-panel">
-
-          <div class="public-mark mono">AEOWUN</div>
-
-          <div class="public-copy">
-            <h2 class="public-title mono">
-              BUILT IN PUBLIC.
-            </h2>
-
-            <p>
-              AeoEngine is a small, actively developed project.
-              The engine, language, editor, and documentation grow together
-              through real use.
-            </p>
-          </div>
-
-          <div class="public-actions">
-            <a href="/docs/" class="primary-button mono">
-              READ THE DOCS
-            </a>
-
-            <a
-              href="https://github.com/Aeowun/AeoEngine/issues/new"
-              target="_blank"
-              rel="noopener"
-              class="secondary-button mono"
-            >
-              VIEW SOURCE
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
 
   <!-- =========================================================
        FOOTER
@@ -613,11 +581,6 @@
         <a href="/" class="footer-brand-name mono">
           AEOWUN
         </a>
-
-        <p>
-          A small, localy developed software brand built around
-          AeoEngine, AeoScript, and the games and tools made with them.
-        </p>
 
       </div>
 
@@ -665,7 +628,7 @@
       <span class="mono">© 2026 AEOWUN.</span>
 
       <span class="mono">
-        SUPPORT SOLO DEVELOPERS!
+        SUPPORT SOLO DEVELOPERS
       </span>
 
     </div>

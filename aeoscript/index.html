@@ -85,9 +85,6 @@
     <section class="canonical-hero">
       <div class="brand-label mono">AEOWUN &gt; DOCS &gt; AEOSCRIPT</div>
       <h1 class="canonical-title mono">AEOSCRIPT</h1>
-      <p class="canonical-lead">
-        A clear, simple gameplay scripting language built for making games in AeoEngine.
-      </p>
       <div class="canonical-actions">
         <a class="primary-button mono" href="getting-started/">FIRST SCRIPT</a>
         <a class="secondary-button mono" href="/docs/">DOCS HUB</a>
@@ -103,62 +100,139 @@
           <h2 class="home-section-title mono">HOW AEOSCRIPT WORKS</h2>
         </div>
       </div>
+
       <div class="canonical-grid">
+
+        <!-- ENTITIES & FUNCTIONS -->
         <article class="canonical-card" style="padding: 28px;">
-          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">ENTITIES &amp; FUNCTIONS</h3>
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">
+            ENTITIES &amp; FUNCTIONS
+          </h3>
           <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text); margin-bottom: 16px;">
-            Define game objects using <code>entity</code>. Fields store data like health or speed, and functions run logic when called.
+            Define reusable gameplay logic with functions, persistent state, and runtime object handles.
           </p>
           <div class="script-code-panel">
-            <pre><code>entity Player {
-  health = 100
+            <pre><code>fn spawn_enemy(position) {
+      const enemy = spawn("Enemy", position)
 
-  fn take_damage(amount) {
-    health = math.max(0, health - amount)
-  }
-}</code></pre>
+      enemy.health = enemy_health
+      enemy.animation = "Idle"
+
+      basket.insert(enemies, enemy)
+    }</code></pre>
           </div>
         </article>
 
+        <!-- WAITING & DELAYS -->
         <article class="canonical-card" style="padding: 28px;">
-          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">WAITING &amp; DELAYS</h3>
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">
+            WAITING &amp; DELAYS
+          </h3>
           <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text); margin-bottom: 16px;">
-            Pause script execution easily with <code>wait(seconds)</code>. The script remembers its exact place and continues later.
+            Pause a running script with <code>wait(seconds)</code>. Execution resumes from the same point later.
           </p>
           <div class="script-code-panel">
-            <pre><code>fn flash_light() {
-  light.visible = false
-  wait(0.5)
-  light.visible = true
-}</code></pre>
+            <pre><code>for target in doors {
+      target.visible = false
+    }
+
+    wait(1)
+
+    for target in doors {
+      target.visible = true
+    }</code></pre>
           </div>
         </article>
 
+        <!-- EVENTS & INTERACTIONS -->
         <article class="canonical-card" style="padding: 28px;">
-          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">EVENTS &amp; INTERACTIONS</h3>
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">
+            EVENTS &amp; INTERACTIONS
+          </h3>
           <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text); margin-bottom: 16px;">
-            React to player collisions, triggers, and game events with simple handlers like <code>on_touch(cell)</code> and <code>on EventName</code>.
+            React to gameplay events and connect separate systems without tightly coupling their implementation.
           </p>
           <div class="script-code-panel">
-            <pre><code>fn on_touch(cell) {
-  debug.log("Player touched a coin!")
-  cell.visible = false
-}</code></pre>
+            <pre><code>on on_gold(amount) {
+      gold += amount
+      score += amount * 10
+
+      event.fire("on_coin")
+      event.fire("on_gold_changed", gold)
+    }</code></pre>
           </div>
         </article>
 
+        <!-- BASKETS & COLLECTIONS -->
         <article class="canonical-card" style="padding: 28px;">
-          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">LISTS &amp; MAPS</h3>
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">
+            BASKETS &amp; COLLECTIONS
+          </h3>
           <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text); margin-bottom: 16px;">
-            Store sequences of items in <code>baskets</code> (lists) and key/value data in <code>maps</code> to manage inventory and stats.
+            Store and manage groups of objects with baskets for enemies, doors, coins, spawn points, and other gameplay data.
           </p>
           <div class="script-code-panel">
-            <pre><code>const inventory = ["Key", "Sword"]
-const stats = { hp: 100, gold: 25 }</code></pre>
+            <pre><code>enemies: basket = []
+
+    basket.insert(enemies, enemy)
+
+    for enemy in enemies {
+      if enemy.alive {
+        // ...
+      }
+    }</code></pre>
           </div>
         </article>
+
+        <!-- EVENT-DRIVEN SYSTEMS -->
+        <article class="canonical-card" style="padding: 28px;">
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">
+            EVENT-DRIVEN SYSTEMS
+          </h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text); margin-bottom: 16px;">
+            Split gameplay into small systems that announce events while other scripts decide how to respond.
+          </p>
+          <div class="script-code-panel">
+            <pre><code>// Door system
+    event.fire("door_open")
+
+    // Environment system
+    on door_open() {
+      door_sound.sound.play()
+    }</code></pre>
+          </div>
+        </article>
+
+        <!-- RUNTIME ENTITIES & AI -->
+        <article class="canonical-card" style="padding: 28px;">
+          <h3 class="mono" style="font-size: 0.85rem; color: var(--text-bright); margin-bottom: 12px;">
+            RUNTIME ENTITIES &amp; AI
+          </h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text); margin-bottom: 16px;">
+            Control runtime characters from scripts with position, velocity, facing, health, animation, jumping, and AI behavior.
+          </p>
+          <div class="script-code-panel">
+            <pre><code>if distance &lt;= detection_range {
+      enemy.velocity = [
+        direction_x * move_speed,
+        enemy.velocity[1],
+        direction_z * move_speed
+      ]
+
+      enemy.facing = [
+        direction_x,
+        direction_z
+      ]
+
+      enemy.animation = "Walk"
+    }</code></pre>
+          </div>
+        </article>
+
       </div>
     </section>
+
+
 
     <!-- BEGINNER PATH -->
     <section class="home-section">
@@ -326,45 +400,67 @@ const stats = { hp: 100, gold: 25 }</code></pre>
 
   </main>
 
-  <footer class="aeowun-footer home-footer">
+<footer class="aeowun-footer home-footer">
+
     <div class="container footer-main">
+
       <div class="footer-brand">
-        <a href="/" class="footer-brand-name mono">AEOWUN</a>
-        <p>
-          A small, actively developed software project built around
-          AeoEngine, AeoScript, and the games and tools made with them.
-        </p>
+
+        <a href="/" class="footer-brand-name mono">
+          AEOWUN
+        </a>
+
       </div>
 
       <div class="footer-column">
+
         <h2 class="mono">PRODUCT</h2>
+
         <a href="/aeoengine/">AeoEngine</a>
         <a href="/aeoscript/">AeoScript</a>
         <a href="/games/">Games</a>
         <a href="/software/">Software &amp; Tools</a>
+
       </div>
 
       <div class="footer-column">
+
         <h2 class="mono">LEARN</h2>
+
         <a href="/docs/">Documentation</a>
         <a href="/docs/tutorials/">Tutorials</a>
         <a href="/docs/reference/">API Reference</a>
         <a href="/docs/troubleshooting/">Troubleshooting</a>
+
       </div>
 
       <div class="footer-column">
+
         <h2 class="mono">AEOWUN</h2>
+
         <a href="/support/">Support</a>
         <a href="/privacy/">Privacy</a>
         <a href="/security/">Security</a>
-        <a href="https://github.com/Aeowun/AeoEngine" target="_blank" rel="noopener">GitHub</a>
+        <a
+          href="https://github.com/Aeowun/AeoEngine/issues/new"
+          target="_blank"
+          rel="noopener"
+        >GitHub</a>
+
       </div>
+
     </div>
 
     <div class="container footer-bottom">
+
       <span class="mono">© 2026 AEOWUN.</span>
-      <span class="mono">BUILT IN PUBLIC.</span>
+
+      <span class="mono">
+        SUPPORT SOLO DEVELOPERS
+      </span>
+
     </div>
+
   </footer>
 
   <script src="../app.js"></script>
