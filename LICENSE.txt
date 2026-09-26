@@ -1,0 +1,7 @@
+Copyright © 2026 Zachary Joubert / AEOWUN
+
+All rights reserved.
+
+The contents of this repository, including the AEOWUN website, documentation, source code, images, graphics, and other original materials, may not be copied, modified, redistributed, published, or used to create derivative works without explicit permission from the copyright holder.
+
+This license applies only to the contents of this repository. Third-party software, libraries, assets, and linked projects remain subject to their respective licenses.
